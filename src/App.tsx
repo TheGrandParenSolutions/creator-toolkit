@@ -11,7 +11,9 @@ function App() {
       height: '100vh'
     }}>
       <h1 style={{
-        color: "#111827",
+        color: "transparent",
+        background: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)',
+        backgroundClip: 'text'
       }}>Coming soon.....</h1>
       <span style={{
         color: "grey",

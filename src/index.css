@@ -1,9 +1,30 @@
 :root {
-  font-family: "ABeeZee", sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --black: #2c2c2c;
+  --dark-yellow: #d6a701;
+  --main-yellow: #f7d046;
+  --light-grey: #e9f0f1;
+  --white: white;
+  --blue: #302dd7;
+  --error-red: #e72f3c;
+  --blue-hover: #211fb9;
+  --turquoise: #82e5ce;
+  --custom-gray: #c4c4c4;
+  --white-smoke: #f2f2f2;
+  --brand-bg-theme: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
 }
 
 body {
   height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--black);
+  background-color: #f9f8f5;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+h1 {
+  font-family: "Wix Madefor Display", sans-serif;
 }
