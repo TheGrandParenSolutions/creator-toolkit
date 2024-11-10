@@ -9,7 +9,8 @@ function App() {
       justifyContent: 'center'
     }}>
       <h1 style={{
-        color: "black"
+        color: "black",
+        whiteSpace: 'nowrap'
       }}>Coming soon.....</h1>
       <span style={{
         color: "grey"
