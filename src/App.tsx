@@ -6,7 +6,8 @@ function App() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      overflow: "hidden"
     }}>
       <h1 style={{
         color: "black",
