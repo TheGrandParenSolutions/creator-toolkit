@@ -11,7 +11,7 @@ function App() {
       height: '100vh'
     }}>
       <h1 style={{
-        color: "black",
+        color: "#111827",
       }}>Coming soon.....</h1>
       <span style={{
         color: "grey",
