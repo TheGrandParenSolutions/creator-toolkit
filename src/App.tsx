@@ -7,14 +7,16 @@ function App() {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      overflow: "hidden"
+      overflow: "hidden",
     }}>
       <h1 style={{
         color: "black",
-        whiteSpace: 'nowrap'
+        fontSize: '12px'
       }}>Coming soon.....</h1>
       <span style={{
-        color: "grey"
+        color: "grey",
+        fontSize: '8px'
+
       }}>Powered by Team JJ.</span>
     </div>
   );
