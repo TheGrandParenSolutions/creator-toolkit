@@ -1,3 +1,9 @@
+@layer tailwind {
+  @tailwind base;
+}
+@tailwind components;
+@tailwind utilities;
+
 :root {
   line-height: 1.5;
   font-weight: 400;
@@ -12,12 +18,12 @@
   --turquoise: #82e5ce;
   --custom-gray: #c4c4c4;
   --white-smoke: #f2f2f2;
-  --brand-bg-theme: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  --brand-bg-theme: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
 
 body {
   height: 100vh;
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
   color: var(--black);
   background-color: #f9f8f5;
   font-size: 1rem;
@@ -25,6 +31,10 @@ body {
   line-height: 1.75;
 }
 
-h1 {
-  font-family: "Wix Madefor Display", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Wix Madefor Display', sans-serif;
 }
