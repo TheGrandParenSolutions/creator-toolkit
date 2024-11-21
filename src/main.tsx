@@ -6,9 +6,9 @@ import "./index.css";
 import { MantineProvider } from "@mantine/core";
 
 createRoot(document.getElementById("root")!).render(
-  <MantineProvider>
-    <StrictMode>
+  <StrictMode>
+    <MantineProvider>
       <App />
-    </StrictMode>
-  </MantineProvider>,
+    </MantineProvider>
+  </StrictMode>,
 );

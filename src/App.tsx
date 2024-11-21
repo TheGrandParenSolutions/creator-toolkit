@@ -1,11 +1,11 @@
 import { Box } from "@mantine/core";
 import "./App.css";
-import Logo from "@src/components/AppLogo/Logo";
+import Navbar from "@src/components/Navbar/Navbar";
 
 function App() {
   return (
-    <Box>
-      <Logo />
+    <Box className="w-full">
+      <Navbar />
     </Box>
   );
 }

@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "GRIFTER Bold";
+  src: url("assets/fonts/grifterbold.ttf");
+}
+
 :root {
   line-height: 1.5;
   font-weight: 400;
@@ -22,13 +27,13 @@
 }
 
 body {
-  height: 100vh;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   color: var(--black);
   background-color: #f9f8f5;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.75;
+  margin: 0;
 }
 
 h1,
@@ -36,5 +41,5 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Wix Madefor Display', sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
 }
