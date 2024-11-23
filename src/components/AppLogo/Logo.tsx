@@ -1,11 +1,11 @@
 import { Box, Text, Tooltip } from "@mantine/core";
-import BrandIcon from "@src/components/AppLogo/BrandIcon";
+import CTIcon from "@src/components/AppLogo/CTIcon";
 
 const Logo = () => {
   return (
     <Tooltip label="Toolkit home">
       <Box className="flex cursor-pointer items-center">
-        <BrandIcon />
+        <CTIcon />
         <Text className="font-grifter text-wrap text-2xl">Creator Toolkit</Text>
       </Box>
     </Tooltip>

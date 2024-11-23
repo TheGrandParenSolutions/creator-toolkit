@@ -1,12 +1,13 @@
-import { Box } from "@mantine/core";
+import MainSection from "@src/components/MainSection/MainSection";
 import "./App.css";
-import Navbar from "@src/components/Navbar/Navbar";
+import "./styles/additional.css";
+import AppRouter from "@src/Router/AppRouter";
 
 function App() {
   return (
-    <Box className="w-full">
-      <Navbar />
-    </Box>
+    <MainSection>
+      <AppRouter />
+    </MainSection>
   );
 }
 

@@ -1,7 +1,7 @@
 import ToolsLogo from "@src/assets/logo/icon-screwdriver.svg";
 
-const BrandIcon = () => {
+const CTIcon = () => {
   return <ToolsLogo />;
 };
 
-export default BrandIcon;
+export default CTIcon;
