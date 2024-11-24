@@ -35,7 +35,7 @@ const Pricing = () => {
         {/* Buttons */}
         <button
           onClick={() => setIsAnnual(true)}
-          className={`relative z-10 w-1/2 py-1.5 text-center font-semibold transition-all text-sm md:text-base lg:text-base ${
+          className={`relative z-10 w-1/2 py-1.5 text-center text-sm font-semibold transition-all md:text-base lg:text-base ${
             isAnnual ? "text-black" : "text-gray-600"
           }`}
         >
@@ -43,7 +43,7 @@ const Pricing = () => {
         </button>
         <button
           onClick={() => setIsAnnual(false)}
-          className={`relative z-10 w-1/2 py-1.5 text-center font-semibold transition-all text-sm md:text-base lg:text-base ${
+          className={`relative z-10 w-1/2 py-1.5 text-center text-sm font-semibold transition-all md:text-base lg:text-base ${
             !isAnnual ? "text-black" : "text-gray-600"
           }`}
         >
@@ -95,7 +95,7 @@ const Pricing = () => {
           >
             Get Started
           </Button>
-          <Group direction="column" spacing="xs">
+          <Group >
             <Text size="xs" className="text-gray-800">
               ✓ Unlimited Thumbnail Ideas
             </Text>
@@ -158,7 +158,7 @@ const Pricing = () => {
           >
             Get Started
           </Button>
-          <Group direction="column" spacing="xs">
+          <Group>
             <Text size="xs" className="text-gray-900">
               ✓ Unlimited Thumbnail Ideas
             </Text>
