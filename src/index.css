@@ -23,7 +23,12 @@
   --turquoise: #82e5ce;
   --custom-gray: #c4c4c4;
   --white-smoke: #f2f2f2;
-  --brand-bg-theme: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  --brand-bg-theme: linear-gradient(
+    62deg,
+    #fbab7e 0%,
+    #ffd580 50%,
+    rgb(255, 213, 128) 100%
+  );
   --brand-main-bg: #f9f8f5;
   --brand-light-orange: #fbab7e;
   --brand-sec-gradient: linear-gradient(
@@ -33,6 +38,7 @@
   );
   --brand-bg-light: #fbf0c9;
   --brand-dark-orange: #f79046;
+  --brand-yellow: #ffd580;
 }
 
 body {

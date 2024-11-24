@@ -1,11 +1,12 @@
-import { Button, Menu, Divider } from "@mantine/core";
+import { Menu, Divider } from "@mantine/core";
 import { Rocket } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { Link } from "react-router-dom";
 
 export function MainNav() {
   return (
-    <header className="z-50 w-full h-auto">
+    <header className="z-50 h-auto w-full">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -63,16 +64,16 @@ export function MainNav() {
           >
             Log in
           </Link>
-          <Button
-            radius="xl"
-            className="px-6 text-black hover:opacity-90"
-            style={{
-              background: "var(--brand-bg-theme)", // Applies the gradient from your CSS variable
-            }}
-          >
-            <Rocket className="mr-2" />
-            Go pro
-          </Button>
+
+          <CTAnimatedButton
+            w={140}
+            radius={"xl"}
+            label="Go pro"
+            hoverLabel="You will love it"
+            to="/pricing"
+            buttonStyles="w-60"
+            icon={<Rocket />}
+          />
         </div>
       </div>
     </header>

@@ -9,7 +9,7 @@ import {
   XCircleSolid,
   BrandYoutubeSolid,
 } from "@mynaui/icons-react";
-import CTDownloadButton from "@src/shared/DownloadButton/CTDownloadButton";
+import CTDownloadButton from "@src/shared/Buttons/DownloadButton/CTDownloadButton";
 import InternalLoader from "assets/loader.svg";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 

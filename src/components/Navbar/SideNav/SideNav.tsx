@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   Home,
   BrandYoutube,
@@ -14,6 +13,7 @@ import {
   DollarHexagonSolid,
 } from "@mynaui/icons-react";
 import { Box, Center, Tooltip, UnstyledButton } from "@mantine/core";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -22,6 +22,7 @@ interface NavbarLinkProps {
   active?: boolean;
   onClick?: () => void;
   isExpanded: boolean;
+  to?: string; // Add a route path
 }
 
 function NavbarLink({
@@ -31,11 +32,19 @@ function NavbarLink({
   active,
   onClick,
   isExpanded,
+  to,
 }: NavbarLinkProps) {
+  const navigate = useNavigate(); // Hook to handle navigation
+
+  const handleNavigation = () => {
+    if (to) navigate(to); // Navigate to the specified route
+    if (onClick) onClick(); // Call the onClick callback if provided
+  };
+
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 20 }}>
       <UnstyledButton
-        onClick={onClick}
+        onClick={handleNavigation} // Use the navigation handler
         className={`flex items-center rounded-lg p-3 transition-all hover:bg-gray-100 ${
           active ? "bg-gray-200 font-semibold" : ""
         }`}
@@ -49,7 +58,7 @@ function NavbarLink({
           )}
         </div>
         <span
-          className={`ml-3 overflow-hidden whitespace-nowrap transition-all duration-300 truncate ${
+          className={`ml-3 overflow-hidden truncate whitespace-nowrap transition-all duration-300 ${
             isExpanded ? "max-w-xs opacity-100" : "hidden max-w-0 opacity-0"
           }`}
         >
@@ -61,21 +70,24 @@ function NavbarLink({
 }
 
 const mockdata = [
-  { icon: Home, activeIcon: HomeSmileSolid, label: "Home" },
+  { icon: Home, activeIcon: HomeSmileSolid, label: "Home", to: "/" },
   {
     icon: BrandYoutube,
     activeIcon: BrandYoutubeSolid,
     label: "Youtube downloader",
+    to: "/youtube-downloader",
   },
   {
     icon: ImageRectangle,
     activeIcon: ImageRectangleSolid,
     label: "Thumbnail test & preview",
+    to: "/thumbnail-test",
   },
   {
     icon: DollarHexagon,
     activeIcon: DollarHexagonSolid,
     label: "Pricing",
+    to: "/pricing",
   },
 ];
 
@@ -90,13 +102,12 @@ export function SideNav() {
       active={index === active}
       onClick={() => setActive(index)}
       isExpanded={panelOpen}
-    
     />
   ));
 
   return (
     <nav
-      className={`flex flex-col h-screen shadow-md transition-all duration-300 ${
+      className={`flex h-screen flex-col shadow-md transition-all duration-300 ${
         panelOpen ? "w-64" : "w-16"
       }`}
     >
@@ -133,6 +144,7 @@ export function SideNav() {
           activeIcon={LogoutSolid}
           label="Logout"
           isExpanded={panelOpen}
+          to="/logout"
         />
       </div>
     </nav>

@@ -1,14 +1,9 @@
-import MainSection from "@src/components/MainSection/MainSection";
 import "./App.css";
 import "./styles/additional.css";
-import AppRouter from "@src/Router/AppRouter";
+import AppRouter from "@src/router/AppRouter";
 
 function App() {
-  return (
-    <MainSection>
-      <AppRouter />
-    </MainSection>
-  );
+  return <AppRouter />;
 }
 
 export default App;
