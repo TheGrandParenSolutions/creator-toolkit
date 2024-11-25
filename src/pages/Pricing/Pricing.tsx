@@ -18,7 +18,11 @@ const Pricing = () => {
         >
           Grow your channel with a single tool.
         </Text>
-        <Text size="sm" className="text-gray-600 md:text-sm lg:text-base">
+        <Text
+          size="sm"
+          component="h3"
+          className="text-gray-600 md:text-sm lg:text-base"
+        >
           All the tools to help grow your channel from 0 to 1M+ subscribers.
         </Text>
       </Box>
@@ -95,7 +99,7 @@ const Pricing = () => {
           >
             Get Started
           </Button>
-          <Group >
+          <Group>
             <Text size="xs" className="text-gray-800">
               ✓ Unlimited Thumbnail Ideas
             </Text>

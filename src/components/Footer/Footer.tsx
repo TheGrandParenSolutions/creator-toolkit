@@ -130,7 +130,7 @@ const Footer = () => {
           size="sm"
           className="font-grifter mt-4 font-bold opacity-60 lg:mt-0"
         >
-          © 2024 TestMyThumbnails ALL RIGHTS RESERVED.
+          © 2024 Creator Toolkit ALL RIGHTS RESERVED.
         </Text>
         <Text
           size="sm"
