@@ -4,7 +4,7 @@ import MainSection from "@src/components/MainSection/MainSection";
 import LoginSignup from "@src/pages/LoginSignup/LoginSignup";
 import Pricing from "@src/pages/Pricing/Pricing";
 import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
-import YoutubeThumbnailTest from "@src/pages/YoutubeThumbnailTest/YoutubeThumbnailTest";
+import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestOnboarding/YoutubeThumbnailTestOnboarding";
 
 const AppRouter = () => {
   return (
@@ -27,7 +27,7 @@ const AppRouter = () => {
                 />
                 <Route
                   path="/thumbnail-test"
-                  element={<YoutubeThumbnailTest />}
+                  element={<YoutubeThumbnailTestOnboarding />}
                 />
                 <Route
                   path="/pricing"

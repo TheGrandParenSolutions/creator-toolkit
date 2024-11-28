@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Text, Box, Paper, Button, Group, Divider } from "@mantine/core";
+import { useState } from "react";
+import { Text, Box, Paper, Button, Group } from "@mantine/core";
 import LifetimeAccess from "@src/pages/Pricing/LifetimeAccess";
 import HowItWorks from "@src/pages/Pricing/HowItWorks";
 import GrowWithUs from "@src/pages/Pricing/GrowWithUs";
+import CTDivider from "@src/shared/Divider/CTDivider";
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -191,10 +192,11 @@ const Pricing = () => {
       <Text size="xs" className="mt-6 text-gray-500">
         *Limits reset each day
       </Text>
-      <Divider className="mt-4 w-full text-black" />
+      <CTDivider />
       <LifetimeAccess />
+      <CTDivider />
       <HowItWorks />
-      <Divider className="mt-4 w-full text-black" />
+      <CTDivider />
       <GrowWithUs />
     </div>
   );

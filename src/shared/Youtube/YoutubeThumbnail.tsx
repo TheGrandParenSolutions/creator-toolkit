@@ -2,7 +2,7 @@ import { FC } from "react";
 
 interface YoutubeThumbnailProps {
   thumbnail: string; // Thumbnail image URL
-  title: string; // Video title
+  title?: string; // Video title
   channelName?: string; // Channel name
   channelLogo?: string; // Channel logo URL
   views?: string; // Number of views (e.g., "123K views")
@@ -11,7 +11,7 @@ interface YoutubeThumbnailProps {
 
 const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
   thumbnail,
-  title,
+  title = "Add a title in the sidebar",
   channelName = "Channel name",
   channelLogo = "https://yt3.ggpht.com/H08TJ4P1GOuFNEsv4w6b892ictaUQSASqPlVhbvmZE6-jSY4mS_EnCkuPo2sqJh6MudK6GbC=s240-c-k-c0x00ffffff-no-rj", // Replace
   views = "200M",
@@ -20,11 +20,11 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
   return (
     <div className="m-auto flex-none">
       {/* Thumbnail */}
-      <div className="overflow-hidden rounded-lg">
+      <div className="overflow-hidden rounded-xl">
         <img
           src={thumbnail}
           alt={title}
-          className="w-full max-w-sm rounded-lg object-cover"
+          className="w-full max-w-sm rounded-2xl object-cover"
           style={{
             aspectRatio: "16 / 9",
           }}
@@ -53,6 +53,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
               maxHeight: "4.4rem",
               overflow: "hidden",
               textOverflow: "ellipsis",
+              textAlign: "start"
             }}
           >
             <h1>{title}</h1>
@@ -64,6 +65,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
               width: 265,
               height: 40,
               fontSize: 14,
+              textAlign: "start"
             }}
           >
             <p>{channelName}</p>

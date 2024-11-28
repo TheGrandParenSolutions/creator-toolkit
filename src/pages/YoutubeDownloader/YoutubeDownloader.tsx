@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Card, Text, Divider, Notification, Loader } from "@mantine/core";
+import { Card, Text, Notification, Loader } from "@mantine/core";
 import {
   getVideoDetails,
   VideoDetails,
@@ -11,6 +11,7 @@ import {
 } from "@mynaui/icons-react";
 import CTDownloadButton from "@src/shared/Buttons/DownloadButton/CTDownloadButton";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
+import CTDivider from "@src/shared/Divider/CTDivider";
 
 const YouTubeDownloader = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
@@ -175,7 +176,7 @@ const YouTubeDownloader = () => {
               title={videoDetails.title}
             />
 
-            <Divider className="my-6" />
+            <CTDivider />
 
             {/* Download Options */}
             <div className="rounded-md  p-5 ">
