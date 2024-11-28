@@ -1,8 +1,10 @@
+import { Routes, Route } from "react-router-dom";
+
 import MainSection from "@src/components/MainSection/MainSection";
 import LoginSignup from "@src/pages/LoginSignup/LoginSignup";
 import Pricing from "@src/pages/Pricing/Pricing";
 import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
-import { Routes, Route } from "react-router-dom";
+import YoutubeThumbnailTest from "@src/pages/YoutubeThumbnailTest/YoutubeThumbnailTest";
 
 const AppRouter = () => {
   return (
@@ -23,7 +25,10 @@ const AppRouter = () => {
                   path="/youtube-downloader"
                   element={<YouTubeDownloader />}
                 />
-                <Route path="/thumbnail-test" element={<></>} />
+                <Route
+                  path="/thumbnail-test"
+                  element={<YoutubeThumbnailTest />}
+                />
                 <Route
                   path="/pricing"
                   element={
