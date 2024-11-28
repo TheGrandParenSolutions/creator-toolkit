@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Card, Text, Divider, Notification } from "@mantine/core";
+import { Card, Text, Divider, Notification, Loader } from "@mantine/core";
 import {
   getVideoDetails,
   VideoDetails,
@@ -10,7 +10,6 @@ import {
   BrandYoutubeSolid,
 } from "@mynaui/icons-react";
 import CTDownloadButton from "@src/shared/Buttons/DownloadButton/CTDownloadButton";
-import InternalLoader from "assets/loader.svg";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 
 const YouTubeDownloader = () => {
@@ -145,7 +144,11 @@ const YouTubeDownloader = () => {
             </>
           ) : (
             <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center text-orange-50">
-              <InternalLoader />
+              <Loader
+                type="bars"
+                size={"sm"}
+                color="var(--brand-dark-orange)"
+              />
             </div>
           )}
         </div>

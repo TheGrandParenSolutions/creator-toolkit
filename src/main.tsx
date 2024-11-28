@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")!).render(
             },
           },
           Button: {
-            classNames: ["transition-all"],
+            classNames: ["transition-all duration-300"],
           },
         },
       }}

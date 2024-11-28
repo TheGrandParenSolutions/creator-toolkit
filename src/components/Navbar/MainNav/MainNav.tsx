@@ -3,11 +3,31 @@ import { Rocket } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export function MainNav() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0); // Add shadow when scrolled
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="z-50 h-auto w-full">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
+    <header
+      className={`fixed bg-white  left-12 right-0 top-0 z-40  transition-all duration-300 ${
+        isScrolled
+          ? "bg-opacity-90 backdrop-blur-sm border border-solid border-gray-50 shadow-sm"
+          : ""
+      }`}
+    >
+      <div className="max-w-A7xl mx-auto flex items-center justify-between px-6 py-2">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Logo />

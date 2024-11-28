@@ -6,14 +6,14 @@ import {
   ImageRectangleSolid,
   BrandYoutubeSolid,
   ImageRectangle,
-  PanelLeftOpenSolid,
   PanelLeftCloseSolid,
   HomeSmileSolid,
   DollarHexagon,
   DollarHexagonSolid,
+  PanelLeftOpen,
 } from "@mynaui/icons-react";
-import { Box, Center, Tooltip, UnstyledButton } from "@mantine/core";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Box, Tooltip, UnstyledButton } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -22,7 +22,7 @@ interface NavbarLinkProps {
   active?: boolean;
   onClick?: () => void;
   isExpanded: boolean;
-  to?: string; // Add a route path
+  to?: string;
 }
 
 function NavbarLink({
@@ -34,17 +34,17 @@ function NavbarLink({
   isExpanded,
   to,
 }: NavbarLinkProps) {
-  const navigate = useNavigate(); // Hook to handle navigation
+  const navigate = useNavigate();
 
   const handleNavigation = () => {
-    if (to) navigate(to); // Navigate to the specified route
-    if (onClick) onClick(); // Call the onClick callback if provided
+    if (to) navigate(to);
+    if (onClick) onClick();
   };
 
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 20 }}>
       <UnstyledButton
-        onClick={handleNavigation} // Use the navigation handler
+        onClick={handleNavigation}
         className={`flex items-center rounded-lg p-3 transition-all hover:bg-gray-100 ${
           active ? "bg-gray-200 font-semibold" : ""
         }`}
@@ -106,47 +106,62 @@ export function SideNav() {
   ));
 
   return (
-    <nav
-      className={`flex h-screen flex-col shadow-md transition-all duration-300 ${
-        panelOpen ? "w-64" : "w-16"
-      }`}
-    >
-      {/* Header */}
-      <Box
-        className={`flex items-center p-4 ${
-          panelOpen ? "justify-between" : "justify-start"
+    <>
+      {/* Overlay */}
+      {panelOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity"
+          onClick={() => setIsPanelOpen(false)} // Close SideNav when clicking outside
+        />
+      )}
+
+      {/* SideNav */}
+      <nav
+        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 ${
+          panelOpen ? "w-64" : "w-16"
         }`}
       >
-        <Center className="cursor-pointer">
-          <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
-            {panelOpen ? (
-              <PanelLeftCloseSolid
-                className="text-lg"
-                onClick={() => setIsPanelOpen(false)}
-              />
-            ) : (
-              <PanelLeftOpenSolid
-                className="text-lg"
-                onClick={() => setIsPanelOpen(true)}
-              />
-            )}
-          </Tooltip>
-        </Center>
-      </Box>
+        {/* Header */}
+        <Box
+          className={`flex items-center justify-center p-4 ${
+            panelOpen ? "justify-start font-semibold" : ""
+          }`}
+        >
+          <Box className="cursor-pointer">
+            <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
+              <UnstyledButton
+                onClick={() => setIsPanelOpen(!panelOpen)}
+                className={`flex items-center rounded-lg p-1 transition-all hover:bg-gray-100`}
+                data-active={panelOpen || undefined}
+              >
+                <div className="flex items-center justify-center">
+                  {panelOpen ? (
+                    <PanelLeftCloseSolid className="text-xl" />
+                  ) : (
+                    <PanelLeftOpen className="text-xl" />
+                  )}
+                </div>
+              </UnstyledButton>
+            </Tooltip>
+          </Box>
+        </Box>
 
-      {/* Main Links */}
-      <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">{links}</div>
+        {/* Main Links */}
+        <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">
+          {links}
+        </div>
 
-      {/* Footer */}
-      <div className="mb-4 px-2">
-        <NavbarLink
-          icon={LogoutSolid}
-          activeIcon={LogoutSolid}
-          label="Logout"
-          isExpanded={panelOpen}
-          to="/logout"
-        />
-      </div>
-    </nav>
+        {/* Footer */}
+        <div className="mb-4 px-2">
+          <NavbarLink
+            icon={LogoutSolid}
+            activeIcon={LogoutSolid}
+            label="Logout"
+            isExpanded={panelOpen}
+            to="/logout"
+          />
+        </div>
+      </nav>
+    </>
   );
 }

@@ -11,7 +11,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-zinc-900 p-12 text-white">
+    <footer
+      className="bg-white p-12 ml-6 text-black shadow-xl border border-solid border-gray-50"
+      style={{
+        // borderTop: "1px solid var(--brand-dark-orange)",
+        // boxShadow: "0 4px 8px grey",\
+      }}
+    >
       {/* Logo */}
       <div className="mb-10">
         <Logo />
@@ -26,7 +32,7 @@ const Footer = () => {
             <Text
               size="xl"
               component="h1"
-              className="mb-4 font-bold uppercase tracking-wide text-[var(--brand-yellow)]"
+              className="mb-4 font-bold uppercase tracking-wide text-[var(--brand-dark-yellow)]"
             >
               Products
             </Text>
@@ -44,7 +50,7 @@ const Footer = () => {
             <Text
               size="xl"
               component="h1"
-              className="mb-4 font-bold uppercase tracking-wide text-[var(--brand-yellow)]"
+              className="mb-4 font-bold uppercase tracking-wide text-[var(--brand-dark-yellow)]"
             >
               Resources
             </Text>
@@ -59,7 +65,7 @@ const Footer = () => {
             <Text
               size="xl"
               component="h1"
-              className="mb-4 font-bold uppercase tracking-wide text-[var(--brand-yellow)]"
+              className="mb-4 font-bold uppercase tracking-wide text-[var(--brand-dark-yellow)]"
             >
               Company
             </Text>
@@ -74,27 +80,25 @@ const Footer = () => {
         {/* Community and Contact */}
         <div className="flex w-full flex-col items-start">
           {/* Subscription Section */}
-          <div>
-            <Text size="xl" className="mb-2 font-bold ">
+          <div className="w-full">
+            <Text size="lg" className="mb-2 font-bold ">
               Become a part of our community
             </Text>
-            <Text size="lg" className="mb-4 text-gray-400">
+            <Text size="md" className="mb-4 text-gray-400">
               No spam, just quality pixels.
             </Text>
-            <div className="flex items-center justify-start">
+            <div className="flex items-center justify-start w-full">
               <TextInput
                 placeholder="Enter your email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                radius={"lg"}
-                styles={{
-                  input: {
-                    backgroundColor: "#1E1E1E",
-                    color: "white",
-                    border: "1px solid var(--brand-dark-orange)",
-                    padding: 24,
-                    fontSize: 18,
-                  },
+                radius={"xl"}
+                size="md"
+                width={"100%"}
+                classNames={{
+                  root: "w-full",
+                  wrapper: "w-full",
+                  input: "w-full border border-solid border-[var(--brand-dark-orange)] p-6 text-sm bg-zinc-700 text-white text-semibold"
                 }}
                 rightSection={
                   <ActionIcon
@@ -102,7 +106,7 @@ const Footer = () => {
                     style={{ marginRight: 24 }}
                     radius="xl"
                     variant="filled"
-                    color="var(--brand-yellow)"
+                    color="var(--brand-dark-yellow)"
                     onClick={handleNotifyMe}
                   >
                     <ArrowRight size={18} stroke={2.5} color="black" />
@@ -114,7 +118,7 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div className="mt-8">
-            <Text size="xl" className="mb-2 font-semibold text-gray-300">
+            <Text size="md" className="mb-2 font-semibold text-gray-400">
               Email us
             </Text>
             <Text component="h1" size="lg" className="font-bold">
