@@ -5,6 +5,7 @@ import "@mantine/core/styles.css";
 import "./index.css";
 import { MantineProvider } from "@mantine/core";
 import { BrowserRouter } from "react-router-dom";
+import { ScrollRestorationProvider } from "@src/shared/ScrollRestorationProvider/ScrollRestorationProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -29,6 +30,7 @@ createRoot(document.getElementById("root")!).render(
       }}
     >
       <BrowserRouter>
+        <ScrollRestorationProvider />
         <App />
       </BrowserRouter>
     </MantineProvider>

@@ -1,23 +1,25 @@
 import { Text, TextInput, ActionIcon } from "@mantine/core";
 import { ArrowRight } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const location = useLocation();
+  const [isHidden, setIsHidden] = useState<boolean>(false);
 
   const handleNotifyMe = () => {
     console.log("Email submitted:", email);
   };
 
+  useEffect(() => {
+    setIsHidden(location.pathname.includes("thumbnail-test"));
+  }, [location]);
+
+  if (isHidden) return <></>;
   return (
-    <footer
-      className="bg-white p-12 ml-6 text-black shadow-xl border border-solid border-gray-50"
-      style={{
-        // borderTop: "1px solid var(--brand-dark-orange)",
-        // boxShadow: "0 4px 8px grey",\
-      }}
-    >
+    <footer className="ml-6 border border-solid border-gray-50 bg-white p-12 text-black shadow-xl">
       {/* Logo */}
       <div className="mb-10">
         <Logo />
@@ -87,7 +89,7 @@ const Footer = () => {
             <Text size="md" className="mb-4 text-gray-400">
               No spam, just quality pixels.
             </Text>
-            <div className="flex items-center justify-start w-full">
+            <div className="flex w-full items-center justify-start">
               <TextInput
                 placeholder="Enter your email"
                 value={email}
@@ -98,7 +100,8 @@ const Footer = () => {
                 classNames={{
                   root: "w-full",
                   wrapper: "w-full",
-                  input: "w-full border border-solid border-[var(--brand-dark-orange)] p-6 text-sm bg-zinc-700 text-white text-semibold"
+                  input:
+                    "w-full border border-solid border-[var(--brand-dark-orange)] p-6 text-sm bg-zinc-700 text-white text-semibold",
                 }}
                 rightSection={
                   <ActionIcon

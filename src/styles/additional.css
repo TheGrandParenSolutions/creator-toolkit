@@ -20,3 +20,17 @@
   color: gray;
   white-space: nowrap;
 }
+
+/* Hide scrollbars but still allow scrolling */
+.no-scrollbar {
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-off {
+  overflow: hidden;
+}

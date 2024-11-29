@@ -18,7 +18,7 @@ const AppRouter = () => {
         path="/*"
         element={
           <MainSection>
-            <main className="flex-grow p-6">
+            <main className="flex-grow p-4">
               <Routes>
                 <Route path="/" element={<></>} />
                 <Route

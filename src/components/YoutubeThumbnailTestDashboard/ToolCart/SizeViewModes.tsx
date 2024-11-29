@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ViewModes = () => {
+const SizeViewModes = () => {
   const [isYoutubeView, setIsYoutubeView] = useState<boolean>(true);
 
   return (
@@ -33,4 +33,4 @@ const ViewModes = () => {
   );
 };
 
-export default ViewModes;
+export default SizeViewModes;
