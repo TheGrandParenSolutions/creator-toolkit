@@ -12,6 +12,10 @@ export default {
         'dark-app': '#1c1c1e',
         'dark-app-content': '#1c1c1e'
       },
+      transitionProperty: {
+        width: "width",
+        transform: "transform",
+      },
     },
   },
   plugins: [],

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon } from "@mynaui/icons-react"; 
+import { SunSolid, MoonSolid } from "@mynaui/icons-react";
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,16 +21,45 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <button
+    <div
       onClick={toggleDarkMode}
-      className="flex items-center justify-center p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 ease-in-out"
+      className={`relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-1000`}
+      style={{
+        background: darkMode
+          ? "linear-gradient(to right, #1e3a8a, #111827)"
+          : "linear-gradient(to right, #87CEEB, #B0E0E6)",
+        boxShadow: darkMode
+          ? "0px 4px 12px rgba(0, 0, 0, 0.5)"
+          : "0px 4px 12px rgba(135, 206, 250, 0.5)",
+      }}
     >
-      {darkMode ? (
-        <Sun size={24} className="text-yellow-400" />
-      ) : (
-        <Moon size={24} className="text-blue-400" />
-      )}
-    </button>
+      <div
+        style={{
+          boxShadow: "0px 0px 5px 0px yellow",
+        }}
+        className={`absolute flex h-6 w-6 items-center justify-center rounded-full shadow-2xl transition-all duration-1000 ${
+          darkMode
+            ? "translate-y-full opacity-0"
+            : "translate-y-0 bg-yellow-300 opacity-100"
+        }`}
+      >
+        <SunSolid className="h-5 w-5 text-yellow-600" />
+      </div>
+
+      <div
+        style={{
+          background: "linear-gradient(to right, #1e3a8a, #111827)",
+          boxShadow: "0px 0px 5px 0px var(--custom-gray)",
+        }}
+        className={`absolute flex h-6 w-6 items-center justify-center rounded-full shadow-2xl transition-all duration-1000 ${
+          darkMode
+            ? "translate-y-0 bg-zinc-700 opacity-100"
+            : "-translate-y-full opacity-0"
+        }`}
+      >
+        <MoonSolid className="h-5 w-5 text-white" />
+      </div>
+    </div>
   );
 };
 
