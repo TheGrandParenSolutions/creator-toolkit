@@ -1,4 +1,3 @@
-import React from "react";
 import { Text,  Paper, Button, Group } from "@mantine/core";
 
 const LifetimeAccess = () => {
@@ -7,7 +6,7 @@ const LifetimeAccess = () => {
       {/* Lifetime Access Card */}
       <Paper
         radius="lg"
-        className="w-full max-w-3xl bg-white p-6 md:p-8"
+        className="w-full max-w-3xl bg-white dark:bg-gray-800 text-black dark:!text-white p-6 md:p-8"
         style={{
           border: "1px solid var(--brand-dark-orange)",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
@@ -22,13 +21,13 @@ const LifetimeAccess = () => {
         <Text
           size="2xl"
           component="h2"
-          className="mb-4 font-bold text-black lg:text-3xl"
+          className="mb-4 font-bold  lg:text-3xl"
         >
           $349.99
         </Text>
         <Text
           size="sm"
-          className="mb-6 text-gray-600 lg:text-base"
+          className="mb-6 dark:text-gray-300 lg:text-base"
         >
           Get Lifetime access to all our current and future features – this
           includes unlimited use of all our AI products. Support us early and
@@ -41,26 +40,26 @@ const LifetimeAccess = () => {
         >
           Get Lifetime Access
         </Button>
-        <Group className="mb-4 flex-col items-start">
-          <Text size="sm" className="text-gray-800">
+        <Group className="mb-4 flex-col items-start dark:text-gray-300">
+          <Text size="sm" >
             ✓ Unlimited Thumbnail Previews
           </Text>
-          <Text size="sm" className="text-gray-800">
+          <Text size="sm" >
             ✓ Unlimited Thumbnail Ideas
           </Text>
-          <Text size="sm" className="text-gray-800">
+          <Text size="sm" >
             ✓ Unlimited Title & Thumbnail A/B Tests
           </Text>
-          <Text size="sm" className="text-gray-800">
+          <Text size="sm" >
             ✓ Unlimited Thumbnail AI Rater
           </Text>
-          <Text size="sm" className="text-gray-800">
+          <Text size="sm" >
             ✓ Unlimited Thumbnail AI Creator
           </Text>
-          <Text size="sm" className="text-gray-800">
+          <Text size="sm" >
             ✓ Multiple Channels
           </Text>
-          <Text size="sm" className="text-gray-800">
+          <Text size="sm" >
             ✓ Lifetime Member dedicated Discord Channel – have a say in where
             we take the product
           </Text>

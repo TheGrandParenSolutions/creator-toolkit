@@ -25,19 +25,19 @@ const GrowWithUs = () => {
         <Text
           size="lg"
           component="h1"
-          className="mb-4 text-center font-bold text-gray-600"
+          className="mb-4 text-center font-bold text-gray-600 dark:text-white"
         >
           Used by 10,000+ YouTubers, Including
         </Text>
         <div className="relative flex overflow-hidden">
-          <div className="logos-track">
+          <div className="logos-track dark:text-gray-300">
             {logos.map((logo, index) => (
-              <div key={index} className="logo-item">
+              <div key={index} className="logo-item dark:text-gray-300">
                 {logo}
               </div>
             ))}
             {logos.map((logo, index) => (
-              <div key={`duplicate-${index}`} className="logo-item">
+              <div key={`duplicate-${index}`} className="logo-item dark:text-gray-300">
                 {logo}
               </div>
             ))}

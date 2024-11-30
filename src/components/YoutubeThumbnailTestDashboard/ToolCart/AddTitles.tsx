@@ -1,10 +1,10 @@
 import { ActionIcon, TextInput } from "@mantine/core";
-import {  X } from "@mynaui/icons-react"; 
+import { X } from "@mynaui/icons-react";
 import { useState } from "react";
 
 const AddTitles = () => {
-  const [titles, setTitles] = useState<string[]>([""]); 
-  const [activeIndex, setActiveIndex] = useState<number | null>(null); 
+  const [titles, setTitles] = useState<string[]>([""]);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleTitleChange = (value: string, index: number) => {
     const updatedTitles = [...titles];
@@ -32,14 +32,12 @@ const AddTitles = () => {
     setActiveIndex(index);
   };
 
-  console.log({
-    titles,
-    activeIndex
-  })
   return (
     <div className="space-y-4">
       {/* Section Label */}
-      <h3 className="text-sm font-semibold text-gray-800">Titles</h3>
+      <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+        Titles
+      </h3>
 
       <div className="space-y-2">
         {titles.map((title, index) => (
@@ -56,10 +54,10 @@ const AddTitles = () => {
               placeholder={`Title ${index + 1}`}
               radius={"xl"}
               classNames={{
-                input: `w-full p-5 rounded-full text-base text-sm font-medium border-transparent bg-[var(--brand-main-bg)] ring-2 ring-gray-300 text-gray-600 outline-none transition focus:ring-2 ${
+                input: `w-full p-5 rounded-full text-base text-sm font-medium border-transparent bg-gray-100 dark:bg-gray-800 ring-2 ring-gray-300 dark:ring-gray-600 text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2 ${
                   activeIndex === index
                     ? "ring-[var(--brand-dark-yellow)]"
-                    : "ring-gray-300"
+                    : "ring-gray-300 dark:ring-gray-600"
                 }`,
               }}
               rightSection={
@@ -71,9 +69,11 @@ const AddTitles = () => {
                       size={"sm"}
                       variant="light"
                       onClick={() => handleRemoveTitle(index)}
-                      color="var(--brand-dark-yellow)"
+                      style={{
+                        backgroundColor: "var(--brand-dark-yellow)",
+                      }}
                     >
-                     <X size={14} stroke={2.5} color="black" />
+                      <X size={14} stroke={2.5} color="black" />
                     </ActionIcon>
                   )}
                 </div>

@@ -85,16 +85,19 @@ const YouTubeDownloader = () => {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6">
+    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6 bg-light-app dark:bg-dark-app-content">
       {/* Header */}
       <div className="w-full text-center">
-        <h1 className="flex items-center justify-center space-x-2 text-xl font-medium text-gray-800">
+        <h1 className="flex items-center justify-center space-x-2 text-xl font-medium text-gray-800 dark:text-gray-200">
           <BrandYoutubeSolid className="text-3xl text-red-500" />
-          <Text component="h1" className="text-2xl font-bold">
+          <Text
+            component="h1"
+            className="text-2xl font-bold text-gray-800 dark:text-gray-100"
+          >
             Download YouTube Videos Instantly
           </Text>
         </h1>
-        <Text className="mt-1 text-sm text-gray-500">
+        <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400">
           Paste your YouTube link below to fetch video details and download
           formats.
         </Text>
@@ -110,24 +113,24 @@ const YouTubeDownloader = () => {
         >
           <input
             value={!loading ? youtubeUrl : ""}
-            onChange={e => setYoutubeUrl(e.target.value)}
+            onChange={(e) => setYoutubeUrl(e.target.value)}
             onKeyDown={handleInputKeyDown}
             onPaste={handlePaste}
             placeholder={
               loading ? dynamicPlaceholder : "Paste YouTube link here..."
             }
             aria-label="YouTube URL"
-            className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm focus:outline-none ${
+            className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm focus:outline-none transition ${
               loading
                 ? "border-orange-500 text-gray-400"
-                : "border-gray-300 text-gray-800"
-            }`}
+                : "border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200"
+            } bg-white dark:bg-gray-800`}
             disabled={loading} // Disable input during loading
           />
           {!loading ? (
             <>
               <button
-                className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 focus:outline-none"
+                className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
                 onClick={() =>
                   navigator.clipboard.readText().then(setYoutubeUrl)
                 }
@@ -136,7 +139,7 @@ const YouTubeDownloader = () => {
                 <ClipboardSolid className="h-4 w-4" />
               </button>
               <button
-                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 focus:outline-none"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
                 onClick={() => setYoutubeUrl("")}
                 aria-label="Clear Input"
               >
@@ -158,7 +161,7 @@ const YouTubeDownloader = () => {
       {/* Error Notification */}
       {error && (
         <Notification
-          className="mt-4 w-full max-w-3xl"
+          className="mt-4 w-full max-w-3xl dark:bg-dark-app-content dark:text-gray-200"
           color="red"
           title="Error"
           radius="md"
@@ -169,8 +172,11 @@ const YouTubeDownloader = () => {
 
       {/* Video Details Section */}
       {videoDetails && (
-        <div ref={detailsRef} className="w-full">
-          <Card className="w-full  max-w-4xl rounded-lg bg-inherit">
+        <div
+          ref={detailsRef}
+          className="w-full dark:bg-dark-app-content dark:text-gray-200"
+        >
+          <Card className="w-full max-w-4xl rounded-lg bg-inherit dark:bg-dark-card dark:text-gray-200">
             <YoutubeThumbnail
               thumbnail={videoDetails.thumbnail}
               title={videoDetails.title}
@@ -179,10 +185,10 @@ const YouTubeDownloader = () => {
             <CTDivider />
 
             {/* Download Options */}
-            <div className="rounded-md  p-5 ">
+            <div className="rounded-md p-5 dark:bg-dark-app-content">
               <Text
                 component="h1"
-                className="font-grifter mb-4 text-2xl font-semibold "
+                className="font-grifter mb-4 text-2xl font-semibold dark:text-gray-100"
               >
                 Download Options:
               </Text>

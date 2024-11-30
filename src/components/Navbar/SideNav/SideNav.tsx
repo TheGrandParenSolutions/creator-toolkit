@@ -45,21 +45,25 @@ function NavbarLink({
     <Tooltip label={label} position="right" transitionProps={{ duration: 20 }}>
       <UnstyledButton
         onClick={handleNavigation}
-        className={`flex items-center rounded-lg p-3 transition-all hover:bg-gray-100 ${
-          active ? "bg-gray-200 font-semibold" : ""
+        className={`flex items-center rounded-lg p-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-700 ${
+          active
+            ? "bg-gray-200 dark:!bg-gray-700 font-semibold"
+            : ""
         }`}
         data-active={active || undefined}
       >
         <div className="flex items-center justify-center">
           {active ? (
-            <ActiveIcon className="text-xl" />
+            <ActiveIcon className="text-xl dark:text-gray-300" />
           ) : (
-            <Icon className="text-xl" />
+            <Icon className="text-xl dark:text-gray-400" />
           )}
         </div>
         <span
           className={`ml-3 overflow-hidden truncate whitespace-nowrap transition-all duration-300 ${
-            isExpanded ? "max-w-xs opacity-100" : "hidden max-w-0 opacity-0"
+            isExpanded
+              ? "max-w-xs opacity-100 dark:text-gray-200"
+              : "hidden max-w-0 opacity-0"
           }`}
         >
           {label}
@@ -110,14 +114,14 @@ export function SideNav() {
       {/* Overlay */}
       {panelOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity"
+          className="fixed inset-0 z-40 bg-black bg-opacity-50 dark:bg-opacity-75 transition-opacity"
           onClick={() => setIsPanelOpen(false)} // Close SideNav when clicking outside
         />
       )}
 
       {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 ${
+        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 dark:border-gray-700 bg-white dark:bg-dark-app shadow-sm transition-all duration-300 ${
           panelOpen ? "w-64" : "w-16"
         }`}
       >
@@ -131,14 +135,14 @@ export function SideNav() {
             <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
               <UnstyledButton
                 onClick={() => setIsPanelOpen(!panelOpen)}
-                className={`flex items-center rounded-lg p-1 transition-all hover:bg-gray-100`}
+                className={`flex items-center rounded-lg p-1 transition-all hover:bg-gray-100 dark:hover:bg-gray-700`}
                 data-active={panelOpen || undefined}
               >
                 <div className="flex items-center justify-center">
                   {panelOpen ? (
-                    <PanelLeftCloseSolid className="text-xl" />
+                    <PanelLeftCloseSolid className="text-xl dark:text-gray-200" />
                   ) : (
-                    <PanelLeftOpen className="text-xl" />
+                    <PanelLeftOpen className="text-xl dark:text-gray-400" />
                   )}
                 </div>
               </UnstyledButton>

@@ -23,7 +23,7 @@ const AdCard = () => {
         radius="xl"
         size="md"
         variant="filled"
-        className="mt-6 w-full max-w-xs bg-white text-black font-medium hover:bg-white hover:text-[var(--brand-dark-yellow)]"
+        className="mt-6 w-full max-w-xs bg-white dark:bg-gray-800 dark:text-white text-black font-medium hover:bg-white hover:!text-[var(--brand-dark-yellow)]"
       >
         Create Your Thumbnail
       </Button>

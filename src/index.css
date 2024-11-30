@@ -43,6 +43,10 @@
   --brand-mid-yellow: rgb(255, 213, 128);
 }
 
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   color: var(--black);
@@ -51,6 +55,10 @@ body {
   font-weight: 400;
   line-height: 1.75;
   margin: 0;
+}
+
+.bg-light-app {
+  background-color: lighten(var(--brand-main-bg), 20%);
 }
 
 body:has(.scroll-off) {
