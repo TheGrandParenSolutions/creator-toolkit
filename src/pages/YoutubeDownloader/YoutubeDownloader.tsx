@@ -85,7 +85,7 @@ const YouTubeDownloader = () => {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6 bg-light-app dark:bg-dark-app-content">
+    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6 bg-light-app dark:bg-dark-app-content transition-all duration-300">
       {/* Header */}
       <div className="w-full text-center">
         <h1 className="flex items-center justify-center space-x-2 text-xl font-medium text-gray-800 dark:text-gray-200">

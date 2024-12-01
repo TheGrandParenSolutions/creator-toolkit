@@ -9,7 +9,7 @@ const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (
-    <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-10 text-gray-800 transition-all dark:bg-dark-app-content dark:text-gray-100">
+    <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-10 text-gray-800 transition-all dark:bg-dark-app-content dark:text-gray-100 transition-all duration-300">
       {/* Heading */}
       <Box id="initial-section" className="mb-10 max-w-3xl text-center">
         <Text

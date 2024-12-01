@@ -42,7 +42,7 @@ const YoutubeThumbnailTestOnboarding = () => {
   };
 
   return (
-    <Box className="h-full">
+    <Box className="h-full transition-all duration-300">
       {imagePreview ? (
         <div id="left-section" className="scroll-off h-full p-2">
           <YoutubeThumbnailTestDashboard />
