@@ -1,9 +1,10 @@
+import React, { useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Box } from "@mantine/core";
 import { ImageSolid, Upload } from "@mynaui/icons-react"; // Importing Mynaui icons
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { ImageUpload } from "@src/shared/Icons/ImageUpload";
-import { useRef, useState } from "react";
 
 const YoutubeThumbnailTestOnboarding = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -43,6 +44,25 @@ const YoutubeThumbnailTestOnboarding = () => {
 
   return (
     <Box className="h-full transition-all duration-300">
+      <Helmet>
+        <title>Test YouTube Thumbnails - Creator Toolkit</title>
+        <meta
+          name="description"
+          content="Preview and test your YouTube thumbnail designs in real-time with Creator Toolkit's Thumbnail Tester. Ensure your content stands out and drives more views!"
+        />
+        <meta
+          name="keywords"
+          content="YouTube thumbnail tester, thumbnail preview, test YouTube thumbnails, real-time YouTube thumbnail testing, optimize YouTube thumbnails"
+        />
+        <meta property="og:title" content="YouTube Thumbnail Tester" />
+        <meta
+          property="og:description"
+          content="Preview and test your YouTube thumbnails in real-time. Optimize your content for better engagement!"
+        />
+        <meta property="og:image" content="/assets/test/thumbnail-preview.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.creator-toolkit.com/thumbnail-test" />
+      </Helmet>
       {imagePreview ? (
         <div id="left-section" className="scroll-off h-full p-2">
           <YoutubeThumbnailTestDashboard />

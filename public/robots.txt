@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.creator-toolkit.com/sitemap.xml

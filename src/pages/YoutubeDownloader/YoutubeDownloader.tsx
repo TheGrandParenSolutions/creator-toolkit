@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Card, Text, Notification, Loader } from "@mantine/core";
 import {
   getVideoDetails,
@@ -19,12 +20,11 @@ const YouTubeDownloader = () => {
   const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
   const [error, setError] = useState<string>("");
   const [dynamicPlaceholder, setDynamicPlaceholder] = useState<string>(
-    "Paste YouTube link here...",
+    "Paste YouTube link here..."
   );
 
   const detailsRef = useRef<HTMLDivElement | null>(null);
 
-  // Cycle Placeholder Texts during Loading
   useEffect(() => {
     if (!loading) return;
 
@@ -34,11 +34,6 @@ const YouTubeDownloader = () => {
       "Just a moment...",
     ];
     let index = 0;
-    if (!placeholders.includes(dynamicPlaceholder)) {
-      setDynamicPlaceholder(placeholders[index]);
-      index = (index + 1) % placeholders.length;
-    }
-
     const interval = setInterval(() => {
       setDynamicPlaceholder(placeholders[index]);
       index = (index + 1) % placeholders.length;
@@ -78,136 +73,144 @@ const YouTubeDownloader = () => {
     const pastedData = event.clipboardData.getData("Text");
     setYoutubeUrl(pastedData);
 
-    // Trigger fetch if URL is pasted
     setTimeout(() => {
       handleFetchVideoDetails();
     }, 300);
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6 bg-light-app dark:bg-dark-app-content transition-all duration-300">
-      {/* Header */}
-      <div className="w-full text-center">
-        <h1 className="flex items-center justify-center space-x-2 text-xl font-medium text-gray-800 dark:text-gray-200">
-          <BrandYoutubeSolid className="text-3xl text-red-500" />
-          <Text
-            component="h1"
-            className="text-2xl font-bold text-gray-800 dark:text-gray-100"
-          >
-            Download YouTube Videos Instantly
+    <>
+      <Helmet>
+        <title>Download YouTube Videos in HD | Creator Toolkit</title>
+        <meta
+          name="description"
+          content="Easily download YouTube videos in HD or convert them to MP3 with our free YouTube downloader. Quick, secure, and reliable!"
+        />
+        <meta
+          name="keywords"
+          content="YouTube video downloader, YouTube to MP3, free YouTube downloader, HD video download, YouTube tools"
+        />
+        <meta property="og:title" content="Download YouTube Videos in HD" />
+        <meta
+          property="og:description"
+          content="Use our Creator Toolkit to download YouTube videos in HD or MP3 quickly and securely."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.creator-toolkit.com/youtube-downloader" />
+        <meta property="og:image" content="https://www.creator-toolkit.com/assets/thumbnail.jpg" />
+      </Helmet>
+
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6 bg-light-app dark:bg-dark-app-content transition-all duration-300">
+        {/* Header */}
+        <div className="w-full text-center">
+          <h1 className="flex items-center justify-center space-x-2 text-xl font-medium text-gray-800 dark:text-gray-200">
+            <BrandYoutubeSolid className="text-3xl text-red-500" />
+            <Text
+              component="h1"
+              className="text-2xl font-bold text-gray-800 dark:text-gray-100"
+            >
+              Download YouTube Videos Instantly
+            </Text>
+          </h1>
+          <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            Paste your YouTube link below to fetch video details and download
+            formats.
           </Text>
-        </h1>
-        <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Paste your YouTube link below to fetch video details and download
-          formats.
-        </Text>
-      </div>
-
-      {/* Input Section */}
-      <div className="flex w-full max-w-3xl items-center space-x-3">
-        {/* Input Field with Icons */}
-        <div
-          className={`relative flex-grow ${
-            loading ? "animate-pulse-border" : ""
-          }`}
-        >
-          <input
-            value={!loading ? youtubeUrl : ""}
-            onChange={(e) => setYoutubeUrl(e.target.value)}
-            onKeyDown={handleInputKeyDown}
-            onPaste={handlePaste}
-            placeholder={
-              loading ? dynamicPlaceholder : "Paste YouTube link here..."
-            }
-            aria-label="YouTube URL"
-            className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm focus:outline-none transition ${
-              loading
-                ? "border-orange-500 text-gray-400"
-                : "border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200"
-            } bg-white dark:bg-gray-800`}
-            disabled={loading} // Disable input during loading
-          />
-          {!loading ? (
-            <>
-              <button
-                className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
-                onClick={() =>
-                  navigator.clipboard.readText().then(setYoutubeUrl)
-                }
-                aria-label="Paste YouTube URL"
-              >
-                <ClipboardSolid className="h-4 w-4" />
-              </button>
-              <button
-                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
-                onClick={() => setYoutubeUrl("")}
-                aria-label="Clear Input"
-              >
-                <XCircleSolid className="h-4 w-4" />
-              </button>
-            </>
-          ) : (
-            <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center text-orange-50">
-              <Loader
-                type="bars"
-                size={"sm"}
-                color="var(--brand-dark-orange)"
-              />
-            </div>
-          )}
         </div>
-      </div>
 
-      {/* Error Notification */}
-      {error && (
-        <Notification
-          className="mt-4 w-full max-w-3xl dark:bg-dark-app-content dark:text-gray-200"
-          color="red"
-          title="Error"
-          radius="md"
-        >
-          {error}
-        </Notification>
-      )}
-
-      {/* Video Details Section */}
-      {videoDetails && (
-        <div
-          ref={detailsRef}
-          className="w-full dark:bg-dark-app-content dark:text-gray-200"
-        >
-          <Card className="w-full max-w-4xl rounded-lg bg-inherit dark:bg-dark-card dark:text-gray-200">
-            <YoutubeThumbnail
-              thumbnail={videoDetails.thumbnail}
-              title={videoDetails.title}
+        {/* Input Section */}
+        <div className="flex w-full max-w-3xl items-center space-x-3">
+          {/* Input Field with Icons */}
+          <div className={`relative flex-grow ${loading ? "animate-pulse-border" : ""}`}>
+            <input
+              value={!loading ? youtubeUrl : ""}
+              onChange={(e) => setYoutubeUrl(e.target.value)}
+              onKeyDown={handleInputKeyDown}
+              onPaste={handlePaste}
+              placeholder={loading ? dynamicPlaceholder : "Paste YouTube link here..."}
+              aria-label="YouTube URL"
+              className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm focus:outline-none transition ${
+                loading
+                  ? "border-orange-500 text-gray-400"
+                  : "border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200"
+              } bg-white dark:bg-gray-800`}
+              disabled={loading}
             />
-
-            <CTDivider />
-
-            {/* Download Options */}
-            <div className="rounded-md p-5 dark:bg-dark-app-content">
-              <Text
-                component="h1"
-                className="font-grifter mb-4 text-2xl font-semibold dark:text-gray-100"
-              >
-                Download Options:
-              </Text>
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                {videoDetails.formats.map((format, index) => (
-                  <CTDownloadButton
-                    key={index}
-                    quality={format.quality}
-                    size={format.size}
-                    url={format.url}
-                    label={format.quality}
-                  />
-                ))}
+            {!loading ? (
+              <>
+                <button
+                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  onClick={() =>
+                    navigator.clipboard.readText().then(setYoutubeUrl)
+                  }
+                  aria-label="Paste YouTube URL"
+                >
+                  <ClipboardSolid className="h-4 w-4" />
+                </button>
+                <button
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  onClick={() => setYoutubeUrl("")}
+                  aria-label="Clear Input"
+                >
+                  <XCircleSolid className="h-4 w-4" />
+                </button>
+              </>
+            ) : (
+              <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center text-orange-50">
+                <Loader type="bars" size={"sm"} color="var(--brand-dark-orange)" />
               </div>
-            </div>
-          </Card>
+            )}
+          </div>
         </div>
-      )}
-    </div>
+
+        {/* Error Notification */}
+        {error && (
+          <Notification
+            className="mt-4 w-full max-w-3xl dark:bg-dark-app-content dark:text-gray-200"
+            color="red"
+            title="Error"
+            radius="md"
+          >
+            {error}
+          </Notification>
+        )}
+
+        {/* Video Details Section */}
+        {videoDetails && (
+          <div
+            ref={detailsRef}
+            className="w-full dark:bg-dark-app-content dark:text-gray-200"
+          >
+            <Card className="w-full max-w-4xl rounded-lg bg-inherit dark:bg-dark-card dark:text-gray-200">
+              <YoutubeThumbnail
+                thumbnail={videoDetails.thumbnail}
+                title={videoDetails.title}
+              />
+              <CTDivider />
+              <div className="rounded-md p-5 dark:bg-dark-app-content">
+                <Text
+                  component="h1"
+                  className="font-grifter mb-4 text-2xl font-semibold dark:text-gray-100"
+                >
+                  Download Options:
+                </Text>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  {videoDetails.formats.map((format, index) => (
+                    <CTDownloadButton
+                      key={index}
+                      quality={format.quality}
+                      size={format.size}
+                      url={format.url}
+                      label={format.quality}
+                    />
+                  ))}
+                </div>
+              </div>
+            </Card>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
