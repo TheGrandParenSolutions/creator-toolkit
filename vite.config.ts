@@ -70,5 +70,10 @@ export default defineConfig(({ mode = "production" }) => {
     define: {
       "process.env.NODE_ENV": JSON.stringify(mode), // Define environment variables
     },
+    resolve: {
+      alias: {
+        "@src": "/src", 
+      },
+    },
   };
 });
