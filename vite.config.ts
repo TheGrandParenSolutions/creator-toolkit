@@ -10,6 +10,7 @@ export default defineConfig(({ mode = "production" }) => {
   const isDevelopment = false;
 
   return {
+    base: '/',
     server: {
       open: true, // Automatically open the browser when the server starts
       port: 3000, // Define the development server port
@@ -72,7 +73,7 @@ export default defineConfig(({ mode = "production" }) => {
     },
     resolve: {
       alias: {
-        "@src": "/src", 
+        "@src": "/src",
       },
     },
   };
