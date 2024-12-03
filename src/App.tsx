@@ -7,7 +7,7 @@ import AppRouter from "@src/Router/AppRouter";
 checkAppThemeForUser();
 
 function App() {
-  return (
+  return ( 
     <HelmetProvider>
       <AppRouter />
     </HelmetProvider>
