@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import tsconfigPaths from "vite-tsconfig-paths";
 import commonjs from "vite-plugin-commonjs";
 import svgr from "vite-plugin-svgr";
-import Sitemap from "vite-plugin-sitemap";
 import viteCompression from "vite-plugin-compression";
 
 export default defineConfig(({ mode = "production" }) => {
@@ -24,18 +23,6 @@ export default defineConfig(({ mode = "production" }) => {
         svgrOptions: {
           exportType: "default",
         },
-      }),
-      Sitemap({
-        hostname: "https://www.creator-toolkit.com", // Your website's URL
-        dynamicRoutes: [
-          "/", // Home page
-          "/youtube-downloader",
-          "/thumbnail-test",
-          "/pricing",
-          "/login",
-          "/signup",
-          // Add other dynamic routes here
-        ],
       }),
       viteCompression({
         algorithm: "gzip", // Compress assets using gzip
