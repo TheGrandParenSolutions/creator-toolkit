@@ -32,6 +32,7 @@ const theme = {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    {/* Helmet is for SEO and meta purposes */}
     <HelmetProvider>
       <MantineProvider theme={theme}>
         <BrowserRouter>
