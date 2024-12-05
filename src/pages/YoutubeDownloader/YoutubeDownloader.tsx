@@ -20,7 +20,7 @@ const YouTubeDownloader = () => {
   const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
   const [error, setError] = useState<string>("");
   const [dynamicPlaceholder, setDynamicPlaceholder] = useState<string>(
-    "Paste YouTube link here..."
+    "Paste YouTube link here...",
   );
 
   const detailsRef = useRef<HTMLDivElement | null>(null);
@@ -81,26 +81,57 @@ const YouTubeDownloader = () => {
   return (
     <>
       <Helmet>
+        {/* Page Title */}
         <title>Download YouTube Videos in HD | Creator Toolkit</title>
+
+        {/* Meta Description */}
         <meta
           name="description"
           content="Easily download YouTube videos in HD or convert them to MP3 with our free YouTube downloader. Quick, secure, and reliable!"
         />
-        <meta
-          name="keywords"
-          content="YouTube video downloader, YouTube to MP3, free YouTube downloader, HD video download, YouTube tools"
+
+        {/* Canonical URL */}
+        <link
+          rel="canonical"
+          href="https://www.creator-toolkit.com/youtube-downloader"
         />
+
+        {/* Open Graph Meta Tags */}
         <meta property="og:title" content="Download YouTube Videos in HD" />
         <meta
           property="og:description"
           content="Use our Creator Toolkit to download YouTube videos in HD or MP3 quickly and securely."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.creator-toolkit.com/youtube-downloader" />
-        <meta property="og:image" content="https://www.creator-toolkit.com/assets/thumbnail.jpg" />
+        <meta
+          property="og:url"
+          content="https://www.creator-toolkit.com/youtube-downloader"
+        />
+        <meta
+          property="og:image"
+          content="https://www.creator-toolkit.com/assets/thumbnail.jpg"
+        />
+
+        {/* Additional Structured Data (Schema.org JSON-LD) */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Download YouTube Videos in HD | Creator Toolkit",
+            "description": "Easily download YouTube videos in HD or convert them to MP3 with our free YouTube downloader. Quick, secure, and reliable!",
+            "url": "https://www.creator-toolkit.com/youtube-downloader",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Creator Toolkit",
+              "logo": "https://www.creator-toolkit.com/assets/logo.png"
+            }
+          }
+        `}
+        </script>
       </Helmet>
 
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg p-6 bg-light-app dark:bg-dark-app-content transition-all duration-300">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-6 transition-all duration-300 dark:bg-dark-app-content">
         {/* Header */}
         <div className="w-full text-center">
           <h1 className="flex items-center justify-center space-x-2 text-xl font-medium text-gray-800 dark:text-gray-200">
@@ -121,25 +152,31 @@ const YouTubeDownloader = () => {
         {/* Input Section */}
         <div className="flex w-full max-w-3xl items-center space-x-3">
           {/* Input Field with Icons */}
-          <div className={`relative flex-grow ${loading ? "animate-pulse-border" : ""}`}>
+          <div
+            className={`relative flex-grow ${
+              loading ? "animate-pulse-border" : ""
+            }`}
+          >
             <input
               value={!loading ? youtubeUrl : ""}
-              onChange={(e) => setYoutubeUrl(e.target.value)}
+              onChange={e => setYoutubeUrl(e.target.value)}
               onKeyDown={handleInputKeyDown}
               onPaste={handlePaste}
-              placeholder={loading ? dynamicPlaceholder : "Paste YouTube link here..."}
+              placeholder={
+                loading ? dynamicPlaceholder : "Paste YouTube link here..."
+              }
               aria-label="YouTube URL"
-              className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm focus:outline-none transition ${
+              className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm transition focus:outline-none ${
                 loading
                   ? "border-orange-500 text-gray-400"
-                  : "border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200"
+                  : "border-gray-300 text-gray-800 dark:border-gray-600 dark:text-gray-200"
               } bg-white dark:bg-gray-800`}
               disabled={loading}
             />
             {!loading ? (
               <>
                 <button
-                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-700"
                   onClick={() =>
                     navigator.clipboard.readText().then(setYoutubeUrl)
                   }
@@ -148,7 +185,7 @@ const YouTubeDownloader = () => {
                   <ClipboardSolid className="h-4 w-4" />
                 </button>
                 <button
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-700"
                   onClick={() => setYoutubeUrl("")}
                   aria-label="Clear Input"
                 >
@@ -157,7 +194,11 @@ const YouTubeDownloader = () => {
               </>
             ) : (
               <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center text-orange-50">
-                <Loader type="bars" size={"sm"} color="var(--brand-dark-orange)" />
+                <Loader
+                  type="bars"
+                  size={"sm"}
+                  color="var(--brand-dark-orange)"
+                />
               </div>
             )}
           </div>
@@ -181,7 +222,7 @@ const YouTubeDownloader = () => {
             ref={detailsRef}
             className="w-full dark:bg-dark-app-content dark:text-gray-200"
           >
-            <Card className="w-full max-w-4xl rounded-lg bg-inherit dark:bg-dark-card dark:text-gray-200">
+            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit dark:text-gray-200">
               <YoutubeThumbnail
                 thumbnail={videoDetails.thumbnail}
                 title={videoDetails.title}

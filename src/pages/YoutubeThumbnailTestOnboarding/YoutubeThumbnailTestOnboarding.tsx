@@ -28,7 +28,7 @@ const YoutubeThumbnailTestOnboarding = () => {
       }
 
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         if (e.target?.result) {
           setImagePreview(e.target.result as string);
         }
@@ -45,24 +45,57 @@ const YoutubeThumbnailTestOnboarding = () => {
   return (
     <Box className="h-full transition-all duration-300">
       <Helmet>
+        {/* Page Title */}
         <title>Test YouTube Thumbnails - Creator Toolkit</title>
+
+        {/* Meta Description */}
         <meta
           name="description"
           content="Preview and test your YouTube thumbnail designs in real-time with Creator Toolkit's Thumbnail Tester. Ensure your content stands out and drives more views!"
         />
-        <meta
-          name="keywords"
-          content="YouTube thumbnail tester, thumbnail preview, test YouTube thumbnails, real-time YouTube thumbnail testing, optimize YouTube thumbnails"
+
+        {/* Canonical Tag */}
+        <link
+          rel="canonical"
+          href="https://www.creator-toolkit.com/thumbnail-test"
         />
+
+        {/* Open Graph Meta Tags */}
         <meta property="og:title" content="YouTube Thumbnail Tester" />
         <meta
           property="og:description"
           content="Preview and test your YouTube thumbnails in real-time. Optimize your content for better engagement!"
         />
-        <meta property="og:image" content="/assets/test/thumbnail-preview.png" />
+        <meta
+          property="og:image"
+          content="https://www.creator-toolkit.com/assets/test/thumbnail-preview.png"
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.creator-toolkit.com/thumbnail-test" />
+        <meta
+          property="og:url"
+          content="https://www.creator-toolkit.com/thumbnail-test"
+        />
+
+        {/* Schema.org JSON-LD */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Test YouTube Thumbnails - Creator Toolkit",
+            "description": "Preview and test your YouTube thumbnail designs in real-time with Creator Toolkit's Thumbnail Tester. Ensure your content stands out and drives more views!",
+            "url": "https://www.creator-toolkit.com/thumbnail-test",
+            "image": "https://www.creator-toolkit.com/assets/test/thumbnail-preview.png",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Creator Toolkit",
+              "logo": "https://www.creator-toolkit.com/assets/logo.png"
+            }
+          }
+        `}
+        </script>
       </Helmet>
+
       {imagePreview ? (
         <div id="left-section" className="scroll-off h-full p-2">
           <YoutubeThumbnailTestDashboard />
@@ -70,7 +103,7 @@ const YoutubeThumbnailTestOnboarding = () => {
       ) : (
         <div
           id="right-section"
-          className="px-2 py-8 text-center bg-light-app dark:bg-dark-app-content transition-colors duration-300"
+          className="bg-light-app px-2 py-8 text-center transition-colors duration-300 dark:bg-dark-app-content"
         >
           <div className="mx-auto max-w-3xl">
             <h1 className="text-6xl font-bold text-gray-900 dark:text-gray-100">
@@ -87,7 +120,7 @@ const YoutubeThumbnailTestOnboarding = () => {
             </p>
           </div>
 
-          <div className="group mx-auto mt-12 max-w-4xl rounded-3xl border-4 border-dashed border-gray-300 bg-white px-6 py-12 shadow-sm hover:!border-[var(--brand-dark-yellow)] dark:border-gray-700 dark:bg-dark-app transition-colors duration-300">
+          <div className="group mx-auto mt-12 max-w-4xl rounded-3xl border-4 border-dashed border-gray-300 bg-white px-6 py-12 shadow-sm transition-colors duration-300 hover:!border-[var(--brand-dark-yellow)] dark:border-gray-700 dark:bg-dark-app">
             <div className="flex flex-col items-center justify-center">
               <ImageUpload className="mb-4 h-24 w-24 text-gray-300 group-hover:text-[--brand-dark-yellow] dark:text-gray-500 dark:group-hover:text-[--brand-mid-yellow]" />
               <h1 className="text-xl font-bold text-black dark:text-gray-200">
