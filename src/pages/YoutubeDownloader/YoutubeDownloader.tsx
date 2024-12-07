@@ -102,32 +102,33 @@ const YouTubeDownloader = () => {
           property="og:description"
           content="Use our Creator Toolkit to download YouTube videos in HD or MP3 quickly and securely."
         />
+        <meta
+          property="og:image"
+          content="https://www.creator-toolkit.com/assets/thumbnail.jpg"
+        />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
           content="https://www.creator-toolkit.com/youtube-downloader"
         />
-        <meta
-          property="og:image"
-          content="https://www.creator-toolkit.com/assets/thumbnail.jpg"
-        />
 
-        {/* Additional Structured Data (Schema.org JSON-LD) */}
+        {/* Schema.org JSON-LD */}
         <script type="application/ld+json">
           {`
-          {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Download YouTube Videos in HD | Creator Toolkit",
-            "description": "Easily download YouTube videos in HD or convert them to MP3 with our free YouTube downloader. Quick, secure, and reliable!",
-            "url": "https://www.creator-toolkit.com/youtube-downloader",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Creator Toolkit",
-              "logo": "https://www.creator-toolkit.com/assets/logo.png"
-            }
-          }
-        `}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Download YouTube Videos in HD | Creator Toolkit",
+      "description": "Easily download YouTube videos in HD or convert them to MP3 with our free YouTube downloader. Quick, secure, and reliable!",
+      "url": "https://www.creator-toolkit.com/youtube-downloader",
+      "image": "https://www.creator-toolkit.com/assets/thumbnail.jpg",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Creator Toolkit",
+        "logo": "https://www.creator-toolkit.com/assets/logo.png"
+      }
+    }
+    `}
         </script>
       </Helmet>
 
