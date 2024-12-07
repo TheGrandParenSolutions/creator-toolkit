@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { Upload, XCircleSolid } from "@mynaui/icons-react";
+import { Upload, XSolid } from "@mynaui/icons-react";
 
 const ThumbnailCollector = ({
   setThumbnails,
@@ -47,25 +47,29 @@ const ThumbnailCollector = ({
 
         {/* Thumbnails */}
         {thumbnails.map((thumbnail, index) => (
-          <div
-            key={index}
-            className={`relative h-20 w-full cursor-pointer overflow-hidden rounded-2xl border-4 transition-all duration-200 ${
-              selectedThumbnail === index
-                ? "border-[var(--brand-dark-orange)] dark:border-[var(--brand-mid-yellow)]"
-                : "border-transparent"
-            }`}
-            onClick={() => setSelectedThumbnail(index)}
-          >
-            <img
-              src={thumbnail}
-              alt={`Thumbnail ${index}`}
-              className="aspect-[11/6] h-full w-full object-cover"
-            />
+          <div className="group relative inline-block text-sm">
+            <div
+              key={index}
+              className={`relative h-20 w-full cursor-pointer overflow-hidden  rounded-2xl border-4 transition-all duration-200 ${
+                selectedThumbnail === index
+                  ? "border-[--brand-mid-yellow]"
+                  : "border-transparent"
+              }`}
+              onClick={() => setSelectedThumbnail(index)}
+            >
+              <img
+                src={thumbnail}
+                alt={`Thumbnail ${index}`}
+                className="aspect-[11/6] h-full w-full object-cover "
+              />
+            </div>
             <button
               onClick={() => removeThumbnail(index)}
-              className="absolute right-1 top-1 flex h-7 w-7 items-center justify-center rounded-full  text-black hover:text-red-600"
+              className="absolute right-1 top-1 flex h-6 w-6 -translate-y-1/4 translate-x-1/4 items-center justify-center rounded-full border-[3px] border-white bg-black p-[2px] text-white transition-colors hover:!bg-red-500 dark:border-[#1c1c1e] dark:bg-white  dark:text-black"
             >
-              <XCircleSolid size={16} />
+              <span className="flex items-center justify-center">
+                <XSolid className="h-4 w-4" />
+              </span>
             </button>
           </div>
         ))}

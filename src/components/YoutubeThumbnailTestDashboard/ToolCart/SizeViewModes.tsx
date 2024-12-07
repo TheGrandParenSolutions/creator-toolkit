@@ -7,7 +7,7 @@ const SizeViewModes = () => {
     <div className="relative  flex w-full max-w-md justify-center rounded-full border-[1px] border-solid border-[var(--brand-dark-orange)] bg-white px-1 py-1 dark:!bg-gray-800">
       {/* Active Background */}
       <div
-        className={`absolute left-0 top-0 h-full w-1/2 rounded-full bg-[#ffd580] transition-transform duration-300 ${
+        className={`absolute left-0 top-0 h-full w-1/2 rounded-full bg-main-gradient  transition-transform duration-300 ${
           isYoutubeView ? "translate-x-0" : "translate-x-full"
         }`}
       ></div>

@@ -125,7 +125,7 @@ const YoutubeThumbnailTestDashboard = () => {
           <div className="h-[800px]">
             <div
               className={`grid ${
-                activeView === "mobile" ? "grid-cols-1" : "grid-cols-2"
+                (activeView === "mobile" || activeView === "search") ? "grid-cols-1" : "grid-cols-2"
               } gap-6 px-10 transition-all duration-300`}
             >
               {availableThumbnails.map((thumbnail, index) => (
@@ -139,7 +139,7 @@ const YoutubeThumbnailTestDashboard = () => {
           </div>
           <div
             id="footer"
-            className="mx-auto flex w-full flex-col items-center justify-center py-16 text-gray-800 dark:text-gray-300"
+            className="mx-auto flex w-full flex-col items-center justify-center py-16 text-gray-800 dark:text-gray-300 mt-52"
           >
             <div className="bottom-0 mx-4 flex items-center space-x-2 py-1 text-xs">
               <a
