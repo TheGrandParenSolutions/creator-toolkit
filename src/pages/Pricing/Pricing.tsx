@@ -12,23 +12,58 @@ const Pricing = () => {
   return (
     <>
       <Helmet>
-        <title>Affordable Pricing Plans for Creators | Creator Toolkit</title>
+        {/* Page Title */}
+        <title>Pricing | Creator Toolkit</title>
+
+        {/* Meta Description */}
         <meta
           name="description"
           content="Explore affordable pricing plans for content creators. Get tools for YouTube thumbnail creation, AI-powered ideas, and video downloads. Choose between basic and pro plans."
         />
+
+        {/* Canonical Tag */}
+        <link rel="canonical" href="https://www.creator-toolkit.com/pricing" />
+
+        {/* Open Graph Meta Tags */}
         <meta
-          name="keywords"
-          content="creator toolkit pricing, AI thumbnail generator pricing, YouTube tools pricing, affordable creator tools, AI-powered creator tools pricing"
+          property="og:title"
+          content="Affordable Pricing Plans for Creators"
         />
-        <meta name="author" content="Creator Toolkit" />
-        <link
-          rel="canonical"
-          href="https://www.creator-toolkit.com/pricing"
+        <meta
+          property="og:description"
+          content="Discover Creator Toolkit's affordable pricing plans for creators. Access tools for YouTube thumbnails, AI-powered ideas, and video downloads. Choose the plan that fits your needs!"
         />
+        <meta
+          property="og:image"
+          content="https://www.creator-toolkit.com/assets/pricing-page-thumbnail.jpg"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.creator-toolkit.com/pricing"
+        />
+
+        {/* Schema.org JSON-LD */}
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Pricing | Creator Toolkit",
+      "description": "Explore affordable pricing plans for content creators. Get tools for YouTube thumbnail creation, AI-powered ideas, and video downloads. Choose between basic and pro plans.",
+      "url": "https://www.creator-toolkit.com/pricing",
+      "image": "https://www.creator-toolkit.com/assets/pricing-page-thumbnail.jpg",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Creator Toolkit",
+        "logo": "https://www.creator-toolkit.com/assets/logo.png"
+      }
+    }
+    `}
+        </script>
       </Helmet>
 
-      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-10 text-gray-800 transition-all dark:bg-dark-app-content dark:text-gray-100 transition-all duration-300">
+      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-10 text-gray-800 transition-all transition-all duration-300 dark:bg-dark-app-content dark:text-gray-100">
         {/* Heading */}
         <Box id="initial-section" className="mb-10 max-w-3xl text-center">
           <Text
@@ -169,10 +204,7 @@ const Pricing = () => {
               <span className="text-5xl">{isAnnual ? "$22.99" : "$26.99"}</span>
               <span className="ml-1 text-xs font-normal">/ month</span>
             </Text>
-            <Text
-              size="xs"
-              className="mb-3 font-bold text-gray-900 "
-            >
+            <Text size="xs" className="mb-3 font-bold text-gray-900 ">
               30% OFF - Limited time offer on our plans
             </Text>
             <Text size="xs" className="mb-5 text-gray-800 ">
