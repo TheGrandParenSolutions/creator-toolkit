@@ -35,7 +35,7 @@ createRoot(document.getElementById("root")!).render(
     {/* Helmet is for SEO and meta purposes */}
     <HelmetProvider>
       <MantineProvider theme={theme}>
-        <BrowserRouter>
+        <BrowserRouter future={{ v7_startTransition: true }}>
           <ScrollRestorationProvider />
           <App />
         </BrowserRouter>
