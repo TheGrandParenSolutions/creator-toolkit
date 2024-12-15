@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Card, Text, Notification, Loader } from "@mantine/core";
 import {
+  downloadVideoFormat,
+  getDownloadProgress,
   getVideoDetails,
-  VideoDetails,
 } from "@src/services/YoutubeDownloaderApi";
 import {
   ClipboardSolid,
@@ -13,16 +14,22 @@ import {
 import CTDownloadButton from "@src/shared/Buttons/DownloadButton/CTDownloadButton";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTDivider from "@src/shared/Divider/CTDivider";
+import { VideoFormat, VideoDetails } from "@src/types/YoutubeDownloaderTypes";
+import { convertBytesToMB } from "../../utils/HelperUtils";
 
 const YouTubeDownloader = () => {
-  const [youtubeUrl, setYoutubeUrl] = useState<string>("");
+  const [youtubeUrl, setYoutubeUrl] = useState<string>(
+    "https://www.youtube.com/watch?v=mNkzw9bh0V8",
+  );
   const [loading, setLoading] = useState<boolean>(false);
   const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
   const [error, setError] = useState<string>("");
   const [dynamicPlaceholder, setDynamicPlaceholder] = useState<string>(
     "Paste YouTube link here...",
   );
-
+  const [progress, setProgress] = useState<number>(0);
+  const [isDownloading, setIsDownloading] = useState<boolean>(false);
+  let progressInterval: NodeJS.Timeout;
   const detailsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -37,7 +44,7 @@ const YouTubeDownloader = () => {
     const interval = setInterval(() => {
       setDynamicPlaceholder(placeholders[index]);
       index = (index + 1) % placeholders.length;
-    }, 1200);
+    }, 1000);
 
     return () => clearInterval(interval); // Cleanup
   }, [loading]);
@@ -76,6 +83,75 @@ const YouTubeDownloader = () => {
     setTimeout(() => {
       handleFetchVideoDetails();
     }, 300);
+  };
+
+  const downloadVideo = async (formatDetails: VideoFormat) => {
+    const requestId = crypto.randomUUID();
+    trackProgress(requestId);
+    setIsDownloading(true);
+
+    try {
+      const response = await downloadVideoFormat(
+        youtubeUrl,
+        formatDetails,
+        videoDetails,
+        requestId,
+      );
+
+      if (response.status === 200) {
+        const blob = new Blob([response.data], { type: "video/mp4" });
+
+        // Generate file name from Content-Disposition
+        const contentDisposition = response.headers["content-disposition"];
+        let fileName = "video.mp4";
+        if (contentDisposition) {
+          const fileNameMatch = contentDisposition.match(/filename="(.+?)"/);
+          if (fileNameMatch?.[1]) {
+            fileName = fileNameMatch[1];
+          }
+        }
+
+        // Trigger download
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", fileName);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.URL.revokeObjectURL(url); // Clean up URL
+      } else {
+        alert("Failed to download video. Check console for details.");
+      }
+    } catch (error) {
+      console.error("Error downloading video:", error);
+      setIsDownloading(false);
+      alert("Failed to download video. Check console for details.");
+    } finally {
+      clearInterval(progressInterval);
+      setIsDownloading(false);
+    }
+  };
+
+  const trackProgress = async (requestId: string) => {
+    progressInterval = setInterval(async () => {
+      try {
+        const progress = await getDownloadProgress(requestId);
+        console.log(`Progress: ${progress}%`);
+
+        // Update UI
+        setProgress(currentProgress =>
+          currentProgress < progress ? progress : currentProgress,
+        );
+
+        if (progress === 100) {
+          clearInterval(progressInterval); // Stop polling when download is complete
+        }
+      } catch (error: any) {
+        console.error("Error tracking progress:", error.message);
+        clearInterval(progressInterval); // Stop polling on error
+      }
+    }, 1000); // Poll every second
   };
 
   return (
@@ -197,7 +273,7 @@ const YouTubeDownloader = () => {
               <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center text-orange-50">
                 <Loader
                   type="bars"
-                  size={"sm"}
+                  size={"xs"}
                   color="var(--brand-dark-orange)"
                 />
               </div>
@@ -218,15 +294,19 @@ const YouTubeDownloader = () => {
         )}
 
         {/* Video Details Section */}
-        {videoDetails && (
+        {videoDetails && videoDetails.formats && (
           <div
             ref={detailsRef}
             className="w-full dark:bg-dark-app-content dark:text-gray-200"
           >
             <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit dark:text-gray-200">
               <YoutubeThumbnail
-                thumbnail={videoDetails.thumbnail}
+                thumbnail={videoDetails.thumbnailUrl}
                 title={videoDetails.title}
+                channelLogo={videoDetails.channelLogoUrl}
+                channelName={videoDetails.channelName}
+                uploadedTime={videoDetails.youtubeVideoAge}
+                views={videoDetails.totalViews}
               />
               <CTDivider />
               <div className="rounded-md p-5 dark:bg-dark-app-content">
@@ -241,9 +321,10 @@ const YouTubeDownloader = () => {
                     <CTDownloadButton
                       key={index}
                       quality={format.quality}
-                      size={format.size}
+                      size={convertBytesToMB(format.sizeInBytes)}
                       url={format.url}
                       label={format.quality}
+                      onClick={() => downloadVideo(format)}
                     />
                   ))}
                 </div>

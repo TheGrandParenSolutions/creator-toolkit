@@ -6,15 +6,17 @@ interface CKDownloadButtonProps {
   url: string; // Download URL
   size: string; // File size (e.g., "1.2GB")
   quality: string; // Quality or format (e.g., "MP4", "MP3")
-  onClick?: () => void; // Optional click handler
+  onClick?: () => void; // Optional click handler;
+  isDownloading?: boolean;
 }
 
 const CTDownloadButton: React.FC<CKDownloadButtonProps> = ({
   label,
-  url,
+  // url,
   size,
   quality,
   onClick,
+  isDownloading = false
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -29,7 +31,7 @@ const CTDownloadButton: React.FC<CKDownloadButtonProps> = ({
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => {
           onClick?.();
-          window.open(url, "_blank");
+          // window.open(url, "_blank");
         }}
         size="md"
         radius="md"
@@ -50,7 +52,7 @@ const CTDownloadButton: React.FC<CKDownloadButtonProps> = ({
               : "translate-y-0 opacity-100"
           }`}
         >
-          {label}
+           {isDownloading ? "Downloading..." : label}
         </span>
         <span
           className={`w-100 absolute text-center font-bold text-black transition-all duration-300 ${
@@ -59,7 +61,7 @@ const CTDownloadButton: React.FC<CKDownloadButtonProps> = ({
               : "translate-y-full opacity-0"
           }`}
         >
-          Download
+          Start Download
         </span>
       </Button>
     </Tooltip>
