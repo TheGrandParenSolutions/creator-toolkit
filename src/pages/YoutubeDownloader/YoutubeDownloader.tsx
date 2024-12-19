@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { Card, Text, Notification, Loader, Box } from "@mantine/core";
 import { getVideoDetails } from "@src/services/YoutubeDownloaderApi";
@@ -48,16 +48,15 @@ const YouTubeDownloader = () => {
     }
   };
 
-  const handlePaste = async (event: React.ClipboardEvent<HTMLInputElement>) => {
-    const pastedData = event.clipboardData.getData("Text");
-    setYoutubeUrl(pastedData);
-  };
-
   useEffect(() => {
     handleFetchVideoDetails();
   }, [youtubeUrl]);
 
-  console.log({loading})
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    if (youtubeUrl !== event.target.value) {
+      setYoutubeUrl(event.target.value);
+    }
+  };
 
   return (
     <>
@@ -141,8 +140,8 @@ const YouTubeDownloader = () => {
           >
             <input
               value={youtubeUrl}
+              onChange={onChangeHandler}
               onKeyDown={handleInputKeyDown}
-              onPaste={handlePaste}
               placeholder={"Paste YouTube link here..."}
               aria-label="YouTube URL"
               className={`text-md w-full rounded-xl  border py-2 pl-4 pr-20 shadow-sm transition hover:shadow-lg focus:shadow-xl focus:outline-none ${
