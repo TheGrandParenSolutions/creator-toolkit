@@ -11,48 +11,23 @@ import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTDivider from "@src/shared/Divider/CTDivider";
 import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
 import DownloadOptions from "@src/components/Download/DownloadOptions";
-import { MockVideoDetails } from "@src/utils/HelperUtils";
 
 const YouTubeDownloader = () => {
-  const [youtubeUrl, setYoutubeUrl] = useState<string>(
-    "https://www.youtube.com/watch?v=mNkzw9bh0V8",
-  );
+  const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(
-    MockVideoDetails,
-  );
+  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
   const [error, setError] = useState<string>("");
-  const [dynamicPlaceholder, setDynamicPlaceholder] = useState<string>(
-    "Paste YouTube link here...",
-  );
-
   const detailsRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!loading) return;
-
-    const placeholders = [
-      "Fetching details...",
-      "Almost there...",
-      "Just a moment...",
-    ];
-    let index = 0;
-    const interval = setInterval(() => {
-      setDynamicPlaceholder(placeholders[index]);
-      index = (index + 1) % placeholders.length;
-    }, 1000);
-
-    return () => clearInterval(interval); // Cleanup
-  }, [loading]);
-
   const handleFetchVideoDetails = async () => {
-    if (!youtubeUrl.trim()) return;
+    if (!youtubeUrl.trim()) return null;
 
     setLoading(true);
     setError("");
 
     try {
       const details = await getVideoDetails(youtubeUrl);
+      setLoading(false);
       setVideoDetails(details);
 
       // Smooth scroll to the video details section
@@ -61,6 +36,7 @@ const YouTubeDownloader = () => {
       }, 300);
     } catch {
       setError("Failed to fetch video details. Please check the link.");
+      setLoading(false);
     } finally {
       setLoading(false);
     }
@@ -75,11 +51,13 @@ const YouTubeDownloader = () => {
   const handlePaste = async (event: React.ClipboardEvent<HTMLInputElement>) => {
     const pastedData = event.clipboardData.getData("Text");
     setYoutubeUrl(pastedData);
-
-    setTimeout(() => {
-      handleFetchVideoDetails();
-    }, 300);
   };
+
+  useEffect(() => {
+    handleFetchVideoDetails();
+  }, [youtubeUrl]);
+
+  console.log({loading})
 
   return (
     <>
@@ -162,13 +140,10 @@ const YouTubeDownloader = () => {
             }`}
           >
             <input
-              value={!loading ? youtubeUrl : ""}
-              onChange={e => setYoutubeUrl(e.target.value)}
+              value={youtubeUrl}
               onKeyDown={handleInputKeyDown}
               onPaste={handlePaste}
-              placeholder={
-                loading ? dynamicPlaceholder : "Paste YouTube link here..."
-              }
+              placeholder={"Paste YouTube link here..."}
               aria-label="YouTube URL"
               className={`text-md w-full rounded-xl  border py-2 pl-4 pr-20 shadow-sm transition hover:shadow-lg focus:shadow-xl focus:outline-none ${
                 loading
@@ -221,10 +196,7 @@ const YouTubeDownloader = () => {
         )}
         {/* Video Details Section */}
         {videoDetails && videoDetails.formats && (
-          <div
-            ref={detailsRef}
-            className="w-full dark:bg-dark-app-content dark:text-gray-200"
-          >
+          <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
             <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit dark:text-gray-200">
               <Box className="aspect-w-5 aspect-h-4 bg-dark-navigation relative mx-auto flex w-full flex-1 items-center justify-center rounded-[24px] border-2 border-gray-200 bg-gray-50 p-5 dark:border-black dark:bg-inherit">
                 <YoutubeThumbnail
@@ -235,8 +207,8 @@ const YouTubeDownloader = () => {
                   uploadedTime={videoDetails.youtubeVideoAge}
                   views={videoDetails.totalViews}
                 />
+                <Box ref={detailsRef}></Box>
               </Box>
-
               <CTDivider />
               <div className="mx-5 rounded-md dark:bg-dark-app-content">
                 <Text className="font-grifter mb-4 text-center text-3xl font-bold">
