@@ -35,4 +35,5 @@ export interface DownloadProgress {
 export type YoutubeDownloaderApiResponse = VideoDetails;
 export interface DownloadOptionsProps {
     videoDetails: VideoDetails;
+    videoUrl: string;
 }

@@ -3,10 +3,14 @@ import { Rocket } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle/DarkModeToggle";
+import { AuthContext } from "@src/Context/AuthContext";
+import UserProfile from "@src/shared/User/UserProfile";
 
 export function MainNav() {
+  const { isAuthenticated, user } = useContext(AuthContext);
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Handle scroll effect
@@ -22,9 +26,9 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed bg-white dark:!bg-dark-app left-12 right-0 top-0 z-40 transition-all duration-300 ${
+      className={`fixed left-12 right-0 top-0 z-40 bg-white transition-all duration-300 dark:!bg-dark-app ${
         isScrolled
-          ? "bg-opacity-85 dark:!bg-opacity-85 backdrop-blur-sm border border-solid border-gray-50 dark:border-gray-800 shadow-sm"
+          ? "border border-solid border-gray-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-gray-800 dark:!bg-opacity-85"
           : ""
       }`}
     >
@@ -38,20 +42,20 @@ export function MainNav() {
         <nav className="hidden items-center space-x-6 md:flex">
           <Link
             to="/youtube-downloader"
-            className="text-sm font-medium text-gray-800 dark:text-gray-300 transition hover:text-gray-600 dark:hover:text-gray-400 hover:underline"
+            className="text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400"
           >
             YouTube Downloader
           </Link>
           <Link
             to="/pricing"
-            className="text-sm font-medium text-gray-800 dark:text-gray-300 transition hover:text-gray-600 dark:hover:text-gray-400 hover:underline"
+            className="text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400"
           >
             Pricing
           </Link>
           {/* Dropdown using Mantine Menu */}
           <Menu shadow="md" width={200}>
             <Menu.Target>
-              <button className="flex items-center text-sm font-medium text-gray-800 dark:text-gray-300 transition hover:text-gray-600 dark:hover:text-gray-400 hover:underline">
+              <button className="flex items-center text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400">
                 Resources
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,10 +73,16 @@ export function MainNav() {
             </Menu.Target>
 
             <Menu.Dropdown className="dark:bg-dark-app">
-              <Menu.Item className="dark:text-gray-200 dark:bg-dark-app-content">Blog</Menu.Item>
-              <Menu.Item className="dark:text-gray-200 dark:bg-dark-app-content">Case Studies</Menu.Item>
+              <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
+                Blog
+              </Menu.Item>
+              <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
+                Case Studies
+              </Menu.Item>
               <Divider className="dark:bg-gray-600" />
-              <Menu.Item className="dark:text-gray-200 dark:bg-dark-app-content">Help Center</Menu.Item>
+              <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
+                Help Center
+              </Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </nav>
@@ -80,22 +90,26 @@ export function MainNav() {
         {/* Login and CTA Button */}
         <div className="flex items-center space-x-4">
           <DarkModeToggle />
-          <Link
-            to="/login"
-            className="text-sm font-medium text-gray-800 dark:text-gray-300 transition hover:text-gray-600 dark:hover:text-gray-400 hover:underline"
-          >
-            Log in
-          </Link>
-
           <CTAnimatedButton
-            w={140}
+            w={120}
             radius={"xl"}
             label="Go pro"
             hoverLabel="You will love it"
             to="/pricing"
-            buttonStyles="w-60"
+            buttonStyles="w-60 font-bold"
             icon={<Rocket />}
           />
+          {isAuthenticated && user ? (
+            <UserProfile user={user} />
+          ) : (
+            <Link
+              to="/login"
+              className="flex h-9 w-32 items-center justify-center rounded-full border-2 border-gray-800 text-sm font-bold hover:bg-slate-800 hover:text-[--brand-dark-orange]  hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50
+            dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
+            >
+              Log In
+            </Link>
+          )}
         </div>
       </div>
     </header>

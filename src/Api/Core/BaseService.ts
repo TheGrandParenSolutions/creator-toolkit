@@ -1,3 +1,4 @@
+import { refreshToken } from '@src/Api/Modules/Authentication/AuthenticationService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 /**
@@ -8,6 +9,7 @@ const apiClient: AxiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true
   // timeout: 10000, // Timeout for requests
 });
 
@@ -36,13 +38,20 @@ apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
   },
-  (error) => {
+  async (error) => {
     console.error('Response error:', error);
     // Handle common errors like unauthorized or server errors
-    if (error.response?.status === 401) {
-      alert('Unauthorized! Please log in again.');
-      // Optionally redirect to login
+    const originalRequest = error.config;
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      // const refreshed = await refreshToken();
+      // if (refreshed) {
+      //   // Retry the original request with the refreshed token
+      //   return apiClient.request(originalRequest);
+      // }
     }
+    alert('Unauthorized! Please log in again.');
+
     return Promise.reject(error);
   }
 );

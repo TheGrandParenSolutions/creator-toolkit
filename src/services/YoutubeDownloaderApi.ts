@@ -1,4 +1,4 @@
-import { downloadYouTubeVideo, fetchYouTubeVideoDetails, trackDownloadProgress } from "@src/services/YoutubeDownloadService";
+import { downloadYouTubeVideo, fetchYouTubeVideoDetails, trackDownloadProgress } from "@src/Api/Modules/YoutubeDownloader/YoutubeDownloadService";
 import { VideoDetails, VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 
 export const getVideoDetails = async (youtubeUrl: string): Promise<VideoDetails> => {

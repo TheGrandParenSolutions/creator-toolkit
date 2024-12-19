@@ -1,8 +1,8 @@
-import { Button, ButtonProps } from "@mantine/core";
+import { Button, ButtonProps, Loader } from "@mantine/core";
 import { FC, ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface AnimatedButtonProps extends ButtonProps  {
+interface AnimatedButtonProps extends ButtonProps {
   label: string; // Default text
   hoverLabel: string; // Text to display on hover
   url?: string; // Optional URL for redirection
@@ -23,6 +23,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
     buttonStyles = "",
     hoverStyles = "",
     icon,
+    loading,
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
@@ -31,6 +32,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
   return (
     <Button
       {...props}
+      disabled={loading}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -43,38 +45,58 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
       }}
       classNames={{
         inner: "w-full text-center",
-        label: "w-full items-center justify-center",
+        label: "w-full items-center justify-center font-bold",
       }}
       style={{
-        border: !isHovered ? "" : "1px solid var(--brand-dark-orange)",
-        background: !isHovered ? "var(--brand-bg-theme)" : "#fff",
+        border: !loading
+          ? !isHovered
+            ? ""
+            : "1px solid var(--brand-dark-orange)"
+          : undefined,
+        background: !loading
+          ? !isHovered
+            ? "var(--brand-bg-theme)"
+            : "#fff"
+          : undefined,
       }}
-      className={`relative flex items-center justify-center overflow-hidden border bg-white text-black transition-all duration-300 ${buttonStyles}`}
+      className={`relative flex items-center justify-center overflow-hidden border bg-white text-black transition-all duration-300 ${buttonStyles} ${
+        loading &&
+        "disabled:border-slate-200 disabled:bg-gray-400 disabled:text-slate-500 disabled:shadow-none"
+      }`}
     >
-      {/* Icon (if provided) */}
+      {loading ? (
+        <>
+          <Loader size={"sm"} color="black" />
+        </>
+      ) : (
+        <>
+          <span
+            className={`absolute inline-block text-center text-black transition-all duration-300 ${
+              isHovered
+                ? "-translate-y-full opacity-0"
+                : "translate-y-0 opacity-100"
+            }`}
+          >
+            <span
+              className={`flex items-center justify-center gap-1 text-inherit`}
+            >
+              {icon && !isHovered && icon}
+              {label}
+            </span>
+          </span>
 
-      {/* Default Label */}
-      <span
-        className={`absolute inline-block text-center text-black transition-all duration-300 ${
-          isHovered
-            ? "-translate-y-full opacity-0"
-            : "translate-y-0 opacity-100"
-        }`}
-      >
-        <span className={`flex items-center justify-center gap-2 text-inherit`}>
-          {icon && !isHovered && icon}
-          {label}
-        </span>
-      </span>
-
-      {/* Hover Label */}
-      <span
-        className={`absolute text-center text-orange-500 transition-all duration-300 ${
-          isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-        } ${hoverStyles}`}
-      >
-        {hoverLabel}
-      </span>
+          {/* Hover Label */}
+          <span
+            className={`absolute text-center text-orange-500 transition-all duration-300 ${
+              isHovered
+                ? "translate-y-0 opacity-100"
+                : "translate-y-full opacity-0"
+            } ${hoverStyles}`}
+          >
+            {hoverLabel}
+          </span>
+        </>
+      )}
     </Button>
   );
 };

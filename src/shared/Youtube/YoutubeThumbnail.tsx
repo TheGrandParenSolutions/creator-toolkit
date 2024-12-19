@@ -13,9 +13,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
   viewMode = viewMode === "tablet" ? "desktop" : viewMode;
   return (
     <div
-      className={`m-auto flex flex-col  ${
-        viewMode === "search" && "!flex-row gap-4"
-      }`}
+      className={`flex flex-col ${viewMode === "search" && "!flex-row gap-4"}`}
     >
       {/* Thumbnail */}
       <div className="overflow-hidden rounded-xl">

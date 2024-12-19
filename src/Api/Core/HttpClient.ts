@@ -1,4 +1,4 @@
-import apiClient from "@src/services/BaseService";
+import apiClient from "@src/Api/Core/BaseService";
 import { AxiosRequestConfig } from "axios";
 
 /**

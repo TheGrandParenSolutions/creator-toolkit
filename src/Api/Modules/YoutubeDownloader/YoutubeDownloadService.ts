@@ -1,4 +1,4 @@
-import { get, post, } from "@src/services/HttpClient";
+import { get, post, } from "@src/Api/Core/HttpClient";
 import { DownloadProgress, DownloadRequest, YoutubeDownloaderApiResponse } from "@src/types/YoutubeDownloaderTypes";
 
 

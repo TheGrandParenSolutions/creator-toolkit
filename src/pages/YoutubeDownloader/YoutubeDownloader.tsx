@@ -1,35 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Card, Text, Notification, Loader } from "@mantine/core";
-import {
-  downloadVideoFormat,
-  getDownloadProgress,
-  getVideoDetails,
-} from "@src/services/YoutubeDownloaderApi";
+import { Card, Text, Notification, Loader, Box } from "@mantine/core";
+import { getVideoDetails } from "@src/services/YoutubeDownloaderApi";
 import {
   ClipboardSolid,
   XCircleSolid,
   BrandYoutubeSolid,
 } from "@mynaui/icons-react";
-import CTDownloadButton from "@src/shared/Buttons/DownloadButton/CTDownloadButton";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTDivider from "@src/shared/Divider/CTDivider";
-import { VideoFormat, VideoDetails } from "@src/types/YoutubeDownloaderTypes";
-import { convertBytesToMB } from "../../utils/HelperUtils";
+import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
+import DownloadOptions from "@src/components/Download/DownloadOptions";
+import { MockVideoDetails } from "@src/utils/HelperUtils";
 
 const YouTubeDownloader = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>(
     "https://www.youtube.com/watch?v=mNkzw9bh0V8",
   );
   const [loading, setLoading] = useState<boolean>(false);
-  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
+  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(
+    MockVideoDetails,
+  );
   const [error, setError] = useState<string>("");
   const [dynamicPlaceholder, setDynamicPlaceholder] = useState<string>(
     "Paste YouTube link here...",
   );
-  const [progress, setProgress] = useState<number>(0);
-  const [isDownloading, setIsDownloading] = useState<boolean>(false);
-  let progressInterval: NodeJS.Timeout;
+
   const detailsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -83,75 +79,6 @@ const YouTubeDownloader = () => {
     setTimeout(() => {
       handleFetchVideoDetails();
     }, 300);
-  };
-
-  const downloadVideo = async (formatDetails: VideoFormat) => {
-    const requestId = crypto.randomUUID();
-    trackProgress(requestId);
-    setIsDownloading(true);
-
-    try {
-      const response = await downloadVideoFormat(
-        youtubeUrl,
-        formatDetails,
-        videoDetails,
-        requestId,
-      );
-
-      if (response.status === 200) {
-        const blob = new Blob([response.data], { type: "video/mp4" });
-
-        // Generate file name from Content-Disposition
-        const contentDisposition = response.headers["content-disposition"];
-        let fileName = "video.mp4";
-        if (contentDisposition) {
-          const fileNameMatch = contentDisposition.match(/filename="(.+?)"/);
-          if (fileNameMatch?.[1]) {
-            fileName = fileNameMatch[1];
-          }
-        }
-
-        // Trigger download
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", fileName);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        window.URL.revokeObjectURL(url); // Clean up URL
-      } else {
-        alert("Failed to download video. Check console for details.");
-      }
-    } catch (error) {
-      console.error("Error downloading video:", error);
-      setIsDownloading(false);
-      alert("Failed to download video. Check console for details.");
-    } finally {
-      clearInterval(progressInterval);
-      setIsDownloading(false);
-    }
-  };
-
-  const trackProgress = async (requestId: string) => {
-    progressInterval = setInterval(async () => {
-      try {
-        const progress = await getDownloadProgress(requestId);
-        console.log(`Progress: ${progress}%`);
-
-        // Update UI
-        setProgress(currentProgress =>
-          currentProgress < progress ? progress : currentProgress,
-        );
-
-        if (progress === 100) {
-          clearInterval(progressInterval); // Stop polling when download is complete
-        }
-      } catch (error: any) {
-        console.error("Error tracking progress:", error.message);
-        clearInterval(progressInterval); // Stop polling on error
-      }
-    }, 1000); // Poll every second
   };
 
   return (
@@ -243,7 +170,7 @@ const YouTubeDownloader = () => {
                 loading ? dynamicPlaceholder : "Paste YouTube link here..."
               }
               aria-label="YouTube URL"
-              className={`text-md w-full rounded-full border py-2 pl-4 pr-20 shadow-sm transition focus:outline-none ${
+              className={`text-md w-full rounded-xl  border py-2 pl-4 pr-20 shadow-sm transition hover:shadow-lg focus:shadow-xl focus:outline-none ${
                 loading
                   ? "border-orange-500 text-gray-400"
                   : "border-gray-300 text-gray-800 dark:border-gray-600 dark:text-gray-200"
@@ -292,7 +219,6 @@ const YouTubeDownloader = () => {
             {error}
           </Notification>
         )}
-
         {/* Video Details Section */}
         {videoDetails && videoDetails.formats && (
           <div
@@ -300,33 +226,27 @@ const YouTubeDownloader = () => {
             className="w-full dark:bg-dark-app-content dark:text-gray-200"
           >
             <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit dark:text-gray-200">
-              <YoutubeThumbnail
-                thumbnail={videoDetails.thumbnailUrl}
-                title={videoDetails.title}
-                channelLogo={videoDetails.channelLogoUrl}
-                channelName={videoDetails.channelName}
-                uploadedTime={videoDetails.youtubeVideoAge}
-                views={videoDetails.totalViews}
-              />
+              <Box className="aspect-w-5 aspect-h-4 bg-dark-navigation relative mx-auto flex w-full flex-1 items-center justify-center rounded-[24px] border-2 border-gray-200 bg-gray-50 p-5 dark:border-black dark:bg-inherit">
+                <YoutubeThumbnail
+                  thumbnail={videoDetails.thumbnailUrl}
+                  title={videoDetails.title}
+                  channelLogo={videoDetails.channelLogoUrl}
+                  channelName={videoDetails.channelName}
+                  uploadedTime={videoDetails.youtubeVideoAge}
+                  views={videoDetails.totalViews}
+                />
+              </Box>
+
               <CTDivider />
-              <div className="rounded-md p-5 dark:bg-dark-app-content">
-                <Text
-                  component="h1"
-                  className="font-grifter mb-4 text-2xl font-semibold dark:text-gray-100"
-                >
-                  Download Options:
+              <div className="mx-5 rounded-md dark:bg-dark-app-content">
+                <Text className="font-grifter mb-4 text-center text-3xl font-bold">
+                  Download options
                 </Text>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                  {videoDetails.formats.map((format, index) => (
-                    <CTDownloadButton
-                      key={index}
-                      quality={format.quality}
-                      size={convertBytesToMB(format.sizeInBytes)}
-                      url={format.url}
-                      label={format.quality}
-                      onClick={() => downloadVideo(format)}
-                    />
-                  ))}
+                <div className="grid">
+                  <DownloadOptions
+                    videoDetails={videoDetails}
+                    videoUrl={youtubeUrl}
+                  />
                 </div>
               </div>
             </Card>
