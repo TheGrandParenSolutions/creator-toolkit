@@ -104,7 +104,7 @@ export function MainNav() {
           ) : (
             <Link
               to="/login"
-              className="flex h-9 w-32 items-center justify-center rounded-full border-2 border-gray-800 text-sm font-bold hover:bg-slate-800 hover:text-[--brand-dark-orange]  hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50
+              className="flex h-9 w-28 items-center justify-center rounded-full border-2 border-gray-800 text-sm font-bold hover:bg-slate-800 hover:text-[--brand-dark-orange]  hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50
             dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
             >
               Log In
