@@ -5,6 +5,7 @@ import { ImageSolid, Upload } from "@mynaui/icons-react"; // Importing Mynaui ic
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { ImageUpload } from "@src/shared/Icons/ImageUpload";
+import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
 
 const YoutubeThumbnailTestOnboarding = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -144,16 +145,11 @@ const YoutubeThumbnailTestOnboarding = () => {
                   w={180}
                 />
 
-                <button
+                <CTBasicButton
                   onClick={handleTrySampleClick}
-                  className="flex   items-center justify-center rounded-full border-2 border-gray-800 px-6 py-2 text-sm font-bold transition duration-75 hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50
-                            dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
-                >
-                  <span className="flex items-center gap-2">
-                    <ImageSolid className="h-5 w-5" />
-                    Try a Sample
-                  </span>
-                </button>
+                  label="Try a Sample"
+                  icon={<ImageSolid className="h-5 w-5" />}
+                />
               </div>
             </div>
           </div>
