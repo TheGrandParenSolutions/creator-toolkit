@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Allow: /favicon/
 Sitemap: https://www.creator-toolkit.com/sitemap.xml
