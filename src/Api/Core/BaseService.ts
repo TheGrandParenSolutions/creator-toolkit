@@ -1,4 +1,3 @@
-import { refreshToken } from '@src/Api/Modules/Authentication/AuthenticationService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 /**
