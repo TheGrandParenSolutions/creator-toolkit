@@ -44,72 +44,77 @@ const AppRouter = () => {
 
       {/* Public Routes with Navbar */}
       <Route
-        path="/*"
+        path="/"
         element={
           <MainSection>
             <main className="flex-grow p-4 transition-all duration-300">
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <>
-                      <Helmet>
-                        <title>Home - Creator Toolkit</title>
-                        <meta
-                          name="description"
-                          content="Creator Toolkit is your one-stop solution for all content creation needs. Download videos, generate thumbnails, and more!"
-                        />
-                      </Helmet>
-                      <div>Welcome to Creator Toolkit!</div>
-                    </>
-                  }
-                />
-                <Route
-                  path="/youtube-downloader"
-                  element={
-                    <>
-                      <Helmet>
-                        <title>Youtube Downloader - Creator Toolkit</title>
-                        <meta
-                          name="description"
-                          content="Download YouTube videos in HD or convert them to MP3 with ease using Creator Toolkit."
-                        />
-                      </Helmet>
-                      <YouTubeDownloader />
-                    </>
-                  }
-                />
-                <Route
-                  path="/thumbnail-test"
-                  element={
-                    <>
-                      <Helmet>
-                        <title>Thumbnail Test - Creator Toolkit</title>
-                        <meta
-                          name="description"
-                          content="Test and preview your YouTube thumbnails with Creator Toolkit."
-                        />
-                      </Helmet>
-                      <YoutubeThumbnailTestOnboarding />
-                    </>
-                  }
-                />
-                <Route
-                  path="/pricing"
-                  element={
-                    <>
-                      <Helmet>
-                        <title>Pricing - Creator Toolkit</title>
-                        <meta
-                          name="description"
-                          content="Explore affordable pricing plans for Creator Toolkit's tools and features."
-                        />
-                      </Helmet>
-                      <Pricing />
-                    </>
-                  }
-                />
-              </Routes>
+              <>
+                <Helmet>
+                  <title>Home - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Creator Toolkit is your one-stop solution for all content creation needs. Download videos, generate thumbnails, and more!"
+                  />
+                </Helmet>
+                <div>Welcome to Creator Toolkit!</div>
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/youtube-downloader"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Youtube Downloader - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Download YouTube videos in HD or convert them to MP3 with ease using Creator Toolkit."
+                  />
+                </Helmet>
+                <YouTubeDownloader />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/thumbnail-test"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Thumbnail Test - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Test and preview your YouTube thumbnails with Creator Toolkit."
+                  />
+                </Helmet>
+                <YoutubeThumbnailTestOnboarding />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/pricing"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Pricing - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Explore affordable pricing plans for Creator Toolkit's tools and features."
+                  />
+                </Helmet>
+                <Pricing />
+              </>
             </main>
           </MainSection>
         }
