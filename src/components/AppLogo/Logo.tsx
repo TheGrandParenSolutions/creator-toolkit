@@ -8,7 +8,7 @@ const Logo = () => {
     <Tooltip label="Toolkit home">
       <Box className="flex cursor-pointer items-center" onClick={() => navigate("/")}>
         <CTIcon />
-        <Text className="font-grifter text-wrap text-2xl">Creator Toolkit</Text>
+        <Text className="font-grifter text-base lg:text-xl">Creator Toolkit</Text>
       </Box>
     </Tooltip>
   );

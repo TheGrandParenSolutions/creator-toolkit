@@ -10,7 +10,6 @@ import UserProfile from "@src/shared/User/UserProfile";
 
 export function MainNav() {
   const { isAuthenticated, user } = useContext(AuthContext);
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Handle scroll effect
@@ -32,14 +31,15 @@ export function MainNav() {
           : ""
       }`}
     >
-      <div className="max-w-A7xl mx-auto flex items-center justify-between px-6 py-2">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
+        {/* Desktop Layout */}
+        <div className="flex w-auto mx-auto lg:mx-0 justify-center lg:justify-start">
+          {/* Logo */}
           <Logo />
         </div>
 
-        {/* Navigation Links */}
-        <nav className="hidden items-center space-x-6 md:flex">
+        <nav className="hidden items-center space-x-6 lg:flex">
+          {/* Navigation Links */}
           <Link
             to="/youtube-downloader"
             className="text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400"
@@ -52,7 +52,6 @@ export function MainNav() {
           >
             Pricing
           </Link>
-          {/* Dropdown using Mantine Menu */}
           <Menu shadow="md" width={200}>
             <Menu.Target>
               <button className="flex items-center text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400">
@@ -71,7 +70,6 @@ export function MainNav() {
                 </svg>
               </button>
             </Menu.Target>
-
             <Menu.Dropdown className="dark:bg-dark-app">
               <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
                 Blog
@@ -88,7 +86,7 @@ export function MainNav() {
         </nav>
 
         {/* Login and CTA Button */}
-        <div className="flex items-center space-x-4">
+        <div className="hidden items-center space-x-4 lg:flex">
           <DarkModeToggle />
           <CTAnimatedButton
             w={120}
@@ -104,12 +102,27 @@ export function MainNav() {
           ) : (
             <Link
               to="/login"
-              className="flex h-9 w-28 items-center justify-center rounded-full border-2 border-gray-800 text-sm font-bold hover:bg-slate-800 hover:text-[--brand-dark-orange]  hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50
-            dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
+              className="flex h-9 w-28 items-center justify-center rounded-full border-2 border-gray-800 text-sm font-bold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
             >
               Log In
             </Link>
           )}
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="flex items-center justify-end lg:hidden">
+          <div className="">
+            {isAuthenticated && user ? (
+              <UserProfile user={user} />
+            ) : (
+              <Link
+                to="/login"
+                className="flex px-3 py-1 items-center justify-center rounded-3xl border-2 border-gray-800 text-sm font-bold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
+              >
+                Log In
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </header>
