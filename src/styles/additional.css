@@ -34,3 +34,15 @@
 .scroll-off {
   overflow: hidden;
 }
+
+.mantine-Select-dropdown .mantine-Select-option[data-checked="true"] {
+  background: var(--brand-bg-theme);
+  color: var(#171717);
+  opacity: 1;
+  font-weight: 600;
+}
+
+.mantine-Select-dropdown .mantine-Select-option[data-checked="true"] svg {
+  color: var(#171717);
+  opacity: 1;
+}

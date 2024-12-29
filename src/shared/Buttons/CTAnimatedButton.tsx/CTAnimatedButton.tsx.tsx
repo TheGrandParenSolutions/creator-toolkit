@@ -78,7 +78,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
             }`}
           >
             <span
-              className={`flex items-center justify-center gap-1 text-inherit`}
+              className={`flex items-center justify-center gap-1 text-inherit text-xs md:text-base `}
             >
               {icon && !isHovered && icon}
               {label}

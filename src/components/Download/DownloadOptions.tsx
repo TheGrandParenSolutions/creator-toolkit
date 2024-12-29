@@ -7,6 +7,8 @@ import {
   Text,
   Box,
   Tooltip,
+  Select,
+  Loader,
 } from "@mantine/core";
 import { UndoSolid } from "@mynaui/icons-react";
 import {
@@ -49,7 +51,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
       if (response.status === 200) {
         const blob = new Blob([response.data], { type: "video/mp4" });
 
-        // Generate file name from Content-Disposition
         const contentDisposition = response.headers["content-disposition"];
         let fileName = "video.mp4";
         if (contentDisposition) {
@@ -59,7 +60,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           }
         }
 
-        // Trigger download
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
@@ -97,7 +97,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
         if (progress === 100) {
           clearInterval(progressInterval);
         }
-      } catch (error: any) {
+      } catch (error) {
         console.log(error);
         clearInterval(progressInterval);
       }
@@ -112,74 +112,90 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
         );
 
   return (
-    <div className="flex flex-col items-center p-4">
+    <div className="flex flex-col items-center space-y-8 p-2 md:px-4">
       {/* Filter Section */}
-      <div className="relative mb-6 flex w-full max-w-xl justify-around rounded-full border border-[var(--brand-dark-orange)] bg-white px-2 py-1 shadow-sm dark:bg-dark-app-content">
-        <div
-          className={`absolute left-0 top-0 h-full w-1/4 rounded-full bg-main-gradient transition-all duration-300`}
-          style={{
-            transform: `translateX(${filters.indexOf(selectedFilter) * 100}%)`,
+      <div className="relative w-full max-w-md sm:max-w-xl">
+        {/* Dropdown for Small Screens */}
+        <Select
+          className="sm:hidden"
+          value={selectedFilter}
+          onChange={value => setSelectedFilter(value || "All Formats")}
+          data={filters.map(filter => ({ value: filter, label: filter }))}
+          placeholder="Select Format"
+          styles={{
+            input: {
+              backgroundColor: "var(--dark-app-content)", // Input field background
+              color: "var(--brand-gray)", // Text color for the input field
+              borderColor: "var(--brand-dark-orange)", // Border color
+            },
           }}
-        ></div>
-        {filters.map(filter => (
-          <button
-            key={filter}
-            className={`relative z-10 w-1/4 py-1.5 text-center font-medium ${
-              selectedFilter === filter
-                ? "text-black"
-                : "text-gray-600 dark:text-gray-400"
-            }`}
-            onClick={() => setSelectedFilter(filter)}
-          >
-            {filter}
-          </button>
-        ))}
+        />
+
+        {/* Filter Bar for Larger Screens */}
+        <div className="relative hidden w-full justify-around rounded-full border border-[var(--brand-dark-orange)] bg-white px-2 py-1 shadow-sm dark:bg-dark-app-content sm:flex">
+          <div
+            className={`absolute left-0 top-0 h-full w-1/4 rounded-full bg-main-gradient transition-transform duration-300`}
+            style={{
+              transform: `translateX(${
+                filters.indexOf(selectedFilter) * 100
+              }%)`,
+            }}
+          ></div>
+          {filters.map(filter => (
+            <button
+              key={filter}
+              className={`relative z-10 w-1/4 text-center text-sm font-medium lg:text-base ${
+                selectedFilter === filter
+                  ? "text-black"
+                  : "text-gray-600 dark:text-gray-400"
+              }`}
+              onClick={() => setSelectedFilter(filter)}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Download Cards */}
-      <div className="grid w-full max-w-2xl grid-cols-1 gap-4">
+      <div className="grid w-full max-w-md grid-cols-1 gap-4 sm:max-w-3xl">
         {filteredFormats.map(format => (
           <Paper
             key={format.formatId}
             radius="lg"
-            className="flex items-center justify-between bg-white p-4 shadow-sm transition-all hover:shadow-lg dark:bg-dark-app-content"
+            className="flex flex-col items-center justify-center space-y-4 bg-white p-4 shadow-md transition-all hover:shadow-lg dark:bg-dark-app-content sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
             style={{
               border: "1px solid var(--brand-dark-orange)",
             }}
           >
-            <div className="flex items-center space-x-4">
+            {/* Badge and Format Info */}
+            <div className="flex w-full flex-col items-center space-y-2 text-center sm:w-auto sm:items-start sm:text-left md:!flex-row md:items-center md:space-x-4">
               <Badge
                 radius="sm"
                 variant="filled"
-                className="rounded-full bg-main-gradient px-3 py-4 text-sm font-bold text-black"
+                className="rounded-full bg-main-gradient px-4 py-2 text-xs font-semibold text-black sm:text-sm md:text-base"
               >
                 {format.quality.toUpperCase()}
               </Badge>
               <div>
                 <Text
                   size="sm"
-                  className="font-medium text-gray-800 dark:text-gray-300"
+                  className="font-medium text-gray-800 dark:text-gray-300 sm:text-base"
                 >
                   {format.mimeType.toUpperCase()}
                 </Text>
-                <Text size="md" className="text-gray-600 dark:text-gray-400">
+                <Text size="sm" className="text-gray-600 dark:text-gray-400">
                   {(format.sizeInBytes / (1024 * 1024)).toFixed(2)} MB
                 </Text>
               </div>
             </div>
 
-            {/* Download State */}
-            {downloadProgress[format.formatId] !== undefined ? (
-              downloadProgress[format.formatId] === 100 ? (
-                <Box className="relative flex items-center space-x-2">
-                  <div className="relative flex items-center">
+            {/* Download Button and Progress */}
+            <div className="flex w-full flex-col items-center space-y-2 sm:w-auto sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
+              {(downloadProgress[format.formatId] !== undefined) ? (
+                downloadProgress[format.formatId] === 100 ? (
+                  <Box className="flex items-center space-x-2">
                     <CTCheckIcon />
-                  </div>
-                  <Box
-                    size="sm"
-                    className="flex items-center justify-center font-bold text-[#22918b]"
-                  >
-                    Completed!
                     <Tooltip label="Click to download again">
                       <Button
                         size="compact-xs"
@@ -195,37 +211,44 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
                       </Button>
                     </Tooltip>
                   </Box>
-                </Box>
+                ) : (
+                  <Box className="flex w-full flex-col items-center space-x-2 md:w-auto md:flex-row">
+                    {!downloadProgress[format.formatId] ? (
+                      <>
+                        <Loader size={"sm"} color="teal" />
+                        <Text size="sm" className="font-semibold">
+                          Preparing your download
+                        </Text>
+                      </>
+                    ) : (
+                      <>
+                        <Progress
+                          value={downloadProgress[format.formatId]}
+                          size="xl"
+                          radius="sm"
+                          color="teal"
+                          className="w-full sm:w-32"
+                          animated
+                        />
+                        <Text size="md" className="font-semibold">
+                          {downloadProgress[format.formatId]}%
+                        </Text>
+                      </>
+                    )}
+                  </Box>
+                )
               ) : (
-                <Box className="flex items-center space-x-2">
-                  <Progress
-                    value={downloadProgress[format.formatId]}
-                    size="lg"
-                    radius="sm"
-                    color="yellow"
-                    className="w-32"
-                    animated
-                    classNames={{
-                      root: "bg-gray-400",
-                    }}
-                    transitionDuration={500}
-                  />
-                  <Text size="md" className="font-semibold">
-                    {downloadProgress[format.formatId]}%
-                  </Text>
-                </Box>
-              )
-            ) : (
-              <CTAnimatedButton
-                label="Download"
-                icon={<CTDownloadIcon />}
-                hoverLabel="Start download"
-                w={"120"}
-                radius={"xl"}
-                onClick={() => downloadVideo(format)}
-                disabled={isDownloading}
-              />
-            )}
+                <CTAnimatedButton
+                  label="Download"
+                  icon={<CTDownloadIcon />}
+                  hoverLabel="Start download"
+                  buttonStyles={"w-[120px] sm:w-[140px]"}
+                  radius={"xl"}
+                  onClick={() => downloadVideo(format)}
+                  disabled={isDownloading}
+                />
+              )}
+            </div>
           </Paper>
         ))}
       </div>
