@@ -45,7 +45,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
       }}
       classNames={{
         inner: "w-full text-center",
-        label: "w-full items-center justify-center font-bold",
+        label: "w-full items-center justify-center font-semibold",
       }}
       style={{
         border: !loading
