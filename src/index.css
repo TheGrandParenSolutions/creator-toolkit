@@ -50,7 +50,7 @@ html {
 body {
   font-family: "Manrope", sans-serif;
   color: var(--black);
-  background-color: lighten(var(--brand-main-bg), 20%);
+  background-color: #f9f8f5;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.75;
