@@ -11,7 +11,7 @@ export function convertBytesToMB(sizeInBytes: number, decimals: number = 2): str
 export const MockVideoDetails = {
   "title": "Why Self Improvement Feels Like a Battle And How to Finally Win",
   "channelName": "Sir JBD",
-  "channelLogoUrl": "https://yt3.ggpht.com/ytc/@sirjbd=s88-c-k-c0x00ffffff-no-rj",
+  "channelLogoUrl": "https://yt3.ggpht.com/H08TJ4P1GOuFNEsv4w6b892ictaUQSASqPlVhbvmZE6-jSY4mS_EnCkuPo2sqJh6MudK6GbC=s240-c-k-c0x00ffffff-no-rj",
   "thumbnailUrl": "https://i.ytimg.com/vi_webp/mNkzw9bh0V8/maxresdefault.webp",
   "formats": [
     {

@@ -158,7 +158,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
       </div>
 
       {/* Download Cards */}
-      <div className="grid w-full max-w-md grid-cols-1 gap-4 sm:max-w-3xl">
+      <div className="grid w-full max-w-md grid-cols-2 gap-4 sm:max-w-3xl">
         {filteredFormats.map(format => (
           <Paper
             key={format.formatId}
@@ -241,8 +241,8 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
                 <CTAnimatedButton
                   label="Download"
                   icon={<CTDownloadIcon />}
-                  hoverLabel="Start download"
-                  buttonStyles={"w-[120px] sm:w-[140px]"}
+                  hoverLabel="Start"
+                  buttonStyles={"w-[110px] sm:w-[140px]"}
                   radius={"xl"}
                   onClick={() => downloadVideo(format)}
                   disabled={isDownloading}

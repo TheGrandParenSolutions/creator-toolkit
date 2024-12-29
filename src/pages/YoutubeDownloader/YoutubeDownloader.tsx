@@ -87,7 +87,7 @@ const YouTubeDownloader = () => {
         />
       </Helmet>
 
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-6 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
           <h1 className="flex flex-col items-center justify-center lg:flex-row lg:space-x-2 text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-200">
@@ -167,14 +167,14 @@ const YouTubeDownloader = () => {
         {/* Video Details Section */}
         {videoDetails && videoDetails.formats && (
           <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
-            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit dark:text-gray-200">
+            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-gray-200">
               <Box
                 className="aspect-w-5 aspect-h-4 relative mx-auto flex w-full items-center justify-center rounded-[24px] border-2 border-gray-200 bg-gray-50 p-5 dark:border-black dark:bg-inherit"
               >
                 <YoutubeThumbnail
                   thumbnail={videoDetails.thumbnailUrl}
                   title={videoDetails.title}
-                  channelLogo={videoDetails.channelLogoUrl}
+                  channelLogo={videoDetails.channelLogoUrl ?? undefined}
                   channelName={videoDetails.channelName}
                   uploadedTime={videoDetails.youtubeVideoAge}
                   views={videoDetails.totalViews}
@@ -182,7 +182,7 @@ const YouTubeDownloader = () => {
                 <Box ref={detailsRef}></Box>
               </Box>
               <CTDivider />
-              <div className="mx-5 rounded-md dark:bg-dark-app-content">
+              <div className="rounded-md dark:bg-dark-app-content">
                 <Text className="font-grifter mb-4 text-center text-lg lg:text-2xl font-bold">
                   Download options
                 </Text>
