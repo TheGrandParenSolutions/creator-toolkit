@@ -6,6 +6,7 @@ import LoginSignup from "@src/pages/LoginSignup/LoginSignup";
 import Pricing from "@src/pages/Pricing/Pricing";
 import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
 import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestOnboarding/YoutubeThumbnailTestOnboarding";
+import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 
 const AppRouter = () => {
   return (
@@ -95,6 +96,25 @@ const AppRouter = () => {
                   />
                 </Helmet>
                 <YoutubeThumbnailTestOnboarding />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/thumbnail-test/youtubethumbnailpreview"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Youtube Thumbnail Previewer - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Youtube thumbnail preview for testing YouTube thumbnails with Creator Toolkit."
+                  />
+                </Helmet>
+                <YoutubeThumbnailTestDashboard />
               </>
             </main>
           </MainSection>
