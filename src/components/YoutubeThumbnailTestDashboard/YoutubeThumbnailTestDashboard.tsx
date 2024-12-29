@@ -85,7 +85,7 @@ const YoutubeThumbnailTestDashboard = () => {
                   onKeyDown={e => handleKeyDown(e)}
                   radius={"xl"}
                   classNames={{
-                    input: `w-full p-5 text-xs rounded-full text-base text-sm font-medium border-transparent bg-gray-100 dark:bg-gray-800 ring-2 ring-gray-300 dark:ring-gray-600 text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
+                    input: `w-full p-5 text-xs md:text-sm rounded-full text-base text-sm font-medium border-transparent bg-gray-100 dark:bg-gray-800 ring-2 ring-gray-300 dark:ring-gray-600 text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
                                  focus:ring-[var(--brand-dark-yellow)] ring-gray-300 dark:ring-gray-600
                                 `,
                   }}
