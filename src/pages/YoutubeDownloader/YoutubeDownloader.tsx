@@ -186,7 +186,7 @@ const YouTubeDownloader = () => {
                 <Text className="font-grifter mb-4 text-center text-lg lg:text-2xl font-bold">
                   Download options
                 </Text>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <DownloadOptions
                     videoDetails={videoDetails}
                     videoUrl={youtubeUrl}
