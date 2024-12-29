@@ -33,7 +33,7 @@ export function MainNav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
         {/* Desktop Layout */}
-        <div className="flex w-auto mx-auto lg:mx-0 justify-center lg:justify-start">
+        <div className="flex w-auto mx-0 justify-center lg:justify-start">
           {/* Logo */}
           <Logo />
         </div>
