@@ -154,7 +154,7 @@ export function SideNav() {
         </div>
 
         <div>
-          <Box className={`flex items-center px-2 py-1  lg:hidden`}>
+          <Box className={`sticky bottom-0 flex items-center px-2 py-1  lg:hidden`}>
             <DarkModeToggle />
           </Box>
         </div>
