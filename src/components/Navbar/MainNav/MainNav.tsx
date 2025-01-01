@@ -27,7 +27,7 @@ export function MainNav() {
     <header
       className={`fixed left-12 right-0 top-0 z-40 bg-white transition-all duration-300 dark:!bg-dark-app ${
         isScrolled
-          ? "border border-solid border-gray-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-gray-800 dark:!bg-opacity-85"
+          ? "border border-solid border-gray-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-black dark:!bg-opacity-85"
           : ""
       }`}
     >
