@@ -1,5 +1,5 @@
 import { Avatar, Menu, Tooltip } from "@mantine/core";
-import { AuthContext } from "@src/Context/AuthContext";
+import { AuthContext } from "@src/Context/Auth/AuthContext";
 import { IUser } from "@src/types/AuthenticationTypes";
 import { FC, useContext } from "react";
 import { useNavigate } from "react-router-dom";

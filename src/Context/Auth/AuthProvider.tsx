@@ -4,7 +4,7 @@ import {
   refreshToken,
 } from "@src/Api/Modules/Authentication/AuthenticationService";
 import { IUser } from "@src/types/AuthenticationTypes";
-import { AuthContext } from "@src/Context/AuthContext";
+import { AuthContext } from "@src/Context/Auth/AuthContext";
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

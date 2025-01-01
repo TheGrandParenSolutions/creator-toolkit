@@ -1,24 +1,9 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { SunSolid, MoonSolid } from "@mynaui/icons-react";
+import { ThemeContext } from "@src/Context/Theme/ThemeContext";
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    setDarkMode(localStorage.getItem("theme") === "dark");
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newTheme = !darkMode;
-    setDarkMode(newTheme);
-    if (newTheme) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
     <div

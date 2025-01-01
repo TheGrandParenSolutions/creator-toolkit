@@ -8,7 +8,7 @@ import {
   createUser,
   login,
 } from "@src/Api/Modules/Authentication/AuthenticationService";
-import { AuthContext } from "@src/Context/AuthContext";
+import { AuthContext } from "@src/Context/Auth/AuthContext";
 
 const LoginSignup = () => {
   const { updateAuth } = useContext(AuthContext);

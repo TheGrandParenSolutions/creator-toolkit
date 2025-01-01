@@ -14,6 +14,7 @@ import {
 } from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import DarkModeToggle from "@src/Utility/DarkModeToggle";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -46,9 +47,7 @@ function NavbarLink({
       <UnstyledButton
         onClick={handleNavigation}
         className={`flex items-center rounded-lg p-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-700 ${
-          active
-            ? "bg-gray-200 dark:!bg-gray-700 font-semibold"
-            : ""
+          active ? "bg-gray-200 font-semibold dark:!bg-gray-700" : ""
         }`}
         data-active={active || undefined}
       >
@@ -114,14 +113,14 @@ export function SideNav() {
       {/* Overlay */}
       {panelOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 dark:bg-opacity-75 transition-opacity"
+          className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity dark:bg-opacity-75"
           onClick={() => setIsPanelOpen(false)} // Close SideNav when clicking outside
         />
       )}
 
       {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 dark:border-black bg-white dark:bg-dark-app shadow-sm transition-all duration-300 ${
+        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 dark:border-black dark:bg-dark-app ${
           panelOpen ? "w-64" : "w-16"
         }`}
       >

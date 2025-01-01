@@ -6,10 +6,8 @@ import "./index.css";
 import { MantineProvider } from "@mantine/core";
 import { BrowserRouter } from "react-router-dom";
 import { ScrollRestorationProvider } from "@src/shared/ScrollRestorationProvider/ScrollRestorationProvider.tsx";
-
-// Import HelmetProvider for managing meta tags and SEO
 import { HelmetProvider } from "react-helmet-async";
-import AuthProvider from "@src/Context/AuthProvider.tsx";
+import Providers from "@src/Context/Providers.tsx";
 
 // Define the Mantine theme for consistent styling
 const theme = {
@@ -38,9 +36,9 @@ createRoot(document.getElementById("root")!).render(
       <MantineProvider theme={theme}>
         <BrowserRouter future={{ v7_startTransition: true }}>
           <ScrollRestorationProvider />
-          <AuthProvider>
+          <Providers>
             <App />
-          </AuthProvider>
+          </Providers>
         </BrowserRouter>
       </MantineProvider>
     </HelmetProvider>

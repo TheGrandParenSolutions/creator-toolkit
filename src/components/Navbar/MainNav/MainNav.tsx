@@ -4,8 +4,8 @@ import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import DarkModeToggle from "@src/Utility/DarkModeToggle/DarkModeToggle";
-import { AuthContext } from "@src/Context/AuthContext";
+import DarkModeToggle from "@src/Utility/DarkModeToggle";
+import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
 
 export function MainNav() {
@@ -33,7 +33,7 @@ export function MainNav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
         {/* Desktop Layout */}
-        <div className="flex w-auto mx-0 justify-center lg:justify-start">
+        <div className="mx-0 flex w-auto justify-center lg:justify-start">
           {/* Logo */}
           <Logo />
         </div>
@@ -117,7 +117,7 @@ export function MainNav() {
             ) : (
               <Link
                 to="/login"
-                className="flex px-3 py-1 items-center justify-center rounded-3xl border-2 border-gray-800 text-sm font-semibold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
+                className="flex items-center justify-center rounded-3xl border-2 border-gray-800 px-3 py-1 text-sm font-semibold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
               >
                 Log In
               </Link>
