@@ -13,6 +13,7 @@ import {
 } from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import DarkModeToggle from "@src/Utility/DarkModeToggle";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -70,7 +71,7 @@ function NavbarLink({
   );
 }
 
-const mockdata = [
+const linkContent = [
   { icon: Home, activeIcon: HomeSmileSolid, label: "Home", to: "/" },
   {
     icon: BrandYoutube,
@@ -96,7 +97,7 @@ export function SideNav() {
   const [active, setActive] = useState(0);
   const [panelOpen, setIsPanelOpen] = useState<boolean>(false);
 
-  const links = mockdata.map((link, index) => (
+  const links = linkContent.map((link, index) => (
     <NavbarLink
       {...link}
       key={link.label}
@@ -118,38 +119,44 @@ export function SideNav() {
 
       {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 dark:border-black dark:bg-dark-app ${
+        className={`fixed left-0 top-0 z-50 flex h-screen flex-col justify-between border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 dark:border-black dark:bg-dark-app ${
           panelOpen ? "w-64" : "w-16"
         }`}
       >
-        {/* Header */}
-        <Box
-          className={`flex items-start justify-start px-4 py-2 ${
-            panelOpen ? "justify-start font-semibold" : ""
-          }`}
-        >
-          <Box className="cursor-pointer">
-            <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
-              <UnstyledButton
-                onClick={() => setIsPanelOpen(!panelOpen)}
-                className={`flex items-center rounded-lg p-1 transition-all hover:bg-gray-100 dark:hover:bg-gray-700`}
-                data-active={panelOpen || undefined}
-              >
-                <div className="flex items-center justify-center">
-                  {panelOpen ? (
-                    <PanelLeftCloseSolid className="text-xl dark:text-gray-200" />
-                  ) : (
-                    <PanelLeftOpen className="text-xl dark:text-gray-400" />
-                  )}
-                </div>
-              </UnstyledButton>
-            </Tooltip>
+        <div>
+          <Box
+            className={`flex items-start justify-start px-4 py-2 ${
+              panelOpen ? "justify-start font-semibold" : ""
+            }`}
+          >
+            <Box className="cursor-pointer">
+              <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
+                <UnstyledButton
+                  onClick={() => setIsPanelOpen(!panelOpen)}
+                  className={`flex items-center rounded-lg p-1 transition-all hover:bg-gray-100 dark:hover:bg-gray-700`}
+                  data-active={panelOpen || undefined}
+                >
+                  <div className="flex items-center justify-center">
+                    {panelOpen ? (
+                      <PanelLeftCloseSolid className="text-xl dark:text-gray-200" />
+                    ) : (
+                      <PanelLeftOpen className="text-xl dark:text-gray-400" />
+                    )}
+                  </div>
+                </UnstyledButton>
+              </Tooltip>
+            </Box>
           </Box>
-        </Box>
 
-        {/* Main Links */}
-        <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">
-          {links}
+          <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">
+            {links}
+          </div>
+        </div>
+
+        <div>
+          <Box className={`flex items-center px-2 py-1  lg:hidden`}>
+            <DarkModeToggle />
+          </Box>
         </div>
       </nav>
     </>
