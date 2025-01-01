@@ -19,9 +19,9 @@ const GrowWithUs = () => {
   };
 
   return (
-    <div className="py-12">
+    <div className="max-w-xs py-12  md:max-w-3xl">
       {/* Animated Logos Section */}
-      <div className="mb-12 max-w-3xl antialiased overflow-hidden">
+      <div className="mb-12 overflow-hidden antialiased">
         <Text
           size="lg"
           component="h1"
@@ -37,7 +37,10 @@ const GrowWithUs = () => {
               </div>
             ))}
             {logos.map((logo, index) => (
-              <div key={`duplicate-${index}`} className="logo-item dark:text-gray-300">
+              <div
+                key={`duplicate-${index}`}
+                className="logo-item dark:text-gray-300"
+              >
                 {logo}
               </div>
             ))}
@@ -45,46 +48,37 @@ const GrowWithUs = () => {
         </div>
       </div>
       {/* Call-to-Action Card */}
-      <div className="flex items-center justify-center px-6 py-10">
+      <div className="flex items-center justify-center px-4 py-10">
         <div
-          className="relative w-full max-w-4xl rounded-3xl bg-[#ffd580] p-12 text-black"
+          className="relative rounded-3xl bg-[#ffd580] p-12 text-black"
           style={{
             background: "linear-gradient(135deg, #ffd580 0%, #ffc966 100%)",
           }}
         >
-          <div className="flex items-center justify-between  gap-10">
+          <div className="flex flex-col items-center justify-between gap-6 text-center sm:gap-10 md:flex-row">
             {/* Text Section */}
             <div>
-              <h1 className="font-grifter mb-4 text-2xl font-bold leading-tight md:text-3xl">
-                Grow your channel with <br />
-                Creator Toolkit
+              <h1 className="mb-4 text-lg font-bold leading-tight text-black md:text-3xl lg:text-4xl">
+                Grow your channel with Creator Toolkit
               </h1>
-              <p className="text-sm text-black opacity-90 md:text-base">
+              <p className="text-sm text-black opacity-90 md:text-base lg:text-lg">
                 Get access to all the tools you need to create the highest{" "}
-                <br />
-                converting Thumbnail & Titles.
+                <br className="hidden sm:block" />
+                converting Thumbnails & Titles.
               </p>
             </div>
 
             {/* Button Section */}
-            <div>
+            <div className="flex justify-center sm:justify-end">
               <button
                 onClick={scrollToSection}
-                className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 font-bold text-white  transition hover:bg-gray-800"
+                className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-sm font-bold text-white transition hover:bg-gray-800 md:text-base lg:text-lg"
               >
-                <span>
-                  <Rocket />
-                </span>{" "}
+                <Rocket />
                 Get Started
               </button>
             </div>
           </div>
-
-          {/* Subtle Background Element */}
-          <div
-            className="absolute right-0 top-0 h-[150px] w-[150px] rounded-full bg-[var(--brand-bg-light)] md:h-[200px] md:w-[200px]"
-            style={{ transform: "translate(50%, -50%)", zIndex: -1 }}
-          ></div>
         </div>
       </div>
     </div>
