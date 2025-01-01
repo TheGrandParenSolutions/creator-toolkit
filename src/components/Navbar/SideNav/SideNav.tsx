@@ -14,7 +14,6 @@ import {
 } from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import DarkModeToggle from "@src/Utility/DarkModeToggle";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
