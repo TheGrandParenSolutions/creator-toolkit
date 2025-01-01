@@ -31,7 +31,7 @@ export function MainNav() {
           : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
         {/* Desktop Layout */}
         <div className="mx-0 flex w-auto justify-center lg:justify-start">
           {/* Logo */}
@@ -111,7 +111,8 @@ export function MainNav() {
 
         {/* Mobile Layout */}
         <div className="flex items-center justify-end lg:hidden">
-          <div>
+          <div className="flex items-center justify-center">
+            <DarkModeToggle />
             {isAuthenticated && user ? (
               <UserProfile user={user} />
             ) : (
