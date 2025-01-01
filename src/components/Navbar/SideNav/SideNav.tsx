@@ -119,7 +119,7 @@ export function SideNav() {
 
       {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 flex h-screen flex-col justify-between border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 dark:border-black dark:bg-dark-app ${
+        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 dark:border-black dark:bg-dark-app ${
           panelOpen ? "w-64" : "w-16"
         }`}
       >
@@ -152,9 +152,8 @@ export function SideNav() {
             {links}
           </div>
         </div>
-
         <div>
-          <Box className={`sticky bottom-0 flex items-center px-2 py-1  lg:hidden`}>
+          <Box className={`flex items-center px-3 py-1 lg:hidden`}>
             <DarkModeToggle />
           </Box>
         </div>
