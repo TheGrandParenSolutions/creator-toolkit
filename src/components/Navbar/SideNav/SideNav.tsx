@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Home,
   BrandYoutube,
-  LogoutSolid,
   ImageRectangleSolid,
   BrandYoutubeSolid,
   ImageRectangle,
@@ -125,7 +124,7 @@ export function SideNav() {
       >
         {/* Header */}
         <Box
-          className={`flex items-center justify-center p-4 ${
+          className={`flex items-start justify-start px-4 py-2 ${
             panelOpen ? "justify-start font-semibold" : ""
           }`}
         >
@@ -151,17 +150,6 @@ export function SideNav() {
         {/* Main Links */}
         <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">
           {links}
-        </div>
-
-        {/* Footer */}
-        <div className="mb-4 px-2">
-          <NavbarLink
-            icon={LogoutSolid}
-            activeIcon={LogoutSolid}
-            label="Logout"
-            isExpanded={panelOpen}
-            to="/logout"
-          />
         </div>
       </nav>
     </>

@@ -8,41 +8,28 @@ const DarkModeToggle = () => {
   return (
     <div
       onClick={toggleDarkMode}
-      className={`relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-1000`}
-      style={{
-        background: darkMode
-          ? "linear-gradient(to right, #1e3a8a, #111827)"
-          : "linear-gradient(to right, #87CEEB, #B0E0E6)",
-        boxShadow: darkMode
-          ? "0px 4px 12px rgba(0, 0, 0, 0.5)"
-          : "0px 4px 12px rgba(135, 206, 250, 0.5)",
-      }}
+      className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent transition-all duration-500"
     >
+      {/* Sun Icon */}
       <div
-        style={{
-          boxShadow: "0px 0px 5px 0px yellow",
-        }}
-        className={`absolute flex h-6 w-6 items-center justify-center rounded-full shadow-2xl transition-all duration-1000 ${
+        className={`absolute flex h-7 w-7 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${
           darkMode
-            ? "translate-y-full opacity-0"
-            : "translate-y-0 bg-yellow-300 opacity-100"
+            ? "animate-disappear"
+            : "animate-appear bg-yellow-300 shadow-yellow-500"
         }`}
       >
-        <SunSolid className="h-5 w-5 text-yellow-600" />
+        <SunSolid className="h-6 w-6 text-yellow-600" />
       </div>
 
+      {/* Moon Icon */}
       <div
-        style={{
-          background: "linear-gradient(to right, #1e3a8a, #111827)",
-          boxShadow: "0px 0px 5px 0px var(--custom-gray)",
-        }}
-        className={`absolute flex h-6 w-6 items-center justify-center rounded-full shadow-2xl transition-all duration-1000 ${
+        className={`absolute flex h-7 w-7 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${
           darkMode
-            ? "translate-y-0 bg-zinc-700 opacity-100"
-            : "-translate-y-full opacity-0"
+            ? "animate-appear bg-slate-700 shadow-slate-300"
+            : "animate-disappear"
         }`}
       >
-        <MoonSolid className="h-5 w-5 text-white" />
+        <MoonSolid className="h-6 w-6 text-white" />
       </div>
     </div>
   );

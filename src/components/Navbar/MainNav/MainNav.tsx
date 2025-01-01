@@ -111,7 +111,7 @@ export function MainNav() {
 
         {/* Mobile Layout */}
         <div className="flex items-center justify-end lg:hidden">
-          <div className="">
+          <div>
             {isAuthenticated && user ? (
               <UserProfile user={user} />
             ) : (
