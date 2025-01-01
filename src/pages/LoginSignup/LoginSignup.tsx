@@ -74,7 +74,7 @@ const LoginSignup = () => {
         className="w-full max-w-md bg-[var(--brand-main-bg)] p-6 dark:bg-gray-800"
         style={{
           borderRadius: "16px",
-          border: "1px solid var(--brand-dark-orange)",
+          border: "2px solid var(--brand-dark-orange)",
         }}
       >
         {/* Heading */}
@@ -106,7 +106,7 @@ const LoginSignup = () => {
                 setFormValues({ ...formValues, email: e.target.value })
               }
               required
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
+              className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
             />
           </div>
 
@@ -121,7 +121,7 @@ const LoginSignup = () => {
                 setFormValues({ ...formValues, password: e.target.value })
               }
               required
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
+              className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
             />
           </div>
 

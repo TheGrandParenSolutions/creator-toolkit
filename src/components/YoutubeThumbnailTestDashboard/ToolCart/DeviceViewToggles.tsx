@@ -17,7 +17,7 @@ const DeviceViewToggles = ({
   activeView: ViewModes;
 }) => {
   return (
-    <div className="relative flex w-full max-w-md justify-between rounded-full border-[1px] border-solid border-[var(--brand-dark-orange)] bg-gray-50 dark:bg-gray-800 px-1 py-1">
+    <div className="relative flex w-full max-w-md justify-between rounded-full border-2 border-solid border-[var(--brand-dark-orange)] bg-gray-50 dark:bg-gray-800 px-1 py-1">
       {/* Active Background */}
       <div
         className={`absolute left-0 top-0 h-full w-1/4 rounded-full bg-main-gradient transition-transform duration-300`}

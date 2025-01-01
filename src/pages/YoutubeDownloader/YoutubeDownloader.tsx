@@ -118,10 +118,10 @@ const YouTubeDownloader = () => {
               onKeyDown={handleInputKeyDown}
               placeholder="Paste YouTube link here..."
               aria-label="YouTube URL"
-              className={`text-xs lg:text-base w-full rounded-lg border py-2 pl-4 pr-20 shadow-sm transition hover:shadow-lg focus:shadow-xl focus:outline-none ${
+              className={`text-xs lg:text-base w-full rounded-lg border-2 py-2 pl-4 pr-20 shadow-sm transition hover:shadow-lg focus:shadow-xl focus:outline-none ${
                 loading
                   ? "border-orange-500 text-gray-400"
-                  : "border-gray-300 text-gray-800 dark:border-gray-600 dark:text-gray-200"
+                  : "border-gray-300 text-gray-800 dark:border-black dark:text-gray-200"
               } bg-white dark:bg-gray-800`}
               disabled={loading}
             />

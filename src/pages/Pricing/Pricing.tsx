@@ -83,7 +83,7 @@ const Pricing = () => {
         </Box>
 
         {/* Toggle with Smooth Background Slide */}
-        <div className="relative mb-10 flex w-full max-w-md justify-center rounded-full border-[1px] border-solid border-[var(--brand-dark-orange)] bg-white px-1 py-1 dark:bg-gray-800">
+        <div className="relative mb-10 flex w-full max-w-md justify-center rounded-full border-2 border-solid border-[var(--brand-dark-orange)] bg-white px-1 py-1 dark:bg-gray-800">
           {/* Active Background */}
           <div
             className={`dark:bg-dark-accent absolute left-0 top-0 h-full w-1/2 rounded-full bg-[var(--brand-mid-yellow)] transition-transform duration-300 ${
