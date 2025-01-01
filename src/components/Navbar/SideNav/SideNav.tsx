@@ -121,7 +121,7 @@ export function SideNav() {
 
       {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 dark:border-gray-700 bg-white dark:bg-dark-app shadow-sm transition-all duration-300 ${
+        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 dark:border-black bg-white dark:bg-dark-app shadow-sm transition-all duration-300 ${
           panelOpen ? "w-64" : "w-16"
         }`}
       >
