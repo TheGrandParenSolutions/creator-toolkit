@@ -16,7 +16,14 @@ const tabs = [
       </>
     ),
   },
-  { label: "Monthly", component: <>Monthly <br/> (Best deals) </> },
+  {
+    label: "Monthly",
+    component: (
+      <>
+        Monthly <br /> (Best deals){" "}
+      </>
+    ),
+  },
 ];
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -108,7 +115,7 @@ const Pricing = () => {
           {/* Basic Plan */}
           <Paper
             radius="lg"
-            className="w-full border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 md:max-w-md md:p-6 lg:max-w-lg"
+            className="w-full border border-[--main-yellow] bg-transparent bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:border-2 dark:border-black dark:bg-gray-800 md:max-w-md md:p-6 lg:max-w-lg"
             style={{
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.08)",
             }}
@@ -199,7 +206,7 @@ const Pricing = () => {
           {/* Pro Plan */}
           <Paper
             radius="lg"
-            className="w-full bg-[var(--brand-mid-yellow)] border-[--main-yellow] dark:border-2 dark:border-black p-4 shadow-sm transition-shadow duration-300 hover:shadow-md md:max-w-md md:p-6 lg:max-w-lg"
+            className="w-full border-[--main-yellow] bg-[var(--brand-mid-yellow)] p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:border-2 dark:border-black md:max-w-md md:p-6 lg:max-w-lg"
             style={{
               border: "1px solid #ffd580",
             }}

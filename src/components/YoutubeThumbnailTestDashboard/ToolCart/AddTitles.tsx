@@ -1,8 +1,12 @@
 import { ActionIcon, TextInput } from "@mantine/core";
 import { X } from "@mynaui/icons-react";
-import { useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 
-const AddTitles = () => {
+const AddTitles = ({
+  setActiveTitle,
+}: {
+  setActiveTitle: Dispatch<string>;
+}) => {
   const [titles, setTitles] = useState<string[]>([""]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -14,12 +18,12 @@ const AddTitles = () => {
 
   const handleAddTitle = (index: number) => {
     if (titles[index].trim() !== "") {
-      setTitles((prev) => [...prev, ""]);
+      setTitles(prev => [...prev, ""]);
     }
   };
 
   const handleRemoveTitle = (index: number) => {
-    setTitles((prev) => prev.filter((_, i) => i !== index));
+    setTitles(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleKeyDown = (event: React.KeyboardEvent, index: number) => {
@@ -31,6 +35,12 @@ const AddTitles = () => {
   const handleTitleClick = (index: number) => {
     setActiveIndex(index);
   };
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      setActiveTitle(titles[activeIndex]);
+    }
+  }, [activeIndex, titles]);
 
   return (
     <div className="space-y-4">
@@ -49,14 +59,14 @@ const AddTitles = () => {
             <TextInput
               type="text"
               value={title}
-              onChange={(e) => handleTitleChange(e.target.value, index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
+              onChange={e => handleTitleChange(e.target.value, index)}
+              onKeyDown={e => handleKeyDown(e, index)}
               placeholder={`Title ${index + 1}`}
               radius={"xl"}
               classNames={{
-                input: `w-full p-5 rounded-full text-base text-sm font-medium border-transparent dark:bg-gray-800 ring-0 ring-[var(--main-yellow)] border dark:ring-black dark:border-black border-[var(--main-yellow)] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2 ${
+                input: `w-full p-5 rounded-full text-base text-sm font-medium dark:bg-gray-800 ring-0 ring-[var(--main-yellow)] border dark:ring-black dark:border-black border-[var(--main-yellow)] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-0 ${
                   activeIndex === index
-                    ? "ring-[var(--brand-dark-yellow)]"
+                    ? "border-[3px] !border-[--main-yellow]"
                     : "ring-gray-300 dark:ring-gray-600"
                 }`,
               }}

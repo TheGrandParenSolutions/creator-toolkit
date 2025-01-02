@@ -25,7 +25,7 @@ const CTToggleTabs: React.FC<CTToggleTabsProps> = ({
   };
 
   return (
-    <div className="relative flex w-full max-w-lg items-center justify-between gap-2 rounded-full border border-solid border-[var(--main-yellow)] bg-[--brand-main-bg] p-2 dark:border-2 dark:border-black dark:bg-gray-800">
+    <div className="relative flex w-full max-w-lg items-center justify-between gap-2 rounded-full border border-solid border-[var(--main-yellow)] bg-transparent p-2 dark:border-2 dark:border-black dark:bg-gray-800">
       {tabs.map(({ label, component, tooltip }, index) => {
         const tabButton = (
           <button

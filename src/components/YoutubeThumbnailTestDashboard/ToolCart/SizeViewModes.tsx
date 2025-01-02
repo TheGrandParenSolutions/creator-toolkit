@@ -1,7 +1,13 @@
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
-import { useState } from "react";
+import { Dispatch } from "react";
 
-const SizeViewModes = () => {
+const SizeViewModes = ({
+  activeSizeViewMode,
+  setActiveSizeViewMode,
+}: {
+  activeSizeViewMode: string;
+  setActiveSizeViewMode: Dispatch<string>;
+}) => {
   const views = [
     {
       label: "Youtube view",
@@ -13,13 +19,11 @@ const SizeViewModes = () => {
     },
   ];
 
-  const [activeView, setActiveView] = useState<string>(views[0].label); // Default active view
-
   return (
     <CTToggleTabs
       tabs={views}
-      activeTab={activeView}
-      onToggle={event => setActiveView(event)}
+      activeTab={activeSizeViewMode}
+      onToggle={event => setActiveSizeViewMode(event)}
     />
   );
 };

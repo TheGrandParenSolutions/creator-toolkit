@@ -60,10 +60,10 @@ const LoginSignup = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-50 px-4 dark:bg-dark-app-content dark:text-white">
+    <div className="mt-16 flex flex-col items-center justify-center gap-6  px-4 dark:bg-dark-app-content dark:text-white">
       {/* Logo */}
       <Box
-        className="absolute left-6 top-6 flex cursor-pointer items-center"
+        className="flex cursor-pointer items-center"
         onClick={() => navigate("/")}
       >
         <Logo />
@@ -71,7 +71,7 @@ const LoginSignup = () => {
 
       <Paper
         radius="lg"
-        className="w-full max-w-md border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black  p-6 dark:bg-gray-800"
+        className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2  dark:border-black dark:bg-gray-800"
         style={{
           borderRadius: "16px",
         }}

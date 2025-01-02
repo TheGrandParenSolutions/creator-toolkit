@@ -8,4 +8,6 @@ export interface YoutubeThumbnailProps {
     views?: string;
     uploadedTime?: string;
     viewMode?: ViewModes;
+    dimensionClasses?: string;
+    showDescription?: boolean;
 }

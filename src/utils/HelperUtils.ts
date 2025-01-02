@@ -239,3 +239,47 @@ export const MockVideoDetails = {
   "youtubeVideoAge": "8 days ago",
   "totalViews": "70"
 }
+
+export const deviceSizeModes = {
+  "Browser view": [
+    {
+      label: "Homepage Large (360x205)",
+      dimensions: "360x205",
+      deviceType: "desktop",
+    },
+    {
+      label: "Homepage Small (240x135)",
+      dimensions: "240x135",
+      deviceType: "desktop",
+    },
+    {
+      label: "Sidebar Suggested Video (188x94)",
+      dimensions: "188x94",
+      deviceType: "search",
+    },
+    {
+      label: "Search Result Large (360x202)",
+      dimensions: "360x202",
+      deviceType: "search",
+      showDescription: true,
+    },
+    {
+      label: "Search Result Small (240x135)",
+      dimensions: "240x135",
+      deviceType: "search",
+      showDescription: true,
+    },
+    { label: "Channel Page (270x150)", dimensions: "270x150" },
+    { label: "Channel Page Small (198x112)", dimensions: "198x112" },
+    {
+      label: "Watch Later (540x106)",
+      dimensions: "360x120",
+      deviceType: "search",
+    },
+  ],
+  "Mobile view": [
+    { label: "Mobile Homepage (320x180)", dimensions: "320x180", deviceType: "desktop", showDescription: false },
+    { label: "Mobile Suggested (168x94)", dimensions: "168x94", deviceType: "search", },
+    { label: "Mobile Search (320x180)", dimensions: "320x180" },
+  ],
+};

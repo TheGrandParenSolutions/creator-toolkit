@@ -118,11 +118,11 @@ const YouTubeDownloader = () => {
               onKeyDown={handleInputKeyDown}
               placeholder="Paste YouTube link here..."
               aria-label="YouTube URL"
-              className={`text-xs lg:text-base w-full rounded-3xl border-[0.5px] focus:border-2 dark:border-2 py-2 pl-4 pr-20 shadow-sm transition bg-[--brand-main-bg] hover:shadow-lg focus:shadow-xl focus:outline-none ${
+              className={`text-xs lg:text-base w-full rounded-3xl border-[0.5px] focus:border-2 dark:border-2 py-2 pl-4 pr-20 shadow-sm transition !bg-transparent hover:shadow-lg focus:shadow-xl focus:outline-none ${
                 loading
                   ? "border-orange-500 text-gray-400"
                   : "border-[--main-yellow] text-gray-800 dark:border-black dark:text-gray-200"
-              } bg-white dark:bg-gray-800`}
+              } dark:bg-gray-800`}
               disabled={loading}
             />
             {!loading ? (
@@ -169,7 +169,7 @@ const YouTubeDownloader = () => {
           <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
             <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-gray-200">
               <Box
-                className="aspect-w-5 aspect-h-4 relative max-w-[640px] mx-auto flex w-full items-center justify-center rounded-[24px] border-0 dark:border-2 border-[--main-yellow] bg-[--brand-main-bg] p-5 dark:border-black dark:bg-inherit"
+                className="aspect-w-5 aspect-h-4 relative max-w-[640px] mx-auto flex w-full items-center justify-center rounded-[24px] border dark:border-2 border-[--main-yellow] bg-transparent p-5 dark:border-black dark:bg-inherit"
               >
                 <div className="max-w-[360px]">
                 <YoutubeThumbnail

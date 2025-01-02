@@ -125,8 +125,9 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           placeholder="Select Format"
           classNames={{
             input:
-              "border border-[--main-yellow] dark:border-2 dark:border-black text-black bg-[--brand-main-bg] dark:!bg-gray-800",
-            dropdown: "dark:bg-gray-800 dark:border-2 bg-[--brand-main-bg] dark:border-transparent",
+              "border border-[--main-yellow] dark:border-2 dark:border-black text-black bg-transparent dark:!bg-gray-800",
+            dropdown:
+              "dark:bg-gray-800 dark:border-2 bg-transparent dark:border-transparent",
           }}
           styles={{
             input: {
@@ -137,7 +138,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
         />
 
         {/* Filter Bar for Larger Screens */}
-        <div className="hidden sm:flex justify-center items-center">
+        <div className="hidden items-center justify-center sm:flex">
           <CTToggleTabs
             tabs={filters.map(filter => ({
               label: filter,
@@ -155,7 +156,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           <Paper
             key={format.formatId}
             radius="lg"
-            className="flex flex-col items-center justify-center space-y-4 border border-[--main-yellow] bg-[--brand-main-bg] p-4 shadow-sm transition-all hover:shadow-lg  dark:border-2 dark:border-black dark:bg-gray-800  sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
+            className="flex flex-col items-center justify-center space-y-4 border border-[--main-yellow] bg-transparent p-4 shadow-sm transition-all hover:shadow-lg  dark:border-2 dark:border-black dark:bg-gray-800  sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
           >
             {/* Badge and Format Info */}
             <div className="flex w-full flex-col items-center space-y-2 text-center sm:w-auto sm:items-start sm:text-left md:!flex-row md:items-center md:space-x-4">
