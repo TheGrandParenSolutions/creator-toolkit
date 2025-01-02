@@ -25,7 +25,7 @@ const SizeView: FC<SizeViewProps> = ({ thumbnails, title }) => {
   }));
 
   return (
-    <div className="mx-auto flex w-full flex-col items-start space-y-5 overflow-x-hidden rounded-[24px] px-10 pb-16">
+    <div className="mx-auto flex w-full flex-col items-start space-y-5 overflow-x-hidden rounded-[24px] px-2 pb-16">
       {/* Device Type Toggle Tabs */}
       <div className="mt-2 flex w-full items-center justify-center">
         <CTToggleTabs
@@ -46,7 +46,7 @@ const SizeView: FC<SizeViewProps> = ({ thumbnails, title }) => {
               {deviceType}
             </h1>
             {sizeModes.map(mode => (
-              <div key={mode.label} className="p-4">
+              <div key={mode.label}>
                 <h2 className="my-4 text-xl font-semibold text-zinc-900 dark:text-white">
                   {mode.label}
                 </h2>
