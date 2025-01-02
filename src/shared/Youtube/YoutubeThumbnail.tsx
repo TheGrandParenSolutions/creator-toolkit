@@ -14,18 +14,16 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
 
   return (
     <div
-      className={`flex max-w-[360px] ${
+      className={`flex ${
         mode === "search" ? "flex-col lg:flex-row lg:gap-6" : "flex-col"
       }`}
     >
       {/* Thumbnail Section */}
-      <div
-        className={`overflow-hidden rounded-xl w-full`}
-      >
+      <div className={`w-full  max-w-[360px] overflow-hidden rounded-xl`}>
         <img
           src={thumbnail}
           alt={title}
-          className={`rounded-xl object-cover w-full`}
+          className={`w-full rounded-xl object-cover`}
           style={{ aspectRatio: "16 / 9" }}
         />
       </div>
@@ -34,31 +32,48 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
       <div
         className={`${
           mode === "search"
-            ? "flex flex-col lg:w-2/3 space-y-3 mt-4 lg:mt-0"
-            : "flex flex-col space-y-3 mt-4"
+            ? "flex flex-col space-y-1 lg:mt-0  lg:w-2/3"
+            : "flex flex-row space-y-1"
         }`}
       >
         {/* Title */}
-        <h1
-          className={`text-xs lg:text-lg font-semibold text-gray-800 dark:text-gray-100 ${
-            mode === "search" ? "truncate" : ""
-          }`}
-        >
-          {title}
-        </h1>
 
-        {/* Channel Details */}
-        <div className="flex items-center space-x-3">
+        {mode !== "search" && (
           <img
-            className="h-8 w-8 rounded-full lg:h-12 lg:w-12"
+            className="mr-3 mt-3 h-8 w-8 rounded-full "
             src={channelLogo}
             alt={`${channelName} logo`}
           />
+        )}
+
+        {/* Channel Details */}
+        <div className="flex flex-col items-start justify-start">
+          <h1
+            className={`text-xs font-semibold text-gray-800 dark:text-gray-100 lg:text-lg ${
+              mode === "search" ? "truncate" : ""
+            }`}
+          >
+            {title}
+          </h1>
           <div>
-            <p className="text-xs lg:text-base text-gray-800 dark:text-gray-200">
-              {channelName}
-            </p>
-            <p className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+            {mode === "search" ? (
+              <div className="flex my-2 items-end gap-2">
+                <img
+                  className=" h-6 w-6 rounded-full "
+                  src={channelLogo}
+                  alt={`${channelName} logo`}
+                />
+                <p className="text-xs text-gray-800 dark:text-gray-200 lg:text-base">
+                  {channelName}
+                </p>
+              </div>
+            ) : (
+              <p className="text-xs text-gray-800 dark:text-gray-200 lg:text-base">
+                {channelName}
+              </p>
+            )}
+
+            <p className="text-xs text-gray-600 dark:text-gray-400 lg:text-sm">
               {views} • {uploadedTime}
             </p>
           </div>
@@ -66,7 +81,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
 
         {/* Additional Description (Only for search mode) */}
         {mode === "search" && (
-          <p className="text-sm lg:text-base text-gray-500 dark:text-gray-400 line-clamp-3">
+          <p className="line-clamp-3 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             vitae justo vitae libero pharetra scelerisque. Mauris id massa
             magna...

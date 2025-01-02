@@ -4,10 +4,30 @@ import { ViewModes } from "@src/PropTypes.ts/PropTypes";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
 
 const views = [
-  { label: "Desktop", component: <Desktop />, id: "desktop" },
-  { label: "Search", component: <Search />, id: "search" },
-  { label: "Tablet", component: <Sidebar />, id: "tablet" },
-  { label: "Mobile", component: <Mobile />, id: "mobile" },
+  {
+    label: "Desktop",
+    component: <Desktop />,
+    id: "desktop",
+    tooltip: "Youtube desktop layout preview.",
+  },
+  {
+    label: "Search",
+    component: <Search />,
+    id: "search",
+    tooltip: "Thumbnail in Youtube search results.",
+  },
+  {
+    label: "Tablet",
+    component: <Sidebar />,
+    id: "tablet",
+    tooltip: "Youtube tablet layout preview.",
+  },
+  {
+    label: "Mobile",
+    component: <Mobile />,
+    id: "mobile",
+    tooltip: "Youtube mobile layout preview.",
+  },
 ];
 
 const DeviceViewToggles = ({

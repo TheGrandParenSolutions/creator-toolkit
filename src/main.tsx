@@ -15,9 +15,9 @@ const theme = {
     Tooltip: {
       styles: {
         tooltip: {
-          fontSize: "14px",
+          fontSize: "12px",
           padding: "4px 8px",
-          borderRadius: "4px",
+          borderRadius: "20px",
           backgroundColor: "#333",
           color: "#fff",
         },

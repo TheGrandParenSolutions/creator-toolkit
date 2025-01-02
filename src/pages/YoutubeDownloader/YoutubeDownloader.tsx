@@ -169,8 +169,9 @@ const YouTubeDownloader = () => {
           <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
             <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-gray-200">
               <Box
-                className="aspect-w-5 aspect-h-4 relative mx-auto flex w-full items-center justify-center rounded-[24px] border-0 dark:border-2 border-[--main-yellow] bg-[--brand-main-bg] p-5 dark:border-black dark:bg-inherit"
+                className="aspect-w-5 aspect-h-4 relative max-w-[640px] mx-auto flex w-full items-center justify-center rounded-[24px] border-0 dark:border-2 border-[--main-yellow] bg-[--brand-main-bg] p-5 dark:border-black dark:bg-inherit"
               >
+                <div className="max-w-[360px]">
                 <YoutubeThumbnail
                   thumbnail={videoDetails.thumbnailUrl}
                   title={videoDetails.title}
@@ -179,6 +180,8 @@ const YouTubeDownloader = () => {
                   uploadedTime={videoDetails.youtubeVideoAge}
                   views={videoDetails.totalViews}
                 />
+                </div>
+                
                 <Box ref={detailsRef}></Box>
               </Box>
               <CTDivider />

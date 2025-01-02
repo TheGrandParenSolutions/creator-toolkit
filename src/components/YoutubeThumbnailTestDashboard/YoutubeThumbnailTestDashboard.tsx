@@ -62,76 +62,85 @@ const YoutubeThumbnailTestDashboard = () => {
       </aside>
 
       <div className="no-scrollbar flex w-full flex-col items-center scroll-smooth bg-light-app p-0 transition-colors duration-300 dark:bg-dark-app-content sm:overflow-y-scroll md:p-4 md:px-6">
-        <div className="dark:bg-dark-navigation top-0 z-[200] mb-6 w-full bg-light-app pb-1">
-          <div className="dark:bg-dark-navigation relative z-20 flex h-[56px] w-full items-center justify-between bg-light-app">
-            <div id="logos" className="hidden items-center sm:ml-4 sm:flex">
-              <BrandYoutubeSolid
-                size={24}
-                className="hidden text-red-600 lg:block"
-              />
-            </div>
+        <div className={
+          `${activeView === "tablet" && "max-w-[760px]"} ${activeView === "search" && "max-w-[960px]"}`
+        }>
+          <div className="dark:bg-dark-navigation top-0 z-[200] mb-6 w-full bg-light-app pb-1">
+            <div className="dark:bg-dark-navigation relative z-20 flex h-[56px] w-full items-center justify-between bg-light-app">
+              <div id="logos" className="hidden items-center sm:ml-4 sm:flex">
+                <BrandYoutubeSolid
+                  size={24}
+                  className="hidden text-red-600 lg:block"
+                />
+              </div>
 
-            <div
-              id="search_bar"
-              className="mx-2 flex flex-1 items-center sm:mx-4"
-              style={{ maxWidth: 720 }}
-            >
-              <div className="mx-auto w-full max-w-sm">
-                <TextInput
-                  type="text"
-                  value={searchValue}
-                  placeholder={"Search - get live results from YouTube"}
-                  onChange={e => handleYtSearchChange(e)}
-                  onKeyDown={e => handleKeyDown(e)}
-                  radius={"xl"}
-                  classNames={{
-                    input: `w-full p-5 rounded-full text-base text-sm border-transparent dark:bg-gray-800 border border-solid ring-[0.5px] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
+              <div
+                id="search_bar"
+                className="mx-2 flex flex-1 items-center sm:mx-4"
+                style={{ maxWidth: 720 }}
+              >
+                <div className="mx-auto w-full max-w-sm">
+                  <TextInput
+                    type="text"
+                    value={searchValue}
+                    placeholder={"Search - get live results from YouTube"}
+                    onChange={e => handleYtSearchChange(e)}
+                    onKeyDown={e => handleKeyDown(e)}
+                    radius={"xl"}
+                    classNames={{
+                      input: `w-full p-5 rounded-full text-base text-sm border-transparent dark:bg-gray-800 border border-solid ring-[0.5px] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
                  focus:ring-[var(--brand-dark-yellow)] ring-gray-300 dark:ring-gray-600
                                 `,
-                  }}
-                  rightSection={
-                    <div className="flex items-center space-x-2">
-                      <ActionIcon
-                        className="mr-2"
-                        radius="xl"
-                        size={"sm"}
-                        variant="light"
-                        onClick={() => {
-                          findYtVideos();
-                        }}
-                        style={{
-                          backgroundColor: "var(--brand-dark-yellow)",
-                        }}
-                      >
-                        <Search size={14} stroke={2.5} color="black" />
-                      </ActionIcon>
-                    </div>
-                  }
-                />
+                    }}
+                    rightSection={
+                      <div className="flex items-center space-x-2">
+                        <ActionIcon
+                          className="mr-2"
+                          radius="xl"
+                          size={"sm"}
+                          variant="light"
+                          onClick={() => {
+                            findYtVideos();
+                          }}
+                          style={{
+                            backgroundColor: "var(--brand-dark-yellow)",
+                          }}
+                        >
+                          <Search size={14} stroke={2.5} color="black" />
+                        </ActionIcon>
+                      </div>
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className=" w-full px-4">
-          <div
-            className={`grid ${
-              activeView === "mobile" || activeView === "search"
-                ? "grid-cols-1"
-                : "grid-cols-2 sm:grid-cols-2"
-            } gap-4`}
-          >
-            {availableThumbnails.map((thumbnail, index) => (
-              <YoutubeThumbnail
-                key={index}
-                thumbnail={thumbnail}
-                viewMode={activeView}
-              />
-            ))}
+          <div className="w-full px-4">
+            <div
+              className={`grid ${
+                activeView === "mobile" || activeView === "search"
+                  ? "grid-cols-1"
+                  : "grid-cols-2 sm:grid-cols-2"
+              } gap-4`}
+            >
+              {availableThumbnails.map((thumbnail, index) => (
+                <div
+                  className={`
+              ${activeView === "mobile" && "mx-auto"} mx-10`}
+                >
+                  <YoutubeThumbnail
+                    key={index}
+                    thumbnail={thumbnail}
+                    viewMode={activeView}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-center justify-center space-y-4 py-6 text-sm text-gray-800 dark:text-gray-300">
+        {/* <div className="mt-8 flex flex-col items-center justify-center space-y-4 py-6 text-sm text-gray-800 dark:text-gray-300">
           <div className="flex items-center space-x-2 text-xs">
             <a
               href="/ratemythumbnail"
@@ -155,7 +164,7 @@ const YoutubeThumbnailTestDashboard = () => {
           >
             support@creatortoolkit.com
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
