@@ -125,8 +125,8 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           placeholder="Select Format"
           classNames={{
             input:
-              "border border-[--brand-light-orange] dark:border-2 dark:border-black text-black dark:!bg-gray-800",
-            dropdown: "dark:bg-gray-800 dark:border-2 dark:border-transparent",
+              "border border-[--main-yellow] dark:border-2 dark:border-black text-black bg-[--brand-main-bg] dark:!bg-gray-800",
+            dropdown: "dark:bg-gray-800 dark:border-2 bg-[--brand-main-bg] dark:border-transparent",
           }}
           styles={{
             input: {
