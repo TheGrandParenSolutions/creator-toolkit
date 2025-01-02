@@ -71,10 +71,9 @@ const LoginSignup = () => {
 
       <Paper
         radius="lg"
-        className="w-full max-w-md bg-[var(--brand-main-bg)] p-6 dark:bg-gray-800"
+        className="w-full max-w-md border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black  p-6 dark:bg-gray-800"
         style={{
           borderRadius: "16px",
-          border: "2px solid var(--brand-dark-orange)",
         }}
       >
         {/* Heading */}
