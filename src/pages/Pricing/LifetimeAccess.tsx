@@ -8,7 +8,6 @@ const LifetimeAccess = () => {
         radius="lg"
         className="w-full max-w-3xl border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black dark:bg-gray-800 text-black dark:!text-white p-6 md:p-8"
         style={{
-          border: "1px solid var(--brand-dark-orange)",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
         }}
       >
