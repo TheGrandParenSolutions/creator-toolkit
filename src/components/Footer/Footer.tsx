@@ -19,7 +19,7 @@ const Footer = () => {
 
   if (isHidden) return <></>;
   return (
-    <footer className="ml-6 border border-solid border-gray-200 bg-white p-12 text-black shadow-xl dark:border-gray-700 dark:bg-dark-app-content dark:text-white">
+    <footer className="ml-6 mt-10 border-t border-solid border-gray-100 bg-white p-12 text-black shadow-xl dark:border-black dark:bg-dark-app-content dark:text-white">
       {/* Logo */}
       <div className="mb-10">
         <Logo />

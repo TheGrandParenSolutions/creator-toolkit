@@ -21,6 +21,7 @@ import {
   downloadVideoFormat,
   getDownloadProgress,
 } from "@src/services/YoutubeDownloaderApi";
+import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
 
 const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   videoDetails,
@@ -122,38 +123,29 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           onChange={value => setSelectedFilter(value || "All Formats")}
           data={filters.map(filter => ({ value: filter, label: filter }))}
           placeholder="Select Format"
+          classNames={{
+            input:
+              "border border-[--brand-light-orange] dark:border-2 dark:border-black text-black dark:!bg-gray-800",
+            dropdown: "dark:bg-gray-800 dark:border-2 dark:border-transparent",
+          }}
           styles={{
             input: {
               backgroundColor: "var(--dark-app-content)", // Input field background
               color: "var(--brand-gray)", // Text color for the input field
-              borderColor: "var(--brand-dark-orange)", // Border color
             },
           }}
         />
 
         {/* Filter Bar for Larger Screens */}
-        <div className="relative hidden w-full justify-around rounded-full border border-[var(--brand-dark-orange)] bg-white px-2 py-1 shadow-sm dark:bg-dark-app-content sm:flex">
-          <div
-            className={`absolute left-0 top-0 h-full w-1/4 rounded-full bg-main-gradient transition-transform duration-300`}
-            style={{
-              transform: `translateX(${
-                filters.indexOf(selectedFilter) * 100
-              }%)`,
-            }}
-          ></div>
-          {filters.map(filter => (
-            <button
-              key={filter}
-              className={`relative z-10 w-1/4 text-center text-sm font-medium lg:text-base ${
-                selectedFilter === filter
-                  ? "text-black"
-                  : "text-gray-600 dark:text-gray-400"
-              }`}
-              onClick={() => setSelectedFilter(filter)}
-            >
-              {filter}
-            </button>
-          ))}
+        <div className="hidden sm:flex justify-center items-center">
+          <CTToggleTabs
+            tabs={filters.map(filter => ({
+              label: filter,
+              component: filter, // Render filter text as the component
+            }))}
+            activeTab={selectedFilter}
+            onToggle={selectedTab => setSelectedFilter(selectedTab)}
+          />
         </div>
       </div>
 
@@ -163,10 +155,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           <Paper
             key={format.formatId}
             radius="lg"
-            className="flex flex-col items-center justify-center space-y-4 bg-white p-4 shadow-md transition-all hover:shadow-lg dark:bg-dark-app-content sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
-            style={{
-              border: "1px solid var(--brand-dark-orange)",
-            }}
+            className="flex flex-col items-center justify-center space-y-4 border border-[--main-yellow] bg-[--brand-main-bg] p-4 shadow-sm transition-all hover:shadow-lg  dark:border-2 dark:border-black dark:bg-gray-800  sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
           >
             {/* Badge and Format Info */}
             <div className="flex w-full flex-col items-center space-y-2 text-center sm:w-auto sm:items-start sm:text-left md:!flex-row md:items-center md:space-x-4">
@@ -192,7 +181,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
 
             {/* Download Button and Progress */}
             <div className="flex w-full flex-col items-center space-y-2 sm:w-auto sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
-              {(downloadProgress[format.formatId] !== undefined) ? (
+              {downloadProgress[format.formatId] !== undefined ? (
                 downloadProgress[format.formatId] === 100 ? (
                   <Box className="flex items-center space-x-2">
                     <CTCheckIcon />

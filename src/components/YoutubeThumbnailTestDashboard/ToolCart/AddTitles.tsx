@@ -54,7 +54,7 @@ const AddTitles = () => {
               placeholder={`Title ${index + 1}`}
               radius={"xl"}
               classNames={{
-                input: `w-full p-5 rounded-full text-base text-sm font-medium border-transparent bg-gray-100 dark:bg-gray-800 ring-2 ring-gray-300 dark:ring-gray-600 text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2 ${
+                input: `w-full p-5 rounded-full text-base text-sm font-medium border-transparent dark:bg-gray-800 ring-0 ring-[var(--main-yellow)] border dark:ring-black dark:border-black border-[var(--main-yellow)] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2 ${
                   activeIndex === index
                     ? "ring-[var(--brand-dark-yellow)]"
                     : "ring-gray-300 dark:ring-gray-600"

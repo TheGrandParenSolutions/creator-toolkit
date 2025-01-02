@@ -20,9 +20,8 @@ const HowItWorks = () => {
         {/* Card 1 */}
         <Paper
           radius="lg"
-          className="flex flex-col items-center justify-start w-full max-w-sm p-6 bg-white dark:bg-gray-800 dark:text-white shadow-md"
+          className="flex flex-col items-center border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black justify-start w-full max-w-sm p-6 bg-white dark:bg-gray-800 dark:text-white shadow-md"
           style={{
-            border: "1px solid var(--brand-dark-orange)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
           }}
         >
@@ -45,9 +44,8 @@ const HowItWorks = () => {
         {/* Card 2 */}
         <Paper
           radius="lg"
-          className="flex flex-col items-center justify-start w-full max-w-sm p-6 bg-white dark:bg-gray-800 dark:text-white shadow-md"
+          className="flex flex-col items-center justify-start w-full max-w-sm p-6 border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black bg-white dark:bg-gray-800 dark:text-white shadow-md"
           style={{
-            border: "1px solid var(--brand-dark-orange)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
           }}
         >
@@ -70,9 +68,8 @@ const HowItWorks = () => {
         {/* Card 3 */}
         <Paper
           radius="lg"
-          className="flex flex-col items-center justify-start w-full max-w-sm p-6 bg-white dark:bg-gray-800 dark:text-white shadow-md"
+          className="flex flex-col items-center justify-start w-full max-w-sm p-6 border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black bg-white dark:bg-gray-800 dark:text-white shadow-md"
           style={{
-            border: "1px solid var(--brand-dark-orange)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
           }}
         >

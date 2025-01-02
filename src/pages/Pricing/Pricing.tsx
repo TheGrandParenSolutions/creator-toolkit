@@ -5,7 +5,19 @@ import LifetimeAccess from "@src/pages/Pricing/LifetimeAccess";
 import HowItWorks from "@src/pages/Pricing/HowItWorks";
 import GrowWithUs from "@src/pages/Pricing/GrowWithUs";
 import CTDivider from "@src/shared/Divider/CTDivider";
-
+import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
+const tabs = [
+  {
+    label: "Annual",
+    component: (
+      <>
+        Annual <br />
+        (2 months free)
+      </>
+    ),
+  },
+  { label: "Monthly", component: <>Monthly <br/> (Best deals) </> },
+];
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
 
@@ -83,32 +95,12 @@ const Pricing = () => {
         </Box>
 
         {/* Toggle with Smooth Background Slide */}
-        <div className="relative mb-10 flex w-full max-w-md justify-center rounded-full border-2 border-solid border-[var(--brand-dark-orange)] bg-white px-1 py-1 dark:bg-gray-800">
-          {/* Active Background */}
-          <div
-            className={`dark:bg-dark-accent absolute left-0 top-0 h-full w-1/2 rounded-full bg-[var(--brand-mid-yellow)] transition-transform duration-300 ${
-              isAnnual ? "translate-x-0" : "translate-x-full"
-            }`}
-          ></div>
-
-          {/* Buttons */}
-          <button
-            onClick={() => setIsAnnual(true)}
-            className={`relative z-10 w-1/2 py-1 text-center text-xs font-semibold md:py-1.5 md:text-base lg:text-lg ${
-              isAnnual ? "text-black" : "text-gray-600 dark:text-gray-400"
-            }`}
-          >
-            Annual <br />
-            (2 months free)
-          </button>
-          <button
-            onClick={() => setIsAnnual(false)}
-            className={`relative z-10 w-1/2 py-1 text-center text-sm font-semibold md:py-1.5 md:text-base lg:text-lg ${
-              !isAnnual ? "text-black" : "text-gray-600 dark:text-gray-400"
-            }`}
-          >
-            Monthly
-          </button>
+        <div className="relative mb-10 w-full max-w-md">
+          <CTToggleTabs
+            tabs={tabs}
+            activeTab={isAnnual ? "Annual" : "Monthly"}
+            onToggle={selectedTab => setIsAnnual(selectedTab === "Annual")}
+          />
         </div>
 
         {/* Pricing Cards */}
@@ -116,9 +108,8 @@ const Pricing = () => {
           {/* Basic Plan */}
           <Paper
             radius="lg"
-            className="w-full bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 md:max-w-md md:p-6 lg:max-w-lg"
+            className="w-full border border-[--main-yellow] bg-[--brand-main-bg] dark:border-2 dark:border-black bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 md:max-w-md md:p-6 lg:max-w-lg"
             style={{
-              border: "1px solid var(--brand-dark-orange)",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.08)",
             }}
           >
@@ -208,7 +199,7 @@ const Pricing = () => {
           {/* Pro Plan */}
           <Paper
             radius="lg"
-            className="w-full bg-[var(--brand-mid-yellow)] p-4 shadow-sm transition-shadow duration-300 hover:shadow-md md:max-w-md md:p-6 lg:max-w-lg"
+            className="w-full bg-[var(--brand-mid-yellow)] border-[--main-yellow] dark:border-2 dark:border-black p-4 shadow-sm transition-shadow duration-300 hover:shadow-md md:max-w-md md:p-6 lg:max-w-lg"
             style={{
               border: "1px solid #ffd580",
             }}

@@ -38,7 +38,7 @@ const YoutubeThumbnailTestDashboard = () => {
   return (
     <div className="flex flex-col scroll-smooth transition-all duration-500 sm:overflow-y-hidden md:flex-row lg:h-[calc(100vh-58px)]">
       {/* Sidebar */}
-      <aside className="no-scrollbar border-background-secondary px-global mx-auto my-6 h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-lg border-2 border-solid border-gray-100 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
+      <aside className="no-scrollbar border-background-secondary px-global mx-auto my-6 h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-gray-50 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
         <div className="h-full space-y-6 scroll-smooth px-2">
           <SizeViewModes />
           <CTDivider />
@@ -76,7 +76,7 @@ const YoutubeThumbnailTestDashboard = () => {
               className="mx-2 flex flex-1 items-center sm:mx-4"
               style={{ maxWidth: 720 }}
             >
-              <div className="mx-auto w-full max-w-[600px]">
+              <div className="mx-auto w-full max-w-sm">
                 <TextInput
                   type="text"
                   value={searchValue}
@@ -85,8 +85,8 @@ const YoutubeThumbnailTestDashboard = () => {
                   onKeyDown={e => handleKeyDown(e)}
                   radius={"xl"}
                   classNames={{
-                    input: `w-full p-5 text-xs md:text-sm rounded-full text-base text-sm font-medium border-transparent bg-gray-100 dark:bg-gray-800 ring-2 ring-gray-300 dark:ring-gray-600 text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
-                                 focus:ring-[var(--brand-dark-yellow)] ring-gray-300 dark:ring-gray-600
+                    input: `w-full p-5 rounded-full text-base text-sm border-transparent dark:bg-gray-800 border border-solid ring-[0.5px] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
+                 focus:ring-[var(--brand-dark-yellow)] ring-gray-300 dark:ring-gray-600
                                 `,
                   }}
                   rightSection={
@@ -118,7 +118,7 @@ const YoutubeThumbnailTestDashboard = () => {
             className={`grid ${
               activeView === "mobile" || activeView === "search"
                 ? "grid-cols-1"
-                : "grid-cols-2 sm:grid-cols-3"
+                : "grid-cols-2 sm:grid-cols-2"
             } gap-4`}
           >
             {availableThumbnails.map((thumbnail, index) => (

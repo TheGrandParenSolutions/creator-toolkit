@@ -41,6 +41,7 @@
   --brand--light-yellow: #ffd580;
   --brand-dark-yellow: #ffab00;
   --brand-mid-yellow: rgb(255, 213, 128);
+  --brand-divider-color: "#fbf0c9";
 }
 
 html {

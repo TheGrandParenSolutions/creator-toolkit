@@ -32,7 +32,7 @@ const ThumbnailCollector = ({
       </h2>
       <div className="grid grid-cols-2 gap-3">
         {/* Upload Button */}
-        <div className="flex h-20 w-full cursor-pointer items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 hover:border-[var(--brand-dark-yellow)] hover:text-[var(--brand-dark-yellow)] dark:border-gray-700 dark:hover:border-[var(--brand-mid-yellow)]">
+        <div className="flex h-20 w-full cursor-pointer items-center justify-center rounded-2xl border border-[var(--main-yellow)] bg-[--brand-main-bg] dark:border-2 dark:bg-gray-800 hover:border-[var(--brand-dark-yellow)] hover:text-[var(--brand-dark-yellow)] dark:border-black dark:hover:border-[var(--brand-mid-yellow)]">
           <label className="flex h-full w-full cursor-pointer items-center justify-center">
             <input
               type="file"
