@@ -194,7 +194,7 @@ const YoutubeToText: FC = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap items-center gap-1">
+                <div className="flex flex-wrap justify-center items-center gap-1">
                   {/* Download As Dropdown */}
                   <Menu
                     trigger="click-hover"
