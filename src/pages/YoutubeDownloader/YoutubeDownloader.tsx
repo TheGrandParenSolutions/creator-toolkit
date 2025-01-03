@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Card, Text, Notification, Loader, Box, Button } from "@mantine/core";
+import { Card, Text, Notification, Box } from "@mantine/core";
 import { getVideoDetails } from "@src/services/YoutubeDownloaderApi";
 import { BrandYoutubeSolid } from "@mynaui/icons-react";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
@@ -89,7 +89,7 @@ const YouTubeDownloader = () => {
         </div>
 
         {/* Input Section */}
-        <div className="flex w-full max-w-3xl flex-col items-center gap-4 space-y-3 lg:space-x-3 lg:space-y-0">
+        <div className="flex w-full max-w-2xl flex-col items-center gap-4 space-y-3 lg:space-x-3 lg:space-y-0">
           <div className="w-full">
             <CTInput
               value={youtubeUrl}
@@ -100,13 +100,6 @@ const YouTubeDownloader = () => {
               disabled={loading}
             />
           </div>
-          <Button
-            className="rounded-3xl bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800"
-            onClick={handleFetchVideoDetails}
-            disabled={loading}
-          >
-            {loading ? <Loader size="xs" color="white" /> : "Convert"}
-          </Button>
         </div>
 
         {/* Error Notification */}

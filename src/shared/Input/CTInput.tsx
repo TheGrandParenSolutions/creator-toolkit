@@ -1,6 +1,10 @@
 import React, { FC } from "react";
-import { Loader } from "@mantine/core";
-import { ClipboardSolid, XCircleSolid } from "@mynaui/icons-react";
+import { ActionIcon, Loader, Tooltip } from "@mantine/core";
+import {
+  ArrowRightCircleSolid,
+  ClipboardSolid,
+  XCircleSolid,
+} from "@mynaui/icons-react";
 
 interface CTInputProps {
   value: string;
@@ -38,6 +42,12 @@ const CTInput: FC<CTInputProps> = ({
     }
   };
 
+  const handleButtonClick = () => {
+    if (onSubmit) {
+      onSubmit();
+    }
+  };
+
   return (
     <div className="relative w-full">
       <input
@@ -57,21 +67,51 @@ const CTInput: FC<CTInputProps> = ({
         <>
           {/* Paste Button */}
           <button
-            className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="absolute right-20 top-1/2 flex -translate-y-1/2 items-center rounded-full p-2"
             onClick={handlePaste}
             aria-label="Paste Input"
             disabled={disabled}
           >
-            <ClipboardSolid className="h-4 w-4" />
+            <ActionIcon
+              size="sm"
+              radius={"xl"}
+              color="gray"
+              variant="transparent"
+            >
+              <Tooltip label="Paste">
+                <ClipboardSolid />
+              </Tooltip>
+            </ActionIcon>
           </button>
           {/* Clear Button */}
           <button
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="absolute right-12 top-1/2 flex -translate-y-1/2 items-center rounded-full p-2"
             onClick={handleClear}
             aria-label="Clear Input"
             disabled={disabled}
           >
-            <XCircleSolid className="h-4 w-4" />
+            <ActionIcon
+              size="sm"
+              radius={"xl"}
+              color="gray"
+              variant="transparent"
+            >
+              <Tooltip label="Clear">
+                <XCircleSolid />
+              </Tooltip>
+            </ActionIcon>
+          </button>
+          <button
+            className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center rounded-full p-2"
+            onClick={handleButtonClick}
+            aria-label="Submit Input"
+            disabled={disabled}
+          >
+            <ActionIcon size="sm" radius={"xl"} color="yellow">
+              <Tooltip label="Go">
+                <ArrowRightCircleSolid />
+              </Tooltip>
+            </ActionIcon>
           </button>
         </>
       ) : (
