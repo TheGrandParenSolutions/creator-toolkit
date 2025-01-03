@@ -42,7 +42,7 @@ const YoutubeThumbnailTestDashboard = () => {
 
   return (
     <div className="flex flex-col scroll-smooth transition-all duration-500 sm:overflow-y-hidden md:flex-row lg:h-[calc(100vh-58px)]">
-      <aside className="no-scrollbar border-background-secondary px-global mx-auto h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-gray-50 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
+      <aside className="no-scrollbar border-background-secondary px-global mx-auto mb-6 h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-gray-100 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
         <div className="h-full space-y-6 scroll-smooth px-2">
           <SizeViewModes
             activeSizeViewMode={activeSizeViewMode}

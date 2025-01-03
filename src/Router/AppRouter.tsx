@@ -5,8 +5,9 @@ import MainSection from "@src/components/MainSection/MainSection";
 import LoginSignup from "@src/pages/LoginSignup/LoginSignup";
 import Pricing from "@src/pages/Pricing/Pricing";
 import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
-import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestOnboarding/YoutubeThumbnailTestOnboarding";
+import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestAndPreview/YoutubeThumbnailTestOnboarding";
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
+import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
 
 const AppRouter = () => {
   return (
@@ -115,6 +116,25 @@ const AppRouter = () => {
                   />
                 </Helmet>
                 <YoutubeThumbnailTestDashboard />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/YoutubeToText"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Youtube to Text - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Welcome to Youtube to Text online converter, where you can easily convert any video from popular platforms like Youtube to text. Whether it's a regular video, a live stream, or a short, our tool can handle it all in Creator Toolkit."
+                  />
+                </Helmet>
+                <YoutubeToText />
               </>
             </main>
           </MainSection>

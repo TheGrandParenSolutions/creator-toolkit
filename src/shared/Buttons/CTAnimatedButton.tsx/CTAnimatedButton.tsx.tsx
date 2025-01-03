@@ -1,5 +1,5 @@
 import { Button, ButtonProps, Loader } from "@mantine/core";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface AnimatedButtonProps extends ButtonProps {
@@ -27,14 +27,27 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const navigate = useNavigate();
+
+  // Check for touch devices
+  useEffect(() => {
+    const checkTouchDevice = () => {
+      setIsTouchDevice(
+        "ontouchstart" in window || navigator.maxTouchPoints > 0,
+      );
+    };
+    checkTouchDevice();
+    window.addEventListener("resize", checkTouchDevice);
+    return () => window.removeEventListener("resize", checkTouchDevice);
+  }, []);
 
   return (
     <Button
       {...props}
       disabled={loading}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
+      onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
       onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         onClick?.(e); // Call custom click handler if provided
         if (to) {
@@ -59,15 +72,13 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
             : "#fff"
           : undefined,
       }}
-      className={`relative flex items-center justify-center overflow-hidden border bg-white text-black transition-all duration-300 ${buttonStyles} ${
+      className={`relative border-none flex items-center justify-center overflow-hidden border bg-white text-black transition-all duration-300 ${buttonStyles} ${
         loading &&
         "disabled:border-slate-200 disabled:bg-gray-400 disabled:text-slate-500 disabled:shadow-none"
       }`}
     >
       {loading ? (
-        <>
-          <Loader size={"sm"} color="black" />
-        </>
+        <Loader size={"sm"} color="black" />
       ) : (
         <>
           <span
@@ -77,9 +88,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
                 : "translate-y-0 opacity-100"
             }`}
           >
-            <span
-              className={`flex items-center justify-center gap-1 text-inherit text-xs md:text-base `}
-            >
+            <span className="flex items-center justify-center gap-1 text-xs text-inherit md:text-base">
               {icon && !isHovered && icon}
               {label}
             </span>

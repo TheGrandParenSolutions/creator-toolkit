@@ -53,7 +53,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
           />
         )}
 
-        <div className="flex flex-col items-start justify-start gap-2">
+        <div className="flex flex-col items-start justify-start">
           <h1
             className={`whitespace-pre-line text-sm font-medium text-gray-800 dark:text-gray-100 lg:text-lg ${
               mode === "search" ? "truncate" : ""

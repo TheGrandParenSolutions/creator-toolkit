@@ -1,22 +1,21 @@
-import React, { useState, useRef, useEffect, ChangeEvent } from "react";
+import React, { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Card, Text, Notification, Loader, Box } from "@mantine/core";
+import { Card, Text, Notification, Loader, Box, Button } from "@mantine/core";
 import { getVideoDetails } from "@src/services/YoutubeDownloaderApi";
-import {
-  ClipboardSolid,
-  XCircleSolid,
-  BrandYoutubeSolid,
-} from "@mynaui/icons-react";
+import { BrandYoutubeSolid } from "@mynaui/icons-react";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTDivider from "@src/shared/Divider/CTDivider";
 import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
 import DownloadOptions from "@src/components/Download/DownloadOptions";
 import { MockVideoDetails } from "@src/utils/HelperUtils";
+import CTInput from "@src/shared/Input/CTInput";
 
 const YouTubeDownloader = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(MockVideoDetails);
+  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(
+    MockVideoDetails,
+  );
   const [error, setError] = useState<string>("");
   const detailsRef = useRef<HTMLDivElement | null>(null);
 
@@ -40,22 +39,6 @@ const YouTubeDownloader = () => {
       setLoading(false);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleFetchVideoDetails();
-    }
-  };
-
-  useEffect(() => {
-    handleFetchVideoDetails();
-  }, [youtubeUrl]);
-
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    if (youtubeUrl !== event.target.value) {
-      setYoutubeUrl(event.target.value);
     }
   };
 
@@ -90,72 +73,46 @@ const YouTubeDownloader = () => {
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
-          <h1 className="flex flex-col items-center justify-center lg:flex-row lg:space-x-2 text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-200">
+          <h1 className="flex flex-col items-center justify-center text-xl font-medium text-gray-800 dark:text-gray-200 lg:flex-row lg:space-x-2 lg:text-2xl">
             <BrandYoutubeSolid className="text-3xl text-red-500" />
             <Text
               component="h1"
-              className="mt-2 lg:mt-0 text-lg lg:text-3xl font-bold text-gray-800 dark:text-gray-100"
+              className="mt-2 text-lg font-bold text-gray-800 dark:text-gray-100 lg:mt-0 lg:text-3xl"
             >
               Download YouTube Videos Instantly
             </Text>
           </h1>
-          <Text className="mt-1 text-sm lg:text-base text-gray-500 dark:text-gray-400">
+          <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
             Paste your YouTube link below to fetch video details and download
             formats.
           </Text>
         </div>
 
         {/* Input Section */}
-        <div className="flex w-full max-w-3xl flex-row lg:flex-row items-center space-y-3 lg:space-y-0 lg:space-x-3">
-          <div
-            className={`relative flex-grow ${
-              loading ? "animate-pulse-border" : ""
-            }`}
-          >
-            <input
+        <div className="flex w-full max-w-3xl flex-col items-center gap-4 space-y-3 lg:space-x-3 lg:space-y-0">
+          <div className="w-full">
+            <CTInput
               value={youtubeUrl}
-              onChange={onChangeHandler}
-              onKeyDown={handleInputKeyDown}
               placeholder="Paste YouTube link here..."
-              aria-label="YouTube URL"
-              className={`text-xs lg:text-base w-full rounded-3xl border-[0.5px] focus:border-2 dark:border-2 py-2 pl-4 pr-20 shadow-sm transition !bg-transparent hover:shadow-lg focus:shadow-xl focus:outline-none ${
-                loading
-                  ? "border-orange-500 text-gray-400"
-                  : "border-[--main-yellow] text-gray-800 dark:border-black dark:text-gray-200"
-              } dark:bg-gray-800`}
+              onChange={value => setYoutubeUrl(value)}
+              onSubmit={handleFetchVideoDetails}
+              loading={loading}
               disabled={loading}
             />
-            {!loading ? (
-              <>
-                <button
-                  className="absolute right-12 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
-                  onClick={() =>
-                    navigator.clipboard.readText().then(setYoutubeUrl)
-                  }
-                  aria-label="Paste YouTube URL"
-                >
-                  <ClipboardSolid className="h-4 w-4" />
-                </button>
-                <button
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
-                  onClick={() => setYoutubeUrl("")}
-                  aria-label="Clear Input"
-                >
-                  <XCircleSolid className="h-4 w-4" />
-                </button>
-              </>
-            ) : (
-              <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center text-orange-50">
-                <Loader type="bars" size="xs" color="var(--brand-dark-orange)" />
-              </div>
-            )}
           </div>
+          <Button
+            className="rounded-3xl bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800"
+            onClick={handleFetchVideoDetails}
+            disabled={loading}
+          >
+            {loading ? <Loader size="xs" color="white" /> : "Convert"}
+          </Button>
         </div>
 
         {/* Error Notification */}
         {error && (
           <Notification
-            className="mt-4 w-full max-w-3xl p-4 text-sm lg:text-base dark:bg-dark-app-content dark:text-gray-200"
+            className="mt-4 w-full max-w-3xl p-4 text-sm dark:bg-dark-app-content dark:text-gray-200 lg:text-base"
             color="red"
             title="Error"
             radius="md"
@@ -168,25 +125,23 @@ const YouTubeDownloader = () => {
         {videoDetails && videoDetails.formats && (
           <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
             <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-gray-200">
-              <Box
-                className="aspect-w-5 aspect-h-4 relative max-w-[640px] mx-auto flex w-full items-center justify-center rounded-[24px] border dark:border-2 border-[--main-yellow] bg-transparent p-5 dark:border-black dark:bg-inherit"
-              >
+              <Box className="aspect-w-5 aspect-h-4 relative mx-auto flex w-full max-w-[640px] items-center justify-center rounded-[24px] border border-[--main-yellow] bg-transparent p-5 dark:border-2 dark:border-black dark:bg-inherit">
                 <div className="max-w-[360px]">
-                <YoutubeThumbnail
-                  thumbnail={videoDetails.thumbnailUrl}
-                  title={videoDetails.title}
-                  channelLogo={videoDetails.channelLogoUrl ?? undefined}
-                  channelName={videoDetails.channelName}
-                  uploadedTime={videoDetails.youtubeVideoAge}
-                  views={videoDetails.totalViews}
-                />
+                  <YoutubeThumbnail
+                    thumbnail={videoDetails.thumbnailUrl}
+                    title={videoDetails.title}
+                    channelLogo={videoDetails.channelLogoUrl ?? undefined}
+                    channelName={videoDetails.channelName}
+                    uploadedTime={videoDetails.youtubeVideoAge}
+                    views={videoDetails.totalViews}
+                  />
                 </div>
-                
+
                 <Box ref={detailsRef}></Box>
               </Box>
               <CTDivider />
               <div className="rounded-md dark:bg-dark-app-content">
-                <Text className="font-grifter mb-4 text-center text-lg lg:text-2xl font-bold">
+                <Text className="font-grifter mb-4 text-center text-lg font-bold lg:text-2xl">
                   Download options
                 </Text>
                 <div className="grid grid-cols-1 gap-4">
