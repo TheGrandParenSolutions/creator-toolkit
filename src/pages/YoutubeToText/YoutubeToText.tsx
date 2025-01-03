@@ -72,7 +72,7 @@ const YoutubeToText: FC = () => {
         />
       </Helmet>
 
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app px-6 dark:bg-dark-app-content">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app dark:bg-dark-app-content">
         {/* Header */}
         <div className="w-full text-center">
           <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 lg:text-2xl">
@@ -83,7 +83,7 @@ const YoutubeToText: FC = () => {
           </Text>
         </div>
 
-        <div className="flex w-full max-w-3xl flex-col items-center gap-6 space-y-3 lg:space-x-3 lg:space-y-0">
+        <div className="flex w-full max-w-2xl flex-col items-center gap-6 space-y-3 lg:space-x-3 lg:space-y-0">
           {/* Input Field using CTInput */}
           <CTInput
             value={youtubeUrl}
