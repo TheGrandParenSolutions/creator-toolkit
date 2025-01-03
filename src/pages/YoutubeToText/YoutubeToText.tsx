@@ -87,7 +87,7 @@ const YoutubeToText: FC = () => {
           {/* Input Field using CTInput */}
           <CTInput
             value={youtubeUrl}
-            placeholder="Paste YouTube link here..."
+            placeholder="Paste YouTube link here"
             onChange={value => setYoutubeUrl(value)}
             onSubmit={handleFetchTranscript}
             loading={loading}
@@ -110,7 +110,6 @@ const YoutubeToText: FC = () => {
               <Menu.Target>
                 <Button
                   size="md"
-                  w={150}
                   radius={"md"}
                   classNames={{
                     inner: "w-full",
@@ -121,7 +120,7 @@ const YoutubeToText: FC = () => {
                       className="text-slate-700 dark:text-slate-300"
                     />
                   }
-                  className="flex items-center justify-between border-[1.5px] border-gray-700 bg-transparent px-4 text-base font-medium text-black shadow-md transition hover:bg-gray-100 dark:border-black dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                  className="flex min-w-[100px] md:min-w-[150px] items-center justify-between border-[1.5px] border-gray-500 bg-transparent px-4 text-sm md:text-base font-medium text-black shadow-sm transition hover:bg-gray-100 dark:border-black dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   <span className="mr-2 font-medium text-black dark:text-white">
                     {language.charAt(0).toUpperCase() + language.slice(1)}
@@ -193,7 +192,6 @@ const YoutubeToText: FC = () => {
                   </Text>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex flex-wrap justify-center items-center gap-1">
                   {/* Download As Dropdown */}
                   <Menu

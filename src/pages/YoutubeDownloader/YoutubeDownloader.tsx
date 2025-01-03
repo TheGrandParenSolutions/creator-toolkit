@@ -93,7 +93,7 @@ const YouTubeDownloader = () => {
           <div className="w-full">
             <CTInput
               value={youtubeUrl}
-              placeholder="Paste YouTube link here..."
+              placeholder="Paste YouTube link here"
               onChange={value => setYoutubeUrl(value)}
               onSubmit={handleFetchVideoDetails}
               loading={loading}
