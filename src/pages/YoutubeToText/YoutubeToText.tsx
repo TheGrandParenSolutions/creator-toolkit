@@ -14,46 +14,64 @@ import {
 } from "@mantine/core";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTInput from "@src/shared/Input/CTInput";
-import { mockTranscript, MockVideoDetails } from "@src/utils/HelperUtils";
 import { Copy, ChevronDown, Download, InfoCircle } from "@mynaui/icons-react";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { CTCheckIcon } from "@src/utils/HtmlUtil";
 import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
+import { generateTranscript } from "@src/services/YoutubeTranscriptApi";
+import { languages, transcriptFileFormats } from "@src/constants/constants";
+import {
+  formatTranscript,
+  generateAndDownloadFile,
+} from "@src/utils/HelperUtils";
 
 const YoutubeToText: FC = () => {
-  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(
-    MockVideoDetails,
-  );
+  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [transcript, setTranscript] = useState<string | null>(null);
-  const [language, setLanguage] = useState<string>("english");
+  const [language, setLanguage] = useState<string>(languages[0].label);
   const [downloadLoading, setDownloadLoading] = useState<boolean>(false);
   const transcriptRef = useRef<HTMLDivElement | null>(null);
 
-  const handleFetchTranscript = () => {
+  const handleFetchTranscript = async () => {
     if (!youtubeUrl.trim()) {
       console.error("Please provide a valid YouTube URL.");
       return;
     }
-    setVideoDetails(MockVideoDetails);
+    const languageCode = languages.find(lng => lng.label === language)?.value;
     setLoading(true);
+    const videoDetails = await generateTranscript({
+      url: youtubeUrl,
+      lng: languageCode as string,
+    });
 
-    // Simulating API call
-    setTimeout(() => {
-      setTranscript(mockTranscript);
-      setLoading(false);
-    }, 2000);
+    if (!videoDetails || !videoDetails?.transcript) {
+      console.error("Unable to find  transcript");
+      return;
+    }
+    setVideoDetails(videoDetails);
+    const transcript = formatTranscript(
+      videoDetails.transcript,
+      videoDetails.title,
+      language,
+      youtubeUrl,
+    );
+    setTranscript(transcript);
+    setLoading(false);
   };
 
-  const handleDownload = (format: string) => {
+  const handleDownloadFile = async (format: string) => {
+    if (!transcript) return null;
     setDownloadLoading(true);
 
-    // Simulate file generation
-    setTimeout(() => {
-      setDownloadLoading(false);
-      console.log(`Downloaded as ${format}`);
-    }, 2000);
+    try {
+      generateAndDownloadFile(transcript, format, videoDetails?.title || "");
+    } catch (error) {
+      console.error("Error generating file:", error);
+    }
+
+    setDownloadLoading(false);
   };
 
   useEffect(() => {
@@ -65,18 +83,18 @@ const YoutubeToText: FC = () => {
   return (
     <>
       <Helmet>
-        <title>YouTube to Text | Creator Toolkit</title>
+        <title>Youtube to Text | Creator Toolkit</title>
         <meta
           name="description"
           content="Welcome to Youtube to Text online converter, where you can easily convert any video from popular platforms like Youtube to text. Whether it's a regular video, a live stream, or a short, our tool can handle it all in Creator Toolkit."
         />
       </Helmet>
 
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app dark:bg-dark-app-content">
+      <div className="mx-auto mb-4 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app dark:bg-dark-app-content">
         {/* Header */}
         <div className="w-full text-center">
-          <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 lg:text-2xl">
-            YouTube to Text Converter
+          <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 lg:text-2xl ">
+            Youtube to Text Converter
           </h1>
           <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
             Paste a YouTube link below to transcribe video audio into text.
@@ -120,7 +138,7 @@ const YoutubeToText: FC = () => {
                       className="text-slate-700 dark:text-slate-300"
                     />
                   }
-                  className="flex min-w-[100px] md:min-w-[150px] items-center justify-between border-[1.5px] border-gray-500 bg-transparent px-4 text-sm md:text-base font-medium text-black shadow-sm transition hover:bg-gray-100 dark:border-black dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                  className="flex min-w-[100px] items-center justify-between border-[1.5px] border-gray-500 bg-transparent px-4 text-sm font-medium text-black shadow-sm transition hover:bg-gray-100 dark:border-black dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 md:min-w-[150px] md:text-base"
                 >
                   <span className="mr-2 font-medium text-black dark:text-white">
                     {language.charAt(0).toUpperCase() + language.slice(1)}
@@ -128,16 +146,13 @@ const YoutubeToText: FC = () => {
                 </Button>
               </Menu.Target>
               <Menu.Dropdown className="p-2">
-                {[
-                  { value: "english", label: "English" },
-                  { value: "spanish", label: "Spanish" },
-                  { value: "french", label: "French" },
-                ].map(item => (
+                {languages.map(item => (
                   <Menu.Item
-                    key={item.value}
-                    onClick={() => setLanguage(item.value)}
+                    value={item.label}
+                    key={item.label}
+                    onClick={() => setLanguage(item.label)}
                     className={`mb-1 font-semibold ${
-                      language === item.value
+                      language === item.label
                         ? "bg-[--main-yellow] text-black"
                         : "text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     }`}
@@ -185,14 +200,14 @@ const YoutubeToText: FC = () => {
               <div className="mb-4 flex flex-col items-center justify-between gap-4 md:flex-row">
                 {/* Language Selector */}
                 <div className="flex items-center space-x-2">
-                  <Text className="text-base font-bold text-gray-800 dark:text-gray-100 md:text-xl">
+                  <Text className="font-grifter text-base font-bold text-gray-800 dark:text-gray-100 md:text-2xl">
                     {language === "english"
                       ? "English (auto-generated)"
                       : language.charAt(0).toUpperCase() + language.slice(1)}
                   </Text>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-1">
+                <div className="flex flex-wrap items-center justify-center gap-1">
                   {/* Download As Dropdown */}
                   <Menu
                     trigger="click-hover"
@@ -226,14 +241,10 @@ const YoutubeToText: FC = () => {
                       </Button>
                     </Menu.Target>
                     <Menu.Dropdown>
-                      {[
-                        { label: "PDF File", value: "pdf" },
-                        { label: "TXT File", value: "txt" },
-                        { label: "DOC File", value: "doc" },
-                      ].map(item => (
+                      {transcriptFileFormats.map(item => (
                         <Menu.Item
                           key={item.value}
-                          onClick={() => handleDownload(item.label)}
+                          onClick={() => handleDownloadFile(item.value)}
                           className="text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                         >
                           {item.label}
@@ -271,17 +282,20 @@ const YoutubeToText: FC = () => {
                       size="sm"
                       variant="subtle"
                       color="teal"
-                      className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100"
+                      className="hidden text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 md:block"
                     >
                       <InfoCircle color="teal" size={20} />
                     </ActionIcon>
                   </Tooltip>
+                  <p className="text-extralight font-manrope text-xs text-slate-400 md:hidden">{`Character Count: ${transcript.length}`}</p>
                 </div>
               </div>
               {/* Transcript Content */}
-              <div className="mt-4 rounded-lg border border-none bg-gray-100 p-4 text-sm text-gray-800 dark:border-black dark:bg-gray-800 dark:text-gray-200">
-                <ScrollArea h={400} type="always">
-                  <pre className="whitespace-pre-wrap">{transcript}</pre>
+              <div className="mt-4 rounded-lg border border-none bg-slate-100 p-4 text-sm font-medium text-black dark:border-black dark:bg-gray-800 dark:text-white">
+                <ScrollArea h={300} type="always">
+                  <pre className="whitespace-pre-wrap">
+                    <p className="font-manrope">{transcript}</p>
+                  </pre>
                 </ScrollArea>
               </div>
             </div>

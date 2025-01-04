@@ -19,6 +19,7 @@ export interface VideoDetails {
     duration: string;        // Total duration of the video (e.g., "00:05:33")
     youtubeVideoAge: string;// like how many days or months ago or year ago  this video was uploaded
     totalViews: string;
+    transcript?: string;
 }
 
 export interface DownloadRequest {
