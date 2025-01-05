@@ -1,5 +1,10 @@
-import { Menu, Divider } from "@mantine/core";
-import { Rocket } from "@mynaui/icons-react";
+import {
+  Rocket,
+  ChevronDown,
+  Image,
+  BrandYoutube,
+  FileText,
+} from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { Link } from "react-router-dom";
@@ -7,6 +12,28 @@ import { useState, useEffect, useContext } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
+import { Group, Text, ActionIcon, Menu } from "@mantine/core";
+
+const youtubeFeatures = [
+  {
+    icon: BrandYoutube,
+    title: "Youtube Downloader",
+    description: "Download videos easily.",
+    link: "/youtube-downloader",
+  },
+  {
+    icon: Image,
+    title: "Thumbnail Tester",
+    description: "Test your thumbnails.",
+    link: "/thumbnail-test",
+  },
+  {
+    icon: FileText,
+    title: "Youtube To Text",
+    description: "Convert videos to text.",
+    link: "/YoutubeToText",
+  },
+];
 
 export function MainNav() {
   const { isAuthenticated, user } = useContext(AuthContext);
@@ -22,6 +49,26 @@ export function MainNav() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Generate links dynamically for the HoverCard
+  const featureLinks = youtubeFeatures.map(feature => (
+    <Menu.Item className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black">
+      <Link
+        to={feature.link}
+        key={feature.title}
+        className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
+      >
+        <Group className="flex-nowrap gap-2  " align="center">
+          <ActionIcon size={24} variant="filled" radius={"xl"} color="#ffd580">
+            <feature.icon className="text-slate-800" size={18} />
+          </ActionIcon>
+          <Text size="sm" fw={600}>
+            {feature.title}
+          </Text>
+        </Group>
+      </Link>
+    </Menu.Item>
+  ));
 
   return (
     <header
@@ -39,50 +86,38 @@ export function MainNav() {
         </div>
 
         <nav className="hidden items-center space-x-6 lg:flex">
+          {/* HoverCard for YouTube Features */}
+          <Menu
+            trigger="click-hover"
+            width={250}
+            position="bottom"
+            radius="lg"
+            shadow="md"
+            openDelay={100}
+            closeDelay={100}
+            transitionProps={{ transition: "pop", duration: 150 }}
+          >
+            <Menu.Target>
+              <a
+                href="#"
+                className="flex items-center text-sm font-medium text-gray-900 transition hover:text-yellow-500 dark:text-gray-50 dark:hover:text-yellow-400"
+              >
+                <span>Youtube</span>
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </a>
+            </Menu.Target>
+            <Menu.Dropdown className="border border-[--main-yellow] bg-slate-50 p-1 dark:border-black dark:bg-slate-700">
+              {featureLinks}
+            </Menu.Dropdown>
+          </Menu>
+
           {/* Navigation Links */}
           <Link
-            to="/youtube-downloader"
-            className="text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400"
-          >
-            YouTube Downloader
-          </Link>
-          <Link
             to="/pricing"
-            className="text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400"
+            className="text-sm font-medium text-gray-900 transition hover:text-yellow-500 hover:underline dark:text-gray-50 dark:hover:text-yellow-400"
           >
             Pricing
           </Link>
-          <Menu shadow="md" width={200}>
-            <Menu.Target>
-              <button className="flex items-center text-sm font-medium text-gray-800 transition hover:text-gray-600 hover:underline dark:text-gray-300 dark:hover:text-gray-400">
-                Resources
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-1 h-4 w-4"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.707a1 1 0 011.414 0L10 11.293l3.293-3.586a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
-            </Menu.Target>
-            <Menu.Dropdown className="dark:bg-dark-app">
-              <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
-                Blog
-              </Menu.Item>
-              <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
-                Case Studies
-              </Menu.Item>
-              <Divider className="dark:bg-gray-600" />
-              <Menu.Item className="dark:bg-dark-app-content dark:text-gray-200">
-                Help Center
-              </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
         </nav>
 
         {/* Login and CTA Button */}

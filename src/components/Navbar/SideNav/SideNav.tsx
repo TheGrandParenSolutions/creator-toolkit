@@ -10,6 +10,8 @@ import {
   DollarHexagon,
   DollarHexagonSolid,
   PanelLeftOpen,
+  FileText,
+  FileTextSolid,
 } from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
@@ -84,6 +86,12 @@ const linkContent = [
     activeIcon: ImageRectangleSolid,
     label: "Thumbnail test & preview",
     to: "/thumbnail-test",
+  },
+  {
+    icon: FileText,
+    activeIcon: FileTextSolid,
+    label: "Youtube to text",
+    to: "/YoutubeToText",
   },
   {
     icon: DollarHexagon,

@@ -23,6 +23,9 @@ const UserProfile: FC<IUserProfile> = props => {
             radius="xl"
             size="md"
             className="cursor-pointer"
+            classNames={{
+              root: "shadow-md"
+            }}
           />
         </Tooltip>
       </Menu.Target>
