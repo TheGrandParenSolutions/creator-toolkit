@@ -4,10 +4,11 @@ import {
   Image,
   BrandYoutube,
   FileText,
+  CircleSolid,
 } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
@@ -38,6 +39,7 @@ const youtubeFeatures = [
 export function MainNav() {
   const { isAuthenticated, user } = useContext(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   // Handle scroll effect
   useEffect(() => {
@@ -50,21 +52,29 @@ export function MainNav() {
     };
   }, []);
 
-  // Generate links dynamically for the HoverCard
+  // Generate links dynamically for the Menu with Active State
   const featureLinks = youtubeFeatures.map(feature => (
-    <Menu.Item className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black">
+    <Menu.Item
+      key={feature.title}
+      className={`block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black`}
+    >
       <Link
         to={feature.link}
-        key={feature.title}
         className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
       >
-        <Group className="flex-nowrap gap-2  " align="center">
+        <Group className="flex-nowrap gap-2" align="center">
           <ActionIcon size={24} variant="filled" radius={"xl"} color="#ffd580">
             <feature.icon className="text-slate-800" size={18} />
           </ActionIcon>
           <Text size="sm" fw={600}>
             {feature.title}
           </Text>
+          {/* Active Icon */}
+          {location.pathname === feature.link && (
+            <ActionIcon size={18} variant="transparent" color="green">
+              <CircleSolid className="text-teal-500" size={8} />
+            </ActionIcon>
+          )}
         </Group>
       </Link>
     </Menu.Item>
@@ -86,7 +96,7 @@ export function MainNav() {
         </div>
 
         <nav className="hidden items-center space-x-6 lg:flex">
-          {/* HoverCard for YouTube Features */}
+          {/* Menu for YouTube Features */}
           <Menu
             trigger="click-hover"
             width={250}
@@ -114,7 +124,11 @@ export function MainNav() {
           {/* Navigation Links */}
           <Link
             to="/pricing"
-            className="text-sm font-medium text-gray-900 transition hover:text-yellow-500 hover:underline dark:text-gray-50 dark:hover:text-yellow-400"
+            className={`text-sm font-medium transition hover:text-yellow-500 hover:underline ${
+              location.pathname === "/pricing"
+                ? "text-yellow-500 underline"
+                : "text-gray-900 dark:text-gray-50"
+            }`}
           >
             Pricing
           </Link>

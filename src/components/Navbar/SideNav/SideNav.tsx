@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Home,
   BrandYoutube,
@@ -14,7 +14,7 @@ import {
   FileTextSolid,
 } from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 
 interface NavbarLinkProps {
@@ -102,7 +102,9 @@ const linkContent = [
 ];
 
 export function SideNav() {
-  const [active, setActive] = useState(0);
+  const location = useLocation();
+  const { pathname } = location;
+  const [active, setActive] = useState<number | null>(null);
   const [panelOpen, setIsPanelOpen] = useState<boolean>(false);
 
   const links = linkContent.map((link, index) => (
@@ -114,6 +116,11 @@ export function SideNav() {
       isExpanded={panelOpen}
     />
   ));
+
+  useEffect(() => {
+    const activeIndex = linkContent.findIndex(link => link.to === pathname);
+    setActive(activeIndex ? activeIndex : 0);
+  }, [pathname]);
 
   return (
     <>
