@@ -3,7 +3,7 @@ import { Button, Group, Paper, Text, Divider, Box } from "@mantine/core";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BrandGoogleSolid, Envelope, Lock } from "@mynaui/icons-react"; // Your Icon Library
 import Logo from "@src/components/AppLogo/Logo";
-import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import {
   createUser,
   login,

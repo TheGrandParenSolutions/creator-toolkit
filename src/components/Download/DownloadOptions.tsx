@@ -15,7 +15,7 @@ import {
   DownloadOptionsProps,
   VideoFormat,
 } from "@src/types/YoutubeDownloaderTypes";
-import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { CTCheckIcon, CTDownloadIcon } from "@src/utils/HtmlUtil";
 import {
   downloadVideoFormat,

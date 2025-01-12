@@ -8,6 +8,7 @@ import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
 import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestAndPreview/YoutubeThumbnailTestOnboarding";
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
+import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloader";
 
 const AppRouter = () => {
   return (
@@ -154,6 +155,25 @@ const AppRouter = () => {
                   />
                 </Helmet>
                 <Pricing />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/thumbnail-downloader"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Download Thumbnail - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Test and preview your YouTube thumbnails with Creator Toolkit."
+                  />
+                </Helmet>
+                <ThumbnailDownloader />
               </>
             </main>
           </MainSection>

@@ -401,3 +401,18 @@ export const generateAndDownloadFile = (transcript: string, format: string, file
     console.error("Error generating and downloading file:", error);
   }
 };
+
+
+export const addResolutionInPixels = (thumbnails: any[]) => {
+  return thumbnails.map((thumbnail) => {
+    const res = thumbnail.resolutionText.split("x");
+    const width = res[0] + "px";
+    const height = res[1] + "px";
+
+    return {
+      ...thumbnail,
+      width,
+      height
+    }
+  })
+}

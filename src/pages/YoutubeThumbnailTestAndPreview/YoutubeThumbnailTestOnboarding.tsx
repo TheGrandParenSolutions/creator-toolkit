@@ -2,8 +2,8 @@ import React, { useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Box } from "@mantine/core";
 import { ImageSolid, Upload } from "@mynaui/icons-react"; // Importing Mynaui icons
-import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
-import { ImageUpload } from "@src/shared/Icons/ImageUpload";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
+import { ImageUpload } from "@src/shared/Icons/IconLib";
 import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
 import { useNavigate } from "react-router-dom";
 

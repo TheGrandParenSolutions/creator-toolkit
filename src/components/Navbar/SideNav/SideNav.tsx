@@ -16,6 +16,7 @@ import {
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
+import { ThumbnailDownloaderIcon } from "@src/shared/Icons/IconLib";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -99,6 +100,12 @@ const linkContent = [
     label: "Pricing",
     to: "/pricing",
   },
+  {
+    icon: ThumbnailDownloaderIcon,
+    activeIcon: ThumbnailDownloaderIcon,
+    label: "Thumbnail downloader",
+    to: "/thumbnail-downloader",
+  }
 ];
 
 export function SideNav() {
