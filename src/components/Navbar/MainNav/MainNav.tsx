@@ -7,13 +7,14 @@ import {
   CircleSolid,
 } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
-import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
 import { Group, Text, ActionIcon, Menu } from "@mantine/core";
+import { ThumbnailDownloaderIcon } from "@src/shared/Icons/IconLib";
 
 const youtubeFeatures = [
   {
@@ -34,6 +35,12 @@ const youtubeFeatures = [
     description: "Convert videos to text.",
     link: "/YoutubeToText",
   },
+  {
+    icon: ThumbnailDownloaderIcon,
+    title: "Youtube Thumbnail Downloader",
+    description: "Download youtube thumbnails.",
+    link: "/thumbnail-downloader"
+  }
 ];
 
 export function MainNav() {

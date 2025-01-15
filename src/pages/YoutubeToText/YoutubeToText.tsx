@@ -15,7 +15,7 @@ import {
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTInput from "@src/shared/Input/CTInput";
 import { Copy, ChevronDown, Download, InfoCircle } from "@mynaui/icons-react";
-import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { CTCheckIcon } from "@src/utils/HtmlUtil";
 import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
 import { generateTranscript } from "@src/services/YoutubeTranscriptApi";

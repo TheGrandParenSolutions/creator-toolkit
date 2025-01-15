@@ -198,3 +198,17 @@ export const sanitizeFileName = (name: string): string => {
     .replace(/-+/g, "-") // Replace multiple dashes with a single dash
     .trim(); // Remove leading and trailing spaces
 };
+
+export const addResolutionInPixels = (thumbnails: any[]) => {
+  return thumbnails.map((thumbnail) => {
+    const res = thumbnail.resolutionText.split("x");
+    const width = res[0] + "px";
+    const height = res[1] + "px";
+
+    return {
+      ...thumbnail,
+      width,
+      height
+    }
+  })
+}
