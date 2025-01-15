@@ -27,7 +27,6 @@ export const post = async (url: string, params?: Record<string, any>, config?: A
     try {
         const response = await apiClient.post(url, { ...params }, { ...config });
         return rawResponse ? response : response.data;
-
     } catch (error) {
         console.error('POST request error:', error);
         throw error;

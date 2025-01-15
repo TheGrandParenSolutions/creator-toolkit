@@ -12,6 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
     "@mantine/core": "^7.13.5",
     "@mantine/hooks": "^7.13.5",
     "@mynaui/icons-react": "^0.3.2",

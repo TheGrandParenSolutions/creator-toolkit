@@ -7,15 +7,12 @@ import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTDivider from "@src/shared/Divider/CTDivider";
 import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
 import DownloadOptions from "@src/components/Download/DownloadOptions";
-import { MockVideoDetails } from "@src/utils/HelperUtils";
 import CTInput from "@src/shared/Input/CTInput";
 
 const YouTubeDownloader = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(
-    MockVideoDetails,
-  );
+  const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
   const [error, setError] = useState<string>("");
   const detailsRef = useRef<HTMLDivElement | null>(null);
 

@@ -1,4 +1,4 @@
-import { get, post, } from "@src/Api/Core/HttpClient";
+import { get, post } from "@src/Api/Core/HttpClient";
 import { DownloadProgress, DownloadRequest, YoutubeDownloaderApiResponse } from "@src/types/YoutubeDownloaderTypes";
 
 
@@ -6,15 +6,20 @@ export const fetchYouTubeVideoDetails = async (videoUrl: string): Promise<Youtub
     return get('youtube-downloader/video-details', { videoUrl });
 };
 
-export const downloadYouTubeVideo = async (request: DownloadRequest, requestId: string): Promise<any> => {
+export const getBlobForMediaUrl = async (url: string): Promise<Blob> => {
+    return get("youtube-downloader/fetch-media", { url }, { responseType: "blob" })
+}
+
+export const generateSignedURI = async (request: DownloadRequest, requestId: string): Promise<any> => {
     try {
-        const response = await post(`youtube-downloader/download-video`, { ...request }, {
-            responseType: 'arraybuffer', headers: {
-                "Content-Type": "application/json",
-                "CT-Request-ID": requestId, // Pass the requestId
+        const response = await post("youtube-downloader/generate-download-url", { ...request }, {
+            headers: {
+                "CT-Request-ID": requestId,
             },
-        }, true);
-        return response;
+        })
+        const { signedUrl } = response;
+        if (!signedUrl) throw new Error("Error downloading video, please try again!");
+        return signedUrl;
     } catch (error) {
         console.error('Error downloading video:', error);
         throw error;

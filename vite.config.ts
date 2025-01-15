@@ -13,6 +13,10 @@ export default defineConfig(({ mode = "production" }) => {
     server: {
       open: true, // Automatically open the browser when the server starts
       port: 3000, // Define the development server port
+      headers: {
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cross-Origin-Embedder-Policy": "require-corp",
+      },
     },
     plugins: [
       react(), // React plugin with SWC for faster compilation
@@ -50,7 +54,7 @@ export default defineConfig(({ mode = "production" }) => {
     },
     optimizeDeps: {
       include: ["react", "react-dom"], // Pre-bundle dependencies for faster dev server
-      exclude: ["some-heavy-library"], // Exclude libraries if unnecessary during development
+      exclude: ["some-heavy-library", "@ffmpeg/ffmpeg", "@ffmpeg/util"], // Exclude libraries if unnecessary during development
     },
     esbuild: {
       jsxInject: `import React from 'react'`, // Automatic React import for JSX

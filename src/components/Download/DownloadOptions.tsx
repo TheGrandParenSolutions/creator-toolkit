@@ -17,106 +17,116 @@ import {
 } from "@src/types/YoutubeDownloaderTypes";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton.tsx/CTAnimatedButton.tsx";
 import { CTCheckIcon, CTDownloadIcon } from "@src/utils/HtmlUtil";
-import {
-  downloadVideoFormat,
-  getDownloadProgress,
-} from "@src/services/YoutubeDownloaderApi";
+import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
+import FFmpegService from "@src/service/ffmpeg/FFmpegService";
+import { sanitizeFileName } from "@src/utils/HelperUtils";
 
 const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   videoDetails,
   videoUrl,
 }) => {
-  const [selectedFilter, setSelectedFilter] = useState("All Formats");
+  const { mergeStreams } = FFmpegService();
+  const [selectedFilter, setSelectedFilter] = useState("Full HD");
   const [downloadProgress, setDownloadProgress] = useState<{
     [key: string]: number;
   }>({});
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
-  let progressInterval: NodeJS.Timeout;
 
-  const filters = ["All Formats", "WEBM", "MP4", "M4A"];
+  const filters = [
+    "8K",
+    "4K",
+    "1440p",
+    "Full HD",
+    "HD",
+    "Medium",
+    "Audio only",
+  ];
+
+  const filterFormats = (formats: VideoFormat[], filter: string) => {
+    switch (filter) {
+      case "8K":
+        return formats.filter(f => f.quality.includes("4320p"));
+      case "4K":
+        return formats.filter(f => f.quality.includes("2160p"));
+      case "1440p":
+        return formats.filter(f => f.quality.includes("1440p"));
+      case "Full HD":
+        return formats.filter(f => f.quality.includes("1080p"));
+      case "HD":
+        return formats.filter(f => f.quality.includes("720p"));
+      case "Medium":
+        return formats.filter(f =>
+          ["480p", "360p", "240p"].some(res => f.quality.includes(res)),
+        );
+      case "Audio only":
+        return formats.filter(
+          f => f.isAudioFile && !f.isVideoFile && !f.isMuxedFile,
+        );
+      default:
+        return formats;
+    }
+  };
 
   const downloadVideo = async (formatDetails: VideoFormat) => {
     const requestId = crypto.randomUUID();
-    trackProgress(requestId, formatDetails);
     setIsDownloading(true);
 
+    const audioFormats = videoDetails.formats.filter(format => {
+      const isAudio =
+        format.isAudioFile && !format.isVideoFile && !format.isMuxedFile;
+      return isAudio;
+    });
+
+    const originalAudio = audioFormats.filter(format =>
+      format.quality.toLowerCase().includes("original"),
+    );
+
+    const audioFormat = originalAudio.length
+      ? originalAudio[0]
+      : audioFormats[0];
+
     try {
-      const response = await downloadVideoFormat(
+      formatDetails.isMuxedFile = true;
+
+      const videoSignedUrl = await getDownloadURI(
         videoUrl,
         formatDetails,
         videoDetails,
         requestId,
+        audioFormat?.url || "",
       );
 
-      if (response.status === 200) {
-        const blob = new Blob([response.data], { type: "video/mp4" });
+      const audioSignedUrl = await getDownloadURI(
+        videoUrl,
+        audioFormat,
+        videoDetails,
+        requestId,
+        audioFormat?.url || "",
+      );
 
-        const contentDisposition = response.headers["content-disposition"];
-        let fileName = "video.mp4";
-        if (contentDisposition) {
-          const fileNameMatch = contentDisposition.match(/filename="(.+?)"/);
-          if (fileNameMatch?.[1]) {
-            fileName = fileNameMatch[1];
-          }
-        }
-
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", fileName);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        window.URL.revokeObjectURL(url); // Clean up URL
-      } else {
-        alert("Failed to download video. Check console for details.");
-      }
+      const fileName = sanitizeFileName(`${videoDetails.title}-${formatDetails.quality}-${audioFormat.quality}`);
+      await mergeStreams(
+        videoSignedUrl,
+        audioSignedUrl,
+        audioFormat.mimeType,
+        formatDetails.mimeType,
+        fileName,
+      );
     } catch (error) {
       console.error("Error downloading video:", error);
       setIsDownloading(false);
       alert("Failed to download video. Check console for details.");
     } finally {
-      clearInterval(progressInterval);
       setIsDownloading(false);
     }
   };
 
-  const trackProgress = async (requestId: string, format: VideoFormat) => {
-    progressInterval = setInterval(async () => {
-      try {
-        const progress = await getDownloadProgress(requestId);
-
-        setDownloadProgress(prev => {
-          const currentProgress = prev[format.formatId];
-          const updatedProgress =
-            currentProgress < progress ? progress : currentProgress;
-          if (updatedProgress === 100) clearInterval(progressInterval);
-          return { ...prev, [format.formatId]: updatedProgress ?? 0 };
-        });
-
-        if (progress === 100) {
-          clearInterval(progressInterval);
-        }
-      } catch (error) {
-        console.log(error);
-        clearInterval(progressInterval);
-      }
-    }, 1000);
-  };
-
-  const filteredFormats =
-    selectedFilter === "All Formats"
-      ? videoDetails.formats
-      : videoDetails.formats.filter(f =>
-          f.mimeType.includes(selectedFilter.toLowerCase()),
-        );
+  const filteredFormats = filterFormats(videoDetails.formats, selectedFilter);
 
   return (
     <div className="flex flex-col items-center space-y-8 p-2 md:px-4">
-      {/* Filter Section */}
       <div className="relative w-full max-w-md sm:max-w-xl">
-        {/* Dropdown for Small Screens */}
         <Select
           className="sm:hidden"
           value={selectedFilter}
@@ -137,7 +147,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           }}
         />
 
-        {/* Filter Bar for Larger Screens */}
         <div className="hidden items-center justify-center sm:flex">
           <CTToggleTabs
             tabs={filters.map(filter => ({
@@ -150,7 +159,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
         </div>
       </div>
 
-      {/* Download Cards */}
       <div className="grid w-full max-w-md grid-cols-2 gap-4 sm:max-w-3xl">
         {filteredFormats.map(format => (
           <Paper
@@ -158,12 +166,11 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
             radius="lg"
             className="flex flex-col items-center justify-center space-y-4 border border-[--main-yellow] bg-transparent p-4 shadow-sm transition-all hover:shadow-lg  dark:border-2 dark:border-black dark:bg-gray-800  sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
           >
-            {/* Badge and Format Info */}
             <div className="flex w-full flex-col items-center space-y-2 text-center sm:w-auto sm:items-start sm:text-left md:!flex-row md:items-center md:space-x-4">
               <Badge
                 radius="sm"
-                variant="filled"
-                className="rounded-full bg-main-gradient px-4 py-2 text-xs font-semibold text-black sm:text-sm md:text-base"
+                variant="outline"
+                className="rounded-full bg-main-gradient px-4 py-4 border-none text-xs font-medium text-black sm:text-sm md:text-base"
               >
                 {format.quality.toUpperCase()}
               </Badge>
@@ -179,8 +186,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
                 </Text>
               </div>
             </div>
-
-            {/* Download Button and Progress */}
             <div className="flex w-full flex-col items-center space-y-2 sm:w-auto sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
               {downloadProgress[format.formatId] !== undefined ? (
                 downloadProgress[format.formatId] === 100 ? (

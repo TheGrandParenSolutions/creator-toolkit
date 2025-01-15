@@ -24,6 +24,7 @@ export interface VideoDetails {
 
 export interface DownloadRequest {
     videoUrl: string;
+    audioUrl: string;
     format: VideoFormat;
     fileName: string;
 }
