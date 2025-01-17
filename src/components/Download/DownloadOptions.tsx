@@ -18,7 +18,6 @@ import {
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { CTCheckIcon, CTDownloadIcon } from "@src/utils/HtmlUtil";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
-import FFmpegService from "@src/service/ffmpeg/FFmpegService";
 import {
   downloadBlob,
   DownloadVideoAndMerge,
@@ -26,12 +25,13 @@ import {
 } from "@src/utils/DownloadUtil";
 import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import { isAudioOnlyFormat, sanitizeFileName } from "@src/utils/HelperUtils";
+import { useFFmpeg } from "@src/Context/FFmpeg/FFmpegContext";
 
 const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   videoDetails,
   videoUrl,
 }) => {
-  const { mergeStreams } = FFmpegService();
+  const { mergeStreams } = useFFmpeg();
   const [selectedFilter, setSelectedFilter] = useState("Full HD");
   const [downloadProgress, setDownloadProgress] = useState<{
     [key: string]: number;
@@ -122,7 +122,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
             input:
               "border border-[--main-yellow] dark:border-2 dark:border-black text-black bg-transparent dark:!bg-gray-800",
             dropdown:
-              "dark:bg-gray-800 dark:border-2 bg-transparent dark:border-transparent",
+              "dark:bg-gray-800 dark:border-2 dark:border-transparent bg-zinc-50",
           }}
           styles={{
             input: {

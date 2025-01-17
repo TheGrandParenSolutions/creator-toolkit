@@ -17,15 +17,15 @@ import {
   DownloadVideoAndMerge,
   getUrlBlob,
 } from "@src/utils/DownloadUtil";
-import FFmpegService from "@src/service/ffmpeg/FFmpegService";
 import {
   isAudioOnlyFormat,
   isVideoOnlyFormat,
   sanitizeFileName,
 } from "@src/utils/HelperUtils";
+import { useFFmpeg } from "@src/Context/FFmpeg/FFmpegContext";
 
 const YouTubeDownloader = () => {
-  const { mergeStreams } = FFmpegService();
+  const { mergeStreams } = useFFmpeg();
   const [selectedOption, setSelectedOption] = useState("auto");
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -56,7 +56,6 @@ const YouTubeDownloader = () => {
             mergeStreams,
             youtubeUrl,
           );
-          
           return;
         }
         case "audio": {
@@ -158,13 +157,13 @@ const YouTubeDownloader = () => {
             </Text>
           </h1>
           <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-            Paste your YouTube video link below to fetch video details and download
-            formats.
+            Paste your YouTube video link below to fetch video details and
+            download formats.
           </Text>
         </div>
 
         {/* Input Section */}
-        <div className="flex w-full max-w-2xl flex-col items-center gap-4 lg:space-x-3 lg:space-y-0 !mt-6">
+        <div className="!mt-6 flex w-full max-w-2xl flex-col items-center gap-4 lg:space-x-3 lg:space-y-0">
           <div className="w-full">
             <CTInput
               value={youtubeUrl}

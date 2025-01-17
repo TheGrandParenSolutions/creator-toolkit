@@ -1,25 +1,43 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, FC, ReactNode, useRef } from "react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { toBlobURL, fetchFile } from "@ffmpeg/util";
 import { getUrlBlob } from "@src/utils/DownloadUtil";
+import { FFmpegContext } from "@src/Context/FFmpeg/FFmpegContext";
 
-function FFmpegService() {
+export const FFmpegProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [loaded, setLoaded] = useState(false);
   const ffmpegRef = useRef(new FFmpeg());
 
-  const load = async () => {
-    const baseURL = "https://unpkg.com/@ffmpeg/core@0.12.4/dist/esm";
-    const ffmpeg = ffmpegRef.current;
-
-    await ffmpeg.load({
-      coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript"),
-      wasmURL: await toBlobURL(
-        `${baseURL}/ffmpeg-core.wasm`,
-        "application/wasm",
-      ),
-    });
-    setLoaded(true);
+  const loadFFmpeg = async () => {
+    if (!loaded) {
+      const baseURL = "https://unpkg.com/@ffmpeg/core@0.12.10/dist/esm";
+      const ffmpeg = ffmpegRef.current;
+      try {
+        await ffmpeg
+          .load({
+            coreURL: await toBlobURL(
+              `${baseURL}/ffmpeg-core.js`,
+              "text/javascript",
+            ),
+            wasmURL: await toBlobURL(
+              `${baseURL}/ffmpeg-core.wasm`,
+              "application/wasm",
+            ),
+          })
+          .catch(() => {
+            setLoaded(false);
+          });
+        setLoaded(true);
+      } catch (error: any) {
+        console.error(error);
+        setLoaded(false);
+      }
+    }
   };
+
+  useEffect(() => {
+    loadFFmpeg();
+  }, [loaded]);
 
   async function mergeStreams(
     videoUrl: string,
@@ -28,17 +46,22 @@ function FFmpegService() {
     videoContainer: string,
     fileName: string,
   ) {
-    const audioBlob = await getUrlBlob(audioUrl);
+    if (!loaded) {
+      console.error("FFmpeg is still loading...");
+      await loadFFmpeg();
+    }
 
+    const audioBlob = await getUrlBlob(audioUrl);
     const videoBlob = await getUrlBlob(videoUrl);
 
-    await load();
-    const ffmpeg = ffmpegRef.current;
     const videoFilePath = `video.${videoContainer.toLowerCase()}`;
     const audioFilePath = `audio.${audioContainer.toLowerCase()}`;
 
+    const ffmpeg = ffmpegRef.current;
+
     await ffmpeg.writeFile(videoFilePath, await fetchFile(videoBlob));
     await ffmpeg.writeFile(audioFilePath, await fetchFile(audioBlob));
+
     const outputFile = await processMedia(
       ffmpeg,
       videoFilePath,
@@ -49,13 +72,12 @@ function FFmpegService() {
     const mergedFile: any = await ffmpeg.readFile(outputFile);
     const blob = new Blob([mergedFile.buffer], { type: "video/mp4" });
     const url = URL.createObjectURL(blob);
+
     const link = document.createElement("a");
     link.href = url;
     link.download = `${fileName}.${videoContainer.toLowerCase()}`;
     link.click();
   }
-
-
 
   async function processMedia(
     ffmpeg: FFmpeg,
@@ -101,10 +123,9 @@ function FFmpegService() {
     return outputFile;
   }
 
-  return {
-    loaded,
-    mergeStreams,
-  };
-}
-
-export default FFmpegService;
+  return (
+    <FFmpegContext.Provider value={{ loaded, mergeStreams }}>
+      {children}
+    </FFmpegContext.Provider>
+  );
+};
