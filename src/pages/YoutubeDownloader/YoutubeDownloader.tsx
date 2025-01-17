@@ -1,15 +1,32 @@
 import { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Card, Text, Notification, Box } from "@mantine/core";
-import { getVideoDetails } from "@src/services/YoutubeDownloaderApi";
+import {
+  getDownloadURI,
+  getVideoDetails,
+} from "@src/services/YoutubeDownloaderApi";
 import { BrandYoutubeSolid } from "@mynaui/icons-react";
 import YoutubeThumbnail from "@src/shared/Youtube/YoutubeThumbnail";
 import CTDivider from "@src/shared/Divider/CTDivider";
-import { VideoDetails } from "@src/types/YoutubeDownloaderTypes";
+import { VideoDetails, VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import DownloadOptions from "@src/components/Download/DownloadOptions";
 import CTInput from "@src/shared/Input/CTInput";
+import QuickDownloadToggles from "@src/shared/QuickDownloadToggles/QuickDownloadToggles";
+import {
+  downloadBlob,
+  DownloadVideoAndMerge,
+  getUrlBlob,
+} from "@src/utils/DownloadUtil";
+import FFmpegService from "@src/service/ffmpeg/FFmpegService";
+import {
+  isAudioOnlyFormat,
+  isVideoOnlyFormat,
+  sanitizeFileName,
+} from "@src/utils/HelperUtils";
 
 const YouTubeDownloader = () => {
+  const { mergeStreams } = FFmpegService();
+  const [selectedOption, setSelectedOption] = useState("auto");
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
@@ -24,10 +41,71 @@ const YouTubeDownloader = () => {
 
     try {
       const details = await getVideoDetails(youtubeUrl);
+      const formats = details.formats;
+
+      switch (selectedOption) {
+        case "auto": {
+          const best1080pFormat = formats.find(f => {
+            return f.quality.includes("1080p");
+          });
+          const formatDetails = best1080pFormat ? best1080pFormat : formats[0];
+
+          await DownloadVideoAndMerge(
+            formatDetails,
+            details,
+            mergeStreams,
+            youtubeUrl,
+          );
+          
+          return;
+        }
+        case "audio": {
+          const requestId = crypto.randomUUID();
+          const bestAudioOnlyFormat = formats.find(f => {
+            return isAudioOnlyFormat(f);
+          }) as VideoFormat;
+          const audioSignedUrl = await getDownloadURI(
+            youtubeUrl,
+            bestAudioOnlyFormat,
+            videoDetails,
+            requestId,
+            bestAudioOnlyFormat?.url || "",
+          );
+          const fileName = sanitizeFileName(
+            `${details.title}-${bestAudioOnlyFormat.quality}`,
+          );
+          const blob = await getUrlBlob(audioSignedUrl);
+          downloadBlob(blob, fileName, "mp3");
+          return;
+        }
+        case "mute": {
+          const requestId = crypto.randomUUID();
+          const bestFormat = formats.find(f => {
+            return isVideoOnlyFormat(f);
+          }) as VideoFormat;
+          bestFormat.isMuxedFile = true;
+          const audioSignedUrl = await getDownloadURI(
+            youtubeUrl,
+            bestFormat,
+            videoDetails,
+            requestId,
+            bestFormat?.url || "",
+          );
+          const fileName = sanitizeFileName(
+            `${details.title}-${bestFormat.quality}`,
+          );
+          const blob = await getUrlBlob(audioSignedUrl);
+          downloadBlob(blob, fileName, "mp4");
+          return;
+        }
+        default: {
+          break;
+        }
+      }
+
       setLoading(false);
       setVideoDetails(details);
 
-      // Smooth scroll to the video details section
       setTimeout(() => {
         detailsRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 300);
@@ -67,26 +145,26 @@ const YouTubeDownloader = () => {
         />
       </Helmet>
 
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
+      <div className="mx-auto my-16 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
           <h1 className="flex flex-col items-center justify-center text-xl font-medium text-gray-800 dark:text-gray-200 lg:flex-row lg:space-x-2 lg:text-2xl">
-            <BrandYoutubeSolid className="text-3xl text-red-500" />
+            <BrandYoutubeSolid size={32} className="text-red-500" />
             <Text
               component="h1"
               className="mt-2 text-lg font-bold text-gray-800 dark:text-gray-100 lg:mt-0 lg:text-3xl"
             >
-              Download YouTube Videos Instantly
+              Download youtube videos instantly
             </Text>
           </h1>
           <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-            Paste your YouTube link below to fetch video details and download
+            Paste your YouTube video link below to fetch video details and download
             formats.
           </Text>
         </div>
 
         {/* Input Section */}
-        <div className="flex w-full max-w-2xl flex-col items-center gap-4 space-y-3 lg:space-x-3 lg:space-y-0">
+        <div className="flex w-full max-w-2xl flex-col items-center gap-4 lg:space-x-3 lg:space-y-0 !mt-8">
           <div className="w-full">
             <CTInput
               value={youtubeUrl}
@@ -97,6 +175,11 @@ const YouTubeDownloader = () => {
               disabled={loading}
             />
           </div>
+          <QuickDownloadToggles
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            disabled={loading}
+          />
         </div>
 
         {/* Error Notification */}

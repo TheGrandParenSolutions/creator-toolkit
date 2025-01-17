@@ -1,3 +1,4 @@
+import { VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import jsPDF from "jspdf";
 
 export function convertBytesToMB(
@@ -211,4 +212,25 @@ export const addResolutionInPixels = (thumbnails: any[]) => {
       height
     }
   })
+}
+
+export const isAudioOnlyFormat = (f: VideoFormat) => {
+  if (!f) return false;
+  if (f.isAudioFile &&
+    !f.isVideoFile &&
+    !f.isMuxedFile) {
+    return true
+  }
+  return false
+}
+
+
+export const isVideoOnlyFormat = (f: VideoFormat) => {
+  if (!f) return false;
+  if (!f.isAudioFile &&
+    f.isVideoFile &&
+    !f.isMuxedFile) {
+    return true
+  }
+  return false
 }

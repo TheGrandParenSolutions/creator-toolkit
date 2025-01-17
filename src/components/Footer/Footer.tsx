@@ -3,6 +3,7 @@ import { ArrowRight } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { DISABLE_FOOTER_IN_PAGES } from "../../settings/Settings";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Footer = () => {
   };
 
   useEffect(() => {
-    setIsHidden(location.pathname.includes("thumbnail-test"));
+    setIsHidden(DISABLE_FOOTER_IN_PAGES.includes(location.pathname));
   }, [location]);
 
   if (isHidden) return <></>;
@@ -58,9 +59,7 @@ const Footer = () => {
             </Text>
             <ul className="space-y-4 text-base font-semibold">
               <li className="dark:text-gray-300">Thumbnail Downloader</li>
-              <li className="dark:text-gray-300">
-                YouTube Revenue Calculator
-              </li>
+              <li className="dark:text-gray-300">YouTube Revenue Calculator</li>
             </ul>
           </div>
 
@@ -95,7 +94,7 @@ const Footer = () => {
               <TextInput
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 radius={"xl"}
                 size="md"
                 width={"100%"}
@@ -137,7 +136,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom Section */}
-      <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-6 text-center lg:flex lg:justify-between lg:text-left">
+      <div className="mt-12 border-t border-gray-200 pt-6 text-center dark:border-gray-700 lg:flex lg:justify-between lg:text-left">
         <Text
           size="sm"
           className="font-grifter mt-4 font-bold opacity-60 dark:text-gray-400 lg:mt-0"

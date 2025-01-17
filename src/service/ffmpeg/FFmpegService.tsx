@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { toBlobURL, fetchFile } from "@ffmpeg/util";
+import { getUrlBlob } from "@src/utils/DownloadUtil";
 
 function FFmpegService() {
   const [loaded, setLoaded] = useState(false);
@@ -55,36 +56,7 @@ function FFmpegService() {
     link.click();
   }
 
-  const getUrlBlob = async (url: string): Promise<Blob> => {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch URL: ${url}`);
-    }
 
-    const reader = response.body?.getReader();
-    if (!reader) {
-      throw new Error("ReadableStream not supported in the response.");
-    }
-
-    const chunks: Uint8Array[] = [];
-    let receivedLength = 0;
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      chunks.push(value);
-      receivedLength += value.length;
-    }
-
-    const completeArray = new Uint8Array(receivedLength);
-    let position = 0;
-    for (const chunk of chunks) {
-      completeArray.set(chunk, position);
-      position += chunk.length;
-    }
-
-    return new Blob([completeArray]);
-  };
 
   async function processMedia(
     ffmpeg: FFmpeg,

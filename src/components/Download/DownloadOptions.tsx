@@ -17,10 +17,15 @@ import {
 } from "@src/types/YoutubeDownloaderTypes";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { CTCheckIcon, CTDownloadIcon } from "@src/utils/HtmlUtil";
-import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
 import FFmpegService from "@src/service/ffmpeg/FFmpegService";
-import { sanitizeFileName } from "@src/utils/HelperUtils";
+import {
+  downloadBlob,
+  DownloadVideoAndMerge,
+  getUrlBlob,
+} from "@src/utils/DownloadUtil";
+import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
+import { isAudioOnlyFormat, sanitizeFileName } from "@src/utils/HelperUtils";
 
 const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   videoDetails,
@@ -69,50 +74,30 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   };
 
   const downloadVideo = async (formatDetails: VideoFormat) => {
-    const requestId = crypto.randomUUID();
     setIsDownloading(true);
-
-    const audioFormats = videoDetails.formats.filter(format => {
-      const isAudio =
-        format.isAudioFile && !format.isVideoFile && !format.isMuxedFile;
-      return isAudio;
-    });
-
-    const originalAudio = audioFormats.filter(format =>
-      format.quality.toLowerCase().includes("original"),
-    );
-
-    const audioFormat = originalAudio.length
-      ? originalAudio[0]
-      : audioFormats[0];
-
     try {
-      formatDetails.isMuxedFile = true;
-
-      const videoSignedUrl = await getDownloadURI(
-        videoUrl,
-        formatDetails,
-        videoDetails,
-        requestId,
-        audioFormat?.url || "",
-      );
-
-      const audioSignedUrl = await getDownloadURI(
-        videoUrl,
-        audioFormat,
-        videoDetails,
-        requestId,
-        audioFormat?.url || "",
-      );
-
-      const fileName = sanitizeFileName(`${videoDetails.title}-${formatDetails.quality}-${audioFormat.quality}`);
-      await mergeStreams(
-        videoSignedUrl,
-        audioSignedUrl,
-        audioFormat.mimeType,
-        formatDetails.mimeType,
-        fileName,
-      );
+      if (isAudioOnlyFormat(formatDetails)) {
+        const requestId = crypto.randomUUID();
+        const audioSignedUrl = await getDownloadURI(
+          videoUrl,
+          formatDetails,
+          videoDetails,
+          requestId,
+          formatDetails?.url || "",
+        );
+        const fileName = sanitizeFileName(
+          `${videoDetails.title}-${formatDetails.quality}`,
+        );
+        const blob = await getUrlBlob(audioSignedUrl);
+        downloadBlob(blob, fileName, "mp3");
+      } else {
+        await DownloadVideoAndMerge(
+          formatDetails,
+          videoDetails,
+          mergeStreams,
+          videoUrl,
+        );
+      }
     } catch (error) {
       console.error("Error downloading video:", error);
       setIsDownloading(false);
@@ -170,7 +155,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
               <Badge
                 radius="sm"
                 variant="outline"
-                className="rounded-full bg-main-gradient px-4 py-4 border-none text-xs font-medium text-black sm:text-sm md:text-base"
+                className="rounded-full border-none bg-main-gradient px-4 py-4 text-xs font-medium text-black sm:text-sm md:text-base"
               >
                 {format.quality.toUpperCase()}
               </Badge>

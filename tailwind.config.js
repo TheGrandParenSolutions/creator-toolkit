@@ -18,6 +18,11 @@ export default {
       },
       backgroundImage: {
         'main-gradient': 'linear-gradient(62deg, #fbab7e 0%, #ffd580 50%, rgb(255, 213, 128) 100%)',
+        'sec-gradient': `linear-gradient(
+          0deg,
+        rgba(255, 125, 0, 1) 0%,
+        rgba(255, 95, 109, 1) 100%
+        )`
       },
       keyframes: {
         appear: {

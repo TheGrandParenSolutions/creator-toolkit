@@ -69,7 +69,7 @@ const AppRouter = () => {
         path="/youtube-downloader"
         element={
           <MainSection>
-            <main className="min-h-[800px] flex-grow p-4 transition-all duration-300">
+            <main className="flex-grow p-4 transition-all duration-300">
               <>
                 <Helmet>
                   <title>Youtube Downloader - Creator Toolkit</title>
