@@ -24,6 +24,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
     hoverStyles = "",
     icon,
     loading,
+    disabled
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
@@ -45,7 +46,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
   return (
     <Button
       {...props}
-      disabled={loading}
+      disabled={loading || disabled}
       onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
       onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
       onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

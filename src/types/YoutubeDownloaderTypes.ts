@@ -7,7 +7,7 @@ export interface VideoFormat {
     isAudioFile: boolean;
     isVideoFile: boolean;
     isMuxedFile: boolean;
-    formatId: number;
+    formatId: string;
 }
 
 export interface VideoDetails {

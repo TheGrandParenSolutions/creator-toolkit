@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Card, Text, Notification, Box } from "@mantine/core";
+import { Card, Text, Box } from "@mantine/core";
 import {
   getDownloadURI,
   getVideoDetails,
@@ -23,6 +23,8 @@ import {
   sanitizeFileName,
 } from "@src/utils/HelperUtils";
 import { useFFmpeg } from "@src/Context/FFmpeg/FFmpegContext";
+import toast from "react-hot-toast";
+import { showToast } from "@src/utils/Theme";
 
 const YouTubeDownloader = () => {
   const { mergeStreams } = useFFmpeg();
@@ -30,17 +32,16 @@ const YouTubeDownloader = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
-  const [error, setError] = useState<string>("");
   const detailsRef = useRef<HTMLDivElement | null>(null);
 
   const handleFetchVideoDetails = async () => {
     if (!youtubeUrl.trim()) return null;
 
     setLoading(true);
-    setError("");
-
+    showToast("loading", "Fetching Video Details", "Just a moment.....");
     try {
       const details = await getVideoDetails(youtubeUrl);
+      toast.dismiss("status-toast");
       const formats = details.formats;
 
       switch (selectedOption) {
@@ -49,12 +50,22 @@ const YouTubeDownloader = () => {
             return f.quality.includes("1080p");
           });
           const formatDetails = best1080pFormat ? best1080pFormat : formats[0];
-
+          showToast(
+            "loading",
+            `Downloading in HD...`,
+            `Video Title: ${details.title}`,
+          );
           await DownloadVideoAndMerge(
             formatDetails,
             details,
             mergeStreams,
             youtubeUrl,
+          );
+          toast.dismiss("status-toast");
+          showToast(
+            "success",
+            "Your video is ready to use!",
+            `Download Complete: ${details.title}`,
           );
           return;
         }
@@ -73,8 +84,20 @@ const YouTubeDownloader = () => {
           const fileName = sanitizeFileName(
             `${details.title}-${bestAudioOnlyFormat.quality}`,
           );
+          showToast(
+            "loading",
+            "Extracting audio, please wait...",
+            `Video Title: ${details.title}`,
+          );
           const blob = await getUrlBlob(audioSignedUrl);
           downloadBlob(blob, fileName, "mp3");
+          toast.dismiss("status-toast");
+          showToast(
+            "success",
+            "Your video is ready to use!",
+            `Download Complete: ${details.title}`,
+          );
+
           return;
         }
         case "mute": {
@@ -93,8 +116,19 @@ const YouTubeDownloader = () => {
           const fileName = sanitizeFileName(
             `${details.title}-${bestFormat.quality}`,
           );
+          showToast(
+            "loading",
+            "Processing muted video, please wait...",
+            `Video Title: ${details.title}`,
+          );
           const blob = await getUrlBlob(audioSignedUrl);
           downloadBlob(blob, fileName, "mp4");
+          toast.dismiss("status-toast");
+          showToast(
+            "success",
+            "Your muted video is ready!",
+            `Download Complete: ${details.title}`,
+          );
           return;
         }
         default: {
@@ -109,7 +143,12 @@ const YouTubeDownloader = () => {
         detailsRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 300);
     } catch {
-      setError("Failed to fetch video details. Please check the link.");
+      toast.dismiss("status-toast");
+      showToast(
+        "error",
+        "Something went wrong. Please check the link and try again.",
+        "Download Failed",
+      );
       setLoading(false);
     } finally {
       setLoading(false);
@@ -180,18 +219,6 @@ const YouTubeDownloader = () => {
             disabled={loading}
           />
         </div>
-
-        {/* Error Notification */}
-        {error && (
-          <Notification
-            className="mt-4 w-full max-w-3xl p-4 text-sm dark:bg-dark-app-content dark:text-gray-200 lg:text-base"
-            color="red"
-            title="Error"
-            radius="md"
-          >
-            {error}
-          </Notification>
-        )}
 
         {/* Video Details Section */}
         {videoDetails && videoDetails.formats && (

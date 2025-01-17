@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { ActionIcon, Loader, Tooltip } from "@mantine/core";
+import { ActionIcon, Tooltip } from "@mantine/core";
 import {
   ArrowRightCircleSolid,
   ClipboardSolid,
   XCircleSolid,
 } from "@mynaui/icons-react";
+import BamboozleLoader from "@src/shared/Progress/BamboozleLoader";
 
 interface CTInputProps {
   value: string;
@@ -64,7 +65,7 @@ const CTInput: FC<CTInputProps> = ({
         disabled={disabled || loading}
       />
       {!loading ? (
-        <div className="absolute top-1/2 right-4 flex gap-2  -translate-y-1/2 items-center justify-center">
+        <div className="absolute right-4 top-1/2 flex -translate-y-1/2  items-center justify-center gap-2">
           {/* Paste Button */}
           <button
             className="flex items-center rounded-full"
@@ -119,7 +120,7 @@ const CTInput: FC<CTInputProps> = ({
         </div>
       ) : (
         <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center">
-          <Loader size="xs" color="var(--brand-dark-orange)" />
+          <BamboozleLoader />
         </div>
       )}
     </div>

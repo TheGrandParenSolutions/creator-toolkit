@@ -26,6 +26,7 @@ import {
 import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import { isAudioOnlyFormat, sanitizeFileName } from "@src/utils/HelperUtils";
 import { useFFmpeg } from "@src/Context/FFmpeg/FFmpegContext";
+import { showToast } from "@src/utils/Theme";
 
 const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   videoDetails,
@@ -34,7 +35,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
   const { mergeStreams } = useFFmpeg();
   const [selectedFilter, setSelectedFilter] = useState("Full HD");
   const [downloadProgress, setDownloadProgress] = useState<{
-    [key: string]: number;
+    [key: string]: number | undefined;
   }>({});
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
 
@@ -65,9 +66,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           ["480p", "360p", "240p"].some(res => f.quality.includes(res)),
         );
       case "Audio only":
-        return formats.filter(
-          f => f.isAudioFile && !f.isVideoFile && !f.isMuxedFile,
-        );
+        return formats.filter(f => isAudioOnlyFormat(f));
       default:
         return formats;
     }
@@ -75,6 +74,13 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
 
   const downloadVideo = async (formatDetails: VideoFormat) => {
     setIsDownloading(true);
+    const fakeProgressInterval = startFakeProgress(formatDetails.formatId);
+    showToast(
+      "loading",
+      "Download is in progress...",
+      `Download quality: ${formatDetails.quality}`,
+    );
+
     try {
       if (isAudioOnlyFormat(formatDetails)) {
         const requestId = crypto.randomUUID();
@@ -98,13 +104,50 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           videoUrl,
         );
       }
-    } catch (error) {
-      console.error("Error downloading video:", error);
-      setIsDownloading(false);
-      alert("Failed to download video. Check console for details.");
+      showToast(
+        "success",
+        "Download completed successfully!",
+        `Downloaded: ${formatDetails.quality}`,
+      );
+      clearInterval(fakeProgressInterval);
+      setDownloadProgress(prev => ({ ...prev, [formatDetails.formatId]: 100 }));
+
+    } catch (error: any) {
+      setDownloadProgress(prev => ({
+        ...prev,
+        [formatDetails.formatId]: undefined,
+      }));
+      clearInterval(fakeProgressInterval);
+      console.log(error);
+      showToast(
+        "error",
+        "Failed to download. Please try again.",
+        "Download Error",
+      );
     } finally {
       setIsDownloading(false);
     }
+  };
+
+  const startFakeProgress = (formatId: string) => {
+    setDownloadProgress(prev => ({ ...prev, [formatId]: 0 }));
+    let progress = 0;
+
+    const interval = setInterval(() => {
+      if (progress < 90) {
+        progress += Math.floor(Math.random() * 10) + 5; // Faster increase initially
+      } else {
+        progress += Math.floor(Math.random() * 3) + 1; // Slower increase after 90%
+      }
+
+      if (progress >= 99) {
+        clearInterval(interval);
+      } else {
+        setDownloadProgress(prev => ({ ...prev, [formatId]: progress }));
+      }
+    }, 1000);
+
+    return interval;
   };
 
   const filteredFormats = filterFormats(videoDetails.formats, selectedFilter);
@@ -203,7 +246,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
                     ) : (
                       <>
                         <Progress
-                          value={downloadProgress[format.formatId]}
+                          value={downloadProgress[format.formatId] || 0}
                           size="xl"
                           radius="sm"
                           color="teal"
