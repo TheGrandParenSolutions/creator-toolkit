@@ -55,7 +55,7 @@ const CTInput: FC<CTInputProps> = ({
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label="Common Input"
-        className={`w-full rounded-full border-[2px] border-slate-300 bg-transparent py-3 pl-6 pr-20 text-sm shadow-sm transition hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-gray-800 lg:text-lg  placeholder:font-semibold ${
+        className={`w-full rounded-full border-[2px] border-slate-300 bg-transparent py-3 pl-5 pr-20 text-sm shadow-sm transition placeholder:font-semibold hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-gray-800  lg:text-lg ${
           loading
             ? "text-gray-400"
             : "border-[--main-yellow] text-gray-800 dark:border-black dark:text-gray-200"
@@ -64,16 +64,16 @@ const CTInput: FC<CTInputProps> = ({
         disabled={disabled || loading}
       />
       {!loading ? (
-        <>
+        <div className="absolute top-1/2 right-4 flex gap-2  -translate-y-1/2 items-center justify-center">
           {/* Paste Button */}
           <button
-            className="absolute right-20 top-1/2 flex -translate-y-1/2 items-center rounded-full p-2"
+            className="flex items-center rounded-full"
             onClick={handlePaste}
             aria-label="Paste Input"
             disabled={disabled}
           >
             <ActionIcon
-              size="sm"
+              size="md"
               radius={"xl"}
               color="gray"
               variant="transparent"
@@ -84,36 +84,39 @@ const CTInput: FC<CTInputProps> = ({
             </ActionIcon>
           </button>
           {/* Clear Button */}
-          <button
-            className="absolute right-12 top-1/2 flex -translate-y-1/2 items-center rounded-full p-2"
-            onClick={handleClear}
-            aria-label="Clear Input"
-            disabled={disabled}
-          >
-            <ActionIcon
-              size="sm"
-              radius={"xl"}
-              color="gray"
-              variant="transparent"
+          {value && (
+            <button
+              className="flex  items-center rounded-full"
+              onClick={handleClear}
+              aria-label="Clear Input"
+              disabled={disabled}
             >
-              <Tooltip label="Clear">
-                <XCircleSolid />
-              </Tooltip>
-            </ActionIcon>
-          </button>
+              <ActionIcon
+                size="md"
+                radius={"xl"}
+                color="gray"
+                variant="transparent"
+              >
+                <Tooltip label="Clear">
+                  <XCircleSolid />
+                </Tooltip>
+              </ActionIcon>
+            </button>
+          )}
+
           <button
-            className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center rounded-full p-2"
+            className=" flex items-center rounded-full"
             onClick={handleButtonClick}
             aria-label="Submit Input"
             disabled={disabled}
           >
-            <ActionIcon size="sm" radius={"xl"} color="yellow">
+            <ActionIcon size="md" radius={"xl"} color="yellow">
               <Tooltip label="Go">
                 <ArrowRightCircleSolid />
               </Tooltip>
             </ActionIcon>
           </button>
-        </>
+        </div>
       ) : (
         <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center">
           <Loader size="xs" color="var(--brand-dark-orange)" />
