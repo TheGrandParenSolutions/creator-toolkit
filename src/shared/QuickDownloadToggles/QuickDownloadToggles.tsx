@@ -8,8 +8,8 @@ const QuickDownloadToggles: FC<{
   disabled: boolean;
 }> = ({ setSelectedOption, selectedOption, disabled }) => {
   return (
-    <div className="flex w-full max-w-2xl items-center justify-center">
-      <div className="flex w-full max-w-xs flex-wrap justify-center gap-1.5 sm:gap-2 md:max-w-xl">
+    <div className="flex w-full max-w-2xl items-center justify-center md:justify-start">
+      <div className="flex w-full flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 md:max-w-xl">
         {/* Auto & Choose Format Group */}
         <div
           className={`flex overflow-hidden rounded-full border border-none ${

@@ -154,7 +154,7 @@ const YouTubeDownloader = () => {
               component="h1"
               className="mt-2 text-lg font-bold text-gray-800 dark:text-gray-100 lg:mt-0 lg:text-3xl"
             >
-              Download youtube videos instantly
+              Download Youtube Videos
             </Text>
           </h1>
           <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
@@ -164,7 +164,7 @@ const YouTubeDownloader = () => {
         </div>
 
         {/* Input Section */}
-        <div className="flex w-full max-w-2xl flex-col items-center gap-4 lg:space-x-3 lg:space-y-0 !mt-8">
+        <div className="flex w-full max-w-2xl flex-col items-center gap-4 lg:space-x-3 lg:space-y-0 !mt-6">
           <div className="w-full">
             <CTInput
               value={youtubeUrl}
