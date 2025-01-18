@@ -10,4 +10,5 @@ export interface YoutubeThumbnailProps {
     viewMode?: ViewModes;
     dimensionClasses?: string;
     showDescription?: boolean;
+    portrait?: boolean;
 }

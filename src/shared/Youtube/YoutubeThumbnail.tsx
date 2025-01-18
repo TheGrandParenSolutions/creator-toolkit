@@ -11,6 +11,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
   viewMode = "desktop",
   dimensionClasses,
   showDescription = true,
+  portrait = false,
 }) => {
   const mode = viewMode === "tablet" ? "desktop" : viewMode;
 
@@ -32,7 +33,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
           className={`w-full rounded-xl object-cover ${
             dimensionClasses ? dimensionClasses : ""
           }`}
-          style={{ aspectRatio: "16 / 9" }}
+          style={{ aspectRatio: portrait ? "9 / 16" : "16 / 9" }}
         />
       </div>
 

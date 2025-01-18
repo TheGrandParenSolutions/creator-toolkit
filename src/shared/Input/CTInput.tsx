@@ -56,7 +56,7 @@ const CTInput: FC<CTInputProps> = ({
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label="Common Input"
-        className={`w-full rounded-full border-[2px] border-slate-300 bg-transparent py-3 pl-5 pr-20 text-sm shadow-sm transition placeholder:font-semibold hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-gray-800  lg:text-lg ${
+        className={`w-full rounded-full border-[2px] border-slate-200 bg-transparent py-2 pl-5 pr-32 text-sm shadow-sm transition placeholder:font-semibold hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-gray-800  lg:text-lg ${
           loading
             ? "text-gray-400"
             : "border-[--main-yellow] text-gray-800 dark:border-black dark:text-gray-200"
@@ -65,7 +65,7 @@ const CTInput: FC<CTInputProps> = ({
         disabled={disabled || loading}
       />
       {!loading ? (
-        <div className="absolute right-4 top-1/2 flex -translate-y-1/2  items-center justify-center gap-2">
+        <div className="absolute border-2 border-r-0 border-b-0 border-t-0 border-l-slate-200 right-4 top-1/2 flex -translate-y-1/2  items-center justify-center gap-2">
           {/* Paste Button */}
           <button
             className="flex items-center rounded-full"

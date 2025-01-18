@@ -1,7 +1,7 @@
 import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import { VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import { VideoDetails } from "../types/YoutubeDownloaderTypes";
-import { sanitizeFileName } from "@src/utils/HelperUtils";
+import { isAudioOnlyFormat, sanitizeFileName } from "@src/utils/HelperUtils";
 
 export const DownloadVideoAndMerge = async (
   formatDetails: VideoFormat,
@@ -15,12 +15,13 @@ export const DownloadVideoAndMerge = async (
   ) => Promise<void>,
   videoUrl: string,
 ) => {
+  if(!formatDetails || !videoDetails) {
+    throw new Error();
+  }
   const requestId = crypto.randomUUID();
 
   const audioFormats = videoDetails.formats.filter(format => {
-    const isAudio =
-      format.isAudioFile && !format.isVideoFile && !format.isMuxedFile;
-    return isAudio;
+    return isAudioOnlyFormat(format)
   });
 
   const originalAudio = audioFormats.filter(format =>

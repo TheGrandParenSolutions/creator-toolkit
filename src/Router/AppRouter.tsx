@@ -9,6 +9,7 @@ import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestAndPr
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
 import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloader";
+import InstagramReelsDownloader from "@src/pages/InstagramReelsDownloader/InstagramReelsDownloader";
 
 const AppRouter = () => {
   return (
@@ -174,6 +175,26 @@ const AppRouter = () => {
                   />
                 </Helmet>
                 <ThumbnailDownloader />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+
+      <Route
+        path="/instagramReelsDownloader"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Instagram Reels Downloader - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Download Instagram Reels easily and save them in high quality using Creator Toolkit."
+                  />
+                </Helmet>
+                <InstagramReelsDownloader />
               </>
             </main>
           </MainSection>

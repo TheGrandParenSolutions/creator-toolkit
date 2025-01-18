@@ -6,10 +6,16 @@ const QuickDownloadToggles: FC<{
   setSelectedOption: Dispatch<string>;
   selectedOption: string;
   disabled: boolean;
-}> = ({ setSelectedOption, selectedOption, disabled }) => {
+  hideChooseFormat?: boolean;
+}> = ({
+  setSelectedOption,
+  selectedOption,
+  disabled,
+  hideChooseFormat = false,
+}) => {
   return (
     <div className="flex w-full max-w-2xl items-center justify-center md:justify-start">
-      <div className="flex w-full flex-wrap justify-center md:justify-start gap-1.5 sm:gap-2 md:max-w-xl">
+      <div className="flex w-full flex-wrap justify-center gap-1.5 sm:gap-2 md:max-w-xl md:justify-start">
         {/* Auto & Choose Format Group */}
         <div
           className={`flex overflow-hidden rounded-full border border-none ${
@@ -37,24 +43,26 @@ const QuickDownloadToggles: FC<{
           </button>
 
           {/* Select Format Option */}
-          <button
-            className={`flex items-center gap-1.5 border-none px-4 py-1.5 text-xs font-medium transition-all duration-200 focus:outline-none dark:border-gray-600
-            ${
-              selectedOption === "format"
-                ? "shadow-xs bg-green-600 text-white"
-                : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
-            } ${disabled ? "cursor-not-allowed" : ""}`}
-            onClick={() => !disabled && setSelectedOption("format")}
-            aria-pressed={selectedOption === "format"}
-            disabled={disabled}
-          >
-            <FolderTwo
-              className={
-                selectedOption === "format" ? "text-white" : "text-green-600"
-              }
-            />
-            <Text className="font-semibold">Choose format</Text>
-          </button>
+          {!hideChooseFormat && (
+            <button
+              className={`flex items-center gap-1.5 border-none px-4 py-1.5 text-xs font-medium transition-all duration-200 focus:outline-none dark:border-gray-600
+              ${
+                selectedOption === "format"
+                  ? "shadow-xs bg-green-600 text-white"
+                  : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+              } ${disabled ? "cursor-not-allowed" : ""}`}
+              onClick={() => !disabled && setSelectedOption("format")}
+              aria-pressed={selectedOption === "format"}
+              disabled={disabled}
+            >
+              <FolderTwo
+                className={
+                  selectedOption === "format" ? "text-white" : "text-green-600"
+                }
+              />
+              <Text className="font-semibold">Choose format</Text>
+            </button>
+          )}
         </div>
 
         {/* Audio Option */}
