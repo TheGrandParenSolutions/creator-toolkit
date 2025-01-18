@@ -21,10 +21,10 @@ const UserProfile: FC<IUserProfile> = props => {
             src={user?.avatar}
             alt={user.username}
             radius="xl"
-            size="md"
+            size="lg"
             className="cursor-pointer"
             classNames={{
-              root: "shadow-md"
+              root: "shadow-zinc-200 shadow-lg dark:!shadow-zinc-600"
             }}
           />
         </Tooltip>
