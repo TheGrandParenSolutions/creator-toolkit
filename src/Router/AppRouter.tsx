@@ -9,6 +9,8 @@ import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestAndPr
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
 import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloader";
+import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
+import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
 
 const AppRouter = () => {
   return (
@@ -179,6 +181,9 @@ const AppRouter = () => {
           </MainSection>
         }
       />
+
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
 
       {/* Catch All */}
       <Route

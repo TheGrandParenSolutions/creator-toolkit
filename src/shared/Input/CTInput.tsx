@@ -61,6 +61,12 @@ const CTInput: FC<CTInputProps> = ({
             ? "text-gray-400"
             : "border-[--main-yellow] text-gray-800 dark:border-black dark:text-gray-200"
         } dark:bg-gray-800`}
+        style={{
+          paddingRight: "7rem", 
+          whiteSpace: "nowrap", 
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        }}
         onKeyDown={handleKeyDown}
         disabled={disabled || loading}
       />
