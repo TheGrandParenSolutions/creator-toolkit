@@ -10,6 +10,8 @@ import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestD
 import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
 import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloader";
 import InstagramReelsDownloader from "@src/pages/InstagramReelsDownloader/InstagramReelsDownloader";
+import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
+import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
 
 const AppRouter = () => {
   return (
@@ -200,6 +202,8 @@ const AppRouter = () => {
           </MainSection>
         }
       />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
 
       {/* Catch All */}
       <Route

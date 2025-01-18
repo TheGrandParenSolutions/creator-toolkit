@@ -10,6 +10,7 @@ import {
   fetchDownloadUrl,
   fetchYoutubeThumbnails,
 } from "@src/Api/Modules/YoutubeThumbnailDownloader/YoutubeThumbnailDownloaderService";
+import { BrandYoutubeSolid } from "@mynaui/icons-react";
 
 const downloadThumbnail = async (url: string, resoltuion: string) => {
   try {
@@ -38,9 +39,7 @@ const scrollToSection = () => {
 };
 
 const YouTubeThumbnailDownloader = () => {
-  const [youtubeUrl, setYoutubeUrl] = useState<string>(
-    "https://www.youtube.com/watch?v=jmpUP1MaQ9Q&list=RDFMJCjRU1W_s&index=4",
-  );
+  const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [thumbnails, setThumbnails] = useState<
@@ -95,18 +94,16 @@ const YouTubeThumbnailDownloader = () => {
         />
       </Helmet>
 
-      <div className="mx-auto flex w-full flex-col items-center space-y-6 bg-light-app p-6 dark:bg-dark-app-content">
+      <div className="mx-auto my-16 flex w-full flex-col items-center space-y-6 bg-light-app p-6 dark:bg-dark-app-content">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-xl font-bold text-gray-800 dark:text-gray-200 lg:text-3xl">
+          <h1 className="flex flex-col items-center justify-center text-xl font-bold text-gray-800 dark:text-gray-200 lg:flex-row lg:space-x-2 lg:text-2xl">
+            <BrandYoutubeSolid size={32} className="text-red-500" />
             YouTube Thumbnail Downloader
           </h1>
           <Text className="mx-auto mt-3 max-w-4xl text-sm text-gray-600 dark:text-gray-400 lg:text-base">
             Paste your YouTube video URL below to fetch thumbnails in all
-            available resolutions. Easily download stunning 4K HD YouTube
-            thumbnails with our free Thumbnail Downloader. Just enter the
-            YouTube video URL, and in moments, get high-quality thumbnails ready
-            to use.
+            available resolutions.
           </Text>
         </div>
 
