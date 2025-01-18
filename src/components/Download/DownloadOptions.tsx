@@ -134,7 +134,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
     let progress = 0;
 
     const interval = setInterval(() => {
-      if (progress < 90) {
+      if (progress < 50) {
         progress += Math.floor(Math.random() * 10) + 5; // Faster increase initially
       } else {
         progress += Math.floor(Math.random() * 3) + 1; // Slower increase after 90%

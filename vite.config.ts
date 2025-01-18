@@ -15,7 +15,6 @@ export default defineConfig(({ mode = "production" }) => {
       port: 3000, // Define the development server port
       headers: {
         "Cross-Origin-Opener-Policy": "same-origin",
-        "Cross-Origin-Embedder-Policy": "require-corp",
       },
     },
     plugins: [
