@@ -71,7 +71,7 @@ const CTInput: FC<CTInputProps> = ({
         disabled={disabled || loading}
       />
       {!loading ? (
-        <div className="absolute border-2 border-r-0 border-b-0 border-t-0 border-l-slate-200 right-4 top-1/2 flex -translate-y-1/2  items-center justify-center gap-2">
+        <div className="absolute border-2 border-r-0 border-b-0 border-t-0 border-l-slate-200 dark:border-l-black right-4 top-1/2 flex -translate-y-1/2  items-center justify-center gap-2">
           {/* Paste Button */}
           <button
             className="flex items-center rounded-full"
