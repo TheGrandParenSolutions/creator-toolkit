@@ -12,8 +12,6 @@ import {
   PanelLeftOpen,
   FileText,
   FileTextSolid,
-  BrandInstagram,
-  BrandInstagramSolid,
 } from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -81,14 +79,8 @@ const linkContent = [
   {
     icon: BrandYoutube,
     activeIcon: BrandYoutubeSolid,
-    label: "Youtube downloader",
-    to: "/youtube-downloader",
-  },
-  {
-    icon: BrandInstagram,
-    activeIcon: BrandInstagramSolid,
-    label: "Reels downloader",
-    to: "/instagramReelsDownloader",
+    label: "Video Download Gear",
+    to: "/video-download-gear",
   },
   {
     icon: ImageRectangle,

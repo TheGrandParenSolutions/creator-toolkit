@@ -56,7 +56,7 @@ const CTInput: FC<CTInputProps> = ({
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label="Common Input"
-        className={`w-full rounded-full border-[2px] border-slate-200 bg-transparent py-2 pl-5 pr-32 text-sm shadow-sm transition placeholder:font-semibold hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-gray-800  lg:text-lg ${
+        className={`w-full rounded-full border-[2px] border-slate-200 bg-transparent py-2 pl-5 pr-32 text-sm shadow-sm transition placeholder:font-semibold placeholder:text-slate-300 dark:placeholder:text-slate-500 hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-gray-800  lg:text-lg ${
           loading
             ? "text-gray-400"
             : "border-[--main-yellow] text-gray-800 dark:border-black dark:text-gray-200"

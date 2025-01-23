@@ -4,14 +4,13 @@ import { Helmet } from "react-helmet-async"; // For dynamic meta tags
 import MainSection from "@src/components/MainSection/MainSection";
 import LoginSignup from "@src/pages/LoginSignup/LoginSignup";
 import Pricing from "@src/pages/Pricing/Pricing";
-import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
 import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestAndPreview/YoutubeThumbnailTestOnboarding";
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
 import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloader";
-import InstagramReelsDownloader from "@src/pages/InstagramReelsDownloader/InstagramReelsDownloader";
 import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
 import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
+import VideoDownloader from "@src/pages/VideoDownloader/VideoDownloader";
 
 const AppRouter = () => {
   return (
@@ -68,7 +67,7 @@ const AppRouter = () => {
           </MainSection>
         }
       />
-      <Route
+      {/* <Route
         path="/youtube-downloader"
         element={
           <MainSection>
@@ -86,7 +85,7 @@ const AppRouter = () => {
             </main>
           </MainSection>
         }
-      />
+      /> */}
       <Route
         path="/thumbnail-test"
         element={
@@ -183,7 +182,7 @@ const AppRouter = () => {
         }
       />
 
-      <Route
+      {/* <Route
         path="/instagramReelsDownloader"
         element={
           <MainSection>
@@ -201,7 +200,51 @@ const AppRouter = () => {
             </main>
           </MainSection>
         }
+      /> */}
+
+      <Route
+        path="/video-download-gear"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                      <Helmet>
+          <title>Video Download Gear | Download YouTube Videos & Instagram Reels</title>
+          <meta
+            name="description"
+            content="Video Download Gear: The ultimate tool for downloading YouTube videos, Instagram reels, and more. Fast, secure, and reliable video downloader for creators."
+          />
+          <meta
+            name="keywords"
+            content="YouTube downloader, YouTube video downloader, Instagram reel downloader, Reels downloader, video downloader, multi-platform downloader, download YouTube videos, download Instagram reels"
+          />
+          <link
+            rel="canonical"
+            href="https://www.creator-toolkit.com/video-download-gear"
+          />
+          <meta property="og:title" content="Video Download Gear | Download YouTube Videos & Instagram Reels" />
+          <meta
+            property="og:description"
+            content="Download videos from YouTube and Instagram Reels with Video Download Gear. Easy-to-use, fast, and reliable downloader for creators."
+          />
+          <meta
+            property="og:image"
+            content="https://www.creator-toolkit.com/assets/video-download-gear-thumbnail.jpg"
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://www.creator-toolkit.com/video-download-gear"
+          />
+        </Helmet>
+
+                <VideoDownloader />
+              </>
+            </main>
+          </MainSection>
+        }
       />
+
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
 

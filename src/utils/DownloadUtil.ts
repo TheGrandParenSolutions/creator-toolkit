@@ -2,6 +2,7 @@ import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import { VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import { VideoDetails } from "../types/YoutubeDownloaderTypes";
 import { isAudioOnlyFormat, sanitizeFileName } from "@src/utils/HelperUtils";
+import { showToast } from "@src/utils/Theme";
 
 export const DownloadVideoAndMerge = async (
   formatDetails: VideoFormat,
@@ -15,7 +16,7 @@ export const DownloadVideoAndMerge = async (
   ) => Promise<void>,
   videoUrl: string,
 ) => {
-  if(!formatDetails || !videoDetails) {
+  if (!formatDetails || !videoDetails) {
     throw new Error();
   }
   const requestId = crypto.randomUUID();
@@ -24,11 +25,15 @@ export const DownloadVideoAndMerge = async (
     return isAudioOnlyFormat(format)
   });
 
-  const originalAudio = audioFormats.filter(format =>
-    format.quality.toLowerCase().includes("original"),
+  const supportedAudioFormats = audioFormats.filter((f) => {
+    return formatDetails.mimeType === "webm" ? f.mimeType === "webm" : f.mimeType === "m4a";
+  })
+
+  const originalAudio = supportedAudioFormats.filter(format =>
+    format.quality.toLowerCase().includes("original")
   );
 
-  const audioFormat = originalAudio.length ? originalAudio[0] : audioFormats[0];
+  const audioFormat = originalAudio.length ? originalAudio[0] : supportedAudioFormats[0];
 
   try {
     formatDetails.isMuxedFile = true;
@@ -52,6 +57,7 @@ export const DownloadVideoAndMerge = async (
     const fileName = sanitizeFileName(
       `${videoDetails.title}-${formatDetails.quality}-${audioFormat.quality}`,
     );
+
     await mergeStreams(
       videoSignedUrl,
       audioSignedUrl,
@@ -61,7 +67,12 @@ export const DownloadVideoAndMerge = async (
     );
   } catch (error) {
     console.error("Error downloading video:", error);
-    alert("Failed to download video. Check console for details.");
+    showToast(
+      "error",
+      "Failed to download. Please try again.",
+      "Download Error",
+    )
+    throw new Error();
   }
 };
 

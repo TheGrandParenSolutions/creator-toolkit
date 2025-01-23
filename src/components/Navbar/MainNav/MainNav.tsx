@@ -21,7 +21,7 @@ const youtubeFeatures = [
     icon: BrandYoutube,
     title: "Youtube Downloader",
     description: "Download videos easily.",
-    link: "/youtube-downloader",
+    link: "/video-download-gear",
   },
   {
     icon: Image,
