@@ -208,35 +208,41 @@ const AppRouter = () => {
           <MainSection>
             <main className="flex-grow p-4 transition-all duration-300">
               <>
-                      <Helmet>
-          <title>Video Download Gear | Download YouTube Videos & Instagram Reels</title>
-          <meta
-            name="description"
-            content="Video Download Gear: The ultimate tool for downloading YouTube videos, Instagram reels, and more. Fast, secure, and reliable video downloader for creators."
-          />
-          <meta
-            name="keywords"
-            content="YouTube downloader, YouTube video downloader, Instagram reel downloader, Reels downloader, video downloader, multi-platform downloader, download YouTube videos, download Instagram reels"
-          />
-          <link
-            rel="canonical"
-            href="https://www.creator-toolkit.com/video-download-gear"
-          />
-          <meta property="og:title" content="Video Download Gear | Download YouTube Videos & Instagram Reels" />
-          <meta
-            property="og:description"
-            content="Download videos from YouTube and Instagram Reels with Video Download Gear. Easy-to-use, fast, and reliable downloader for creators."
-          />
-          <meta
-            property="og:image"
-            content="https://www.creator-toolkit.com/assets/video-download-gear-thumbnail.jpg"
-          />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:url"
-            content="https://www.creator-toolkit.com/video-download-gear"
-          />
-        </Helmet>
+                <Helmet>
+                  <title>
+                    Video Download Gear | Download YouTube Videos & Instagram
+                    Reels
+                  </title>
+                  <meta
+                    name="description"
+                    content="Video Download Gear: The ultimate tool for downloading YouTube videos, Instagram reels, and more. Fast, secure, and reliable video downloader for creators."
+                  />
+                  <meta
+                    name="keywords"
+                    content="YouTube downloader, YouTube video downloader, Instagram reel downloader, Reels downloader, video downloader, multi-platform downloader, download YouTube videos, download Instagram reels"
+                  />
+                  <link
+                    rel="canonical"
+                    href="https://www.creator-toolkit.com/video-download-gear"
+                  />
+                  <meta
+                    property="og:title"
+                    content="Video Download Gear | Download YouTube Videos & Instagram Reels"
+                  />
+                  <meta
+                    property="og:description"
+                    content="Download videos from YouTube and Instagram Reels with Video Download Gear. Easy-to-use, fast, and reliable downloader for creators."
+                  />
+                  <meta
+                    property="og:image"
+                    content="https://www.creator-toolkit.com/assets/video-download-gear-thumbnail.jpg"
+                  />
+                  <meta property="og:type" content="website" />
+                  <meta
+                    property="og:url"
+                    content="https://www.creator-toolkit.com/video-download-gear"
+                  />
+                </Helmet>
 
                 <VideoDownloader />
               </>
