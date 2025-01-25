@@ -137,7 +137,7 @@ const LoginSignup = () => {
           )}
 
           <CTAnimatedButton
-            label={isLogin ? "Log In" : "Sign Up"}
+            label={isLogin ? "Log in" : "Sign Up"}
             hoverLabel="Let's go"
             size="md"
             radius={"lg"}
@@ -178,7 +178,7 @@ const LoginSignup = () => {
             to={isLogin ? "/signup" : "/login"}
             className="cursor-pointer font-bold underline hover:text-orange-500"
           >
-            {isLogin ? "Sign Up" : "Log In"}
+            {isLogin ? "Sign Up" : "Log in"}
           </Link>
         </Text>
       </Paper>
