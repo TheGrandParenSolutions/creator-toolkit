@@ -1,9 +1,6 @@
-import  { useState, useRef, useEffect } from "react";
-import {
-  BrandYoutubeSolid,
-  BrandInstagramSolid,
-  BrandXSolid,
-} from "@mynaui/icons-react";
+import { useState, useRef, useEffect } from "react";
+
+import { InstagramLogo, YTLogo } from "@src/shared/Icons/Logos";
 
 const SupportedServices = () => {
   const [expanded, setExpanded] = useState(false);
@@ -12,22 +9,25 @@ const SupportedServices = () => {
   const services = [
     {
       name: "YouTube",
-      icon: <BrandYoutubeSolid size={20} className="text-[#FF0000]" />, // YouTube red
+      icon: <YTLogo />, // YouTube red
     },
     {
       name: "Instagram",
-      icon: <BrandInstagramSolid size={20} className="text-[#E4405F]" />, // Instagram pink
+      icon: <InstagramLogo />, // Instagram pink
     },
-    {
-      name: "(formely twitter)",
-      icon: <BrandXSolid size={20} className="text-[#000]" />, // Twitter blue
-    },
+    // {
+    //   name: "(formely twitter)",
+    //   icon: <BrandXSolid size={20} className="text-[#000]" />, // Twitter blue
+    // },
   ];
 
   // Close the dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setExpanded(false);
       }
     };
@@ -36,25 +36,30 @@ const SupportedServices = () => {
   }, []);
 
   return (
-    <div className="relative w-full max-w-sm mx-auto flex justify-center" ref={dropdownRef}>
+    <div
+      className="relative mx-auto flex w-full max-w-sm justify-center"
+      ref={dropdownRef}
+    >
       {/* Toggle Button */}
       <button
-        className="flex items-center gap-2 px-4 justify-center py-2 text-sm font-medium !bg-transparent text-gray-800 bg-slate-50 dark:bg-gray-800  border-none rounded-full shadow-xs hover:bg-gray-200 focus:outline-none focus:ring-none transition-all"
+        className="shadow-xs focus:ring-none flex items-center justify-center gap-2 rounded-full border-none !bg-transparent bg-slate-50 px-4 py-2  text-sm font-medium text-gray-800 transition-all hover:bg-gray-200 focus:outline-none dark:bg-gray-800"
         onClick={() => setExpanded(!expanded)}
       >
         <span
-          className={`text-xl font-bold dark:text-slate-300 p-2 bg-gray-100 dark:bg-slate-800 rounded-full h-6 w-6 flex justify-center items-center text-gray-800 transform transition-transform duration-300 ${
+          className={`flex h-6 w-6 transform items-center justify-center rounded-full bg-gray-100 p-2 text-xl font-bold text-gray-800 transition-transform duration-300 dark:bg-slate-800 dark:text-slate-300 ${
             expanded ? "rotate-45" : "rotate-0"
           }`}
         >
           +
         </span>
-        <span className="font-medium text-gray-700 dark:text-slate-300">supported services</span>
+        <span className="font-medium text-gray-700 dark:text-slate-300">
+          supported services
+        </span>
       </button>
 
       {/* Dropdown Modal */}
       <div
-        className={`absolute top-full z-10 mt-2 w-full bg-slate-50 border-none border-slate-200 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-500 ${
+        className={`absolute top-full z-10 mt-2 w-full overflow-hidden rounded-lg border-none border-slate-200 bg-slate-50 shadow-lg transition-all duration-500 dark:bg-gray-800 ${
           expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
         style={{ transitionProperty: "max-height, opacity" }}
@@ -65,7 +70,7 @@ const SupportedServices = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="flex items-center dark:bg-slate-600 gap-2 px-3 py-1 text-sm font-medium text-gray-800 dark:text-white bg-slate-200 rounded-lg shadow-sm  transition-all"
+                className="flex items-center gap-2 rounded-lg bg-slate-200 px-3 py-1 text-sm font-medium text-gray-800 shadow-sm transition-all dark:bg-slate-600  dark:text-white"
               >
                 {service.icon}
                 <span>{service.name}</span>
@@ -74,7 +79,8 @@ const SupportedServices = () => {
           </div>
           {/* Disclaimer */}
           <p className="mt-4 text-sm text-gray-400">
-            Creator Toolkit is not affiliated with any of the services listed above.
+            Creator Toolkit is not affiliated with any of the services listed
+            above.
           </p>
         </div>
       </div>
