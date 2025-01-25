@@ -49,11 +49,11 @@ html {
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
   color: var(--black);
   background-color: #f9f8f5;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.75;
   margin: 0;
 }

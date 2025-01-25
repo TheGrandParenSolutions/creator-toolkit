@@ -24,7 +24,7 @@ import {
 import { useFFmpeg } from "@src/Context/FFmpeg/FFmpegContext";
 import toast from "react-hot-toast";
 import { showToast } from "@src/utils/Theme";
-import { InstagramLogo } from "@src/shared/Icons/IconLib";
+import { InstagramLogo } from "@src/shared/Icons/Logos";
 
 const InstagramReelsDownloader = () => {
   const { mergeStreams } = useFFmpeg();

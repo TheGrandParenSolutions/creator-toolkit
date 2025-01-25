@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
-import {
-  Home,
-  BrandYoutube,
-  ImageRectangleSolid,
-  BrandYoutubeSolid,
-  ImageRectangle,
-  PanelLeftCloseSolid,
-  HomeSmileSolid,
-  DollarHexagon,
-  DollarHexagonSolid,
-  PanelLeftOpen,
-  FileText,
-  FileTextSolid,
-} from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
-import { ThumbnailDownloaderIcon } from "@src/shared/Icons/IconLib";
+import {
+  HomeIcon,
+  HomeIconSolid,
+  MoneyIcon,
+  MoneyIconSolid,
+  PanelLeftIcon,
+  PanelRightIcon,
+  ThumbnailDownloaderIcon,
+  ThumbnailDownloaderIconSolid,
+  ThumbnailPreviewIcon,
+  ThumbnailPreviewIconSolid,
+  VideoDownloadIcon,
+  VideoDownloadIconSolid,
+  YoutubeToTextIcon,
+  YoutubeToTextIconSolid,
+} from "@src/shared/Icons/IconLib";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -55,9 +56,9 @@ function NavbarLink({
       >
         <div className="flex items-center justify-center">
           {active ? (
-            <ActiveIcon className="text-xl dark:text-gray-300" />
+            <ActiveIcon className="text-xl text-slate-900 dark:text-gray-300" />
           ) : (
-            <Icon className="text-xl dark:text-gray-400" />
+            <Icon className="text-xl text-slate-700 dark:text-gray-400" />
           )}
         </div>
         <span
@@ -75,37 +76,37 @@ function NavbarLink({
 }
 
 const linkContent = [
-  { icon: Home, activeIcon: HomeSmileSolid, label: "Home", to: "/" },
+  { icon: HomeIcon, activeIcon: HomeIconSolid, label: "Home", to: "/" },
   {
-    icon: BrandYoutube,
-    activeIcon: BrandYoutubeSolid,
+    icon: VideoDownloadIcon,
+    activeIcon: VideoDownloadIconSolid,
     label: "Video Download Gear",
     to: "/video-download-gear",
   },
   {
-    icon: ImageRectangle,
-    activeIcon: ImageRectangleSolid,
+    icon: ThumbnailPreviewIcon,
+    activeIcon: ThumbnailPreviewIconSolid,
     label: "Thumbnail test & preview",
     to: "/thumbnail-test",
   },
   {
-    icon: FileText,
-    activeIcon: FileTextSolid,
+    icon: YoutubeToTextIcon,
+    activeIcon: YoutubeToTextIconSolid,
     label: "Youtube to text",
     to: "/YoutubeToText",
   },
   {
-    icon: DollarHexagon,
-    activeIcon: DollarHexagonSolid,
+    icon: MoneyIcon,
+    activeIcon: MoneyIconSolid,
     label: "Pricing",
     to: "/pricing",
   },
   {
     icon: ThumbnailDownloaderIcon,
-    activeIcon: ThumbnailDownloaderIcon,
+    activeIcon: ThumbnailDownloaderIconSolid,
     label: "Thumbnail downloader",
     to: "/thumbnail-downloader",
-  }
+  },
 ];
 
 export function SideNav() {
@@ -160,9 +161,9 @@ export function SideNav() {
                 >
                   <div className="flex items-center justify-center">
                     {panelOpen ? (
-                      <PanelLeftCloseSolid className="text-xl dark:text-gray-200" />
+                      <PanelRightIcon className="text-xl dark:text-gray-200" />
                     ) : (
-                      <PanelLeftOpen className="text-xl dark:text-gray-400" />
+                      <PanelLeftIcon className="text-xl dark:text-gray-400" />
                     )}
                   </div>
                 </UnstyledButton>

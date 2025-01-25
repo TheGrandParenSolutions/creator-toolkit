@@ -1,5 +1,4 @@
 import {
-  Rocket,
   ChevronDown,
   Image,
   BrandYoutube,
@@ -14,7 +13,10 @@ import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
 import { Group, Text, ActionIcon, Menu } from "@mantine/core";
-import { ThumbnailDownloaderIcon } from "@src/shared/Icons/IconLib";
+import {
+  CrownIconSolid,
+  ThumbnailDownloaderIcon,
+} from "@src/shared/Icons/IconLib";
 
 const youtubeFeatures = [
   {
@@ -39,8 +41,8 @@ const youtubeFeatures = [
     icon: ThumbnailDownloaderIcon,
     title: "Youtube Thumbnail Downloader",
     description: "Download youtube thumbnails.",
-    link: "/thumbnail-downloader"
-  }
+    link: "/thumbnail-downloader",
+  },
 ];
 
 export function MainNav() {
@@ -151,7 +153,7 @@ export function MainNav() {
             hoverLabel="You will love it"
             to="/pricing"
             buttonStyles="w-60"
-            icon={<Rocket />}
+            icon={<CrownIconSolid />}
           />
           {isAuthenticated && user ? (
             <UserProfile user={user} />

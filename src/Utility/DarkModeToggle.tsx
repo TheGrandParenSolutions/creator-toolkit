@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SunSolid, MoonSolid } from "@mynaui/icons-react";
 import { ThemeContext } from "@src/Context/Theme/ThemeContext";
+import { MoonIcon, SunIcon } from "@src/shared/Icons/IconLib";
 
 const DarkModeToggle = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -15,10 +15,10 @@ const DarkModeToggle = () => {
         className={`absolute flex h-7 w-7 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${
           darkMode
             ? "animate-disappear"
-            : "animate-appear bg-yellow-300 shadow-yellow-500"
+            : "animate-appear bg-sky-200 shadow-sky-300"
         }`}
       >
-        <SunSolid className="h-6 w-6 text-yellow-600" />
+        <SunIcon className="h-6 w-6 text-yellow-600" />
       </div>
 
       {/* Moon Icon */}
@@ -29,7 +29,7 @@ const DarkModeToggle = () => {
             : "animate-disappear"
         }`}
       >
-        <MoonSolid className="h-6 w-6 text-white" />
+        <MoonIcon className="h-6 w-6 text-white" />
       </div>
     </div>
   );

@@ -287,14 +287,14 @@ const YoutubeToText: FC = () => {
                       <InfoCircle color="teal" size={20} />
                     </ActionIcon>
                   </Tooltip>
-                  <p className="text-extralight font-manrope text-xs text-slate-400 md:hidden">{`Character Count: ${transcript.length}`}</p>
+                  <p className="text-extralight font-wix text-xs text-slate-400 md:hidden">{`Character Count: ${transcript.length}`}</p>
                 </div>
               </div>
               {/* Transcript Content */}
               <div className="mt-4 rounded-lg border border-none bg-slate-100 p-4 text-sm font-medium text-black dark:border-black dark:bg-gray-800 dark:text-white">
                 <ScrollArea h={300} type="always">
                   <pre className="whitespace-pre-wrap">
-                    <p className="font-manrope">{transcript}</p>
+                    <p className="font-wix">{transcript}</p>
                   </pre>
                 </ScrollArea>
               </div>
