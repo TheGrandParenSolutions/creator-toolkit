@@ -1,7 +1,8 @@
 import { Dispatch, FC } from "react";
 import { Text } from "@mantine/core";
-import { FolderTwo } from "@mynaui/icons-react";
+
 import {
+  FolderVideoIcon,
   MusicIcon,
   MuteVideoIcon,
   SparkleIcon,
@@ -41,7 +42,9 @@ const QuickDownloadToggles: FC<{
           >
             <SparkleIcon
               className={
-                selectedOption === "auto" ? "text-black" : "text-yellow-500"
+                selectedOption === "auto"
+                  ? "text-black"
+                  : "text-[--brand-dark-orange]"
               }
             />
             <Text className="font-semibold">auto</Text>
@@ -60,7 +63,7 @@ const QuickDownloadToggles: FC<{
               aria-pressed={selectedOption === "format"}
               disabled={disabled}
             >
-              <FolderTwo
+              <FolderVideoIcon
                 className={
                   selectedOption === "format" ? "text-white" : "text-green-600"
                 }
