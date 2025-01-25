@@ -39,6 +39,12 @@ const SupportedServices = () => {
     <div
       className="relative mx-auto flex w-full max-w-sm justify-center"
       ref={dropdownRef}
+      onMouseEnter={() => {
+        setExpanded(true);
+      }}
+      onMouseLeave={() => {
+        setExpanded(false);
+      }}
     >
       {/* Toggle Button */}
       <button
