@@ -1,10 +1,4 @@
-import {
-  ChevronDown,
-  Image,
-  BrandYoutube,
-  FileText,
-  CircleSolid,
-} from "@mynaui/icons-react";
+import { ChevronDown, CircleSolid } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { Link, useLocation } from "react-router-dom";
@@ -16,23 +10,26 @@ import { Group, Text, ActionIcon, Menu } from "@mantine/core";
 import {
   CrownIconSolid,
   ThumbnailDownloaderIcon,
+  ThumbnailPreviewIcon,
+  YoutubeToTextIcon,
 } from "@src/shared/Icons/IconLib";
+import { YTLogo } from "@src/shared/Icons/Logos";
 
 const youtubeFeatures = [
   {
-    icon: BrandYoutube,
+    icon: YTLogo,
     title: "Youtube Downloader",
     description: "Download videos easily.",
     link: "/video-download-gear",
   },
   {
-    icon: Image,
+    icon: ThumbnailPreviewIcon,
     title: "Thumbnail Tester",
     description: "Test your thumbnails.",
     link: "/thumbnail-test",
   },
   {
-    icon: FileText,
+    icon: YoutubeToTextIcon,
     title: "Youtube To Text",
     description: "Convert videos to text.",
     link: "/YoutubeToText",
@@ -72,8 +69,8 @@ export function MainNav() {
         className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
       >
         <Group className="flex-nowrap gap-2" align="center">
-          <ActionIcon size={24} variant="filled" radius={"xl"} color="#ffd580">
-            <feature.icon className="text-slate-800" size={18} />
+          <ActionIcon size={32} variant="filled" radius={"xl"} color="#f1f5f9">
+            <feature.icon className="text-slate-800" />
           </ActionIcon>
           <Text size="sm" fw={600}>
             {feature.title}

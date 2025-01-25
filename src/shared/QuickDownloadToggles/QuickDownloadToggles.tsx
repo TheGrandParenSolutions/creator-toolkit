@@ -1,6 +1,11 @@
 import { Dispatch, FC } from "react";
 import { Text } from "@mantine/core";
-import { FolderTwo, Music, Sparkles, VolumeX } from "@mynaui/icons-react";
+import { FolderTwo } from "@mynaui/icons-react";
+import {
+  MusicIcon,
+  MuteVideoIcon,
+  SparkleIcon,
+} from "@src/shared/Icons/IconLib";
 
 const QuickDownloadToggles: FC<{
   setSelectedOption: Dispatch<string>;
@@ -34,7 +39,7 @@ const QuickDownloadToggles: FC<{
             aria-pressed={selectedOption === "auto"}
             disabled={disabled}
           >
-            <Sparkles
+            <SparkleIcon
               className={
                 selectedOption === "auto" ? "text-black" : "text-yellow-500"
               }
@@ -77,7 +82,7 @@ const QuickDownloadToggles: FC<{
           aria-pressed={selectedOption === "audio"}
           disabled={disabled}
         >
-          <Music
+          <MusicIcon
             className={
               selectedOption === "audio" ? "text-white" : "text-purple-600"
             }
@@ -97,7 +102,7 @@ const QuickDownloadToggles: FC<{
           aria-pressed={selectedOption === "mute"}
           disabled={disabled}
         >
-          <VolumeX
+          <MuteVideoIcon
             className={
               selectedOption === "mute" ? "text-white" : "text-red-500"
             }
