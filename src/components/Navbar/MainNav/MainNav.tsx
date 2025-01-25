@@ -170,12 +170,14 @@ export function MainNav() {
             {isAuthenticated && user ? (
               <UserProfile user={user} />
             ) : (
-              <Link
-                to="/login"
-                className="flex items-center justify-center rounded-3xl border-2 border-gray-800 px-3 py-1 text-xs font-semibold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
-              >
-                Log In
-              </Link>
+              <CTAnimatedButton
+                radius={"xl"}
+                label="Go pro"
+                hoverLabel="You will love it"
+                to="/pricing"
+                buttonStyles="w-24 md:w-60"
+                icon={<CrownIconSolid />}
+              />
             )}
           </div>
         </div>
