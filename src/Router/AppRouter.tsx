@@ -11,6 +11,7 @@ import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloa
 import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
 import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
 import VideoDownloader from "@src/pages/VideoDownloader/VideoDownloader";
+import RemoveBackground from "@src/pages/RemoveBackground/RemoveBackground";
 
 const AppRouter = () => {
   return (
@@ -245,6 +246,52 @@ const AppRouter = () => {
                 </Helmet>
 
                 <VideoDownloader />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+
+      <Route
+        path="/remove-background"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Remove Background - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Remove background from images easily with Creator Toolkit. Upload your image and get a transparent background in seconds."
+                  />
+                  <meta
+                    name="keywords"
+                    content="remove background, background remover, transparent image, image editor, AI background remover"
+                  />
+                  <link
+                    rel="canonical"
+                    href="https://www.creator-toolkit.com/remove-background"
+                  />
+                  <meta
+                    property="og:title"
+                    content="Remove Background - Creator Toolkit"
+                  />
+                  <meta
+                    property="og:description"
+                    content="Instantly remove background from images with Creator Toolkit's AI-powered tool."
+                  />
+                  <meta
+                    property="og:image"
+                    content="https://www.creator-toolkit.com/assets/remove-background-tool-thumbnail.jpg"
+                  />
+                  <meta property="og:type" content="website" />
+                  <meta
+                    property="og:url"
+                    content="https://www.creator-toolkit.com/remove-background"
+                  />
+                </Helmet>
+
+                <RemoveBackground />
               </>
             </main>
           </MainSection>

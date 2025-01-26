@@ -9,6 +9,8 @@ import {
   MoneyIconSolid,
   PanelLeftIcon,
   PanelRightIcon,
+  RemoveBGIcon,
+  RemoveBGIconSolid,
   ThumbnailDownloaderIcon,
   ThumbnailDownloaderIconSolid,
   ThumbnailPreviewIcon,
@@ -106,6 +108,12 @@ const linkContent = [
     activeIcon: ThumbnailDownloaderIconSolid,
     label: "Thumbnail downloader",
     to: "/thumbnail-downloader",
+  },
+  {
+    icon: RemoveBGIcon,
+    activeIcon: RemoveBGIconSolid,
+    label: "Remove background",
+    to: "/remove-background",
   },
 ];
 
