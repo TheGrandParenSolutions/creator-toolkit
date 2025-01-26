@@ -43,7 +43,7 @@ const YoutubeThumbnailTestOnboarding = () => {
     const sampleImageUrl = "/assets/test/thumbnail.jpeg";
     setImagePreview(sampleImageUrl);
     console.log(imagePreview);
-    navigate("/thumbnail-test/youtubethumbnailpreview");
+    navigate("/thumbnail-test/youtube-thumbnail-preview");
   };
 
   return (

@@ -107,7 +107,7 @@ const AppRouter = () => {
         }
       />
       <Route
-        path="/thumbnail-test/youtubethumbnailpreview"
+        path="/thumbnail-test/youtube-thumbnail-preview"
         element={
           <MainSection>
             <main className="flex-grow p-4 transition-all duration-300">
