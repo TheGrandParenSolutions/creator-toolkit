@@ -56,7 +56,7 @@ const SizeView: FC<SizeViewProps> = ({ thumbnails, title }) => {
                     return (
                       <div
                         key={index}
-                        className="shadow-xs rounded-3xl border-2 border-gray-50 bg-transparent p-6 dark:border-black dark:bg-gray-800"
+                        className="shadow-xs rounded-3xl border-2 border-zinc-50 bg-transparent p-6 dark:border-black dark:bg-zinc-800"
                       >
                         <YoutubeThumbnail
                           thumbnail={thumbnail}

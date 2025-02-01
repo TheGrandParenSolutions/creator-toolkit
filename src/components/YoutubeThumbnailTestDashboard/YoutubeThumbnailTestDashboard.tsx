@@ -72,7 +72,7 @@ const YoutubeThumbnailTestDashboard = () => {
         />
       </Helmet>
       <div className="flex flex-col scroll-smooth transition-all duration-500 sm:overflow-y-hidden md:flex-row lg:h-[calc(100vh-58px)]">
-        <aside className="no-scrollbar border-background-secondary px-global mx-auto mb-6 h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-gray-100 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
+        <aside className="no-scrollbar border-background-secondary px-global mx-auto mb-6 h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-zinc-100 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
           <div className="h-full space-y-6 scroll-smooth px-2">
             <SizeViewModes
               activeSizeViewMode={activeSizeViewMode}
@@ -133,8 +133,8 @@ const YoutubeThumbnailTestDashboard = () => {
                         onKeyDown={e => handleKeyDown(e)}
                         radius={"xl"}
                         classNames={{
-                          input: `w-full p-5 rounded-full text-base text-sm border-transparent dark:bg-gray-800 border border-solid ring-[0.5px] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-2
-                   focus:ring-[var(--brand-dark-yellow)] ring-gray-300 dark:ring-gray-600
+                          input: `w-full p-5 rounded-full text-base text-sm border-transparent dark:bg-zinc-800 border border-solid ring-[0.5px] text-zinc-600 dark:text-zinc-300 outline-none transition focus:ring-2
+                   focus:ring-[var(--brand-dark-yellow)] ring-zinc-300 dark:ring-zinc-600
                                   `,
                         }}
                         rightSection={

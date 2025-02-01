@@ -82,7 +82,7 @@ const Pricing = () => {
         </script>
       </Helmet>
 
-      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-2 text-gray-800 transition-all duration-300 dark:bg-dark-app-content dark:text-gray-100">
+      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-2 text-zinc-800 transition-all duration-300 dark:bg-dark-app-content dark:text-zinc-100">
         {/* Heading */}
         <Box id="initial-section" className="mb-10 max-w-3xl text-center">
           <Text
@@ -95,7 +95,7 @@ const Pricing = () => {
           <Text
             size="sm"
             component="h3"
-            className="text-sm text-gray-600 dark:text-gray-400 md:text-base lg:text-lg"
+            className="text-sm text-zinc-600 dark:text-zinc-400 md:text-base lg:text-lg"
           >
             All the tools to help grow your channel from 0 to 1M+ subscribers.
           </Text>
@@ -115,7 +115,7 @@ const Pricing = () => {
           {/* Basic Plan */}
           <Paper
             radius="lg"
-            className="w-full border border-[--main-yellow] bg-transparent bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:border-2 dark:border-black dark:bg-gray-800 md:max-w-md md:p-6 lg:max-w-lg"
+            className="w-full border border-[--main-yellow] bg-transparent bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md dark:border-2 dark:border-black dark:bg-zinc-800 md:max-w-md md:p-6 lg:max-w-lg"
             style={{
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.08)",
             }}
@@ -131,7 +131,7 @@ const Pricing = () => {
               component="h2"
               className="mb-4 flex items-baseline font-bold text-black dark:text-white"
             >
-              <span className="mr-2 text-xs text-gray-600 line-through dark:text-gray-300 md:text-sm">
+              <span className="mr-2 text-xs text-zinc-600 line-through dark:text-zinc-300 md:text-sm">
                 {isAnnual ? "$17.99" : "$21.99"}
               </span>
               <span className="text-4xl md:text-5xl">
@@ -143,13 +143,13 @@ const Pricing = () => {
             </Text>
             <Text
               size="xs"
-              className="mb-3 text-xs font-bold text-gray-700 dark:text-gray-300 md:text-sm"
+              className="mb-3 text-xs font-bold text-zinc-700 dark:text-zinc-300 md:text-sm"
             >
               30% OFF - Limited time offer on our plans
             </Text>
             <Text
               size="xs"
-              className="mb-5 text-xs text-gray-600 dark:text-gray-300 md:text-sm"
+              className="mb-5 text-xs text-zinc-600 dark:text-zinc-300 md:text-sm"
             >
               Great for users starting out with their YouTube Journey.{" "}
               <span className="font-bold">
@@ -166,37 +166,37 @@ const Pricing = () => {
             <Group>
               <Text
                 size="xs"
-                className="text-xs text-gray-800 dark:text-gray-300 md:text-sm"
+                className="text-xs text-zinc-800 dark:text-zinc-300 md:text-sm"
               >
                 ✓ Unlimited Thumbnail Ideas
               </Text>
               <Text
                 size="xs"
-                className="text-xs text-gray-800 dark:text-gray-300 md:text-sm"
+                className="text-xs text-zinc-800 dark:text-zinc-300 md:text-sm"
               >
                 ✓ Up to 3 Thumbnail A/B Tests at once
               </Text>
               <Text
                 size="xs"
-                className="text-xs text-gray-800 dark:text-gray-300 md:text-sm"
+                className="text-xs text-zinc-800 dark:text-zinc-300 md:text-sm"
               >
                 ✓ 150 Thumbnail AI Rates/mo
               </Text>
               <Text
                 size="xs"
-                className="text-xs text-gray-800 dark:text-gray-300 md:text-sm"
+                className="text-xs text-zinc-800 dark:text-zinc-300 md:text-sm"
               >
                 ✓ 200 Thumbnail AI Creations/mo
               </Text>
               <Text
                 size="xs"
-                className="text-xs text-gray-800 dark:text-gray-300 md:text-sm"
+                className="text-xs text-zinc-800 dark:text-zinc-300 md:text-sm"
               >
                 ✓ 1 Channel
               </Text>
               <Text
                 size="xs"
-                className="text-xs text-gray-800 dark:text-gray-300 md:text-sm"
+                className="text-xs text-zinc-800 dark:text-zinc-300 md:text-sm"
               >
                 ✓ Members Only Discord Group
               </Text>
@@ -222,7 +222,7 @@ const Pricing = () => {
               component="h2"
               className="mb-4 flex items-baseline font-bold text-black"
             >
-              <span className="mr-2 text-xs text-gray-600 line-through md:text-sm">
+              <span className="mr-2 text-xs text-zinc-600 line-through md:text-sm">
                 {isAnnual ? "$32.99" : "$38.99"}
               </span>
               <span className="text-4xl md:text-5xl">
@@ -234,11 +234,11 @@ const Pricing = () => {
             </Text>
             <Text
               size="xs"
-              className="mb-3 text-xs font-bold text-gray-900 md:text-sm"
+              className="mb-3 text-xs font-bold text-zinc-900 md:text-sm"
             >
               30% OFF - Limited time offer on our plans
             </Text>
-            <Text size="xs" className="mb-5 text-xs text-gray-800 md:text-sm">
+            <Text size="xs" className="mb-5 text-xs text-zinc-800 md:text-sm">
               The go-to plan for YouTubers looking to grow without limits.{" "}
               <span className="font-bold">
                 Billed yearly at {isAnnual ? "$269.99" : "$323.88"}.
@@ -247,37 +247,37 @@ const Pricing = () => {
             <Button
               size="sm"
               radius="lg"
-              className="dark:bg-dark-button dark:hover:bg-dark-hover mb-6 w-full bg-black text-xs font-medium text-white hover:bg-gray-800 md:text-sm lg:text-base"
+              className="dark:bg-dark-button dark:hover:bg-dark-hover mb-6 w-full bg-black text-xs font-medium text-white hover:bg-zinc-800 md:text-sm lg:text-base"
             >
               Get Started
             </Button>
             <Group>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Unlimited Thumbnail Ideas
               </Text>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Unlimited Title & Thumbnail A/B Tests
               </Text>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Unlimited Thumbnail AI Rater
               </Text>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Unlimited Thumbnail AI Creator
               </Text>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Unlimited Image AI Tools
               </Text>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Multiple Channels
               </Text>
-              <Text size="xs" className="text-xs text-gray-900 md:text-sm">
+              <Text size="xs" className="text-xs text-zinc-900 md:text-sm">
                 ✓ Members Only Discord Group
               </Text>
             </Group>
           </Paper>
         </div>
 
-        <Text size="xs" className="mt-6 text-gray-500 dark:text-gray-400">
+        <Text size="xs" className="mt-6 text-zinc-500 dark:text-zinc-400">
           *Limits reset each day
         </Text>
         <CTDivider />

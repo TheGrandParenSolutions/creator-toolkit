@@ -2,12 +2,14 @@ import { Button } from "@mantine/core";
 
 const AdCard = () => {
   return (
-    <div className="relative mx-auto w-full max-w-sm rounded-[20px]  text-black px-6 py-8 text-center shadow-sm"
-    style={{
-        background: "var(--brand-bg-theme)"
-    }}>
+    <div
+      className="relative mx-auto w-full max-w-sm rounded-[20px]  px-6 py-8 text-center text-black shadow-sm"
+      style={{
+        background: "var(--brand-bg-theme)",
+      }}
+    >
       {/* Heading */}
-      <h1 className="text-xl font-bold  font-grifter">
+      <h1 className="font-grifter text-xl  font-bold">
         Free YouTube AI Thumbnail Maker
       </h1>
 
@@ -22,7 +24,7 @@ const AdCard = () => {
         radius="xl"
         size="md"
         variant="filled"
-        className="mt-6 w-full max-w-xs bg-white dark:bg-gray-800 dark:text-white text-black font-medium hover:bg-white hover:!text-[var(--brand-dark-yellow)]"
+        className="mt-6 w-full max-w-xs bg-white font-medium text-black hover:bg-white hover:!text-[var(--brand-dark-yellow)] dark:bg-zinc-800 dark:text-white"
       >
         Create Your Thumbnail
       </Button>

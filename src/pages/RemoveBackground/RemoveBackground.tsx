@@ -79,13 +79,13 @@ const RemoveBackground = () => {
       </Helmet>
 
       {/* Custom Dropzone */}
-      <div className="group mx-auto mt-8 max-w-lg rounded-3xl border-4 border-dashed border-gray-300 bg-white px-6 py-8 shadow-md transition-all duration-300 hover:border-[var(--brand-dark-yellow)] dark:border-gray-700 dark:bg-dark-app sm:mt-12 sm:max-w-4xl lg:rounded-3xl lg:px-10 lg:py-12 lg:shadow-lg">
+      <div className="group mx-auto mt-8 max-w-lg rounded-3xl border-4 border-dashed border-zinc-300 bg-white px-6 py-8 shadow-md transition-all duration-300 hover:border-[var(--brand-dark-yellow)] dark:border-zinc-700 dark:bg-dark-app sm:mt-12 sm:max-w-4xl lg:rounded-3xl lg:px-10 lg:py-12 lg:shadow-lg">
         <div className="flex flex-col items-center justify-center space-y-6">
-          <ImageUpload className="h-16 w-16 text-gray-300 group-hover:text-[var(--brand-dark-yellow)] dark:text-gray-500 dark:group-hover:text-[var(--brand-mid-yellow)] sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 sm:text-xl lg:text-2xl">
+          <ImageUpload className="h-16 w-16 text-zinc-300 group-hover:text-[var(--brand-dark-yellow)] dark:text-zinc-500 dark:group-hover:text-[var(--brand-mid-yellow)] sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
+          <h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 sm:text-xl lg:text-2xl">
             Click below or drag & drop images to start
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400 sm:text-sm lg:text-base">
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm lg:text-base">
             Supports JPG, PNG, and WebP formats.
           </p>
           <div className="flex flex-col items-center gap-4 sm:flex-row">
@@ -137,7 +137,7 @@ const RemoveBackground = () => {
       {/* Processed Image Output */}
       {outputImage && (
         <div className="mt-6 text-center">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+          <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
             Background Removed
           </h3>
           <Image

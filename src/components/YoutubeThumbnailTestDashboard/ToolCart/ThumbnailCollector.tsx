@@ -27,12 +27,12 @@ const ThumbnailCollector = ({
 
   return (
     <div>
-      <h2 className="mb-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+      <h2 className="mb-3 text-lg font-semibold text-zinc-800 dark:text-zinc-200">
         Thumbnails
       </h2>
       <div className="grid grid-cols-2 gap-3">
         {/* Upload Button */}
-        <div className="flex h-20 w-full cursor-pointer items-center justify-center rounded-2xl border border-[var(--main-yellow)] bg-transparent hover:border-[var(--brand-dark-yellow)] hover:text-[var(--brand-dark-yellow)] dark:border-2 dark:border-black dark:bg-gray-800 dark:hover:border-[var(--brand-mid-yellow)]">
+        <div className="flex h-20 w-full cursor-pointer items-center justify-center rounded-2xl border border-[var(--main-yellow)] bg-transparent hover:border-[var(--brand-dark-yellow)] hover:text-[var(--brand-dark-yellow)] dark:border-2 dark:border-black dark:bg-zinc-800 dark:hover:border-[var(--brand-mid-yellow)]">
           <label className="flex h-full w-full cursor-pointer items-center justify-center">
             <input
               type="file"
@@ -41,7 +41,7 @@ const ThumbnailCollector = ({
               className="hidden"
               onChange={handleUpload}
             />
-            <Upload className="h-6 w-6 cursor-pointer text-gray-500 dark:text-gray-400" />
+            <Upload className="h-6 w-6 cursor-pointer text-zinc-500 dark:text-zinc-400" />
           </label>
         </div>
 

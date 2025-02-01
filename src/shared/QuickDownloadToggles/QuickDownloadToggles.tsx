@@ -34,7 +34,7 @@ const QuickDownloadToggles: FC<{
             ${
               selectedOption === "auto"
                 ? "shadow-xs bg-main-gradient text-black"
-                : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+                : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
             } ${disabled ? "cursor-not-allowed" : ""}`}
             onClick={() => !disabled && setSelectedOption("auto")}
             aria-pressed={selectedOption === "auto"}
@@ -53,11 +53,11 @@ const QuickDownloadToggles: FC<{
           {/* Select Format Option */}
           {!hideChooseFormat && (
             <button
-              className={`flex items-center gap-1.5 border-none px-4 py-1.5 text-xs font-medium transition-all duration-200 focus:outline-none dark:border-gray-600
+              className={`flex items-center gap-1.5 border-none px-4 py-1.5 text-xs font-medium transition-all duration-200 focus:outline-none dark:border-zinc-600
               ${
                 selectedOption === "format"
                   ? "shadow-xs bg-green-600 text-white"
-                  : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+                  : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
               } ${disabled ? "cursor-not-allowed" : ""}`}
               onClick={() => !disabled && setSelectedOption("format")}
               aria-pressed={selectedOption === "format"}
@@ -79,7 +79,7 @@ const QuickDownloadToggles: FC<{
           ${
             selectedOption === "audio"
               ? "shadow-xs scale-100 bg-purple-600 text-white"
-              : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+              : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
           } ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
           onClick={() => !disabled && setSelectedOption("audio")}
           aria-pressed={selectedOption === "audio"}
@@ -99,7 +99,7 @@ const QuickDownloadToggles: FC<{
           ${
             selectedOption === "mute"
               ? "shadow-xs scale-100 bg-red-500 text-white"
-              : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+              : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
           } ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
           onClick={() => !disabled && setSelectedOption("mute")}
           aria-pressed={selectedOption === "mute"}

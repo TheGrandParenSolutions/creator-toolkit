@@ -54,7 +54,7 @@ const ResetPassword = () => {
 
       <Paper
         radius="lg"
-        className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2 dark:border-black dark:bg-gray-800"
+        className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
         style={{
           borderRadius: "16px",
         }}
@@ -63,11 +63,11 @@ const ResetPassword = () => {
           <Text
             size="lg"
             component="h1"
-            className="font-grifter font-bold text-gray-800 dark:text-white md:text-xl"
+            className="font-grifter font-bold text-zinc-800 dark:text-white md:text-xl"
           >
             Reset Your Password
           </Text>
-          <Text size="xs" className="text-gray-300">
+          <Text size="xs" className="text-zinc-300">
             Enter your new password below to reset your account password.
           </Text>
         </Box>
@@ -81,7 +81,7 @@ const ResetPassword = () => {
               onChange={e => setNewPassword(e.target.value)}
               required
               disabled={isSubmitting}
-              className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
+              className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 px-4 py-2 text-sm text-zinc-700 focus:ring-2 focus:ring-orange-400"
             />
           </div>
 

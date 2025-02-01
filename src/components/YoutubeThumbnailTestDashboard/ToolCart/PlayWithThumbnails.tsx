@@ -47,7 +47,7 @@ const PlayWithThumbnails = () => {
             key={id}
             onClick={() => handleClick(id)}
             className={
-              "flex items-center rounded-full border border-[var(--main-yellow)] bg-transparent text-gray-700 transition-all  hover:!bg-[var(--brand-mid-yellow)]  hover:!text-black dark:border-2 dark:border-black dark:bg-gray-800 dark:text-gray-300       "
+              "flex items-center rounded-full border border-[var(--main-yellow)] bg-transparent text-zinc-700 transition-all  hover:!bg-[var(--brand-mid-yellow)]  hover:!text-black dark:border-2 dark:border-black dark:bg-zinc-800 dark:text-zinc-300       "
             }
           >
             {icon}

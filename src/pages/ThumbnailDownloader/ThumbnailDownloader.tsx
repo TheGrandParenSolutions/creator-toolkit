@@ -66,7 +66,7 @@ const YouTubeThumbnailDownloader = () => {
       setThumbnails(thumbnailsWithResolutions);
       scrollToSection();
     } catch (err) {
-      setError("Failed to fetch thumbnails. Please check the link."+ err);
+      setError("Failed to fetch thumbnails. Please check the link." + err);
     } finally {
       setLoading(false);
     }
@@ -97,11 +97,11 @@ const YouTubeThumbnailDownloader = () => {
       <div className="mx-auto my-16 flex w-full flex-col items-center space-y-6 bg-light-app p-6 dark:bg-dark-app-content">
         {/* Header */}
         <div className="text-center">
-          <h1 className="flex flex-col items-center justify-center text-xl font-bold text-gray-800 dark:text-gray-200 lg:flex-row lg:space-x-2 lg:text-2xl">
+          <h1 className="flex flex-col items-center justify-center text-xl font-bold text-zinc-800 dark:text-zinc-200 lg:flex-row lg:space-x-2 lg:text-2xl">
             <BrandYoutubeSolid size={32} className="text-red-500" />
             YouTube Thumbnail Downloader
           </h1>
-          <Text className="mx-auto mt-3 max-w-4xl text-sm text-gray-600 dark:text-gray-400 lg:text-base">
+          <Text className="mx-auto mt-3 max-w-4xl text-sm text-zinc-600 dark:text-zinc-400 lg:text-base">
             Paste your YouTube video URL below to fetch thumbnails in all
             available resolutions.
           </Text>

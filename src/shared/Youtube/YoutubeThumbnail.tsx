@@ -56,7 +56,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
 
         <div className="flex flex-col items-start justify-start">
           <h1
-            className={`whitespace-pre-line text-sm font-medium text-gray-800 dark:text-gray-100 lg:text-lg ${
+            className={`whitespace-pre-line text-sm font-medium text-zinc-800 dark:text-zinc-100 lg:text-lg ${
               mode === "search" ? "truncate" : ""
             }`}
           >
@@ -65,7 +65,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
           <div>
             {mode === "search" ? (
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   {views} • {uploadedTime}
                 </p>
                 <div className="my-2 flex items-center gap-2">
@@ -74,17 +74,17 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
                     src={channelLogo}
                     alt={`${channelName} logo`}
                   />
-                  <p className="text-sm text-gray-600 dark:text-gray-200 ">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-200 ">
                     {channelName}
                   </p>
                 </div>
               </div>
             ) : (
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-200 ">
+                <p className="text-sm text-zinc-600 dark:text-zinc-200 ">
                   {channelName}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   {views} • {uploadedTime}
                 </p>
               </div>
@@ -94,7 +94,7 @@ const YoutubeThumbnail: FC<YoutubeThumbnailProps> = ({
 
         {/* Additional Description (Only for search mode) */}
         {mode === "search" && showDescription && (
-          <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-400">
+          <p className="line-clamp-3 text-sm text-zinc-700 dark:text-zinc-400">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.......
           </p>
         )}

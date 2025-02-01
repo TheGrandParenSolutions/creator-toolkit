@@ -24,7 +24,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
     hoverStyles = "",
     icon,
     loading,
-    disabled
+    disabled,
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
@@ -73,9 +73,9 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
             : "#fff"
           : undefined,
       }}
-      className={`relative border-none flex items-center justify-center overflow-hidden border bg-white text-black transition-all duration-300 ${buttonStyles} ${
+      className={`relative flex items-center justify-center overflow-hidden border border-none bg-white text-black transition-all duration-300 ${buttonStyles} ${
         loading &&
-        "disabled:border-slate-200 disabled:bg-gray-400 disabled:text-slate-500 disabled:shadow-none"
+        "disabled:border-zinc-200 disabled:bg-zinc-400 disabled:text-zinc-500 disabled:shadow-none"
       }`}
     >
       {loading ? (

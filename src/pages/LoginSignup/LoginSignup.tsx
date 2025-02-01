@@ -71,7 +71,7 @@ const LoginSignup = () => {
 
       <Paper
         radius="lg"
-        className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2  dark:border-black dark:bg-gray-800"
+        className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
         style={{
           borderRadius: "16px",
         }}
@@ -81,11 +81,11 @@ const LoginSignup = () => {
           <Text
             size="lg"
             component="h1"
-            className="font-grifter font-bold text-gray-800 dark:text-white md:text-xl"
+            className="font-grifter font-bold text-zinc-800 dark:text-white md:text-xl"
           >
             {isLogin ? "Welcome Back!" : "Create Your Account"}
           </Text>
-          <Text size="xs" className="text-gray-300">
+          <Text size="xs" className="text-zinc-300">
             {isLogin
               ? "Log in to access your account."
               : "Sign up to get started with our platform."}
@@ -96,7 +96,7 @@ const LoginSignup = () => {
         <form className="space-y-4">
           {/* Email Field */}
           <div className="relative">
-            <Envelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Envelope className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
             <input
               type="email"
               placeholder="Your Email"
@@ -105,13 +105,13 @@ const LoginSignup = () => {
                 setFormValues({ ...formValues, email: e.target.value })
               }
               required
-              className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
+              className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 px-4 py-2 pl-10 text-sm text-zinc-700 focus:ring-2 focus:ring-orange-400"
             />
           </div>
 
           {/* Password Field */}
           <div className="relative">
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
             <input
               type="password"
               placeholder="Your Password"
@@ -120,7 +120,7 @@ const LoginSignup = () => {
                 setFormValues({ ...formValues, password: e.target.value })
               }
               required
-              className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
+              className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 px-4 py-2 pl-10 text-sm text-zinc-700 focus:ring-2 focus:ring-orange-400"
             />
           </div>
 
@@ -156,7 +156,7 @@ const LoginSignup = () => {
           labelPosition="center"
           className="my-4 text-black"
           classNames={{
-            label: "text-black dark:text-gray-300",
+            label: "text-black dark:text-zinc-300",
           }}
         />
 
@@ -164,7 +164,7 @@ const LoginSignup = () => {
         <Group grow>
           <Button
             variant="outline"
-            className="hover: border-gray-300 text-gray-600 hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:text-black"
+            className="hover: border-zinc-300 text-zinc-600 hover:bg-zinc-100 hover:text-black dark:text-zinc-300 dark:hover:text-black"
           >
             <BrandGoogleSolid className="mr-2" />
             Google

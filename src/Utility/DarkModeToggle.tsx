@@ -25,7 +25,7 @@ const DarkModeToggle = () => {
       <div
         className={`absolute flex h-7 w-7 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${
           darkMode
-            ? "animate-appear bg-slate-700 shadow-slate-300"
+            ? "animate-appear bg-zinc-700 shadow-zinc-300"
             : "animate-disappear"
         }`}
       >

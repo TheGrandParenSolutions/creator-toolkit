@@ -226,11 +226,11 @@ const VideoDownloader = () => {
       <div className="mx-auto my-16 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
-          <h1 className="flex flex-col items-center justify-center text-xl font-medium text-gray-800 dark:text-gray-200 lg:flex-row lg:space-x-2 lg:text-2xl">
+          <h1 className="flex flex-col items-center justify-center text-xl font-medium text-zinc-800 dark:text-zinc-200 lg:flex-row lg:space-x-2 lg:text-2xl">
             <VideoDownloadIconSolid className="h-11  w-11 text-red-500" />
             <Text
               component="h1"
-              className="mt-2 text-lg font-bold text-gray-800 dark:text-gray-100 lg:mt-0 lg:text-3xl"
+              className="mt-2 text-lg font-bold text-zinc-800 dark:text-zinc-100 lg:mt-0 lg:text-3xl"
             >
               Paste the video link below
             </Text>
@@ -259,8 +259,8 @@ const VideoDownloader = () => {
 
         {/* Video Details Section */}
         {videoDetails && videoDetails.formats && (
-          <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
-            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-gray-200">
+          <div className="w-full dark:bg-dark-app-content dark:text-zinc-200">
+            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-zinc-200">
               <Box className="relative mx-auto flex w-full max-w-[640px] items-center justify-center rounded-[24px] border border-[--main-yellow] bg-transparent p-5 dark:border-2 dark:border-black dark:bg-inherit">
                 <div className="max-w-[360px]">
                   <YoutubeThumbnail

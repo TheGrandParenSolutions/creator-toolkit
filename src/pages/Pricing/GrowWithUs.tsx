@@ -25,21 +25,21 @@ const GrowWithUs = () => {
         <Text
           size="lg"
           component="h1"
-          className="mb-4 text-center font-bold text-gray-600 dark:text-white"
+          className="mb-4 text-center font-bold text-zinc-600 dark:text-white"
         >
           Used by 10,000+ YouTubers, Including
         </Text>
         <div className="relative flex overflow-hidden">
-          <div className="logos-track dark:text-gray-300">
+          <div className="logos-track dark:text-zinc-300">
             {logos.map((logo, index) => (
-              <div key={index} className="logo-item dark:text-gray-300">
+              <div key={index} className="logo-item dark:text-zinc-300">
                 {logo}
               </div>
             ))}
             {logos.map((logo, index) => (
               <div
                 key={`duplicate-${index}`}
-                className="logo-item dark:text-gray-300"
+                className="logo-item dark:text-zinc-300"
               >
                 {logo}
               </div>
@@ -72,7 +72,7 @@ const GrowWithUs = () => {
             <div className="flex justify-center sm:justify-end">
               <button
                 onClick={scrollToSection}
-                className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-sm font-bold text-white transition hover:bg-gray-800 md:text-base lg:text-lg"
+                className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-sm font-bold text-white transition hover:bg-zinc-800 md:text-base lg:text-lg"
               >
                 <Rocket />
                 Get Started

@@ -12,6 +12,7 @@ import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
 import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
 import VideoDownloader from "@src/pages/VideoDownloader/VideoDownloader";
 import RemoveBackground from "@src/pages/RemoveBackground/RemoveBackground";
+import HomePage from "@src/pages/Home/Home";
 
 const AppRouter = () => {
   return (
@@ -62,7 +63,7 @@ const AppRouter = () => {
                     content="Creator Toolkit is your one-stop solution for all content creation needs. Download videos, generate thumbnails, and more!"
                   />
                 </Helmet>
-                <div>Welcome to Creator Toolkit!</div>
+                <HomePage />
               </>
             </main>
           </MainSection>

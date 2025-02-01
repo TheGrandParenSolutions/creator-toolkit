@@ -48,24 +48,24 @@ const SupportedServices = () => {
     >
       {/* Toggle Button */}
       <button
-        className="shadow-xs focus:ring-none flex items-center justify-center gap-2 rounded-full border-none !bg-transparent bg-slate-50 px-4 py-2  text-sm font-medium text-gray-800 transition-all hover:bg-gray-200 focus:outline-none dark:bg-gray-800"
+        className="shadow-xs focus:ring-none flex items-center justify-center gap-2 rounded-full border-none !bg-transparent bg-zinc-50 px-4 py-2  text-sm font-medium text-zinc-800 transition-all hover:bg-zinc-200 focus:outline-none dark:bg-zinc-800"
         onClick={() => setExpanded(!expanded)}
       >
         <span
-          className={`flex h-6 w-6 transform items-center justify-center rounded-full bg-gray-100 p-2 text-xl font-bold text-gray-800 transition-transform duration-300 dark:bg-slate-800 dark:text-slate-300 ${
+          className={`flex h-6 w-6 transform items-center justify-center rounded-full bg-zinc-100 p-2 text-xl font-bold text-zinc-800 transition-transform duration-300 dark:bg-zinc-800 dark:text-zinc-300 ${
             expanded ? "rotate-45" : "rotate-0"
           }`}
         >
           +
         </span>
-        <span className="font-medium text-gray-700 dark:text-slate-300">
+        <span className="font-medium text-zinc-700 dark:text-zinc-300">
           supported services
         </span>
       </button>
 
       {/* Dropdown Modal */}
       <div
-        className={`absolute top-full z-10 mt-2 w-full overflow-hidden rounded-lg border-none border-slate-200 bg-slate-50 shadow-lg transition-all duration-500 dark:bg-gray-800 ${
+        className={`absolute top-full z-10 mt-2 w-full overflow-hidden rounded-lg border-none border-zinc-200 bg-zinc-50 shadow-lg transition-all duration-500 dark:bg-zinc-800 ${
           expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
         style={{ transitionProperty: "max-height, opacity" }}
@@ -76,7 +76,7 @@ const SupportedServices = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 rounded-lg bg-slate-200 px-3 py-1 text-sm font-medium text-gray-800 shadow-sm transition-all dark:bg-slate-600  dark:text-white"
+                className="flex items-center gap-2 rounded-lg bg-zinc-200 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm transition-all dark:bg-zinc-600  dark:text-white"
               >
                 {service.icon}
                 <span>{service.name}</span>
@@ -84,7 +84,7 @@ const SupportedServices = () => {
             ))}
           </div>
           {/* Disclaimer */}
-          <p className="mt-4 text-sm text-gray-400">
+          <p className="mt-4 text-sm text-zinc-400">
             Creator Toolkit is not affiliated with any of the services listed
             above.
           </p>
