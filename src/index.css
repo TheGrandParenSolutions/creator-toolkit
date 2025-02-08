@@ -42,6 +42,7 @@
   --brand-dark-yellow: #ffab00;
   --brand-mid-yellow: rgb(255, 213, 128);
   --brand-divider-color: "#fbf0c9";
+  --brand-lightest-bg: "#F2EEE3";
 }
 
 html {
@@ -49,11 +50,11 @@ html {
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
   color: var(--black);
   background-color: #f9f8f5;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.75;
   margin: 0;
 }

@@ -111,7 +111,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
       );
       clearInterval(fakeProgressInterval);
       setDownloadProgress(prev => ({ ...prev, [formatDetails.formatId]: 100 }));
-
     } catch (error: any) {
       setDownloadProgress(prev => ({
         ...prev,
@@ -163,9 +162,9 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           placeholder="Select Format"
           classNames={{
             input:
-              "border border-[--main-yellow] dark:border-2 dark:border-black text-black bg-transparent dark:!bg-gray-800",
+              "border border-[--main-yellow] dark:border-2 dark:border-black text-black bg-transparent dark:!bg-zinc-800",
             dropdown:
-              "dark:bg-gray-800 dark:border-2 dark:border-transparent bg-zinc-50",
+              "dark:bg-zinc-800 dark:border-2 dark:border-transparent bg-zinc-50",
           }}
           styles={{
             input: {
@@ -192,7 +191,7 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
           <Paper
             key={format.formatId}
             radius="lg"
-            className="flex flex-col items-center justify-center space-y-4 border border-[--main-yellow] bg-transparent p-4 shadow-sm transition-all hover:shadow-lg  dark:border-2 dark:border-black dark:bg-gray-800  sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
+            className="flex flex-col items-center justify-center space-y-4 border border-[--main-yellow] bg-transparent p-4 shadow-sm transition-all hover:shadow-lg  dark:border-2 dark:border-black dark:bg-zinc-800  sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
           >
             <div className="flex w-full flex-col items-center space-y-2 text-center sm:w-auto sm:items-start sm:text-left md:!flex-row md:items-center md:space-x-4">
               <Badge
@@ -205,11 +204,11 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
               <div>
                 <Text
                   size="sm"
-                  className="font-medium text-gray-800 dark:text-gray-300 sm:text-base"
+                  className="font-medium text-zinc-800 dark:text-zinc-300 sm:text-base"
                 >
                   {format.mimeType.toUpperCase()}
                 </Text>
-                <Text size="sm" className="text-gray-600 dark:text-gray-400">
+                <Text size="sm" className="text-zinc-600 dark:text-zinc-400">
                   {(format.sizeInBytes / (1024 * 1024)).toFixed(2)} MB
                 </Text>
               </div>

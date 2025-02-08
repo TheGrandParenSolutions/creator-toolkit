@@ -50,3 +50,13 @@
 .mantine-Select-option:hover {
   background-color:  rgb(161 161 170 / var(--tw-bg-opacity, 1)) !important;
 }
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+}

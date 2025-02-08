@@ -20,7 +20,7 @@ const HowItWorks = () => {
         {/* Card 1 */}
         <Paper
           radius="lg"
-          className="flex w-full max-w-sm flex-col items-center justify-start border border-[--main-yellow] bg-transparent bg-white p-6 shadow-md dark:border-2 dark:border-black dark:bg-gray-800 dark:text-white"
+          className="flex w-full max-w-sm flex-col items-center justify-start border border-[--main-yellow] bg-transparent bg-white p-6 shadow-md dark:border-2 dark:border-black dark:bg-zinc-800 dark:text-white"
           style={{
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
           }}
@@ -31,7 +31,7 @@ const HowItWorks = () => {
           </Text>
           <Text
             size="sm"
-            className="text-center text-gray-600 dark:text-gray-300 md:text-base lg:text-lg"
+            className="text-center text-zinc-600 dark:text-zinc-300 md:text-base lg:text-lg"
           >
             Test your Thumbnail & Title live on YouTube to see if it stands out
             from the competition.
@@ -41,7 +41,7 @@ const HowItWorks = () => {
         {/* Card 2 */}
         <Paper
           radius="lg"
-          className="flex w-full max-w-sm flex-col items-center justify-start border border-[--main-yellow] bg-transparent bg-white p-6 shadow-md dark:border-2 dark:border-black dark:bg-gray-800 dark:text-white"
+          className="flex w-full max-w-sm flex-col items-center justify-start border border-[--main-yellow] bg-transparent bg-white p-6 shadow-md dark:border-2 dark:border-black dark:bg-zinc-800 dark:text-white"
           style={{
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
           }}
@@ -52,7 +52,7 @@ const HowItWorks = () => {
           </Text>
           <Text
             size="sm"
-            className="text-center text-gray-600  dark:text-gray-300 md:text-base lg:text-lg"
+            className="text-center text-zinc-600  dark:text-zinc-300 md:text-base lg:text-lg"
           >
             Use our in-house AI, trained on millions of the best images to rate
             your thumbnail.
@@ -62,7 +62,7 @@ const HowItWorks = () => {
         {/* Card 3 */}
         <Paper
           radius="lg"
-          className="flex w-full max-w-sm flex-col items-center justify-start border border-[--main-yellow] bg-transparent bg-white p-6 shadow-md dark:border-2 dark:border-black dark:bg-gray-800 dark:text-white"
+          className="flex w-full max-w-sm flex-col items-center justify-start border border-[--main-yellow] bg-transparent bg-white p-6 shadow-md dark:border-2 dark:border-black dark:bg-zinc-800 dark:text-white"
           style={{
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
           }}
@@ -73,7 +73,7 @@ const HowItWorks = () => {
           </Text>
           <Text
             size="sm"
-            className="text-center text-gray-600  dark:text-gray-300 md:text-base lg:text-lg"
+            className="text-center text-zinc-600  dark:text-zinc-300 md:text-base lg:text-lg"
           >
             A/B test Thumbnails & Titles live for a video. Schedule hourly/daily
             switch outs.

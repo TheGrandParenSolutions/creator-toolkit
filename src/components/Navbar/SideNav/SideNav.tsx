@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
-import {
-  Home,
-  BrandYoutube,
-  ImageRectangleSolid,
-  BrandYoutubeSolid,
-  ImageRectangle,
-  PanelLeftCloseSolid,
-  HomeSmileSolid,
-  DollarHexagon,
-  DollarHexagonSolid,
-  PanelLeftOpen,
-  FileText,
-  FileTextSolid,
-  BrandInstagram,
-  BrandInstagramSolid,
-} from "@mynaui/icons-react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
-import { ThumbnailDownloaderIcon } from "@src/shared/Icons/IconLib";
+import {
+  HomeIcon,
+  HomeIconSolid,
+  MoneyIcon,
+  MoneyIconSolid,
+  PanelLeftIcon,
+  PanelRightIcon,
+  RemoveBGIcon,
+  RemoveBGIconSolid,
+  ThumbnailDownloaderIcon,
+  ThumbnailDownloaderIconSolid,
+  ThumbnailPreviewIcon,
+  ThumbnailPreviewIconSolid,
+  VideoDownloadIcon,
+  VideoDownloadIconSolid,
+  YoutubeToTextIcon,
+  YoutubeToTextIconSolid,
+} from "@src/shared/Icons/IconLib";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -50,22 +51,22 @@ function NavbarLink({
     <Tooltip label={label} position="right" transitionProps={{ duration: 20 }}>
       <UnstyledButton
         onClick={handleNavigation}
-        className={`flex items-center rounded-lg p-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-700 ${
-          active ? "bg-gray-200 font-semibold dark:!bg-gray-700" : ""
+        className={`flex items-center rounded-lg p-3 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-700 ${
+          active ? "bg-zinc-200 font-semibold dark:!bg-zinc-700" : ""
         }`}
         data-active={active || undefined}
       >
         <div className="flex items-center justify-center">
           {active ? (
-            <ActiveIcon className="text-xl dark:text-gray-300" />
+            <ActiveIcon className="text-xl text-zinc-900 dark:text-zinc-300" />
           ) : (
-            <Icon className="text-xl dark:text-gray-400" />
+            <Icon className="text-xl text-zinc-700 dark:text-zinc-400" />
           )}
         </div>
         <span
           className={`ml-3 overflow-hidden truncate whitespace-nowrap transition-all duration-300 ${
             isExpanded
-              ? "max-w-xs opacity-100 dark:text-gray-200"
+              ? "max-w-xs opacity-100 dark:text-zinc-200"
               : "hidden max-w-0 opacity-0"
           }`}
         >
@@ -77,43 +78,43 @@ function NavbarLink({
 }
 
 const linkContent = [
-  { icon: Home, activeIcon: HomeSmileSolid, label: "Home", to: "/" },
+  { icon: HomeIcon, activeIcon: HomeIconSolid, label: "Home", to: "/" },
   {
-    icon: BrandYoutube,
-    activeIcon: BrandYoutubeSolid,
-    label: "Youtube downloader",
-    to: "/youtube-downloader",
+    icon: VideoDownloadIcon,
+    activeIcon: VideoDownloadIconSolid,
+    label: "Video Download Gear",
+    to: "/video-download-gear",
   },
   {
-    icon: BrandInstagram,
-    activeIcon: BrandInstagramSolid,
-    label: "Reels downloader",
-    to: "/instagramReelsDownloader",
-  },
-  {
-    icon: ImageRectangle,
-    activeIcon: ImageRectangleSolid,
+    icon: ThumbnailPreviewIcon,
+    activeIcon: ThumbnailPreviewIconSolid,
     label: "Thumbnail test & preview",
     to: "/thumbnail-test",
   },
   {
-    icon: FileText,
-    activeIcon: FileTextSolid,
+    icon: YoutubeToTextIcon,
+    activeIcon: YoutubeToTextIconSolid,
     label: "Youtube to text",
     to: "/YoutubeToText",
   },
   {
-    icon: DollarHexagon,
-    activeIcon: DollarHexagonSolid,
+    icon: MoneyIcon,
+    activeIcon: MoneyIconSolid,
     label: "Pricing",
     to: "/pricing",
   },
   {
     icon: ThumbnailDownloaderIcon,
-    activeIcon: ThumbnailDownloaderIcon,
+    activeIcon: ThumbnailDownloaderIconSolid,
     label: "Thumbnail downloader",
     to: "/thumbnail-downloader",
-  }
+  },
+  {
+    icon: RemoveBGIcon,
+    activeIcon: RemoveBGIconSolid,
+    label: "Remove background",
+    to: "/remove-background",
+  },
 ];
 
 export function SideNav() {
@@ -149,7 +150,7 @@ export function SideNav() {
 
       {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 h-screen border border-solid border-gray-50 bg-white shadow-sm transition-all duration-300 dark:border-black dark:bg-dark-app ${
+        className={`fixed left-0 top-0 z-50 h-screen border border-none bg-white shadow-none transition-all duration-300 dark:border-black dark:bg-dark-app ${
           panelOpen ? "w-64" : "w-16"
         }`}
       >
@@ -163,14 +164,14 @@ export function SideNav() {
               <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
                 <UnstyledButton
                   onClick={() => setIsPanelOpen(!panelOpen)}
-                  className={`flex items-center rounded-lg p-1 transition-all hover:bg-gray-100 dark:hover:bg-gray-700`}
+                  className={`flex items-center rounded-lg p-1 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-700`}
                   data-active={panelOpen || undefined}
                 >
                   <div className="flex items-center justify-center">
                     {panelOpen ? (
-                      <PanelLeftCloseSolid className="text-xl dark:text-gray-200" />
+                      <PanelRightIcon className="text-xl dark:text-zinc-200" />
                     ) : (
-                      <PanelLeftOpen className="text-xl dark:text-gray-400" />
+                      <PanelLeftIcon className="text-xl dark:text-zinc-400" />
                     )}
                   </div>
                 </UnstyledButton>

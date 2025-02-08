@@ -46,37 +46,42 @@ export const FFmpegProvider: FC<{ children: ReactNode }> = ({ children }) => {
     videoContainer: string,
     fileName: string,
   ) {
-    if (!loaded) {
-      console.error("FFmpeg is still loading...");
-      await loadFFmpeg();
+    try {
+      if (!loaded) {
+        console.error("FFmpeg is still loading...");
+        await loadFFmpeg();
+      }
+
+      const audioBlob = await getUrlBlob(audioUrl);
+      const videoBlob = await getUrlBlob(videoUrl);
+
+      const videoFilePath = `video.${videoContainer.toLowerCase()}`;
+      const audioFilePath = `audio.${audioContainer.toLowerCase()}`;
+
+      const ffmpeg = ffmpegRef.current;
+
+      await ffmpeg.writeFile(videoFilePath, await fetchFile(videoBlob));
+      await ffmpeg.writeFile(audioFilePath, await fetchFile(audioBlob));
+
+      const outputFile = await processMedia(
+        ffmpeg,
+        videoFilePath,
+        audioFilePath,
+        videoContainer,
+      );
+
+      const mergedFile: any = await ffmpeg.readFile(outputFile);
+      const blob = new Blob([mergedFile.buffer], { type: "video/mp4" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${fileName}.${videoContainer.toLowerCase()}`;
+      link.click();
+    } catch (error) {
+      console.warn(error);
+      throw new Error();
     }
-
-    const audioBlob = await getUrlBlob(audioUrl);
-    const videoBlob = await getUrlBlob(videoUrl);
-
-    const videoFilePath = `video.${videoContainer.toLowerCase()}`;
-    const audioFilePath = `audio.${audioContainer.toLowerCase()}`;
-
-    const ffmpeg = ffmpegRef.current;
-
-    await ffmpeg.writeFile(videoFilePath, await fetchFile(videoBlob));
-    await ffmpeg.writeFile(audioFilePath, await fetchFile(audioBlob));
-
-    const outputFile = await processMedia(
-      ffmpeg,
-      videoFilePath,
-      audioFilePath,
-      videoContainer,
-    );
-
-    const mergedFile: any = await ffmpeg.readFile(outputFile);
-    const blob = new Blob([mergedFile.buffer], { type: "video/mp4" });
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${fileName}.${videoContainer.toLowerCase()}`;
-    link.click();
   }
 
   async function processMedia(

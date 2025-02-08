@@ -1,6 +1,12 @@
 import { Dispatch, FC } from "react";
 import { Text } from "@mantine/core";
-import { FolderTwo, Music, Sparkles, VolumeX } from "@mynaui/icons-react";
+
+import {
+  FolderVideoIcon,
+  MusicIcon,
+  MuteVideoIcon,
+  SparkleIcon,
+} from "@src/shared/Icons/IconLib";
 
 const QuickDownloadToggles: FC<{
   setSelectedOption: Dispatch<string>;
@@ -28,15 +34,17 @@ const QuickDownloadToggles: FC<{
             ${
               selectedOption === "auto"
                 ? "shadow-xs bg-main-gradient text-black"
-                : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+                : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
             } ${disabled ? "cursor-not-allowed" : ""}`}
             onClick={() => !disabled && setSelectedOption("auto")}
             aria-pressed={selectedOption === "auto"}
             disabled={disabled}
           >
-            <Sparkles
+            <SparkleIcon
               className={
-                selectedOption === "auto" ? "text-black" : "text-yellow-500"
+                selectedOption === "auto"
+                  ? "text-black"
+                  : "text-[--brand-dark-orange]"
               }
             />
             <Text className="font-semibold">auto</Text>
@@ -45,17 +53,17 @@ const QuickDownloadToggles: FC<{
           {/* Select Format Option */}
           {!hideChooseFormat && (
             <button
-              className={`flex items-center gap-1.5 border-none px-4 py-1.5 text-xs font-medium transition-all duration-200 focus:outline-none dark:border-gray-600
+              className={`flex items-center gap-1.5 border-none px-4 py-1.5 text-xs font-medium transition-all duration-200 focus:outline-none dark:border-zinc-600
               ${
                 selectedOption === "format"
                   ? "shadow-xs bg-green-600 text-white"
-                  : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+                  : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
               } ${disabled ? "cursor-not-allowed" : ""}`}
               onClick={() => !disabled && setSelectedOption("format")}
               aria-pressed={selectedOption === "format"}
               disabled={disabled}
             >
-              <FolderTwo
+              <FolderVideoIcon
                 className={
                   selectedOption === "format" ? "text-white" : "text-green-600"
                 }
@@ -71,13 +79,13 @@ const QuickDownloadToggles: FC<{
           ${
             selectedOption === "audio"
               ? "shadow-xs scale-100 bg-purple-600 text-white"
-              : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+              : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
           } ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
           onClick={() => !disabled && setSelectedOption("audio")}
           aria-pressed={selectedOption === "audio"}
           disabled={disabled}
         >
-          <Music
+          <MusicIcon
             className={
               selectedOption === "audio" ? "text-white" : "text-purple-600"
             }
@@ -91,13 +99,13 @@ const QuickDownloadToggles: FC<{
           ${
             selectedOption === "mute"
               ? "shadow-xs scale-100 bg-red-500 text-white"
-              : "bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+              : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300"
           } ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
           onClick={() => !disabled && setSelectedOption("mute")}
           aria-pressed={selectedOption === "mute"}
           disabled={disabled}
         >
-          <VolumeX
+          <MuteVideoIcon
             className={
               selectedOption === "mute" ? "text-white" : "text-red-500"
             }

@@ -93,10 +93,10 @@ const YoutubeToText: FC = () => {
       <div className="mx-auto mb-4 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app dark:bg-dark-app-content">
         {/* Header */}
         <div className="w-full text-center">
-          <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 lg:text-2xl ">
+          <h1 className="text-xl font-bold text-zinc-800 dark:text-zinc-100 lg:text-2xl ">
             Youtube to Text Converter
           </h1>
-          <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
+          <Text className="mt-1 text-sm text-zinc-500 dark:text-zinc-400 lg:text-base">
             Paste a YouTube link below to transcribe video audio into text.
           </Text>
         </div>
@@ -122,7 +122,7 @@ const YoutubeToText: FC = () => {
               radius="md"
               classNames={{
                 dropdown:
-                  "bg-[--brand-main-bg] border-[--main-yellow] dark:border-black dark:bg-gray-800",
+                  "bg-[--brand-main-bg] border-[--main-yellow] dark:border-black dark:bg-zinc-800",
               }}
             >
               <Menu.Target>
@@ -135,10 +135,10 @@ const YoutubeToText: FC = () => {
                   rightSection={
                     <ChevronDown
                       size={24}
-                      className="text-slate-700 dark:text-slate-300"
+                      className="text-zinc-700 dark:text-zinc-300"
                     />
                   }
-                  className="flex min-w-[100px] items-center justify-between border-[1.5px] border-gray-500 bg-transparent px-4 text-sm font-medium text-black shadow-sm transition hover:bg-gray-100 dark:border-black dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 md:min-w-[150px] md:text-base"
+                  className="flex min-w-[100px] items-center justify-between border-[1.5px] border-zinc-500 bg-transparent px-4 text-sm font-medium text-black shadow-sm transition hover:bg-zinc-100 dark:border-black dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 md:min-w-[150px] md:text-base"
                 >
                   <span className="mr-2 font-medium text-black dark:text-white">
                     {language.charAt(0).toUpperCase() + language.slice(1)}
@@ -154,7 +154,7 @@ const YoutubeToText: FC = () => {
                     className={`mb-1 font-semibold ${
                       language === item.label
                         ? "bg-[--main-yellow] text-black"
-                        : "text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                        : "text-black hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
                     }`}
                   >
                     {item.label}
@@ -200,7 +200,7 @@ const YoutubeToText: FC = () => {
               <div className="mb-4 flex flex-col items-center justify-between gap-4 md:flex-row">
                 {/* Language Selector */}
                 <div className="flex items-center space-x-2">
-                  <Text className="font-grifter text-base font-bold text-gray-800 dark:text-gray-100 md:text-2xl">
+                  <Text className="font-grifter text-base font-bold text-zinc-800 dark:text-zinc-100 md:text-2xl">
                     {language === "english"
                       ? "English (auto-generated)"
                       : language.charAt(0).toUpperCase() + language.slice(1)}
@@ -219,25 +219,25 @@ const YoutubeToText: FC = () => {
                     position="bottom-start"
                     classNames={{
                       dropdown:
-                        "bg-[--brand-main-bg] border-[--main-yellow] dark:border-black dark:bg-gray-800",
+                        "bg-[--brand-main-bg] border-[--main-yellow] dark:border-black dark:bg-zinc-800",
                     }}
                   >
                     <Menu.Target>
                       <Button
                         size="sm"
                         radius={"lg"}
-                        className="flex items-center gap-2 border-2 border-none bg-main-gradient text-sm font-medium text-black transition hover:bg-[--brand-dark-yellow] dark:border-black dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                        className="flex items-center gap-2 border-2 border-none bg-main-gradient text-sm font-medium text-black transition hover:bg-[--brand-dark-yellow] dark:border-black dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
                         disabled={downloadLoading}
                       >
                         {downloadLoading ? (
                           <Loader size="xs" color="black" className="mr-2" />
                         ) : (
-                          <Download size={20} className="mr-1 text-slate-900" />
+                          <Download size={20} className="mr-1 text-zinc-900" />
                         )}
                         <span className="mr-2 font-medium text-black">
                           {downloadLoading ? "Generating..." : "Download As"}
                         </span>
-                        <ChevronDown size={20} className="text-slate-700" />
+                        <ChevronDown size={20} className="text-zinc-700" />
                       </Button>
                     </Menu.Target>
                     <Menu.Dropdown>
@@ -245,7 +245,7 @@ const YoutubeToText: FC = () => {
                         <Menu.Item
                           key={item.value}
                           onClick={() => handleDownloadFile(item.value)}
-                          className="text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                          className="text-black hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
                         >
                           {item.label}
                         </Menu.Item>
@@ -282,19 +282,19 @@ const YoutubeToText: FC = () => {
                       size="sm"
                       variant="subtle"
                       color="teal"
-                      className="hidden text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 md:block"
+                      className="hidden text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-100 md:block"
                     >
                       <InfoCircle color="teal" size={20} />
                     </ActionIcon>
                   </Tooltip>
-                  <p className="text-extralight font-manrope text-xs text-slate-400 md:hidden">{`Character Count: ${transcript.length}`}</p>
+                  <p className="text-extralight font-wix text-xs text-zinc-400 md:hidden">{`Character Count: ${transcript.length}`}</p>
                 </div>
               </div>
               {/* Transcript Content */}
-              <div className="mt-4 rounded-lg border border-none bg-slate-100 p-4 text-sm font-medium text-black dark:border-black dark:bg-gray-800 dark:text-white">
+              <div className="mt-4 rounded-lg border border-none bg-zinc-100 p-4 text-sm font-medium text-black dark:border-black dark:bg-zinc-800 dark:text-white">
                 <ScrollArea h={300} type="always">
                   <pre className="whitespace-pre-wrap">
-                    <p className="font-manrope">{transcript}</p>
+                    <p className="font-wix">{transcript}</p>
                   </pre>
                 </ScrollArea>
               </div>

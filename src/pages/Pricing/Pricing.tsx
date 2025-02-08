@@ -94,7 +94,7 @@ const Pricing = () => {
         </script>
       </Helmet>
 
-      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-2 text-gray-800 transition-all duration-300 dark:bg-dark-app-content dark:text-gray-100">
+      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-2 text-zinc-800 transition-all duration-300 dark:bg-dark-app-content dark:text-zinc-100">
         {/* Heading */}
         <Box id="initial-section" className="mb-10 max-w-3xl text-center">
           <Text
@@ -107,7 +107,7 @@ const Pricing = () => {
           <Text
             size="sm"
             component="h3"
-            className="text-sm text-gray-600 dark:text-gray-400 md:text-base lg:text-lg"
+            className="text-sm text-zinc-600 dark:text-zinc-400 md:text-base lg:text-lg"
           >
             All the tools to help grow your channel from 0 to 1M+ subscribers.
           </Text>
@@ -129,7 +129,7 @@ const Pricing = () => {
           ))}
         </div>
 
-        <Text size="xs" className="mt-6 text-gray-500 dark:text-gray-400">
+        <Text size="xs" className="mt-6 text-zinc-500 dark:text-zinc-400">
           *Limits reset each day
         </Text>
         <CTDivider />

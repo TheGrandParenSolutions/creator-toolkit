@@ -1,11 +1,4 @@
-import {
-  Rocket,
-  ChevronDown,
-  Image,
-  BrandYoutube,
-  FileText,
-  CircleSolid,
-} from "@mynaui/icons-react";
+import { ChevronDown, CircleSolid } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { Link, useLocation } from "react-router-dom";
@@ -14,23 +7,29 @@ import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
 import { Group, Text, ActionIcon, Menu } from "@mantine/core";
-import { ThumbnailDownloaderIcon } from "@src/shared/Icons/IconLib";
+import {
+  CrownIconSolid,
+  ThumbnailDownloaderIcon,
+  ThumbnailPreviewIcon,
+  YoutubeToTextIcon,
+} from "@src/shared/Icons/IconLib";
+import { YTLogo } from "@src/shared/Icons/Logos";
 
 const youtubeFeatures = [
   {
-    icon: BrandYoutube,
+    icon: YTLogo,
     title: "Youtube Downloader",
     description: "Download videos easily.",
-    link: "/youtube-downloader",
+    link: "/video-download-gear",
   },
   {
-    icon: Image,
+    icon: ThumbnailPreviewIcon,
     title: "Thumbnail Tester",
     description: "Test your thumbnails.",
     link: "/thumbnail-test",
   },
   {
-    icon: FileText,
+    icon: YoutubeToTextIcon,
     title: "Youtube To Text",
     description: "Convert videos to text.",
     link: "/YoutubeToText",
@@ -39,8 +38,8 @@ const youtubeFeatures = [
     icon: ThumbnailDownloaderIcon,
     title: "Youtube Thumbnail Downloader",
     description: "Download youtube thumbnails.",
-    link: "/thumbnail-downloader"
-  }
+    link: "/thumbnail-downloader",
+  },
 ];
 
 export function MainNav() {
@@ -70,8 +69,8 @@ export function MainNav() {
         className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
       >
         <Group className="flex-nowrap gap-2" align="center">
-          <ActionIcon size={24} variant="filled" radius={"xl"} color="#ffd580">
-            <feature.icon className="text-slate-800" size={18} />
+          <ActionIcon size={32} variant="filled" radius={"xl"} color="#f1f5f9">
+            <feature.icon className="text-zinc-800" />
           </ActionIcon>
           <Text size="sm" fw={600}>
             {feature.title}
@@ -91,7 +90,7 @@ export function MainNav() {
     <header
       className={`fixed left-14 right-0 top-0 z-40 bg-white transition-all duration-300 dark:!bg-dark-app ${
         isScrolled
-          ? "border border-solid border-gray-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-black dark:!bg-opacity-85"
+          ? "border border-solid border-zinc-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-black dark:!bg-opacity-85"
           : ""
       }`}
     >
@@ -117,13 +116,13 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="flex items-center text-sm font-medium text-gray-900 transition hover:text-yellow-500 dark:text-gray-50 dark:hover:text-yellow-400"
+                className="flex items-center text-sm font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
               >
                 <span>Youtube</span>
                 <ChevronDown className="ml-1 h-4 w-4" />
               </a>
             </Menu.Target>
-            <Menu.Dropdown className="border border-[--main-yellow] bg-slate-50 p-1 dark:border-black dark:bg-slate-700">
+            <Menu.Dropdown className="border border-[--main-yellow] bg-zinc-50 p-1 dark:border-black dark:bg-zinc-700">
               {featureLinks}
             </Menu.Dropdown>
           </Menu>
@@ -134,7 +133,7 @@ export function MainNav() {
             className={`text-sm font-medium transition hover:text-yellow-500 hover:underline ${
               location.pathname === "/pricing"
                 ? "text-yellow-500 underline"
-                : "text-gray-900 dark:text-gray-50"
+                : "text-zinc-900 dark:text-zinc-50"
             }`}
           >
             Pricing
@@ -151,16 +150,16 @@ export function MainNav() {
             hoverLabel="You will love it"
             to="/pricing"
             buttonStyles="w-60"
-            icon={<Rocket />}
+            icon={<CrownIconSolid />}
           />
           {isAuthenticated && user ? (
             <UserProfile user={user} />
           ) : (
             <Link
               to="/login"
-              className="flex h-9 w-28 items-center justify-center rounded-full border-2 border-gray-800 text-sm font-semibold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
+              className="flex h-9 w-28 items-center justify-center rounded-full border-2 border-zinc-800 text-sm font-semibold hover:bg-zinc-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-zinc-400 dark:border-zinc-200 dark:text-white dark:hover:bg-zinc-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-zinc-600"
             >
-              Log In
+              Log in
             </Link>
           )}
         </div>
@@ -171,12 +170,14 @@ export function MainNav() {
             {isAuthenticated && user ? (
               <UserProfile user={user} />
             ) : (
-              <Link
-                to="/login"
-                className="flex items-center justify-center rounded-3xl border-2 border-gray-800 px-3 py-1 text-xs font-semibold hover:bg-slate-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-slate-400 dark:border-gray-200 dark:text-white dark:hover:bg-slate-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-slate-600"
-              >
-                Log In
-              </Link>
+              <CTAnimatedButton
+                radius={"xl"}
+                label="Go pro"
+                hoverLabel="You will love it"
+                to="/pricing"
+                buttonStyles="w-24 md:w-60"
+                icon={<CrownIconSolid />}
+              />
             )}
           </div>
         </div>

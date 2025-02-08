@@ -20,7 +20,7 @@ const Footer = () => {
 
   if (isHidden) return <></>;
   return (
-    <footer className="ml-6 mt-10 border-t border-solid border-gray-100 bg-white p-12 text-black shadow-xl dark:border-black dark:bg-dark-app-content dark:text-white">
+    <footer className="ml-6 mt-10 border-t border-solid border-zinc-100 bg-white p-12 text-black shadow-xl dark:border-black dark:bg-dark-app-content dark:text-white">
       {/* Logo */}
       <div className="mb-10">
         <Logo />
@@ -40,11 +40,11 @@ const Footer = () => {
               Products
             </Text>
             <ul className="space-y-4 text-base font-semibold">
-              <li className="dark:text-gray-300">Thumbnail AI Creator</li>
-              <li className="dark:text-gray-300">Thumbnail A/B Tester</li>
-              <li className="dark:text-gray-300">Thumbnail Rater</li>
-              <li className="dark:text-gray-300">Thumbnail Previewer</li>
-              <li className="dark:text-gray-300">Thumbnail Ideas</li>
+              <li className="dark:text-zinc-300">Thumbnail AI Creator</li>
+              <li className="dark:text-zinc-300">Thumbnail A/B Tester</li>
+              <li className="dark:text-zinc-300">Thumbnail Rater</li>
+              <li className="dark:text-zinc-300">Thumbnail Previewer</li>
+              <li className="dark:text-zinc-300">Thumbnail Ideas</li>
             </ul>
           </div>
 
@@ -58,8 +58,8 @@ const Footer = () => {
               Resources
             </Text>
             <ul className="space-y-4 text-base font-semibold">
-              <li className="dark:text-gray-300">Thumbnail Downloader</li>
-              <li className="dark:text-gray-300">YouTube Revenue Calculator</li>
+              <li className="dark:text-zinc-300">Thumbnail Downloader</li>
+              <li className="dark:text-zinc-300">YouTube Revenue Calculator</li>
             </ul>
           </div>
 
@@ -73,9 +73,9 @@ const Footer = () => {
               Company
             </Text>
             <ul className="space-y-4 text-base font-semibold">
-              <li className="dark:text-gray-300">Terms of Service</li>
-              <li className="dark:text-gray-300">Privacy Policy</li>
-              <li className="dark:text-gray-300">Become an Affiliate</li>
+              <li className="dark:text-zinc-300">Terms of Service</li>
+              <li className="dark:text-zinc-300">Privacy Policy</li>
+              <li className="dark:text-zinc-300">Become an Affiliate</li>
             </ul>
           </div>
         </div>
@@ -87,7 +87,7 @@ const Footer = () => {
             <Text size="lg" className="mb-2 font-bold ">
               Become a part of our community
             </Text>
-            <Text size="md" className="mb-4 text-gray-500 dark:text-gray-400">
+            <Text size="md" className="mb-4 text-zinc-500 dark:text-zinc-400">
               No spam, just quality pixels.
             </Text>
             <div className="flex w-full items-center justify-start">
@@ -124,7 +124,7 @@ const Footer = () => {
           <div className="mt-8">
             <Text
               size="md"
-              className="mb-2 font-semibold text-gray-500 dark:text-gray-400"
+              className="mb-2 font-semibold text-zinc-500 dark:text-zinc-400"
             >
               Email us
             </Text>
@@ -136,16 +136,16 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom Section */}
-      <div className="mt-12 border-t border-gray-200 pt-6 text-center dark:border-gray-700 lg:flex lg:justify-between lg:text-left">
+      <div className="mt-12 border-t border-zinc-200 pt-6 text-center dark:border-zinc-700 lg:flex lg:justify-between lg:text-left">
         <Text
           size="sm"
-          className="font-grifter mt-4 font-bold opacity-60 dark:text-gray-400 lg:mt-0"
+          className="font-grifter mt-4 font-bold opacity-60 dark:text-zinc-400 lg:mt-0"
         >
           © 2024 Creator Toolkit ALL RIGHTS RESERVED.
         </Text>
         <Text
           size="sm"
-          className="font-grifter mt-4 font-bold opacity-60 dark:text-gray-400 lg:mt-0"
+          className="font-grifter mt-4 font-bold opacity-60 dark:text-zinc-400 lg:mt-0"
         >
           Designed with ❤️ by Team JJ
         </Text>

@@ -37,23 +37,12 @@ export default defineConfig(({ mode = "production" }) => {
       sourcemap: isDevelopment, // Generate source maps only in development
       cssCodeSplit: true, // Enable CSS code splitting for smaller bundles
       minify: isDevelopment ? false : "esbuild", // Disable minification in development
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              if (id.includes("@mantine")) return "mantine";
-              if (id.includes("react")) return "react-vendors";
-              return "vendor";
-            }
-          },
-        },
-      },
       assetsInlineLimit: 4096, // Inline assets smaller than 4KB to reduce requests
       chunkSizeWarningLimit: 500, // Avoid warnings for larger chunks
     },
     optimizeDeps: {
       include: ["react", "react-dom"], // Pre-bundle dependencies for faster dev server
-      exclude: ["some-heavy-library", "@ffmpeg/ffmpeg", "@ffmpeg/util"], // Exclude libraries if unnecessary during development
+      exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"], // Exclude libraries if unnecessary during development
     },
     esbuild: {
       jsxInject: `import React from 'react'`, // Automatic React import for JSX

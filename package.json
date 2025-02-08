@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run generate-sitemap",
+    "build": "npm install && tsc -b && vite build && npm run generate-sitemap",
     "generate-sitemap": "node generate-sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -19,7 +19,6 @@
     "@mynaui/icons-react": "^0.3.2",
     "axios": "^1.7.9",
     "framer-motion": "^11.18.1",
-    "i": "^0.3.7",
     "jspdf": "^2.5.2",
     "npm": "^10.9.0",
     "razorpay": "^2.9.5",

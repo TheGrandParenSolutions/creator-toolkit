@@ -4,14 +4,15 @@ import { Helmet } from "react-helmet-async"; // For dynamic meta tags
 import MainSection from "@src/components/MainSection/MainSection";
 import LoginSignup from "@src/pages/LoginSignup/LoginSignup";
 import Pricing from "@src/pages/Pricing/Pricing";
-import YouTubeDownloader from "@src/pages/YoutubeDownloader/YoutubeDownloader";
 import YoutubeThumbnailTestOnboarding from "@src/pages/YoutubeThumbnailTestAndPreview/YoutubeThumbnailTestOnboarding";
 import YoutubeThumbnailTestDashboard from "@src/components/YoutubeThumbnailTestDashboard/YoutubeThumbnailTestDashboard";
 import YoutubeToText from "@src/pages/YoutubeToText/YoutubeToText";
 import ThumbnailDownloader from "@src/pages/ThumbnailDownloader/ThumbnailDownloader";
-import InstagramReelsDownloader from "@src/pages/InstagramReelsDownloader/InstagramReelsDownloader";
 import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
 import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
+import VideoDownloader from "@src/pages/VideoDownloader/VideoDownloader";
+import RemoveBackground from "@src/pages/RemoveBackground/RemoveBackground";
+import HomePage from "@src/pages/Home/Home";
 
 const AppRouter = () => {
   return (
@@ -62,13 +63,13 @@ const AppRouter = () => {
                     content="Creator Toolkit is your one-stop solution for all content creation needs. Download videos, generate thumbnails, and more!"
                   />
                 </Helmet>
-                <div>Welcome to Creator Toolkit!</div>
+                <HomePage />
               </>
             </main>
           </MainSection>
         }
       />
-      <Route
+      {/* <Route
         path="/youtube-downloader"
         element={
           <MainSection>
@@ -86,7 +87,7 @@ const AppRouter = () => {
             </main>
           </MainSection>
         }
-      />
+      /> */}
       <Route
         path="/thumbnail-test"
         element={
@@ -107,7 +108,7 @@ const AppRouter = () => {
         }
       />
       <Route
-        path="/thumbnail-test/youtubethumbnailpreview"
+        path="/thumbnail-test/youtube-thumbnail-preview"
         element={
           <MainSection>
             <main className="flex-grow p-4 transition-all duration-300">
@@ -183,7 +184,7 @@ const AppRouter = () => {
         }
       />
 
-      <Route
+      {/* <Route
         path="/instagramReelsDownloader"
         element={
           <MainSection>
@@ -201,7 +202,103 @@ const AppRouter = () => {
             </main>
           </MainSection>
         }
+      /> */}
+
+      <Route
+        path="/video-download-gear"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>
+                    Video Download Gear | Download YouTube Videos & Instagram
+                    Reels
+                  </title>
+                  <meta
+                    name="description"
+                    content="Video Download Gear: The ultimate tool for downloading YouTube videos, Instagram reels, and more. Fast, secure, and reliable video downloader for creators."
+                  />
+                  <meta
+                    name="keywords"
+                    content="YouTube downloader, YouTube video downloader, Instagram reel downloader, Reels downloader, video downloader, multi-platform downloader, download YouTube videos, download Instagram reels"
+                  />
+                  <link
+                    rel="canonical"
+                    href="https://www.creator-toolkit.com/video-download-gear"
+                  />
+                  <meta
+                    property="og:title"
+                    content="Video Download Gear | Download YouTube Videos & Instagram Reels"
+                  />
+                  <meta
+                    property="og:description"
+                    content="Download videos from YouTube and Instagram Reels with Video Download Gear. Easy-to-use, fast, and reliable downloader for creators."
+                  />
+                  <meta
+                    property="og:image"
+                    content="https://www.creator-toolkit.com/assets/video-download-gear-thumbnail.jpg"
+                  />
+                  <meta property="og:type" content="website" />
+                  <meta
+                    property="og:url"
+                    content="https://www.creator-toolkit.com/video-download-gear"
+                  />
+                </Helmet>
+
+                <VideoDownloader />
+              </>
+            </main>
+          </MainSection>
+        }
       />
+
+      <Route
+        path="/remove-background"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Remove Background - Creator Toolkit</title>
+                  <meta
+                    name="description"
+                    content="Remove background from images easily with Creator Toolkit. Upload your image and get a transparent background in seconds."
+                  />
+                  <meta
+                    name="keywords"
+                    content="remove background, background remover, transparent image, image editor, AI background remover"
+                  />
+                  <link
+                    rel="canonical"
+                    href="https://www.creator-toolkit.com/remove-background"
+                  />
+                  <meta
+                    property="og:title"
+                    content="Remove Background - Creator Toolkit"
+                  />
+                  <meta
+                    property="og:description"
+                    content="Instantly remove background from images with Creator Toolkit's AI-powered tool."
+                  />
+                  <meta
+                    property="og:image"
+                    content="https://www.creator-toolkit.com/assets/remove-background-tool-thumbnail.jpg"
+                  />
+                  <meta property="og:type" content="website" />
+                  <meta
+                    property="og:url"
+                    content="https://www.creator-toolkit.com/remove-background"
+                  />
+                </Helmet>
+
+                <RemoveBackground />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
 

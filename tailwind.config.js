@@ -9,8 +9,8 @@ export default {
     extend: {
       colors: {
         'light-app': '#f9f8f5',
-        'dark-app': '#1c1c1e',
-        'dark-app-content': '#1c1c1e'
+        'dark-app': '#18181b',
+        'dark-app-content': '#18181b'
       },
       transitionProperty: {
         width: "width",

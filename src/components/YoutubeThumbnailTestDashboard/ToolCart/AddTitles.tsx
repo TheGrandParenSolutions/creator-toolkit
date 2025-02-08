@@ -45,7 +45,7 @@ const AddTitles = ({
   return (
     <div className="space-y-4">
       {/* Section Label */}
-      <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+      <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
         Titles
       </h3>
 
@@ -64,10 +64,10 @@ const AddTitles = ({
               placeholder={`Title ${index + 1}`}
               radius={"xl"}
               classNames={{
-                input: `w-full p-5 rounded-full text-base text-sm font-medium dark:bg-gray-800 ring-0 ring-[var(--main-yellow)] border dark:ring-black dark:border-black border-[var(--main-yellow)] text-gray-600 dark:text-gray-300 outline-none transition focus:ring-0 ${
+                input: `w-full p-5 rounded-full text-base text-sm font-medium dark:bg-zinc-800 ring-0 ring-[var(--main-yellow)] border dark:ring-black dark:border-black border-[var(--main-yellow)] text-zinc-600 dark:text-zinc-300 outline-none transition focus:ring-0 ${
                   activeIndex === index
                     ? "border-[3px] !border-[--main-yellow]"
-                    : "ring-gray-300 dark:ring-gray-600"
+                    : "ring-zinc-300 dark:ring-zinc-600"
                 }`,
               }}
               rightSection={

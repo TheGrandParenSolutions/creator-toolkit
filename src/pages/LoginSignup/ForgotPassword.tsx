@@ -57,7 +57,7 @@ const ForgotPassword = () => {
           <Text
             size="lg"
             component="h1"
-            className="flex items-center justify-center gap-2 text-center font-bold text-gray-900 dark:text-white md:text-xl"
+            className="flex items-center justify-center gap-2 text-center font-bold text-zinc-900 dark:text-white md:text-xl"
           >
             <CTCheckIcon />
             Password Reset Email Sent!
@@ -66,14 +66,14 @@ const ForgotPassword = () => {
           {/* Description */}
           <Text
             size="md"
-            className="leading-relaxed text-gray-700 dark:text-gray-300"
+            className="leading-relaxed text-zinc-700 dark:text-zinc-300"
           >
             We've sent a password reset link to <b>{email}</b>. <br /> Please
             check your inbox and follow the instructions to reset your password.
           </Text>
 
           {/* Additional Info */}
-          <Text size="xs" className="leading-relaxed text-gray-500">
+          <Text size="xs" className="leading-relaxed text-zinc-500">
             If you don’t see the email, check your spam folder or try again.
           </Text>
 
@@ -91,7 +91,7 @@ const ForgotPassword = () => {
       {!isEmailSent && (
         <Paper
           radius="lg"
-          className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2 dark:border-black dark:bg-gray-800"
+          className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
           style={{
             borderRadius: "16px",
           }}
@@ -101,11 +101,11 @@ const ForgotPassword = () => {
             <Text
               size="lg"
               component="h1"
-              className="font-grifter font-bold text-gray-800 dark:text-white md:text-xl"
+              className="font-grifter font-bold text-zinc-800 dark:text-white md:text-xl"
             >
               Forgot Your Password?
             </Text>
-            <Text size="xs" className="text-gray-300">
+            <Text size="xs" className="text-zinc-300">
               Enter your email to receive password reset instructions.
             </Text>
           </Box>
@@ -120,7 +120,7 @@ const ForgotPassword = () => {
                 onChange={e => setEmail(e.target.value)}
                 required
                 disabled={isSubmitting}
-                className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
+                className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 px-4 py-2 text-sm text-zinc-700 focus:ring-2 focus:ring-orange-400"
               />
             </div>
 

@@ -25,11 +25,15 @@ export const DownloadVideoAndMerge = async (
     return isAudioOnlyFormat(format);
   });
 
-  const originalAudio = audioFormats.filter(format =>
-    format.quality.toLowerCase().includes("original"),
+  const supportedAudioFormats = audioFormats.filter((f) => {
+    return formatDetails.mimeType === "webm" ? f.mimeType === "webm" : f.mimeType === "m4a";
+  })
+
+  const originalAudio = supportedAudioFormats.filter(format =>
+    format.quality.toLowerCase().includes("original")
   );
 
-  const audioFormat = originalAudio.length ? originalAudio[0] : audioFormats[0];
+  const audioFormat = originalAudio.length ? originalAudio[0] : supportedAudioFormats[0];
 
   try {
     formatDetails.isMuxedFile = true;
@@ -53,6 +57,7 @@ export const DownloadVideoAndMerge = async (
     const fileName = sanitizeFileName(
       `${videoDetails.title}-${formatDetails.quality}-${audioFormat.quality}`,
     );
+
     await mergeStreams(
       videoSignedUrl,
       audioSignedUrl,

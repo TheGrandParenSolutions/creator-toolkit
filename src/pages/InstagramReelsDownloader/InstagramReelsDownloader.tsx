@@ -24,7 +24,7 @@ import {
 import { useFFmpeg } from "@src/Context/FFmpeg/FFmpegContext";
 import toast from "react-hot-toast";
 import { showToast } from "@src/utils/Theme";
-import { InstagramLogo } from "@src/shared/Icons/IconLib";
+import { InstagramLogo } from "@src/shared/Icons/Logos";
 
 const InstagramReelsDownloader = () => {
   const { mergeStreams } = useFFmpeg();
@@ -46,15 +46,22 @@ const InstagramReelsDownloader = () => {
 
       switch (selectedOption) {
         case "auto": {
-          const best1080pFormat = formats.find(f => f.quality.includes("DASH video"));
+          const best1080pFormat = formats.find(f =>
+            f.quality.includes("DASH video"),
+          );
           const formatDetails = best1080pFormat ? best1080pFormat : formats[0];
           showToast(
             "loading",
             `Downloading in HD...`,
             `Reel Title: ${details.title}`,
           );
-          
-          await DownloadVideoAndMerge(formatDetails, details, mergeStreams, reelUrl);
+
+          await DownloadVideoAndMerge(
+            formatDetails,
+            details,
+            mergeStreams,
+            reelUrl,
+          );
           toast.dismiss("status-toast");
           showToast(
             "success",
@@ -65,7 +72,9 @@ const InstagramReelsDownloader = () => {
         }
         case "audio": {
           const requestId = crypto.randomUUID();
-          const bestAudioOnlyFormat = formats.find(f => isAudioOnlyFormat(f)) as VideoFormat;
+          const bestAudioOnlyFormat = formats.find(f =>
+            isAudioOnlyFormat(f),
+          ) as VideoFormat;
           const audioSignedUrl = await getDownloadURI(
             reelUrl,
             bestAudioOnlyFormat,
@@ -73,17 +82,29 @@ const InstagramReelsDownloader = () => {
             requestId,
             bestAudioOnlyFormat?.url || "",
           );
-          const fileName = sanitizeFileName(`${details.title}-${bestAudioOnlyFormat.quality}`);
-          showToast("loading", "Extracting audio, please wait...", `Reel Title: ${details.title}`);
+          const fileName = sanitizeFileName(
+            `${details.title}-${bestAudioOnlyFormat.quality}`,
+          );
+          showToast(
+            "loading",
+            "Extracting audio, please wait...",
+            `Reel Title: ${details.title}`,
+          );
           const blob = await getUrlBlob(audioSignedUrl);
           downloadBlob(blob, fileName, "mp3");
           toast.dismiss("status-toast");
-          showToast("success", "Your audio is ready!", `Download Complete: ${details.title}`);
+          showToast(
+            "success",
+            "Your audio is ready!",
+            `Download Complete: ${details.title}`,
+          );
           return;
         }
         case "mute": {
           const requestId = crypto.randomUUID();
-          const bestFormat = formats.find(f => isVideoOnlyFormat(f)) as VideoFormat;
+          const bestFormat = formats.find(f =>
+            isVideoOnlyFormat(f),
+          ) as VideoFormat;
           bestFormat.isMuxedFile = true;
           const audioSignedUrl = await getDownloadURI(
             reelUrl,
@@ -92,12 +113,22 @@ const InstagramReelsDownloader = () => {
             requestId,
             bestFormat?.url || "",
           );
-          const fileName = sanitizeFileName(`${details.title}-${bestFormat.quality}`);
-          showToast("loading", "Processing muted reel, please wait...", `Reel Title: ${details.title}`);
+          const fileName = sanitizeFileName(
+            `${details.title}-${bestFormat.quality}`,
+          );
+          showToast(
+            "loading",
+            "Processing muted reel, please wait...",
+            `Reel Title: ${details.title}`,
+          );
           const blob = await getUrlBlob(audioSignedUrl);
           downloadBlob(blob, fileName, "mp4");
           toast.dismiss("status-toast");
-          showToast("success", "Your muted reel is ready!", `Download Complete: ${details.title}`);
+          showToast(
+            "success",
+            "Your muted reel is ready!",
+            `Download Complete: ${details.title}`,
+          );
           return;
         }
         default:
@@ -154,17 +185,18 @@ const InstagramReelsDownloader = () => {
       <div className="mx-auto my-16 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
-          <h1 className="flex flex-col items-center justify-center text-xl font-medium text-gray-800 dark:text-gray-200 lg:flex-row lg:space-x-2 lg:text-2xl">
-            <InstagramLogo/>
+          <h1 className="flex flex-col items-center justify-center text-xl font-medium text-zinc-800 dark:text-zinc-200 lg:flex-row lg:space-x-2 lg:text-2xl">
+            <InstagramLogo />
             <Text
               component="h1"
-              className="mt-2 text-lg font-bold text-gray-800 dark:text-gray-100 lg:mt-0 lg:text-3xl"
+              className="mt-2 text-lg font-bold text-zinc-800 dark:text-zinc-100 lg:mt-0 lg:text-3xl"
             >
               Download Instagram Reels
             </Text>
           </h1>
-          <Text className="mt-1 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-            Paste your Instagram Reel link below to fetch video details and download formats.
+          <Text className="mt-1 text-sm text-zinc-500 dark:text-zinc-400 lg:text-base">
+            Paste your Instagram Reel link below to fetch video details and
+            download formats.
           </Text>
         </div>
 
@@ -190,8 +222,8 @@ const InstagramReelsDownloader = () => {
 
         {/* Video Details Section */}
         {videoDetails && videoDetails.formats && (
-          <div className="w-full dark:bg-dark-app-content dark:text-gray-200">
-            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-gray-200">
+          <div className="w-full dark:bg-dark-app-content dark:text-zinc-200">
+            <Card className="dark:bg-dark-card w-full max-w-4xl rounded-lg bg-inherit p-0 dark:text-zinc-200">
               <Box className="relative mx-auto flex w-full max-w-[640px] items-center justify-center rounded-[24px] border border-[--main-yellow] bg-transparent p-5 dark:border-2 dark:border-black dark:bg-inherit">
                 <div className="max-w-[360px]">
                   <YoutubeThumbnail
