@@ -5,6 +5,7 @@ import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { sendForgotPasswordRequest } from "@src/Api/Modules/Authentication/AuthenticationService";
 import { CTCheckIcon } from "@src/utils/HtmlUtil";
+import { showToast } from "@src/utils/Theme";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -20,15 +21,21 @@ const ForgotPassword = () => {
       if (status === 200) {
         setIEmailSent(true);
       }
-      alert(message);
+      showToast(
+        "success",
+        message,
+        "Email sent successfully!! Check your email!!",
+      );
     } catch (error) {
-      alert(error);
+      showToast(
+        "error",
+        "Reset password failed",
+        "Sorry!! failed to reset password" + error,
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  console.log({ isEmailSent });
 
   return (
     <div className="mt-16 flex flex-col items-center justify-center px-4">

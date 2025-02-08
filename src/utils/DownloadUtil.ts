@@ -22,7 +22,7 @@ export const DownloadVideoAndMerge = async (
   const requestId = crypto.randomUUID();
 
   const audioFormats = videoDetails.formats.filter(format => {
-    return isAudioOnlyFormat(format)
+    return isAudioOnlyFormat(format);
   });
 
   const supportedAudioFormats = audioFormats.filter((f) => {
@@ -66,13 +66,11 @@ export const DownloadVideoAndMerge = async (
       fileName,
     );
   } catch (error) {
-    console.error("Error downloading video:", error);
     showToast(
       "error",
-      "Failed to download. Please try again.",
-      "Download Error",
-    )
-    throw new Error();
+      "Error downloading video:" + error,
+      "Failed to download video. Check console for details.",
+    );
   }
 };
 
@@ -107,10 +105,14 @@ export const getUrlBlob = async (url: string): Promise<Blob> => {
   return new Blob([completeArray]);
 };
 
-export const downloadBlob = (blob: Blob, fileName: string, extension: string) => {
+export const downloadBlob = (
+  blob: Blob,
+  fileName: string,
+  extension: string,
+) => {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
   link.download = `${fileName}.${extension.toLowerCase()}`;
   link.click();
-}
+};

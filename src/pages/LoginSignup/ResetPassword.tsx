@@ -4,6 +4,7 @@ import { Text, Box, Paper } from "@mantine/core";
 import { useNavigate, useLocation } from "react-router-dom";
 import { resetPassword } from "@src/Api/Modules/Authentication/AuthenticationService";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
+import { showToast } from "@src/utils/Theme";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -22,7 +23,7 @@ const ResetPassword = () => {
 
     if (!accessToken || !refreshToken) {
       setIsSubmitting(false);
-      alert("Missing access token");
+      showToast("error", "Missing access token", "Please login again");
       navigate("/login"); // Redirect to login page after success
       return;
     }
@@ -34,7 +35,7 @@ const ResetPassword = () => {
         newPassword,
         refreshToken,
       );
-      alert(message);
+      showToast("success", "Password reset successfully", message);
       navigate("/"); // Redirect to home page after success
     } catch (error) {
       throw new Error("An error occurred" + error);
