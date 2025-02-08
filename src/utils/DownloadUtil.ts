@@ -2,6 +2,7 @@ import { getDownloadURI } from "@src/services/YoutubeDownloaderApi";
 import { VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import { VideoDetails } from "../types/YoutubeDownloaderTypes";
 import { isAudioOnlyFormat, sanitizeFileName } from "@src/utils/HelperUtils";
+import { showToast } from "@src/utils/Theme";
 
 export const DownloadVideoAndMerge = async (
   formatDetails: VideoFormat,
@@ -15,13 +16,13 @@ export const DownloadVideoAndMerge = async (
   ) => Promise<void>,
   videoUrl: string,
 ) => {
-  if(!formatDetails || !videoDetails) {
+  if (!formatDetails || !videoDetails) {
     throw new Error();
   }
   const requestId = crypto.randomUUID();
 
   const audioFormats = videoDetails.formats.filter(format => {
-    return isAudioOnlyFormat(format)
+    return isAudioOnlyFormat(format);
   });
 
   const originalAudio = audioFormats.filter(format =>
@@ -60,8 +61,11 @@ export const DownloadVideoAndMerge = async (
       fileName,
     );
   } catch (error) {
-    console.error("Error downloading video:", error);
-    alert("Failed to download video. Check console for details.");
+    showToast(
+      "error",
+      "Error downloading video:" + error,
+      "Failed to download video. Check console for details.",
+    );
   }
 };
 
@@ -96,10 +100,14 @@ export const getUrlBlob = async (url: string): Promise<Blob> => {
   return new Blob([completeArray]);
 };
 
-export const downloadBlob = (blob: Blob, fileName: string, extension: string) => {
+export const downloadBlob = (
+  blob: Blob,
+  fileName: string,
+  extension: string,
+) => {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
   link.download = `${fileName}.${extension.toLowerCase()}`;
   link.click();
-}
+};
