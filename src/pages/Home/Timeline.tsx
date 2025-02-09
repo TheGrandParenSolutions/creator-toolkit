@@ -62,9 +62,9 @@ const Timeline = () => {
                       className="steps-container steps1"
                       style={{ background: step1Bg }}
                     >
-                      <div className="big-number">01</div>
+                      <div className="big-number text-4xl md:text-8xl">01</div>
                       <div className="step-text-block">
-                        <p className="text-2xl font-bold less-height text-black">
+                        <p className="text-sm md:text-2xl font-bold less-height text-black">
                         Get started for free
                         </p>
                       </div>
@@ -85,9 +85,9 @@ const Timeline = () => {
                       className="steps-container steps2"
                       style={{ background: step2Bg }}
                     >
-                      <div className="big-number">02</div>
+                      <div className="big-number text-4xl md:text-8xl">02</div>
                       <div className="step-text-block">
-                        <p className="text-2xl font-bold  less-height text-black">
+                        <p className="text-sm md:text-2xl font-bold  less-height text-black">
                           Explore tools and use them with your free credits
                         </p>
                       </div>
@@ -108,9 +108,9 @@ const Timeline = () => {
                       className="steps-container steps3"
                       style={{ background: step3Bg }}
                     >
-                      <div className="big-number">03</div>
+                      <div className="big-number text-4xl md:text-8xl">03</div>
                       <div className="step-text-block">
-                        <p className="text-2xl font-bold  less-height text-black">
+                        <p className="text-sm md:text-2xl font-bold  less-height text-black">
                           Purchase tools for unlimited credits
                         </p>
                       </div>
@@ -130,7 +130,7 @@ const Timeline = () => {
         transition={{ ease: "easeOut", duration: 1 }}
       >
         <a
-          href="/#pricing"
+          href="/pricing"
           target="_blank"
           className="button-13 is-booking w-inline-block"
         >

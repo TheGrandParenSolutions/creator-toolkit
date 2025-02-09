@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center px-4 py-16 text-center sm:px-8 md:px-12 lg:px-16 xl:px-24">
+    <div className="relative flex w-full flex-col items-center justify-center px-4 py-2 md:py-8 text-center sm:px-8 md:px-12 lg:px-16 xl:px-24">
       {/* Background SVG Animation */}
       <div className="absolute inset-0 -z-0 w-full overflow-hidden">
         <HeroSectionBG className="animate-wave w-full text-black opacity-100 mix-blend-soft-light dark:text-white dark:opacity-100" />

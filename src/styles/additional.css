@@ -48,7 +48,7 @@
 }
 
 .mantine-Select-option:hover {
-  background-color:  rgb(161 161 170 / var(--tw-bg-opacity, 1)) !important;
+  background-color: rgb(161 161 170 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .bg-grid-pattern {
@@ -61,21 +61,20 @@
     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
 }
 
-
 .section_steps {
-  position: relative
+  position: relative;
 }
 
 .rotate-height {
   height: 100vh;
-  position: relative
+  position: relative;
 }
 
 .giant-circle-hold {
   aspect-ratio: 1;
   flex: none;
   width: 107rem;
-  transform: translate(-77%)
+  transform: translate(-80%);
 }
 
 .sticky-hold {
@@ -86,18 +85,18 @@
   display: flex;
   position: sticky;
   top: 0;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .giant-circle {
-  border: 2px solid #27272a;
+  border: 1px solid #27272a;
   border-radius: 100%;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 100%;
   display: flex;
-  position: relative
+  position: relative;
 }
 
 .steps {
@@ -105,17 +104,17 @@
   align-items: center;
   width: 1px;
   display: flex;
-  position: absolute
+  position: absolute;
 }
 
 .steps.step2 {
   inset: auto 8% 18% auto;
-  transform: rotate(30deg)
+  transform: rotate(30deg);
 }
 
 .steps.step3 {
   inset: auto 29% 0% auto;
-  transform: rotate(60deg)
+  transform: rotate(60deg);
 }
 
 .circle-dot {
@@ -123,7 +122,7 @@
   background-color: #0f0f0f;
   border-radius: 100%;
   flex: none;
-  width: 2.9375rem
+  width: 2.9375rem;
 }
 
 .steps-content {
@@ -131,11 +130,11 @@
   grid-row-gap: 5rem;
   justify-content: flex-start;
   align-items: center;
-  display: flex
+  display: flex;
 }
 
 .steps-hold {
-  width: 2.9375rem
+  width: 2.9375rem;
 }
 
 .steps-container {
@@ -147,7 +146,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem 2.5rem;
-  display: flex
+  display: flex;
 }
 
 .big-number {
@@ -159,7 +158,7 @@
 
 .step-text-block {
   flex: none;
-  max-width: 13.625rem
+  max-width: 13.625rem;
 }
 
 .steps-button-hold-bottom {
@@ -167,7 +166,7 @@
   align-items: center;
   display: flex;
   position: absolute;
-  inset: auto 0% 5rem
+  inset: auto 0% 5rem;
 }
 
 .animate-wave {
@@ -175,7 +174,7 @@
 }
 
 .portfoliov4_logos-gradient {
-  background-image: linear-gradient(90deg,#fbf0c9 22%,#0000);
+  background-image: linear-gradient(90deg, #fbf0c9 22%, #0000);
   width: 30%;
   height: 100%;
   position: absolute;
@@ -183,9 +182,9 @@
 }
 
 .portfoliov4_logos-gradient.is-right {
-  background-image: linear-gradient(270deg,#fbf0c9 22%,#0000);
+  background-image: linear-gradient(270deg, #fbf0c9 22%, #0000);
   left: auto;
-  right: -1px
+  right: -1px;
 }
 
 .wave1 {
@@ -195,8 +194,84 @@
   animation: waveMove 10s infinite ease-in-out alternate-reverse;
 }
 @keyframes waveMove {
-  0% { transform: translateY(0px); }
-  25% { transform: translateX(5px); } /* Moves Left */
-  50% { transform: translateY(15px); } /* Moves Up */
-  100% { transform: translateY(0px); } /* Moves Back Down */
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateX(5px);
+  } /* Moves Left */
+  50% {
+    transform: translateY(15px);
+  } /* Moves Up */
+  100% {
+    transform: translateY(0px);
+  } /* Moves Back Down */
+}
+
+@media screen and (min-width: 1440px) {
+  .giant-circle-hold {
+    transform: translate(-59%);
+  }
+}
+@media screen and (min-width: 1920px) {
+  .giant-circle-hold {
+    transform: translate(-40%);
+  }
+}
+@media screen and (max-width: 991px) {
+  .giant-circle-hold {
+    transform: translate(-89%);
+  }
+  .steps-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .giant-circle-hold {
+    transform: translate(-89%);
+  }
+
+  .circle-dot {
+    width: 1.46875rem;
+  }
+  .steps-content {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+  .steps-hold {
+    width: 1.46875rem;
+  }
+
+  .steps-container {
+    text-align: center;
+    flex-flow: column;
+    max-width: 10rem;
+    padding: 1rem;
+  }
+  .steps.step2 {
+    inset: auto 5% 18% auto;
+    transform: rotate(30deg);
+  }
+  
+  .steps.step3 {
+    inset: auto 22.5% 0% auto;
+    transform: rotate(60deg);
+  }
+}
+@media screen and (max-width: 479px) {
+  .giant-circle-hold {
+    transform: translate(-96%);
+  }
+
+  .steps.step2 {
+    inset: auto 8% 18% auto;
+    transform: rotate(30deg);
+  }
+  
+  .steps.step3 {
+    inset: auto 30% 0% auto;
+    transform: rotate(60deg);
+  }
 }

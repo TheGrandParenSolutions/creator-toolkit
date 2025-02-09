@@ -9,11 +9,11 @@ import HeroSection from "@src/pages/Home/HeroSection";
 
 // More noticeable slide-up + fade-in animation
 const sectionAnimation = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0.5, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, ease: "easeOut" },
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
 
