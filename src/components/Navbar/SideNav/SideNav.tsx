@@ -151,7 +151,7 @@ export function SideNav() {
       {/* SideNav */}
       <nav
         className={`fixed left-0 top-0 z-50 h-screen border border-none bg-white shadow-none transition-all duration-300 dark:border-black dark:bg-dark-app ${
-          panelOpen ? "w-64" : "w-16"
+          panelOpen ? "w-96" : "w-16"
         }`}
       >
         <div>
