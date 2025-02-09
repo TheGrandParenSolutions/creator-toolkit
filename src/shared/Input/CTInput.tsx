@@ -5,7 +5,7 @@ import {
   ClipboardSolid,
   XCircleSolid,
 } from "@mynaui/icons-react";
-import BamboozleLoader from "@src/shared/Progress/BamboozleLoader";
+import CTLoader from "@src/shared/Progress/CTLoader";
 
 interface CTInputProps {
   value: string;
@@ -126,7 +126,7 @@ const CTInput: FC<CTInputProps> = ({
         </div>
       ) : (
         <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center">
-          <BamboozleLoader />
+          <CTLoader />
         </div>
       )}
     </div>

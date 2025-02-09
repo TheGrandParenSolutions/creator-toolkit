@@ -105,6 +105,7 @@ const RemoveBackground = () => {
               onClick={handleUploadClick}
               w={160}
               buttonStyles="sm:w-[180px] lg:w-[200px]"
+              loading={true}
             />
             <CTBasicButton
               onClick={handleTrySampleClick}

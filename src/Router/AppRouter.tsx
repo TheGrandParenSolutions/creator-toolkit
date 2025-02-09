@@ -54,7 +54,7 @@ const AppRouter = () => {
         path="/"
         element={
           <MainSection>
-            <main className="flex-grow p-4 transition-all duration-300">
+            <main className="flex-grow transition-all duration-300">
               <>
                 <Helmet>
                   <title>Home - Creator Toolkit</title>

@@ -19,7 +19,7 @@ const ComponentCard: FC<ComponentCardProps> = ({
       className="block rounded-[24px] transition-all hover:shadow-lg"
     >
       {/* Card Container */}
-      <div className="flex w-[260px]  flex-col items-center rounded-[24px] bg-[#F2EEE3] p-6 shadow-sm dark:bg-zinc-800">
+      <div className="flex w-[260px]  flex-col items-center rounded-[24px] bg-[#fbf0c9] border border-[--main-yellow] dark:border-2 dark:border-black p-6 shadow-sm dark:bg-zinc-800">
         {/* Image Wrapper (Now Matches the Original) */}
         <div className="flex w-full items-center justify-center rounded-[20px] bg-white p-4 shadow-sm">
           <img src={image} alt="" className="h-auto w-full rounded-lg" />
@@ -29,7 +29,7 @@ const ComponentCard: FC<ComponentCardProps> = ({
         <h5 className="font-grifter mt-[16px] text-[20px] font-bold text-black dark:text-white">
           {name}
         </h5>
-        <p className="text-[14px] text-[#636262]">{count} Components</p>
+        <p className="text-[14px] text-zinc-600">{count} Components</p>
       </div>
     </a>
   );

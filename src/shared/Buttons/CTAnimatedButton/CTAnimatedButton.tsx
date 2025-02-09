@@ -1,4 +1,5 @@
-import { Button, ButtonProps, Loader } from "@mantine/core";
+import { Button, ButtonProps } from "@mantine/core";
+import CTLoader from "@src/shared/Progress/CTLoader";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -46,6 +47,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
   return (
     <Button
       {...props}
+      loading={false}
       disabled={loading || disabled}
       onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
       onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
@@ -79,7 +81,9 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
       }`}
     >
       {loading ? (
-        <Loader size={"sm"} color="black" />
+        <div className="absolute flex items-center justify-center">
+          <CTLoader />
+        </div>
       ) : (
         <>
           <span

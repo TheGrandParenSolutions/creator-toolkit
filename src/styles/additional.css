@@ -60,3 +60,143 @@
     ),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
 }
+
+
+.section_steps {
+  position: relative
+}
+
+.rotate-height {
+  height: 100vh;
+  position: relative
+}
+
+.giant-circle-hold {
+  aspect-ratio: 1;
+  flex: none;
+  width: 107rem;
+  transform: translate(-77%)
+}
+
+.sticky-hold {
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: sticky;
+  top: 0;
+  overflow: hidden
+}
+
+.giant-circle {
+  border: 2px solid #27272a;
+  border-radius: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative
+}
+
+.steps {
+  justify-content: center;
+  align-items: center;
+  width: 1px;
+  display: flex;
+  position: absolute
+}
+
+.steps.step2 {
+  inset: auto 8% 18% auto;
+  transform: rotate(30deg)
+}
+
+.steps.step3 {
+  inset: auto 29% 0% auto;
+  transform: rotate(60deg)
+}
+
+.circle-dot {
+  aspect-ratio: 1;
+  background-color: #0f0f0f;
+  border-radius: 100%;
+  flex: none;
+  width: 2.9375rem
+}
+
+.steps-content {
+  grid-column-gap: 5rem;
+  grid-row-gap: 5rem;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex
+}
+
+.steps-hold {
+  width: 2.9375rem
+}
+
+.steps-container {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  background-color: #f2eee3;
+  border-radius: 1.5rem;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2.5rem;
+  display: flex
+}
+
+.big-number {
+  font-size: 6.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #171717;
+}
+
+.step-text-block {
+  flex: none;
+  max-width: 13.625rem
+}
+
+.steps-button-hold-bottom {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  inset: auto 0% 5rem
+}
+
+.animate-wave {
+  animation: waveAnimation 8s infinite linear;
+}
+
+.portfoliov4_logos-gradient {
+  background-image: linear-gradient(90deg,#fbf0c9 22%,#0000);
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  left: -1px;
+}
+
+.portfoliov4_logos-gradient.is-right {
+  background-image: linear-gradient(270deg,#fbf0c9 22%,#0000);
+  left: auto;
+  right: -1px
+}
+
+.wave1 {
+  animation: waveMove 10s infinite ease-in-out alternate;
+}
+.wave2 {
+  animation: waveMove 10s infinite ease-in-out alternate-reverse;
+}
+@keyframes waveMove {
+  0% { transform: translateY(0px); }
+  25% { transform: translateX(5px); } /* Moves Left */
+  50% { transform: translateY(15px); } /* Moves Up */
+  100% { transform: translateY(0px); } /* Moves Back Down */
+}

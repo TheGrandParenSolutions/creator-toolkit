@@ -4,7 +4,7 @@ import "./App.css";
 import "./styles/additional.css";
 import AppRouter from "@src/Router/AppRouter";
 import { Toaster } from "react-hot-toast";
-import BamboozleLoader from "@src/shared/Progress/BamboozleLoader";
+import CTLoader from "@src/shared/Progress/CTLoader";
 
 checkAppThemeForUser();
 
@@ -55,7 +55,7 @@ function App() {
               borderLeft: "4px solid #9CA3AF",
               boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.08)",
             },
-            icon: <BamboozleLoader />,
+            icon: <CTLoader />,
           },
         }}
       />

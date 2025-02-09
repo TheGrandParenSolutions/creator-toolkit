@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const BamboozleLoader = () => {
+const CTLoader = () => {
   const colors = ["#fbab7e ", "#ffd580 ", "rgb(255, 213, 128) "]; // Close, warm colors
   const [color1, setColor1] = useState(colors[0]);
   const [color2, setColor2] = useState(colors[1]);
@@ -56,4 +56,4 @@ const BamboozleLoader = () => {
   );
 };
 
-export default BamboozleLoader;
+export default CTLoader;

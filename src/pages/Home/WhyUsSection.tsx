@@ -35,7 +35,7 @@ const WhyUsSection: FC = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex flex-col items-center rounded-xl bg-[#f5f3eb] p-8 text-center shadow-md transition-all duration-300 hover:shadow-lg dark:bg-zinc-800"
+            className="flex flex-col items-center rounded-xl bg-[#fbf0c9] border border-[--main-yellow] dark:border-2 dark:border-black p-8 text-center shadow-md transition-all duration-300 hover:shadow-lg dark:bg-zinc-800"
           >
             {/* Icon Container */}
             <div className="flex h-[64px] w-[64px] items-center justify-center rounded-full bg-black shadow-md">
