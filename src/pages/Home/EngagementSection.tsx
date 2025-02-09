@@ -71,18 +71,6 @@ const EngagementSection: FC = () => {
             </div>
           </div>
 
-          {/* Loading or Generated Idea */}
-          {loading && (
-            <motion.div
-              className="w-full max-w-lg rounded-lg bg-white px-6 py-4 text-center text-lg font-semibold text-black shadow-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              Generating idea...
-            </motion.div>
-          )}
-
           {generatedIdea && !loading && (
             <motion.div
               className="w-full max-w-lg rounded-lg bg-white px-6 py-4 text-lg font-semibold text-black shadow-md"

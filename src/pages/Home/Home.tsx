@@ -20,7 +20,7 @@ const sectionAnimation = {
 const Homepage: FC = () => {
   return (
     <div className="flex w-full justify-center">
-      <div className="flex w-full flex-col items-center justify-center gap-0 overflow-hidden">
+      <div className="flex w-full flex-col items-center justify-center overflow-hidden">
         {/* Hero Section (No animation) */}
         <HeroSection />
 

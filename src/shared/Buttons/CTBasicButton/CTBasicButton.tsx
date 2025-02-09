@@ -10,14 +10,17 @@ const CTBasicButton: FC<CustomButtonProps> = ({
   label,
   onClick,
   icon,
+  className,
   ...rest
 }) => {
   return (
     <button
-      onClick={onClick}
-      className="flex items-center justify-center rounded-full border-2 border-zinc-800 px-6 py-2 text-sm font-semibold transition duration-75 hover:bg-zinc-800 hover:text-[--brand-dark-orange] hover:shadow-inner hover:shadow-zinc-400 dark:border-zinc-200 dark:text-white dark:hover:bg-zinc-50
-                            dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-zinc-600"
       {...rest}
+      onClick={onClick}
+      className={`flex items-center justify-center rounded-full border-2 border-black px-6 py-2 text-sm font-semibold transition duration-75 hover:bg-zinc-800 hover:text-[--brand-dark-orange] hover:shadow-inner hover:shadow-zinc-400 dark:border-zinc-200 dark:text-white dark:hover:bg-zinc-50
+                            dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-zinc-600 ${
+                              className ? className : ""
+                            }`}
     >
       <span className="flex items-center gap-2">
         {icon}

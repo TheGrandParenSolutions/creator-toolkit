@@ -1,33 +1,34 @@
-import { Book, ClockCircle, PaperclipSolid } from "@mynaui/icons-react";
+import { Sparkles, ShieldCheck, LayersOne } from "@mynaui/icons-react";
 import { FC } from "react";
 
 const features = [
   {
-    title: "Save Time",
+    title: "Avoid Scams, Choose Safety",
     description:
-      "Build your projects lightning fast with high-quality Templates built by Webflow Experts.",
-    icon: ClockCircle,
+      "Most online tools are filled with spam, ads, and security risks. Creator Toolkit is the only premium, all-in-one platform designed to be safe, efficient, and scam-free for creators.",
+    icon: ShieldCheck,
+  },
+  
+  {
+    title: "Versatile & AI-Powered",
+    description:
+      "Access a suite of tools designed for video editing, design, and automation—everything you need, all in one place.",
+    icon: LayersOne,
   },
   {
-    title: "Different Styles",
+    title: "Constantly Evolving",
     description:
-      "Explore high-quality templates in different styles made for a variety of business niches.",
-    icon: PaperclipSolid,
-  },
-  {
-    title: "Frequent Updates",
-    description:
-      "We release new template updates frequently, either expanding existing templates or creating new ones.",
-    icon: Book,
+      "We release frequent updates, adding new tools and features to keep your creative workflow efficient and ahead of the curve.",
+    icon: Sparkles,
   },
 ];
 
 const WhyUsSection: FC = () => {
   return (
-    <div className=" px-6 py-20 text-center  md:px-12">
+    <div className="px-6 py-20 text-center md:px-12">
       {/* Section Heading */}
       <h2 className="mb-12 text-3xl font-extrabold text-black dark:text-white md:text-4xl">
-        Why Our Templates & Components
+        Why Choose Creator Toolkit?
       </h2>
 
       {/* Features Grid */}

@@ -29,17 +29,26 @@ const HeroSection = () => {
       </motion.h1>
 
       <motion.p
-        className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700 dark:text-gray-300 sm:text-xl"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        Get professional-grade tools that take care of the{" "}
-        <span className="font-semibold text-black dark:text-white">
-          heavy lifting
-        </span>
-        , so you can focus on what truly matters. create, edit & dominate.
-      </motion.p>
+  className="mt-6 max-w-3xl text-lg sm:text-xl text-center leading-relaxed text-zinc-800 dark:text-zinc-300"
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+>
+<span className="font-medium">Creator Toolkit</span>{" "}
+gives you everything you need to power your creative journey.  <br />
+It’s all in one place,{" "}
+<span className="font-medium">so you can focus on what truly matters</span>{" "}
+<br />
+<span className="font-grifter bg-main-gradient bg-clip-text text-sm md:text-2xl text-transparent tracking-wide uppercase ">
+   ❝ CREATE, EDIT & DOMINATE. ❞
+</span>
+
+
+
+</motion.p>
+
+
+
 
       {/* CTA Buttons - Improved Spacing & Hover Effects */}
       <div className="mt-8 flex flex-col justify-center gap-6 ">

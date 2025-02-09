@@ -1,4 +1,7 @@
-import { Rocket,  } from "@mynaui/icons-react";
+import { ImageSolid, Rocket } from "@mynaui/icons-react";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
+import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
+import { CrownIconSolid } from "@src/shared/Icons/IconLib";
 import { motion } from "framer-motion";
 
 // const features = [
@@ -12,45 +15,39 @@ const Sell = () => {
   return (
     <div className="flex w-full items-center justify-center px-4 py-12">
       <motion.div
-        className="relative w-full max-w-5xl rounded-[40px] bg-black p-12 text-white shadow-xl"
+        className="relative w-full max-w-5xl rounded-[40px] bg-zinc-800 p-12 text-white shadow-xl"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="flex flex-col  justify-between gap-8 sm:flex-row items-end">
-          {/* Left Section: Icon, Heading, Features */}
+        <div className="flex flex-col  items-end justify-between gap-8 sm:flex-row">
           <div className="max-w-lg space-y-6">
-            {/* Icon */}
             <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-yellow-500">
               <Rocket className="h-8 w-8 text-yellow-500" />
             </div>
 
-            {/* Title */}
-            <h1 className="text-5xl font-grifter text-yellow-500 md:text-5xl">
-              Ready to discuss <br /> your project?
+            <h1 className="font-grifter text-5xl text-yellow-500 md:text-5xl">
+              Grow your channel with <br /> creator toolkit ?
             </h1>
 
             {/* Feature List */}
-            
           </div>
 
-          {/* Right Section: Buttons */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
-            {/* Pricing Button */}
-            <button className="rounded-full bg-yellow-500 px-6 py-3 text-lg font-semibold text-black shadow-md transition-all hover:bg-yellow-600">
-              See Pricing
-            </button>
-
-            {/* Book a Call Button */}
-            <button className="flex items-center gap-3 rounded-full bg-white px-6 py-3 text-lg font-semibold text-black shadow-md transition-all hover:bg-gray-200">
-              <img
-                src="https://randomuser.me/api/portraits/men/32.jpg" // Replace with actual profile picture
-                alt="User"
-                className="h-8 w-8 rounded-full"
-              />
-              Book a Call
-              <span className="h-2 w-2 rounded-full bg-green-500"></span>
-            </button>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-end">
+            <CTAnimatedButton
+              w={200}
+              radius={"xl"}
+              label="See pricing"
+              hoverLabel="You will love it"
+              to="/pricing"
+              buttonStyles="w-150 p-7"
+              icon={<CrownIconSolid />}
+            />
+            <CTBasicButton
+              label="Try our tools"
+              className="w-150 whitespace-nowrap !p-4"
+              icon={<ImageSolid />}
+            />
           </div>
         </div>
       </motion.div>

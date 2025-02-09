@@ -64,8 +64,8 @@ const Timeline = () => {
                     >
                       <div className="big-number">01</div>
                       <div className="step-text-block">
-                        <p className="text-size-medium text-weight-bold less-height text-black">
-                          Sign up in just 2 minutes
+                        <p className="text-2xl font-bold less-height text-black">
+                        Get started for free
                         </p>
                       </div>
                     </motion.div>
@@ -87,8 +87,8 @@ const Timeline = () => {
                     >
                       <div className="big-number">02</div>
                       <div className="step-text-block">
-                        <p className="text-size-medium text-weight-bold less-height text-black">
-                          Submit as many tasks as you like
+                        <p className="text-2xl font-bold  less-height text-black">
+                          Explore tools and use them with your free credits
                         </p>
                       </div>
                     </motion.div>
@@ -110,8 +110,8 @@ const Timeline = () => {
                     >
                       <div className="big-number">03</div>
                       <div className="step-text-block">
-                        <p className="text-size-medium text-weight-bold less-height text-black">
-                          Receive your first page done in ~48 hours.
+                        <p className="text-2xl font-bold  less-height text-black">
+                          Purchase tools for unlimited credits
                         </p>
                       </div>
                     </motion.div>
