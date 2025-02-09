@@ -1,16 +1,8 @@
 import { Text } from "@mantine/core";
 import { Rocket } from "@mynaui/icons-react";
+import TrustedBy from "@src/pages/Home/TrustedBy";
 
 const GrowWithUs = () => {
-  const logos = [
-    "YesTheory",
-    "FlowSpark",
-    "Proton",
-    "TastyEdits",
-    "TNM",
-    "Growly",
-  ]; // Replace with actual logo names or images
-
   const scrollToSection = () => {
     const target = document.getElementById("initial-section"); // Use the ID of the initial section
     if (target) {
@@ -25,25 +17,13 @@ const GrowWithUs = () => {
         <Text
           size="lg"
           component="h1"
-          className="mb-4 text-center font-bold text-zinc-600 dark:text-white"
+          className="mb-4 text-center font-grifter text-zinc-600 dark:text-white"
         >
-          Used by 10,000+ YouTubers, Including
+          Used by 10,000+ creators, Including
         </Text>
         <div className="relative flex overflow-hidden">
           <div className="logos-track dark:text-zinc-300">
-            {logos.map((logo, index) => (
-              <div key={index} className="logo-item dark:text-zinc-300">
-                {logo}
-              </div>
-            ))}
-            {logos.map((logo, index) => (
-              <div
-                key={`duplicate-${index}`}
-                className="logo-item dark:text-zinc-300"
-              >
-                {logo}
-              </div>
-            ))}
+            <TrustedBy />
           </div>
         </div>
       </div>
