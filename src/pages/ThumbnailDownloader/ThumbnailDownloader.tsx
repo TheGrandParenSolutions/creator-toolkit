@@ -11,6 +11,7 @@ import {
   fetchYoutubeThumbnails,
 } from "@src/Api/Modules/YoutubeThumbnailDownloader/YoutubeThumbnailDownloaderService";
 import { BrandYoutubeSolid } from "@mynaui/icons-react";
+import { showToast } from "@src/utils/Theme";
 
 const downloadThumbnail = async (url: string, resoltuion: string) => {
   try {
@@ -27,7 +28,11 @@ const downloadThumbnail = async (url: string, resoltuion: string) => {
     URL.revokeObjectURL(downloadUrl); // Clean up the URL
   } catch (error) {
     console.error("Error fetching thumbnail:", error);
-    alert("Failed to download the thumbnail. Please try again.");
+    showToast(
+      "error",
+      "Thumbnail download failed",
+      "Failed to download the thumbnail. Please try again.",
+    );
   }
 };
 

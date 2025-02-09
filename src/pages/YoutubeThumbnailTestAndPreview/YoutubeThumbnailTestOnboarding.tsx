@@ -6,6 +6,7 @@ import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimate
 import { ImageUpload } from "@src/shared/Icons/IconLib";
 import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
 import { useNavigate } from "react-router-dom";
+import { showToast } from "@src/utils/Theme";
 
 const YoutubeThumbnailTestOnboarding = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -25,7 +26,11 @@ const YoutubeThumbnailTestOnboarding = () => {
       const file = files[0];
 
       if (!file.type.startsWith("image/")) {
-        alert("Please upload a valid image file.");
+        showToast(
+          "error",
+          "Image Upload failed",
+          "Please upload a valid image file.",
+        );
         return;
       }
 
