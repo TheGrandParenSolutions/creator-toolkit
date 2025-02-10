@@ -210,12 +210,12 @@
 
 @media screen and (min-width: 1440px) {
   .giant-circle-hold {
-    transform: translate(-59%);
+    /* transform: translate(-59%); */
   }
 }
 @media screen and (min-width: 1920px) {
   .giant-circle-hold {
-    transform: translate(-40%);
+    /* transform: translate(-40%); */
   }
 }
 @media screen and (max-width: 991px) {
