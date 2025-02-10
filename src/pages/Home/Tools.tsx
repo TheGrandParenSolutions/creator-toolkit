@@ -35,13 +35,13 @@ const ComponentCard: FC<ComponentCardProps> = ({ name, count, image, link }) => 
 
 const Tools: FC = () => {
   const components = [
-    { name: "Video downloader", count: 1000, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Features" },
-    { name: "Youtube thumbnail test and preview", count: 2000, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Pricing" },
-    { name: "Youtube thumbnail downloader", count: 300, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Hero" },
-    { name: "Youtube to text", count: 2400, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
-    { name: "Remove background from image", count: 450, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
-    { name: "Content script generator", count: 247, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
-    { name: "Youtube title generator", count: 456, image: "src/assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
+    { name: "Video downloader", count: 1000, image: "assets/appsnapshots/vidD.png", link: "/components?component=Features" },
+    { name: "Youtube thumbnail test and preview", count: 2000, image: "assets/appsnapshots/vidD.png", link: "/components?component=Pricing" },
+    { name: "Youtube thumbnail downloader", count: 300, image: "assets/appsnapshots/vidD.png", link: "/components?component=Hero" },
+    { name: "Youtube to text", count: 2400, image: "assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
+    { name: "Remove background from image", count: 450, image: "assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
+    { name: "Content script generator", count: 247, image: "assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
+    { name: "Youtube title generator", count: 456, image: "assets/appsnapshots/vidD.png", link: "/components?component=Testimonial" },
   ];
 
   return (

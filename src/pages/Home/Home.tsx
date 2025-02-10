@@ -9,7 +9,7 @@ import HeroSection from "@src/pages/Home/HeroSection";
 
 // More noticeable slide-up + fade-in animation
 const sectionAnimation = {
-  hidden: { opacity: 0.5, y: 50 },
+  hidden: { opacity: 0.5, y: 0 },
   visible: {
     opacity: 1,
     y: 0,
