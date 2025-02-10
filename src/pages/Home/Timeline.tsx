@@ -40,7 +40,7 @@ const Timeline = () => {
           <div className="giant-circle-hold">
             {/* ✅ Applying smooth rotation */}
             <motion.div
-              className="giant-circle"
+              className="giant-circle dark:border-zinc-50"
               style={{
                 rotate: rotateCircle,
                 transformStyle: "preserve-3d",
