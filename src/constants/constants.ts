@@ -18,7 +18,7 @@ export const FREE_USER_TYPE = "free";
 export const pricingPlans = [
   {
     title: "BASIC",
-    bgColor: "bg-transparent bg-white dark:bg-gray-800",
+    bgColor: "bg-transparent bg-white dark:bg-zinc-800",
     textColor: "text-black",
     price: {
       monthly: { amount: "14.99", currency: "USD" },
