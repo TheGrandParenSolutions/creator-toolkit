@@ -6,8 +6,8 @@ import GrowWithUs from "@src/pages/Pricing/GrowWithUs";
 import CTDivider from "@src/shared/Divider/CTDivider";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
 import { CTPricingCard } from "@src/pages/Pricing/PricingCard";
-import { pricingPlans } from "@src/Api/Modules/Pricing/PricingService";
 import useRazorpayScript from "@src/Hooks/useRazorpayScript";
+import { pricingPlans } from "@src/constants/constants";
 const tabs = [
   {
     label: "Annual",

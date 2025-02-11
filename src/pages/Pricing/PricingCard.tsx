@@ -1,11 +1,6 @@
 import { Paper, Button, Text, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import {
-  fetchAmountFromActivePlan,
-  fetchOrderDetails,
-  generatePrice,
-  getOptions,
-} from "@src/Api/Modules/Pricing/PricingService";
+import { PricingService } from "@src/Api/Modules/Pricing/PricingService";
 import { LoginSignUpModal } from "@src/components/Modals/LoginSignUpModal";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import {
@@ -56,6 +51,13 @@ export const CTPricingCard: FC<PricingPlan> = props => {
     features,
     buttonColor,
   } = props;
+  
+  const {
+    fetchAmountFromActivePlan,
+    fetchOrderDetails,
+    generatePrice,
+    getOptions,
+  } = PricingService();
 
   const { isAuthenticated, user } = useContext(AuthContext);
   const [opened, { close, open }] = useDisclosure(false);

@@ -1,4 +1,4 @@
-import { Avatar, Menu, Tooltip } from "@mantine/core";
+import { Avatar, Menu, Tooltip, Text } from "@mantine/core";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import { IUser } from "@src/types/AuthenticationTypes";
 import { FC, useContext } from "react";
@@ -16,15 +16,15 @@ const UserProfile: FC<IUserProfile> = props => {
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
-        <Tooltip label={user.username}>
+        <Tooltip label={user.userName}>
           <Avatar
             src={user?.avatar}
-            alt={user.username}
+            alt={user.userName}
             radius="xl"
             size="lg"
             className="cursor-pointer"
             classNames={{
-              root: "shadow-zinc-200 shadow-lg dark:!shadow-zinc-600"
+              root: "shadow-zinc-200 shadow-lg dark:!shadow-zinc-600",
             }}
           />
         </Tooltip>
@@ -32,6 +32,9 @@ const UserProfile: FC<IUserProfile> = props => {
 
       <Menu.Dropdown>
         <Menu.Item onClick={() => navigate("/profile")}>My Profile</Menu.Item>
+        <Menu.Item>
+          <Text className="text-base">Active plan: {user.type || "free"}</Text>
+        </Menu.Item>
         <Menu.Item
           color="red"
           onClick={() => {
