@@ -33,7 +33,7 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="mt-10 border-t border-zinc-100  shadow-xl shadow-zinc-500 dark:shadow-zinc-100  px-6 py-6 text-center text-black dark:border-zinc-700 dark:bg-dark-app-content dark:text-white">
+    <footer className="mt-10 border-t border-zinc-100  shadow-xl shadow-zinc-500 dark:shadow-zinc-100 ml-4  px-6 py-6 text-center text-black dark:border-zinc-700 dark:bg-dark-app-content dark:text-white">
       {/* Navigation Links */}
       <nav className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-zinc-600 dark:text-zinc-300 sm:gap-6 mx-10 my-6">
         {footerLinks.map((link, index) => (
@@ -51,7 +51,7 @@ const Footer = () => {
       {/* <div className=" my-4 w-[90%] border-t border-zinc-300 dark:border-zinc-600"></div> */}
 
       {/* Footer Bottom Section */}
-      <div className="mt-9 flex flex-col items-center justify-center gap-2 sm:flex-col sm:gap-2">
+      <div className="mt-9 flex flex-col mx-8 items-center justify-center gap-2 sm:flex-col sm:gap-2">
         {/* Logo */}
         <Logo />
 
