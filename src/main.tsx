@@ -18,7 +18,7 @@ const theme = {
           fontSize: "12px",
           padding: "4px 8px",
           borderRadius: "20px",
-          backgroundColor: "#333",
+          backgroundColor: "#27272a",
           color: "#fff",
         },
       },
