@@ -220,9 +220,6 @@ const VideoDownloader = () => {
           content="https://www.creator-toolkit.com/video-download-gear"
         />
       </Helmet>
-      <div className="m-auto w-full ">
-        <SupportedFormats />
-      </div>
       <div className="mx-auto my-16 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
@@ -235,6 +232,7 @@ const VideoDownloader = () => {
               Paste the video link below
             </Text>
           </h1>
+          <SupportedFormats />
         </div>
 
         {/* Input Section */}

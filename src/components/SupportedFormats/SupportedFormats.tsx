@@ -1,94 +1,34 @@
-import { useState, useRef, useEffect } from "react";
+import { YTLogo, InstagramLogo } from "@src/shared/Icons/Logos"; // Import the logos
 
-import { InstagramLogo, YTLogo } from "@src/shared/Icons/Logos";
+const services = [
+  { name: "YouTube", icon: <YTLogo className="h-5 w-5" />, bg: "bg-white" },
+  {
+    name: "Instagram",
+    icon: <InstagramLogo className="h-5 w-5" />,
+    bg: "bg-white",
+  },
+];
 
 const SupportedServices = () => {
-  const [expanded, setExpanded] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-  const services = [
-    {
-      name: "YouTube",
-      icon: <YTLogo />, // YouTube red
-    },
-    {
-      name: "Instagram",
-      icon: <InstagramLogo />, // Instagram pink
-    },
-    // {
-    //   name: "(formely twitter)",
-    //   icon: <BrandXSolid size={20} className="text-[#000]" />, // Twitter blue
-    // },
-  ];
-
-  // Close the dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setExpanded(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
-    <div
-      className="relative mx-auto flex w-full max-w-sm justify-center"
-      ref={dropdownRef}
-      onMouseEnter={() => {
-        setExpanded(true);
-      }}
-      onMouseLeave={() => {
-        setExpanded(false);
-      }}
-    >
-      {/* Toggle Button */}
-      <button
-        className="shadow-xs focus:ring-none flex items-center justify-center gap-2 rounded-full border-none !bg-transparent bg-zinc-50 px-4 py-2  text-sm font-medium text-zinc-800 transition-all hover:bg-zinc-200 focus:outline-none dark:bg-zinc-800"
-        onClick={() => setExpanded(!expanded)}
-      >
-        <span
-          className={`flex h-6 w-6 transform items-center justify-center rounded-full bg-zinc-100 p-2 text-xl font-bold text-zinc-800 transition-transform duration-300 dark:bg-zinc-800 dark:text-zinc-300 ${
-            expanded ? "rotate-45" : "rotate-0"
-          }`}
-        >
-          +
-        </span>
-        <span className="font-medium text-zinc-700 dark:text-zinc-300">
-          supported services
-        </span>
-      </button>
+    <div className="mx-auto mt-2 flex flex-col items-center gap-2">
+      {/* Title with Better Spacing */}
+      <p className="text-center text-sm font-medium text-zinc-700 dark:text-gray-300">
+        <span className="text-sm text-zinc-600 dark:text-zinc-300">
+          Creator toolkit supports:
+        </span>{" "}
+      </p>
 
-      {/* Dropdown Modal */}
-      <div
-        className={`absolute top-full z-10 mt-2 w-full overflow-hidden rounded-lg border-none border-zinc-200 bg-zinc-50 shadow-lg transition-all duration-500 dark:bg-zinc-800 ${
-          expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-        style={{ transitionProperty: "max-height, opacity" }}
-      >
-        <div className="p-4">
-          {/* Service List */}
-          <div className="flex flex-wrap gap-3">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 rounded-lg bg-zinc-200 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm transition-all dark:bg-zinc-600  dark:text-white"
-              >
-                {service.icon}
-                <span>{service.name}</span>
-              </div>
-            ))}
+      {/* Icons Row with Improved Layout */}
+      <div className="flex items-center gap-2 flex-wrap justify-center">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-800"
+          >
+            {service.icon}
           </div>
-          {/* Disclaimer */}
-          <p className="mt-4 text-sm text-zinc-400">
-            Creator Toolkit is not affiliated with any of the services listed
-            above.
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   );

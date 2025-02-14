@@ -1,3 +1,4 @@
+import { getUserLocationData } from "@src/Api/Modules/GeoLocation/GeoLocationService";
 import { VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import jsPDF from "jspdf";
 
@@ -233,4 +234,13 @@ export const isVideoOnlyFormat = (f: VideoFormat) => {
     return true
   }
   return false
+}
+
+export const getCountryCodeFromGeoLocationService = async () => {
+  const locationData = await getUserLocationData();
+  if (locationData) {
+    return locationData.countryCode;
+  } else {
+    return null;
+  }
 }
