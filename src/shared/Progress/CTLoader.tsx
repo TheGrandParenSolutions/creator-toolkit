@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const CTLoader = () => {
-  const colors = ["#fbab7e ", "#ffd580 ", "rgb(255, 213, 128) "]; // Close, warm colors
+  const colors = ["#f18437 ", "#ffab00 ", "#f79046"]; // Close, warm colors
   const [color1, setColor1] = useState(colors[0]);
   const [color2, setColor2] = useState(colors[1]);
 
