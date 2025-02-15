@@ -6,7 +6,7 @@ import { FC, PropsWithChildren } from "react";
 
 const MainSection: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Box>
+    <Box className="flex flex-col h-screen justify-between">
       <Box className="flex bg-light-app dark:bg-dark-app-content text-black dark:text-white gap-16 scroll-smooth transition-all duration-300">
         <Box>
           <MainNav />
