@@ -31,7 +31,7 @@ const CTToggleTabs: React.FC<CTToggleTabsProps> = ({
           <button
             key={index}
             onClick={() => handleToggle(label)}
-            className={`flex flex-1 items-center justify-center rounded-full px-2 md:px-2 py-2 text-[10px] md:text-sm font-medium transition-all duration-300 ${
+            className={`flex items-center justify-center rounded-full px-2 md:px-2 py-2 text-[10px] md:text-sm font-medium transition-all duration-300 ${
               activeTab === label
                 ? "bg-main-gradient text-black shadow-md"
                 : "bg-zinc-200 text-zinc-500 hover:text-zinc-900 dark:bg-zinc-700 dark:hover:text-white"
@@ -43,7 +43,7 @@ const CTToggleTabs: React.FC<CTToggleTabsProps> = ({
           >
             <Text
               component="h1"
-              className="text-[5px] md:text-sm font-medium text-center whitespace-pre-line w-full"
+              className="flex items-center justify-center text-[8px] md:text-sm font-medium text-center whitespace-pre-line w-full"
             >
               {component}
             </Text>

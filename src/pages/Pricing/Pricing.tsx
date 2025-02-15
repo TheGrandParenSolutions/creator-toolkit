@@ -13,8 +13,7 @@ const tabs = [
     label: "Annual",
     component: (
       <>
-        Annual Pass <br />
-        (2 months free)
+        Annual Pass 
       </>
     ),
   },
@@ -22,7 +21,7 @@ const tabs = [
     label: "Monthly",
     component: (
       <>
-        Monthly Pass <br /> (Best deals){" "}
+        Monthly Pass 
       </>
     ),
   },
@@ -30,7 +29,7 @@ const tabs = [
     label: "Day",
     component: (
       <>
-        Day Pass <br /> (Best deals){" "}
+        Day Pass 
       </>
     ),
   },
@@ -38,7 +37,7 @@ const tabs = [
     label: "Week",
     component: (
       <>
-        Week Pass <br /> (Best deals){" "}
+        Week Pass 
       </>
     ),
   },
