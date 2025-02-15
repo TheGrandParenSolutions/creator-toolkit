@@ -52,8 +52,7 @@ const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
 
       {isEmailSent && (
         <Paper
-          radius="lg"
-          className="flex w-full max-w-md flex-col items-center gap-y-3  border border-[--main-yellow] bg-[#f9f8f5] p-6 text-center shadow-md dark:border-2 dark:border-black dark:bg-dark-app-content"
+          className="flex w-full  !rounded-[2.5rem] max-w-md flex-col items-center gap-y-3  border border-[--main-yellow] bg-[#f9f8f5] p-6 text-center shadow-md dark:border-2 dark:border-black dark:bg-dark-app-content"
         >
           {/* Success Icon */}
 
@@ -94,8 +93,7 @@ const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
       {/* Forgot Password Card */}
       {!isEmailSent && (
         <Paper
-          radius="lg"
-          className="w-full max-w-md border border-[--main-yellow] bg-[#f9f8f5] p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
+          className="w-full !rounded-[2.5rem] max-w-md border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
           style={{
             borderRadius: "16px",
           }}

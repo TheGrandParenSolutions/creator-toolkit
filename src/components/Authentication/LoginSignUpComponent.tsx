@@ -91,8 +91,7 @@ export const LoginSignUpComponent = (props: {
 
   return (
     <Paper
-      radius="lg"
-      className="w-full max-w-md border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
+      className="w-full !rounded-[2.5rem] max-w-md border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
       style={{
         borderRadius: "16px",
       }}
