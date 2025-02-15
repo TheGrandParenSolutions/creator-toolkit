@@ -108,7 +108,7 @@ const Pricing = () => {
           <Text
             size="lg"
             component="h1"
-            className="mb-4 text-lg font-bold text-black dark:text-white md:text-xl lg:text-2xl"
+            className="mb-4 text-lg font-grifter text-black dark:text-white md:text-xl lg:text-4xl"
           >
             Grow your channel with a single tool.
           </Text>
@@ -131,7 +131,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="flex flex-col md:flex-row gap-8 ">
+        <div className="flex flex-col gap-8 md:flex-row ">
           {pricingPlans
             .filter(
               p => p.activePlan.toLowerCase() === selectedTab.toLowerCase(),
