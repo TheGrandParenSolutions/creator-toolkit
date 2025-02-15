@@ -699,3 +699,20 @@ export const ConfettiIcon = IconRenderer(
     ></path>
   </svg>,
 );
+
+export const CheckIcon = IconRenderer(
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M19.8867 2.62823C18.9235 4.49231 7.88355 17.8569 6.0168 17.8569C4.30908 17.8569 -1.34152 7.2126 0.293598 6.91264C1.92872 6.61282 5.9269 12.0085 5.9269 12.0085C5.9269 12.0085 21.4705 -0.436807 19.8867 2.62823Z"
+      fill="#F05A2A"
+    ></path>
+  </svg>,
+);

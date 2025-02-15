@@ -34,6 +34,14 @@ const tabs = [
       </>
     ),
   },
+  {
+    label: "Week",
+    component: (
+      <>
+        Week Pass <br /> (Best deals){" "}
+      </>
+    ),
+  },
 ];
 
 const Pricing = () => {
@@ -114,7 +122,7 @@ const Pricing = () => {
         </Box>
 
         {/* Toggle with Smooth Background Slide */}
-        <div className="relative mb-10 w-full max-w-md">
+        <div className="relative mb-10 w-full max-w-xl">
           <CTToggleTabs
             tabs={tabs}
             activeTab={selectedTab}
@@ -123,7 +131,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="flex justify-center">
+        <div className="flex gap-8 ">
           {pricingPlans.map((plan, index) => (
             <CTPricingCard key={index} {...plan} activePlan={selectedTab} />
           ))}

@@ -1,3 +1,4 @@
+
 export const languages = [
   { value: "en", label: "English" },
   { value: "es", label: "Spanish" },
@@ -15,27 +16,11 @@ export const transcriptFileFormats = [
 export const PREMIUM_USER_TYPE = "premium";
 export const FREE_USER_TYPE = "free";
 
-export const pricingPlans = [
+export const pricingPlans: any[] = [
   {
-    title: "BASIC",
-    bgColor: "bg-transparent bg-white dark:bg-zinc-800",
-    textColor: "text-black",
-    price: {
-      monthly: { amount: "14.99", currency: "USD" },
-      annual: { amount: "12.49", currency: "USD" },
-      daily: { amount: "3", currency: "USD" },
-    },
-    originalPrice: {
-      monthly: { amount: "21.99", currency: "USD" },
-      annual: { amount: "17.99", currency: "USD" },
-      daily: { amount: "3", currency: "USD" },
-    },
+    planType: "basic",
+    title: "Basic",
     description: "Great for users starting out with their YouTube Journey.",
-    billed: {
-      monthly: { amount: "179.88", currency: "USD" },
-      annual: { amount: "149.90", currency: "USD" },
-      daily: { amount: "3", currency: "USD" },
-    },
     features: [
       "Unlimited Thumbnail Ideas",
       "Up to 3 Thumbnail A/B Tests at once",
@@ -44,6 +29,29 @@ export const pricingPlans = [
       "1 Channel",
       "Members Only Discord Group",
     ],
-    buttonColor: "bg-[var(--brand-mid-yellow)] text-black",
+    activePlan: "Monthly",
+    price: { annual: 179.88, monthly: 14.99, daily: 1.99 },
+    originalPrice: { annual: 219.99, monthly: 21.99, daily: 2.99 },
+    buttonText: "Get Started",
+    currency: "$"
+  },
+  {
+    planType: "pro",
+    title: "Pro",
+    description: "For professionals who need more advanced features.",
+    features: [
+      "Unlimited Thumbnail Ideas",
+      "Up to 5 Thumbnail A/B Tests at once",
+      "300 Thumbnail AI Rates/mo",
+      "500 Thumbnail AI Creations/mo",
+      "3 Channels",
+      "Dedicated AI Assistant",
+      "Priority Support",
+    ],
+    activePlan: "Monthly",
+    price: { annual: 299.88, monthly: 24.99, daily: 3.99 },
+    originalPrice: { annual: 359.99, monthly: 34.99, daily: 4.99 },
+    buttonText: "Get Started",
+    currency: "$"
   },
 ];

@@ -21,8 +21,10 @@ export const PricingService = () => {
       return activePricingPlan.billed.monthly.amount;
     } else if (plan == "annual") {
       return activePricingPlan.billed.annual.amount;
-    } else {
+    } else if (plan == "daily"){
       return activePricingPlan.billed.daily.amount;
+    } else {
+      return activePricingPlan.billed.weekly.amount;
     }
   };
 
