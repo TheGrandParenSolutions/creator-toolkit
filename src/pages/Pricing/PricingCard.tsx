@@ -5,14 +5,10 @@ import { AuthContext } from "@src/Context/Auth/AuthContext";
 import PricingPlan, { PricingPlanProps } from "@src/pages/Pricing/PricingPlan";
 import { FC, useContext, useEffect, useState } from "react";
 
-export const CTPricingCard: FC<PricingPlanProps> = props => {
-  // const { activePlan, price, originalPrice, description, features } = props;
-
-  const {
-    fetchAmountFromActivePlan,
-    fetchOrderDetails,
-    getOptions,
-  } = PricingService();
+export const CTPricingCard: FC<{ paymentPlan: PricingPlanProps }> = props => {
+  const { paymentPlan } = props;
+  const { fetchAmountFromActivePlan, fetchOrderDetails, getOptions } =
+    PricingService();
   const [shouldTriggerPayment, setShouldTriggerPayment] =
     useState<boolean>(false);
 
@@ -21,14 +17,14 @@ export const CTPricingCard: FC<PricingPlanProps> = props => {
 
   const [opened, { close, open }] = useDisclosure(false);
 
-  const paymentHandler = async (plan: string | undefined) => {
+  const paymentHandler = async (paymentPlan: PricingPlanProps) => {
     if (isAuthenticated && user) {
-      const planAmount = fetchAmountFromActivePlan(plan);
+      const planAmount = fetchAmountFromActivePlan(paymentPlan);
       const amount = Number(planAmount);
       const orderDetails = await fetchOrderDetails({ amount });
 
       if (!orderDetails) return;
-      const options = getOptions(orderDetails, plan, user);
+      const options = getOptions(orderDetails, paymentPlan.activePlan, user);
 
       const rzp = new (window as any).Razorpay(options);
       rzp.open();
@@ -45,7 +41,7 @@ export const CTPricingCard: FC<PricingPlanProps> = props => {
   useEffect(() => {
     if (shouldTriggerPayment && isAuthenticated && user) {
       setShouldTriggerPayment(false);
-      paymentHandler(props.activePlan);
+      paymentHandler(paymentPlan);
     }
   }, [isAuthenticated, user, shouldTriggerPayment]);
 
@@ -54,8 +50,8 @@ export const CTPricingCard: FC<PricingPlanProps> = props => {
       <LoginSignUpModal opened={opened} close={closeModal} />
 
       <PricingPlan
-        {...props}
-        clickHandler={activePlan => paymentHandler(activePlan)}
+        {...paymentPlan}
+        clickHandler={() => paymentHandler(paymentPlan)}
       />
     </>
   );

@@ -1,5 +1,6 @@
 import { post } from "@src/Api/Core/HttpClient";
 import { pricingPlans } from "@src/constants/constants";
+import { PricingPlanProps } from "@src/pages/Pricing/PricingPlan";
 import { IUser } from "@src/types/AuthenticationTypes";
 import {
   CreateOrderRequest,
@@ -10,21 +11,24 @@ import { showToast } from "@src/utils/Theme";
 
 export const PricingService = () => {
 
-  const fetchAmountFromActivePlan = (plan: string | undefined) => {
-    const activePricingPlan = pricingPlans[0]; // Assuming only one plan exists, otherwise modify accordingly
-    if (!activePricingPlan.price) {
+  const fetchAmountFromActivePlan = (plan: PricingPlanProps | undefined) => {
+    const originalPrice = plan?.price;
+
+    if (!plan || !originalPrice) {
       console.error("Invalid active plan type or missing price");
       return null;
     }
-    plan = plan?.toLocaleLowerCase();
-    if (plan == "monthly") {
-      return activePricingPlan.billed.monthly.amount;
-    } else if (plan == "annual") {
-      return activePricingPlan.billed.annual.amount;
-    } else if (plan == "daily"){
-      return activePricingPlan.billed.daily.amount;
+
+    const planType = plan.activePlan?.toLocaleLowerCase();
+
+    if (planType == "monthly") {
+      return originalPrice?.monthly;
+    } else if (planType == "annual") {
+      return originalPrice.annual;
+    } else if (planType == "daily"){
+      return originalPrice.daily;
     } else {
-      return activePricingPlan.billed.weekly.amount;
+      return originalPrice.weekly;
     }
   };
 

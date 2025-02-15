@@ -1,3 +1,4 @@
+import { PricingPlanProps } from "@src/pages/Pricing/PricingPlan";
 
 export const languages = [
   { value: "en", label: "English" },
@@ -16,7 +17,7 @@ export const transcriptFileFormats = [
 export const PREMIUM_USER_TYPE = "premium";
 export const FREE_USER_TYPE = "free";
 
-export const pricingPlans: any[] = [
+export const pricingPlans: PricingPlanProps[] = [
   {
     planType: "basic",
     title: "Basic",
@@ -30,8 +31,8 @@ export const pricingPlans: any[] = [
       "Members Only Discord Group",
     ],
     activePlan: "Monthly",
-    price: { annual: 179.88, monthly: 14.99, daily: 1.99 },
-    originalPrice: { annual: 219.99, monthly: 21.99, daily: 2.99 },
+    price: { annual: 179.88, monthly: 14.99, daily: 1.99, weekly: 7.99 },
+    originalPrice: { annual: 219.99, monthly: 21.99, daily: 2.99, weekly: 7.99 },
     buttonText: "Get Started",
     currency: "$"
   },
@@ -49,8 +50,8 @@ export const pricingPlans: any[] = [
       "Priority Support",
     ],
     activePlan: "Monthly",
-    price: { annual: 299.88, monthly: 24.99, daily: 3.99 },
-    originalPrice: { annual: 359.99, monthly: 34.99, daily: 4.99 },
+    price: { annual: 299.88, monthly: 24.99, daily: 3.99, weekly: 7.99 },
+    originalPrice: { annual: 359.99, monthly: 34.99, daily: 4.99, weekly: 7.99 },
     buttonText: "Get Started",
     currency: "$"
   },

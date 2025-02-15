@@ -132,9 +132,13 @@ const Pricing = () => {
 
         {/* Pricing Cards */}
         <div className="flex gap-8 ">
-          {pricingPlans.map((plan, index) => (
-            <CTPricingCard key={index} {...plan} activePlan={selectedTab} />
-          ))}
+          {pricingPlans
+            .filter(
+              p => p.activePlan.toLowerCase() === selectedTab.toLowerCase(),
+            )
+            .map(plan => (
+              <CTPricingCard paymentPlan={plan} />
+            ))}
         </div>
 
         <Text size="xs" className="mt-6 text-zinc-500 dark:text-zinc-400">

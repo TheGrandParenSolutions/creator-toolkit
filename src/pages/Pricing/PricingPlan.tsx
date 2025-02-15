@@ -7,12 +7,17 @@ export interface PricingPlanProps {
   title: string;
   description: string;
   features: (string | number | boolean | React.ReactNode)[];
-  activePlan: "Annual" | "Monthly" | "Daily" | string;
-  price: { annual: number; monthly: number; daily: number };
-  originalPrice: { annual: number; monthly: number; daily: number };
+  activePlan: "Annual" | "Monthly" | "Daily" | "Weekly" | string;
+  price: { annual: number; monthly: number; daily: number; weekly: number };
+  originalPrice: {
+    annual: number;
+    monthly: number;
+    daily: number;
+    weekly: number;
+  };
   buttonText: string;
   currency: string;
-  clickHandler: (activePlan: string) => void;
+  clickHandler?: (activePlan: string) => void;
 }
 
 const PricingPlan: React.FC<PricingPlanProps> = ({
@@ -25,13 +30,13 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
   originalPrice,
   buttonText,
   clickHandler,
-  currency
+  currency,
 }) => {
   const isPro = planType === "pro";
 
   return (
     <div
-      className={`relative flex max-w-[500px] flex-col items-start rounded-[2.5rem] gap-4 border p-6 shadow-md ${
+      className={`relative flex max-w-[500px] flex-col items-start gap-4 rounded-[2.5rem] border p-6 shadow-md ${
         isPro
           ? "border-[--brand-dark-orange] bg-[--brand-bg-light] dark:bg-zinc-800"
           : "border-zinc-200 dark:border-2 dark:border-black dark:bg-zinc-800"
@@ -67,6 +72,8 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
             ? `${currency} ${originalPrice.annual}`
             : activePlan === "Monthly"
             ? `${currency} ${originalPrice.monthly}`
+            : activePlan === "Weekly"
+            ? `${currency} ${originalPrice.weekly}`
             : `${currency} ${originalPrice.daily}`}
         </span>
         <span className="text-2xl md:text-4xl">
@@ -74,6 +81,8 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
             ? `${currency} ${price.annual}`
             : activePlan === "Monthly"
             ? `${currency} ${price.monthly}`
+            : activePlan === "Weekly"
+            ? `${currency} ${price.weekly}`
             : `${currency} ${price.daily}`}
         </span>
       </h2>
@@ -98,15 +107,14 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
       {/* Get Started Button */}
       <div className="w-full">
         <Button
-       size="lg"
-              radius="xl"
+          size="lg"
+          radius="xl"
           className={`w-full   text-lg font-semibold ${
             isPro
               ? "bg-zinc-800 text-white hover:bg-zinc-900 dark:bg-main-gradient dark:text-zinc-900"
               : "bg-[--main-yellow] text-zinc-900 hover:bg-[--main-yellow] dark:bg-zinc-900 dark:text-zinc-200"
           }`}
-
-          onClick={() => clickHandler(activePlan)}
+          onClick={() => clickHandler?.(activePlan)}
         >
           {buttonText}
         </Button>
