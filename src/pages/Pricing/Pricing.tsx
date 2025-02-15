@@ -145,7 +145,6 @@ const Pricing = () => {
           *Limits reset each day
         </Text>
         <CTDivider />
-        <CTDivider />
         <HowItWorks />
         <CTDivider />
         <Sell />
