@@ -3,7 +3,7 @@ import { PricingService } from "@src/Api/Modules/Pricing/PricingService";
 import { LoginSignUpModal } from "@src/components/Modals/LoginSignUpModal";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import PricingPlan, { PricingPlanProps } from "@src/pages/Pricing/PricingPlan";
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 
 export const CTPricingCard: FC<PricingPlanProps> = props => {
   // const { activePlan, price, originalPrice, description, features } = props;
@@ -13,8 +13,12 @@ export const CTPricingCard: FC<PricingPlanProps> = props => {
     fetchOrderDetails,
     getOptions,
   } = PricingService();
+  const [shouldTriggerPayment, setShouldTriggerPayment] =
+    useState<boolean>(false);
 
-  const { isAuthenticated, user } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const { user, isAuthenticated } = authContext;
+
   const [opened, { close, open }] = useDisclosure(false);
 
   const paymentHandler = async (plan: string | undefined) => {
@@ -33,9 +37,21 @@ export const CTPricingCard: FC<PricingPlanProps> = props => {
     }
   };
 
+  const closeModal = async () => {
+    close();
+    setShouldTriggerPayment(true);
+  };
+
+  useEffect(() => {
+    if (shouldTriggerPayment && isAuthenticated && user) {
+      setShouldTriggerPayment(false);
+      paymentHandler(props.activePlan);
+    }
+  }, [isAuthenticated, user, shouldTriggerPayment]);
+
   return (
     <>
-      <LoginSignUpModal opened={opened} close={close} />
+      <LoginSignUpModal opened={opened} close={closeModal} />
 
       <PricingPlan
         {...props}

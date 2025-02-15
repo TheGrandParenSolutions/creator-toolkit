@@ -1,16 +1,31 @@
-import { Box, Button, Divider, Group, Paper, Text } from "@mantine/core";
-import { BrandGoogleSolid, Envelope, Lock } from "@mynaui/icons-react";
+import {
+  Box,
+  Button,
+  Divider,
+  Group,
+  Input,
+  Paper,
+  PasswordInput,
+  Text,
+} from "@mantine/core";
+import { BrandGoogleSolid } from "@mynaui/icons-react";
 import {
   login,
   createUser,
 } from "@src/Api/Modules/Authentication/AuthenticationService";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
+import { LockIcon, MailIcon } from "@src/shared/Icons/IconLib";
 import { showToast } from "@src/utils/Theme";
 import { useContext, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export const LoginSignUpComponent = () => {
+export const LoginSignUpComponent = (props: {
+  modalFlow?: boolean;
+  closeModal?: () => void;
+  onForgotPassword?: () => void;
+}) => {
+  const { modalFlow, closeModal, onForgotPassword } = props;
   const { updateAuth } = useContext(AuthContext);
   const location = useLocation();
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
@@ -24,23 +39,28 @@ export const LoginSignUpComponent = () => {
   const handleSubmit = async () => {
     setSigningInUser(true);
     try {
+      let user;
       if (isLogin) {
-        const user = await login(formValues);
-        setSigningInUser(false);
-        if (user) {
-          showToast(
-            "success",
-            "Login successfull!",
-            "Welcome to creator toolkit!",
-          ); // Handle login failure
-          await updateAuth(user);
-          navigate("/"); // Redirect on successful login
+        user = await login(formValues);
+      } else {
+        user = await createUser(formValues);
+      }
+
+      setSigningInUser(false);
+      if (user) {
+        await updateAuth(user);
+        showToast(
+          "success",
+          isLogin ? "Login successful!" : "Signup successful!",
+          isLogin
+            ? "Welcome to Creator Toolkit!"
+            : "Your account has been created.",
+        );
+
+        if (modalFlow && closeModal) {
+          closeModal();
         } else {
-          showToast(
-            "error",
-            "Authentication failed",
-            "Invalid login credentials.",
-          ); // Handle login failure
+          navigate("/");
         }
       } else {
         const user = await createUser(formValues);
@@ -64,17 +84,15 @@ export const LoginSignUpComponent = () => {
   };
 
   useEffect(() => {
-    if (location.pathname === "/signup") {
-      setIsLogin(false);
-    } else if (location.pathname === "/login") {
-      setIsLogin(true);
+    if (!modalFlow) {
+      setIsLogin(location.pathname === "/signup" ? false : true);
     }
-  }, [location.pathname]);
+  }, [location.pathname, modalFlow]);
 
   return (
     <Paper
       radius="lg"
-      className="w-full max-w-md border border-[--main-yellow] bg-[#f9f8f5] p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
+      className="w-full max-w-md border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
       style={{
         borderRadius: "16px",
       }}
@@ -88,7 +106,7 @@ export const LoginSignUpComponent = () => {
         >
           {isLogin ? "Welcome Back!" : "Create Your Account"}
         </Text>
-        <Text size="xs" className="text-gray-300">
+        <Text size="xs" className="text-zinc-800 dark:text-zinc-200">
           {isLogin
             ? "Log in to access your account."
             : "Sign up to get started with our platform."}
@@ -98,43 +116,46 @@ export const LoginSignUpComponent = () => {
       {/* Form */}
       <form className="space-y-4">
         {/* Email Field */}
-        <div className="relative">
-          <Envelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={formValues.email}
-            onChange={e =>
-              setFormValues({ ...formValues, email: e.target.value })
-            }
-            required
-            className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
-          />
-        </div>
+        <Input
+          type="email"
+          placeholder="Enter your email"
+          value={formValues.email}
+          leftSection={<MailIcon className="text-zinc-500" />}
+          onChange={e =>
+            setFormValues({ ...formValues, email: e.target.value })
+          }
+          required
+          classNames={{
+            input:
+              " w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 text-sm text-zinc-700 focus:border-2 focus:border-[--brand-dark-orange] hover:border-[--brand-dark-orange]",
+          }}
+        />
 
-        {/* Password Field */}
-        <div className="relative">
-          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input
-            type="password"
-            placeholder="Your Password"
-            value={formValues.password}
-            onChange={e =>
-              setFormValues({ ...formValues, password: e.target.value })
-            }
-            required
-            className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-4 py-2 pl-10 text-sm text-gray-700 focus:ring-2 focus:ring-orange-400"
-          />
-        </div>
+        <PasswordInput
+          type="password"
+          placeholder="Enter your password"
+          leftSection={<LockIcon className=" text-zinc-500" />}
+          classNames={{
+            input:
+              " w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 text-sm text-zinc-700 focus:border-2 focus:border-[--brand-dark-orange] hover:border-[--brand-dark-orange]",
+          }}
+          value={formValues.password}
+          onChange={e =>
+            setFormValues({ ...formValues, password: e.target.value })
+          }
+          required
+        />
 
         {/* Forgot Password */}
         {isLogin && (
           <div className="text-right">
             <span
               className="cursor-pointer text-sm font-semibold hover:text-orange-500"
-              onClick={() => navigate("/forgot-password")}
+              onClick={() =>
+                modalFlow ? onForgotPassword?.() : navigate("/forgot-password")
+              }
             >
-              Forgot Password?
+              Forgot password?
             </span>
           </div>
         )}
@@ -175,14 +196,26 @@ export const LoginSignUpComponent = () => {
       </Group>
 
       {/* Toggle Login/Signup */}
+
       <Text size="xs" className="mt-4 text-center  text-sm">
         {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-        <Link
-          to={isLogin ? "/signup" : "/login"}
-          className="cursor-pointer font-bold underline hover:text-orange-500"
-        >
-          {isLogin ? "Sign Up" : "Log In"}
-        </Link>
+        {modalFlow ? (
+          <Button
+            className="cursor-pointer !bg-transparent font-bold text-zinc-900 underline hover:bg-transparent hover:!text-orange-500 dark:text-white"
+            onClick={() => {
+              setIsLogin(!isLogin);
+            }}
+          >
+            {isLogin ? "Sign Up" : "Log In"}
+          </Button>
+        ) : (
+          <Link
+            to={isLogin ? "/signup" : "/login"}
+            className="cursor-pointer font-bold underline hover:text-orange-500"
+          >
+            {isLogin ? "Sign Up" : "Log In"}
+          </Link>
+        )}
       </Text>
     </Paper>
   );

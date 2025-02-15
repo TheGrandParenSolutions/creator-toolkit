@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Text, Box, Paper } from "@mantine/core";
+import { Text, Box, Paper, Input } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { sendForgotPasswordRequest } from "@src/Api/Modules/Authentication/AuthenticationService";
 import { CTCheckIcon } from "@src/utils/HtmlUtil";
 import { showToast } from "@src/utils/Theme";
+import { MailIcon } from "@src/shared/Icons/IconLib";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isEmailSent, setIEmailSent] = useState(false);
@@ -40,16 +41,19 @@ const ForgotPassword = () => {
   return (
     <div className="mt-16 flex flex-col items-center justify-center px-4">
       {/* Logo */}
-      <Box
-        className="mb-6 flex cursor-pointer items-center"
-        onClick={() => navigate("/")}
-      >
-        <Logo />
-      </Box>
+      {!onBack && (
+        <Box
+          className="mb-6 flex cursor-pointer items-center"
+          onClick={() => navigate("/")}
+        >
+          <Logo />
+        </Box>
+      )}
+
       {isEmailSent && (
         <Paper
           radius="lg"
-          className="flex w-full max-w-md flex-col items-center gap-y-3 border border-[--main-yellow] bg-transparent p-6 text-center shadow-md dark:border-2 dark:border-black dark:bg-dark-app-content"
+          className="flex w-full max-w-md flex-col items-center gap-y-3  border border-[--main-yellow] bg-[#f9f8f5] p-6 text-center shadow-md dark:border-2 dark:border-black dark:bg-dark-app-content"
         >
           {/* Success Icon */}
 
@@ -81,7 +85,7 @@ const ForgotPassword = () => {
           <Text
             size="sm"
             className="mt-4 cursor-pointer font-semibold underline hover:text-orange-500"
-            onClick={() => navigate("/login")}
+            onClick={() => (onBack ? onBack() : navigate("/login"))}
           >
             Back to Login
           </Text>
@@ -91,7 +95,7 @@ const ForgotPassword = () => {
       {!isEmailSent && (
         <Paper
           radius="lg"
-          className="w-full max-w-md border border-[--main-yellow] bg-transparent p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
+          className="w-full max-w-md border border-[--main-yellow] bg-[#f9f8f5] p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
           style={{
             borderRadius: "16px",
           }}
@@ -113,14 +117,18 @@ const ForgotPassword = () => {
           {/* Form */}
           <form className="space-y-4" onSubmit={e => handleSubmit(e)}>
             <div className="relative">
-              <input
+              <Input
                 type="email"
-                placeholder="Email address*"
+                placeholder="Enter your email"
                 value={email}
+                leftSection={<MailIcon className="text-zinc-500" />}
                 onChange={e => setEmail(e.target.value)}
-                required
                 disabled={isSubmitting}
-                className="w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 px-4 py-2 text-sm text-zinc-700 focus:ring-2 focus:ring-orange-400"
+                required
+                classNames={{
+                  input:
+                    " w-full rounded-lg border-2 border-zinc-300 bg-zinc-50 text-sm text-zinc-700 focus:border-2 focus:border-[--brand-dark-orange] hover:border-[--brand-dark-orange]",
+                }}
               />
             </div>
 
@@ -139,7 +147,7 @@ const ForgotPassword = () => {
           <Text size="xs" className="mt-4 text-center text-sm">
             <span
               className="cursor-pointer font-semibold underline hover:text-orange-500"
-              onClick={() => navigate("/login")}
+              onClick={() => (onBack ? onBack() : navigate("/login"))}
             >
               Back to Login/Signup
             </span>

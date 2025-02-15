@@ -716,3 +716,56 @@ export const CheckIcon = IconRenderer(
     ></path>
   </svg>,
 );
+
+
+export const LockIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+  >
+    <g fill="none">
+      <path
+        fill="currentColor"
+        fillOpacity={0.25}
+        d="M4 12c0-.943 0-1.414.293-1.707S5.057 10 6 10h12c.943 0 1.414 0 1.707.293S20 11.057 20 12v6.038c0 .38 0 .571-.029.74a2 2 0 0 1-1.164 1.49c-.156.07-.341.116-.71.208c-1.238.31-1.857.464-2.476.578c-2.394.44-4.848.44-7.243 0c-.618-.114-1.237-.269-2.474-.578c-.37-.092-.555-.139-.71-.207a2 2 0 0 1-1.165-1.492C4 18.61 4 18.42 4 18.037z"
+      ></path>
+      <path
+        stroke="currentColor"
+        d="M16.5 10V9a4.5 4.5 0 0 0-9 0v1"
+        strokeWidth={1}
+      ></path>
+      <circle cx={12} cy={15} r={2} fill="currentColor"></circle>
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        d="M12 16v2.5"
+        strokeWidth={1}
+      ></path>
+    </g>
+  </svg>,
+);
+
+export const MailIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+  >
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      color="currentColor"
+    >
+      <path d="m2 5l6.913 3.925c2.526 1.433 3.648 1.433 6.174 0L22 5"></path>
+      <path d="M10.5 19.5a116 116 0 0 1-1.401-.027c-3.149-.079-4.723-.118-5.854-1.255c-1.131-1.136-1.164-2.67-1.23-5.737a69 69 0 0 1 0-2.953c.066-3.067.099-4.6 1.23-5.737C4.376 2.655 5.95 2.616 9.099 2.537a115 115 0 0 1 5.802 0c3.149.079 4.723.118 5.854 1.254s1.164 2.67 1.23 5.737c.009.455.014.668.015.972"></path>
+      <path d="M19 17a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0m0 0v.5a1.5 1.5 0 0 0 3 0V17a4.5 4.5 0 1 0-4.5 4.5"></path>
+    </g>
+  </svg>,
+);
+

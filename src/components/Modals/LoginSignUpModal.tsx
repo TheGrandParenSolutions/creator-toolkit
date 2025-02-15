@@ -1,5 +1,7 @@
 import { Modal } from "@mantine/core";
 import { LoginSignUpComponent } from "@src/components/Authentication/LoginSignUpComponent";
+import ForgotPassword from "@src/pages/LoginSignup/ForgotPassword";
+import { useState } from "react";
 
 export const LoginSignUpModal = ({
   opened,
@@ -8,6 +10,7 @@ export const LoginSignUpModal = ({
   opened: boolean;
   close: () => void;
 }) => {
+  const [isForgotPassword, setIsForgotPassword] = useState<boolean>();
   return (
     <>
       <Modal
@@ -25,8 +28,15 @@ export const LoginSignUpModal = ({
           timingFunction: "linear",
         }}
       >
-        {/* Modal content */}
-        <LoginSignUpComponent />
+        {isForgotPassword ? (
+          <ForgotPassword onBack={() => setIsForgotPassword(false)} />
+        ) : (
+          <LoginSignUpComponent
+            modalFlow={true}
+            closeModal={close}
+            onForgotPassword={() => setIsForgotPassword(true)}
+          />
+        )}
       </Modal>
     </>
   );
