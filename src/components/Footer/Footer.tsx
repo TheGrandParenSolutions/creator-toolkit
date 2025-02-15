@@ -51,20 +51,20 @@ const Footer = () => {
       {/* <div className=" my-4 w-[90%] border-t border-zinc-300 dark:border-zinc-600"></div> */}
 
       {/* Footer Bottom Section */}
-      <div className="mt-9 flex flex-col mx-8 items-center justify-center gap-2 sm:flex-col sm:gap-2">
+      <div className="mt-9 flex flex-col mx-8 items-center justify-center gap-2 sm:flex-col sm:gap-2 text-zinc-600">
         {/* Logo */}
         <Logo />
 
         {/* Copyright Text (Dynamic) */}
         <Text
           size="sm"
-          className="font-grifter text-zinc-800 dark:text-zinc-300"
+          className="font-grifter text-zinc-600 dark:text-zinc-300"
         >
           © {new Date().getFullYear()} Creator Toolkit. All rights reserved.
         </Text>
         <Text
           size="sm"
-          className="font-grifter text-zinc-800 dark:text-zinc-300"
+          className="font-grifter text-zinc-600 dark:text-zinc-300"
         >
           Designed with ❤️ by Team JJ
         </Text>
