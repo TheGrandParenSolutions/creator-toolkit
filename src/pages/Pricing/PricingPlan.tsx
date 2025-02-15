@@ -36,14 +36,14 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
   return (
     <div
-      className={`relative flex max-w-[500px] flex-col items-start gap-4 rounded-[2.5rem] border p-6 shadow-md ${
+      className={`relative flex max-w-[500px] flex-col items-start gap-4 justify-around rounded-[2.5rem] border p-6 shadow-md ${
         isPro
           ? "border-[--brand-dark-orange] bg-[--brand-bg-light] dark:bg-zinc-800"
           : "border-zinc-200 dark:border-2 dark:border-black dark:bg-zinc-800"
       }`}
     >
       {isPro && (
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-[--darkest-orange] px-4 py-2 text-base text-white">
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-[--darkest-orange] px-4 py-2 text-xs md:text-base whitespace-nowrap text-white">
           MOST POPULAR
         </div>
       )}
@@ -51,14 +51,18 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
       {/* Image/Icon */}
       <div className="flex justify-start">
         <img
-          src="https://cdn.prod.website-files.com/63431a04e3265ccced472f2f/66bfb01f5273754f46951839_Base-Camp_Textured.png"
-          alt="Plan Icon"
-          className="h-32 w-32 rounded-full"
+          src={
+            planType === "basic"
+              ? "https://zpswddtctfbohaspxfsw.supabase.co/storage/v1/object/public/assets//tool-basic-pricing-plan.jpg"
+              : "https://zpswddtctfbohaspxfsw.supabase.co/storage/v1/object/public/assets//tool-garage-pro-plan.jpg"
+          }
+          alt={`${planType}__${activePlan}`}
+          className="h-32 w-32 rounded-full object-cover antialiased "
         />
       </div>
 
       {/* Plan Name */}
-      <h1 className="text-left text-3xl font-bold text-zinc-900 dark:text-zinc-200">
+      <h1 className="text-left text-3xl font-bold text-zinc-900 font-grifter tracking-wider dark:text-zinc-200">
         {title}
       </h1>
 
@@ -67,7 +71,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
       {/* Pricing */}
       <h2 className="mb-3 flex flex-row items-end gap-3 text-left font-bold text-black dark:text-white">
-        <span className="text-xl text-zinc-800 line-through dark:text-zinc-300">
+        <span className="text-xl font-grifter text-zinc-800 line-through tracking-wider dark:text-zinc-300">
           {activePlan === "Annual"
             ? `${currency} ${originalPrice.annual}`
             : activePlan === "Monthly"
@@ -76,7 +80,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
             ? `${currency} ${originalPrice.weekly}`
             : `${currency} ${originalPrice.daily}`}
         </span>
-        <span className="text-2xl md:text-4xl">
+        <span className="text-2xl font-grifter tracking-wider md:text-5xl">
           {activePlan === "Annual"
             ? `${currency} ${price.annual}`
             : activePlan === "Monthly"

@@ -131,7 +131,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="flex gap-8 ">
+        <div className="flex flex-col md:flex-row gap-8 ">
           {pricingPlans
             .filter(
               p => p.activePlan.toLowerCase() === selectedTab.toLowerCase(),
