@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Text, Box } from "@mantine/core";
 import { Helmet } from "react-helmet-async";
 import HowItWorks from "@src/pages/Pricing/HowItWorks";
-import GrowWithUs from "@src/pages/Pricing/GrowWithUs";
 import CTDivider from "@src/shared/Divider/CTDivider";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
 import { CTPricingCard } from "@src/pages/Pricing/PricingCard";
 import useRazorpayScript from "@src/Hooks/useRazorpayScript";
 import { pricingPlans } from "@src/constants/constants";
+import Sell from "@src/pages/Home/Sell";
 const tabs = [
   {
     label: "Annual",
@@ -148,7 +148,7 @@ const Pricing = () => {
         <CTDivider />
         <HowItWorks />
         <CTDivider />
-        <GrowWithUs />
+        <Sell />
       </div>
     </>
   );

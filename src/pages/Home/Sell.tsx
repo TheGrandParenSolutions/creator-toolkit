@@ -8,7 +8,7 @@ const Sell = () => {
   return (
     <div className="flex w-full items-center justify-center px-4 py-12">
       <motion.div
-        className="relative w-full max-w-6xl rounded-3xl bg-zinc-800 p-8 sm:p-12 text-white shadow-xl"
+        className="relative w-full max-w-6xl rounded-[2.5rem] bg-zinc-800 p-8 sm:p-12 text-white shadow-xl"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}

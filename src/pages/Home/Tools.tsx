@@ -11,10 +11,10 @@ const ComponentCard: FC<ComponentCardProps> = ({ name, count, image, link }) => 
   return (
     <a
       href={link}
-      className="block transition-all hover:shadow-lg rounded-2xl"
+      className="block transition-all hover:shadow-lg "
     >
       {/* Card Container */}
-      <div className="flex flex-col items-center justify-between h-full w-full max-w-[260px] rounded-2xl border border-[--main-yellow] bg-[#fbf0c9] p-6 shadow-sm dark:border-2 dark:border-black dark:bg-zinc-800">
+      <div className="flex flex-col items-center justify-between rounded-[2.5rem] h-full w-full max-w-[260px] border border-[--main-yellow] bg-[#fbf0c9] p-6 shadow-sm dark:border-2 dark:border-black dark:bg-zinc-800">
         
         {/* Image Wrapper */}
         <div className="flex w-full items-center justify-center rounded-xl bg-white p-4 shadow-sm">
