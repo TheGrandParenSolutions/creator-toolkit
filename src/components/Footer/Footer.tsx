@@ -1,7 +1,7 @@
 import { Text } from "@mantine/core";
 import Logo from "@src/components/AppLogo/Logo";
+import { HeartIcon } from "@src/shared/Icons/IconLib";
 import { Link } from "react-router-dom";
-
 
 const footerLinks = [
   { label: "Home", to: "/" },
@@ -33,9 +33,9 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="mt-10 border-t border-zinc-100  shadow-xl shadow-zinc-500 dark:shadow-zinc-100 ml-4  px-6 py-6 text-center text-black dark:border-zinc-700 dark:bg-dark-app-content dark:text-white">
+    <footer className="ml-4 mt-10 border-t  border-zinc-100 px-6 py-6 text-center  text-black shadow-xl shadow-zinc-500 dark:border-zinc-700 dark:bg-dark-app-content dark:text-white dark:shadow-zinc-100">
       {/* Navigation Links */}
-      <nav className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-zinc-600 dark:text-zinc-300 sm:gap-6 mx-10 my-6">
+      <nav className="mx-10 my-6 flex flex-wrap justify-center gap-4 text-sm font-semibold text-zinc-600 dark:text-zinc-300 sm:gap-6">
         {footerLinks.map((link, index) => (
           <Link
             key={index}
@@ -51,7 +51,7 @@ const Footer = () => {
       {/* <div className=" my-4 w-[90%] border-t border-zinc-300 dark:border-zinc-600"></div> */}
 
       {/* Footer Bottom Section */}
-      <div className="mt-9 flex flex-col mx-8 items-center justify-center gap-2 sm:flex-col sm:gap-2 text-zinc-600">
+      <div className="mx-8 mt-9 flex flex-col items-center justify-center gap-2 text-zinc-600 sm:flex-col sm:gap-2">
         {/* Logo */}
         <Logo />
 
@@ -64,9 +64,9 @@ const Footer = () => {
         </Text>
         <Text
           size="sm"
-          className="font-grifter text-zinc-600 dark:text-zinc-300"
+          className="font-grifter flex flex-wrap items-center justify-center gap-2 text-zinc-600 dark:text-zinc-300"
         >
-          Designed with ❤️ by Team JJ
+          Designed with <HeartIcon /> by Team JJ
         </Text>
       </div>
     </footer>
