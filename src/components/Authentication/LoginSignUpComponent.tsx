@@ -13,6 +13,7 @@ import {
   login,
   createUser,
 } from "@src/Api/Modules/Authentication/AuthenticationService";
+import { GoogleAuthService } from "@src/Api/Modules/Authentication/GoogleAuthService";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { LockIcon, MailIcon } from "@src/shared/Icons/IconLib";
@@ -89,9 +90,58 @@ export const LoginSignUpComponent = (props: {
     }
   }, [location.pathname, modalFlow]);
 
+  const handleGoogleLogin = async () => {
+    try {
+      const googleAuthUrl = await GoogleAuthService.initiateGoogleLogin();
+      window.location.href = googleAuthUrl; // Redirect to Google login
+    } catch (error) {
+      console.error("Google Login Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    const handleGoogleAuthCallback = async () => {
+      const hash = location.hash.substring(1); // Remove the "#" at the start
+      const params = new URLSearchParams(hash); // Parse the hash fragment
+
+      const token = params.get("access_token");
+      const refreshToken = params.get("refresh_token");
+
+      if (!token || !refreshToken) {
+        return;
+      }
+
+      try {
+        const userData = await GoogleAuthService.handleGoogleCallback(
+          token,
+          refreshToken,
+        );
+        await updateAuth(userData); // Store user in context
+
+        showToast(
+          "success",
+          "Google Login Successful!",
+          "Welcome to Creator Toolkit!",
+        );
+
+        // Redirect after login
+        if (modalFlow && closeModal) {
+          closeModal();
+        } else {
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Google Authentication Failed:", error);
+        showToast("error", "Authentication failed", "Please try again.");
+      }
+    };
+
+    handleGoogleAuthCallback();
+  }, []);
+
   return (
     <Paper
-      className="w-full !rounded-[2.5rem] max-w-md border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
+      className="w-full max-w-md !rounded-[2.5rem] border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2  dark:border-black dark:bg-zinc-800"
       style={{
         borderRadius: "16px",
       }}
@@ -188,6 +238,7 @@ export const LoginSignUpComponent = (props: {
         <Button
           variant="outline"
           className="hover: border-gray-300 text-gray-600 hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:text-black"
+          onClick={handleGoogleLogin}
         >
           <BrandGoogleSolid className="mr-2" />
           Google
