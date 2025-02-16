@@ -1,4 +1,4 @@
-import ToolsLogo from "@src/assets/logo/icon-screwdriver.svg";
+import ToolsLogo from "@src/assets/logo/icon-tool-logo.svg";
 
 const CTIcon = () => {
   return <ToolsLogo />;
