@@ -107,63 +107,30 @@ export const PricingService = () => {
   };
 
   const generatePlans = async () => {
-    const currencyCode = await getUserCurrencyByLoc(); // "INR" or "USD"
+    const currencyCode = await getUserCurrencyByLoc();
     const currency = currencyCode === "INR" ? "₹" : "$";
+    const exchangeRate = currencyCode === "INR" ? 85 : 1;
 
-    const exchangeRateUSDToINR = currencyCode === "INR" ? 85 : 1;
+    const convertPrice = (price: number) => Math.round(price * exchangeRate);
 
-    setPricingPlans(
-      defaultPlans.map(plan => ({
-        ...plan,
-        currency,
-        price: {
-          annual:
-            currencyCode === "INR"
-              ? Number((plan.price.annual * exchangeRateUSDToINR).toFixed(2))
-              : plan.price.annual,
-          monthly:
-            currencyCode === "INR"
-              ? Number((plan.price.monthly * exchangeRateUSDToINR).toFixed(2))
-              : plan.price.monthly,
-          daily:
-            currencyCode === "INR"
-              ? Number((plan.price.daily * exchangeRateUSDToINR).toFixed(2))
-              : plan.price.daily,
-          weekly:
-            currencyCode === "INR"
-              ? Number((plan.price.weekly * exchangeRateUSDToINR).toFixed(2))
-              : plan.price.weekly,
-        },
-        originalPrice: {
-          annual:
-            currencyCode === "INR"
-              ? Number(
-                  (plan.originalPrice.annual * exchangeRateUSDToINR).toFixed(2),
-                )
-              : plan.originalPrice.annual,
-          monthly:
-            currencyCode === "INR"
-              ? Number(
-                  (plan.originalPrice.monthly * exchangeRateUSDToINR).toFixed(
-                    2,
-                  ),
-                )
-              : plan.originalPrice.monthly,
-          daily:
-            currencyCode === "INR"
-              ? Number(
-                  (plan.originalPrice.daily * exchangeRateUSDToINR).toFixed(2),
-                )
-              : plan.originalPrice.daily,
-          weekly:
-            currencyCode === "INR"
-              ? Number(
-                  (plan.originalPrice.weekly * exchangeRateUSDToINR).toFixed(2),
-                )
-              : plan.originalPrice.weekly,
-        },
-      })),
-    );
+    const convertedPlans = defaultPlans.map(plan => ({
+      ...plan,
+      currency,
+      price: {
+        annual: convertPrice(plan.price.annual),
+        monthly: convertPrice(plan.price.monthly),
+        daily: convertPrice(plan.price.daily),
+        weekly: convertPrice(plan.price.weekly),
+      },
+      originalPrice: {
+        annual: convertPrice(plan.originalPrice.annual),
+        monthly: convertPrice(plan.originalPrice.monthly),
+        daily: convertPrice(plan.originalPrice.daily),
+        weekly: convertPrice(plan.originalPrice.weekly),
+      },
+    }));
+
+    setPricingPlans(convertedPlans);
   };
 
   useEffect(() => {
