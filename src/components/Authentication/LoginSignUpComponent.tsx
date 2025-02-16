@@ -8,7 +8,6 @@ import {
   PasswordInput,
   Text,
 } from "@mantine/core";
-import { BrandGoogleSolid } from "@mynaui/icons-react";
 import {
   login,
   createUser,
@@ -16,7 +15,7 @@ import {
 import { GoogleAuthService } from "@src/Api/Modules/Authentication/GoogleAuthService";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
-import { LockIcon, MailIcon } from "@src/shared/Icons/IconLib";
+import { GoogleLogo, LockIcon, MailIcon } from "@src/shared/Icons/IconLib";
 import { showToast } from "@src/utils/Theme";
 import { useContext, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -213,7 +212,6 @@ export const LoginSignUpComponent = (props: {
           label={isLogin ? "Log In" : "Sign Up"}
           hoverLabel="Let's go"
           size="md"
-          radius={"lg"}
           w={"100%"}
           onClick={e => {
             e.preventDefault();
@@ -236,12 +234,11 @@ export const LoginSignUpComponent = (props: {
       {/* Social Buttons */}
       <Group grow>
         <Button
-          variant="outline"
-          className="hover: border-gray-300 text-gray-600 hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:text-black"
+          leftSection={<GoogleLogo className="h-5 w-5" />}
           onClick={handleGoogleLogin}
+          className="hover: rounded-[2.5rem] bg-zinc-50 border-zinc-300 text-zinc-600 hover:bg-zinc-100 hover:text-black dark:bg-zinc-800 dark:text-zinc-300 dark:hover:text-black hover:dark:text-zinc-100"
         >
-          <BrandGoogleSolid className="mr-2" />
-          Google
+          Continue with Google
         </Button>
       </Group>
 
