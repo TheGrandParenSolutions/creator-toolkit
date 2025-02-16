@@ -36,14 +36,14 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
   return (
     <div
-      className={`relative flex max-w-[500px] flex-col items-start gap-4 justify-around rounded-[2.5rem] border p-6 shadow-md ${
+      className={`relative flex max-w-[500px] flex-col items-start justify-around gap-4 rounded-[2.5rem] border p-6 shadow-md ${
         isPro
           ? "border-[--brand-dark-orange] bg-[--brand-bg-light] dark:bg-zinc-800"
           : "border-zinc-200 dark:border-2 dark:border-black dark:bg-zinc-800"
       }`}
     >
       {isPro && (
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-[--darkest-orange] px-4 py-2 text-xs md:text-base whitespace-nowrap text-white">
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[--darkest-orange] px-4 py-2 text-xs text-white md:text-base">
           MOST POPULAR
         </div>
       )}
@@ -62,7 +62,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
       </div>
 
       {/* Plan Name */}
-      <h1 className="text-left text-3xl font-bold text-zinc-900 font-grifter tracking-wider dark:text-zinc-200">
+      <h1 className="font-grifter text-left text-3xl font-bold tracking-wider text-zinc-900 dark:text-zinc-200">
         {title}
       </h1>
 
@@ -71,23 +71,23 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
       {/* Pricing */}
       <h2 className="mb-3 flex flex-row items-end gap-3 text-left font-bold text-black dark:text-white">
-        <span className="text-xl font-grifter text-zinc-800 line-through tracking-wider dark:text-zinc-300">
+        <span className="font-grifter text-xl tracking-wider text-zinc-800 line-through dark:text-zinc-300">
           {activePlan === "Annual"
-            ? `${currency} ${originalPrice.annual}`
+            ? `${currency}${originalPrice.annual}`
             : activePlan === "Monthly"
-            ? `${currency} ${originalPrice.monthly}`
+            ? `${currency}${originalPrice.monthly}`
             : activePlan === "Weekly"
-            ? `${currency} ${originalPrice.weekly}`
-            : `${currency} ${originalPrice.daily}`}
+            ? `${currency}${originalPrice.weekly}`
+            : `${currency}${originalPrice.daily}`}
         </span>
-        <span className="text-2xl font-grifter tracking-wider md:text-5xl">
+        <span className="font-grifter text-2xl tracking-wider md:text-5xl">
           {activePlan === "Annual"
-            ? `${currency} ${price.annual}`
+            ? `${currency}${price.annual}`
             : activePlan === "Monthly"
-            ? `${currency} ${price.monthly}`
+            ? `${currency}${price.monthly}`
             : activePlan === "Weekly"
-            ? `${currency} ${price.weekly}`
-            : `${currency} ${price.daily}`}
+            ? `${currency}${price.weekly}`
+            : `${currency}${price.daily}`}
         </span>
       </h2>
 

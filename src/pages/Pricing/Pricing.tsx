@@ -6,47 +6,32 @@ import CTDivider from "@src/shared/Divider/CTDivider";
 import CTToggleTabs from "@src/shared/SegmentedToggle/CTToggleTabs";
 import { CTPricingCard } from "@src/pages/Pricing/PricingCard";
 import useRazorpayScript from "@src/Hooks/useRazorpayScript";
-import { pricingPlans } from "@src/constants/constants";
 import Sell from "@src/pages/Home/Sell";
+import { PricingService } from "@src/Api/Modules/Pricing/PricingService";
+
 const tabs = [
   {
     label: "Annual",
-    component: (
-      <>
-        Annual Pass 
-      </>
-    ),
+    component: <>Annual Pass</>,
   },
   {
     label: "Monthly",
-    component: (
-      <>
-        Monthly Pass 
-      </>
-    ),
+    component: <>Monthly Pass</>,
   },
   {
     label: "Day",
-    component: (
-      <>
-        Day Pass 
-      </>
-    ),
+    component: <>Day Pass</>,
   },
   {
     label: "Week",
-    component: (
-      <>
-        Week Pass 
-      </>
-    ),
+    component: <>Week Pass</>,
   },
 ];
 
 const Pricing = () => {
   useRazorpayScript();
   const [selectedTab, setSelectedTab] = useState("Monthly");
-
+  const { pricingPlans } = PricingService();
   return (
     <>
       <Helmet>
@@ -84,19 +69,19 @@ const Pricing = () => {
         {/* Schema.org JSON-LD */}
         <script type="application/ld+json">
           {`
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Pricing | Creator Toolkit",
-      "description": "Explore affordable pricing plans for content creators. Get tools for YouTube thumbnail creation, AI-powered ideas, and video downloads. Choose between basic and pro plans.",
-      "url": "https://www.creator-toolkit.com/pricing",
-      "image": "https://www.creator-toolkit.com/assets/pricing-page-thumbnail.jpg",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Creator Toolkit",
-        "logo": "https://www.creator-toolkit.com/assets/logo.png"
-      }
-    }
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Pricing | Creator Toolkit",
+              "description": "Explore affordable pricing plans for content creators. Get tools for YouTube thumbnail creation, AI-powered ideas, and video downloads. Choose between basic and pro plans.",
+              "url": "https://www.creator-toolkit.com/pricing",
+              "image": "https://www.creator-toolkit.com/assets/pricing-page-thumbnail.jpg",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Creator Toolkit",
+                "logo": "https://www.creator-toolkit.com/assets/logo.png"
+              }
+            }
     `}
         </script>
       </Helmet>
@@ -107,7 +92,7 @@ const Pricing = () => {
           <Text
             size="lg"
             component="h1"
-            className="mb-4 text-lg font-grifter text-black dark:text-white md:text-xl lg:text-4xl"
+            className="font-grifter mb-4 text-lg text-black dark:text-white md:text-xl lg:text-4xl"
           >
             Grow your channel with a single tool.
           </Text>
