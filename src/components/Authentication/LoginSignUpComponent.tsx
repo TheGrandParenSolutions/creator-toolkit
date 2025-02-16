@@ -236,7 +236,7 @@ export const LoginSignUpComponent = (props: {
         <Button
           leftSection={<GoogleLogo className="h-5 w-5" />}
           onClick={handleGoogleLogin}
-          className="hover: rounded-[2.5rem] bg-zinc-50 border-zinc-300 text-zinc-600 hover:bg-zinc-100 hover:text-black dark:bg-zinc-800 dark:text-zinc-300 dark:hover:text-black hover:dark:text-zinc-100"
+          className="hover: rounded-[2.5rem] border-zinc-300 bg-zinc-50 text-zinc-600 hover:bg-zinc-100 hover:text-black dark:bg-zinc-800 dark:text-zinc-300 dark:hover:text-black hover:dark:text-zinc-100"
         >
           Continue with Google
         </Button>
