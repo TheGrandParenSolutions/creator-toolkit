@@ -1,49 +1,76 @@
 import { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Image } from "@mantine/core";
-import { Upload, ImageSolid } from "@mynaui/icons-react";
-import { ImageUpload } from "@src/shared/Icons/IconLib";
+import { Upload } from "@mynaui/icons-react";
+import {
+  CopyIcon,
+  DownloadMovingIcon,
+  UploadIcon,
+} from "@src/shared/Icons/IconLib";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
-import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
+import { uploadImageForBGRemoval } from "@src/Api/Modules/RemoveBG/RemoveBGService";
+import { AnimatePresence, motion } from "framer-motion";
+import CTLoader from "@src/shared/Progress/CTLoader";
+import { showToast } from "@src/utils/Theme";
 
 const RemoveBackground = () => {
-  const [image, setImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [outputImage, setOutputImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Handle File Upload
   const handleUploadClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
+    setImagePreview(null);
+    fileInputRef.current?.click();
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (files && files[0]) {
-      const file = files[0];
-      if (file) {
-        setImage(URL.createObjectURL(file));
-        setOutputImage(null);
+  // Handle File Change
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setImagePreview(URL.createObjectURL(file)); // Show preview
+      setOutputImage(null);
+      setLoading(true);
+
+      try {
+        const processedImageUrl = await uploadImageForBGRemoval(file);
+        showToast(
+          "success",
+          "Background removed",
+          "Image processing complete!",
+        );
+        setTimeout(() => {
+          setOutputImage(processedImageUrl);
+          setLoading(false);
+        }, 1200);
+      } catch (error) {
+        showToast("error", "We're sorry", "Failed to remove background:");
+        console.error("Failed to remove background:", error);
+        setLoading(false);
       }
     }
   };
 
-  const removeBackground = async () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setOutputImage(""); // Placeholder for actual AI background removal
-    }, 2000);
-  };
-
-  const handleTrySampleClick = () => {
-    const sampleImageUrl = "/assets/test/thumbnail.jpeg";
-    setImage(sampleImageUrl);
+  // Copy Image to Clipboard
+  const handleCopyImage = async () => {
+    if (!outputImage) return;
+    try {
+      const response = await fetch(outputImage);
+      const blob = await response.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": blob }),
+      ]);
+      showToast("success", "Copy done", "Image copied to clipboard!");
+    } catch (error) {
+      console.error("Failed to copy image:", error);
+    }
   };
 
   return (
-    <div className="mx-auto max-w-2xl p-6">
+    <div className="mx-auto max-w-5xl overflow-hidden p-8">
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Remove Background - Creator Toolkit</title>
@@ -51,44 +78,20 @@ const RemoveBackground = () => {
           name="description"
           content="Remove background from images easily with Creator Toolkit. Upload your image and get a transparent background in seconds."
         />
-        <meta
-          name="keywords"
-          content="remove background, AI background remover, image editor"
-        />
-        <link
-          rel="canonical"
-          href="https://www.creator-toolkit.com/remove-background"
-        />
-        <meta
-          property="og:title"
-          content="Remove Background - Creator Toolkit"
-        />
-        <meta
-          property="og:description"
-          content="Instantly remove background from images using AI-powered tools."
-        />
-        <meta
-          property="og:image"
-          content="https://www.creator-toolkit.com/assets/remove-background-tool-thumbnail.jpg"
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://www.creator-toolkit.com/remove-background"
-        />
       </Helmet>
 
-      {/* Custom Dropzone */}
-      <div className="group mx-auto mt-8 max-w-lg rounded-3xl border-4 border-dashed border-zinc-300 bg-white px-6 py-8 shadow-md transition-all duration-300 hover:border-[var(--brand-dark-yellow)] dark:border-zinc-700 dark:bg-dark-app sm:mt-12 sm:max-w-4xl lg:rounded-3xl lg:px-10 lg:py-12 lg:shadow-lg">
-        <div className="flex flex-col items-center justify-center space-y-6">
-          <ImageUpload className="h-16 w-16 text-zinc-300 group-hover:text-[var(--brand-dark-yellow)] dark:text-zinc-500 dark:group-hover:text-[var(--brand-mid-yellow)] sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
-          <h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 sm:text-xl lg:text-2xl">
-            Click below or drag & drop images to start
-          </h2>
-          <p className="text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm lg:text-base">
-            Supports JPG, PNG, and WebP formats.
-          </p>
-          <div className="flex flex-col items-center gap-4 sm:flex-row">
+      {/* Upload Section & Processed Image Container */}
+      <div className="flex flex-col items-center justify-center gap-12 sm:flex-row">
+        {/* Upload Box (Kept as is, just refined) */}
+        <div className="group w-full max-w-lg rounded-[2.5rem]  border-4 border-dashed border-zinc-300 p-8 shadow-md transition-all duration-300 hover:border-[var(--brand-dark-yellow)] dark:border-black dark:bg-zinc-800">
+          <div className="flex flex-col items-center justify-center space-y-5">
+            <UploadIcon className="h-16 w-16  text-zinc-400 group-hover:text-[var(--brand-dark-yellow)] dark:text-zinc-500 dark:group-hover:text-[var(--brand-mid-yellow)]" />
+            <h2 className="text-center text-lg font-semibold text-zinc-800 dark:text-zinc-200">
+              Upload or Drag & Drop Your Image
+            </h2>
+            <p className="text-center text-sm text-zinc-600 dark:text-zinc-400">
+              Supports all formats.
+            </p>
             <input
               type="file"
               accept="image/*"
@@ -98,62 +101,110 @@ const RemoveBackground = () => {
             />
             <CTAnimatedButton
               label="Upload"
-              icon={<Upload className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />}
-              hoverLabel="Upload thumbnail"
+              icon={<Upload className="h-5 w-5" />}
+              hoverLabel="Upload Image"
               size="md"
               radius="xl"
               onClick={handleUploadClick}
               w={160}
-              buttonStyles="sm:w-[180px] lg:w-[200px]"
-              loading={true}
-            />
-            <CTBasicButton
-              onClick={handleTrySampleClick}
-              label="Try a Sample"
-              icon={
-                <ImageSolid className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
-              }
+              buttonStyles="sm:w-[180px]"
+              loading={loading}
             />
           </div>
         </div>
+
+        {/* Processed Image Card */}
+        <div className="flex flex-col items-center">
+          <AnimatePresence>
+            {/* Processing State with Circular Loader */}
+            {imagePreview && !outputImage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.0 }}
+                className="relative flex items-center justify-center rounded-[2.5rem] border-2 border-zinc-200 bg-white  shadow-lg"
+              >
+                {/* Subtle Shiny Gradient Effect */}{" "}
+                <motion.div
+                  animate={{ x: ["0%", "50%"] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                    ease: "linear",
+                  }}
+                  className="absolute h-64 w-64 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-30"
+                ></motion.div>
+                {/* <div className="relative h-full w-full"> */}
+                <Image
+                  src={imagePreview}
+                  alt="Processing"
+                  className=" relative h-64 w-64 rounded-lg object-cover"
+                />
+                {/* </div> */}
+                {/* Circular Loader */}
+                {loading && (
+                  <div className="absolute z-50  flex items-center justify-center ">
+                    <CTLoader />
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Processed Image Output */}
+          <AnimatePresence>
+            {outputImage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.0 }}
+                className="checkerboard-bg dark:checkerboard-bg-dark flex w-64 flex-col  items-center rounded-[2.5rem] border-zinc-100 p-4 shadow-md"
+              >
+                <h3 className="font-grifter mb-2 text-lg text-zinc-800 dark:text-zinc-200">
+                  Background removed
+                </h3>
+
+                {/* Checkerboard Background for Transparency */}
+                <div className="flex h-64 w-64 items-center justify-center rounded-lg bg-cover">
+                  <Image
+                    src={outputImage}
+                    alt="Processed"
+                    className="h-64 w-64 rounded-lg object-cover"
+                  />
+                </div>
+
+                {/* Copy & Download Icons */}
+                <div className="mt-3 flex gap-4">
+                  <button
+                    onClick={handleCopyImage}
+                    className="rounded-full bg-gray-700 p-3 text-white transition-all hover:bg-gray-800"
+                  >
+                    <CopyIcon className="h-6 w-6" />
+                  </button>
+                  <a
+                    href={outputImage}
+                    download={`Creator-Toolkit__no-background-image__${Math.floor(
+                      Math.random() * 100,
+                    )}.png`}
+                    className="rounded-full bg-main-gradient p-3 text-white transition-all hover:bg-[var(--brand-mid-yellow)]"
+                    onClick={() => {
+                      showToast(
+                        "success",
+                        "Download done",
+                        "Image saved in your device.",
+                      );
+                    }}
+                  >
+                    <DownloadMovingIcon className="h-7 w-7 text-black" />
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-
-      {/* Uploaded Image Preview */}
-      {image && (
-        <div className="mt-6 text-center">
-          <Image
-            src={image}
-            alt="Uploaded"
-            className="mx-auto w-full max-w-md rounded-lg"
-          />
-          <button
-            onClick={removeBackground}
-            className="mt-4 w-full rounded-xl bg-green-600 px-6 py-3 text-white transition-all duration-300 hover:bg-green-700"
-          >
-            {loading ? "Processing..." : "Remove Background"}
-          </button>
-        </div>
-      )}
-
-      {/* Processed Image Output */}
-      {outputImage && (
-        <div className="mt-6 text-center">
-          <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
-            Background Removed
-          </h3>
-          <Image
-            src={outputImage}
-            alt="Processed"
-            className="mx-auto w-full max-w-md rounded-lg"
-          />
-          <button
-            onClick={() => setImage(null)}
-            className="mt-4 w-full rounded-xl bg-red-600 px-6 py-3 text-white transition-all duration-300 hover:bg-red-700"
-          >
-            Upload Another Image
-          </button>
-        </div>
-      )}
     </div>
   );
 };

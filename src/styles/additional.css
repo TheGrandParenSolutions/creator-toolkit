@@ -254,7 +254,7 @@
     inset: auto 5% 18% auto;
     transform: rotate(30deg);
   }
-  
+
   .steps.step3 {
     inset: auto 22.5% 0% auto;
     transform: rotate(60deg);
@@ -269,9 +269,77 @@
     inset: auto 8% 18% auto;
     transform: rotate(30deg);
   }
-  
+
   .steps.step3 {
     inset: auto 30% 0% auto;
     transform: rotate(60deg);
+  }
+}
+
+.checkerboard-bg {
+  height: 100%;
+
+  width: 100%;
+
+  background: conic-gradient(
+    #fafafa 90deg,
+
+    #fff 90deg 180deg,
+
+    #fafafa 180deg 270deg,
+
+    #fff 270deg
+  );
+
+  background-repeat: repeat;
+
+  background-size: 60px 60px;
+
+  background-position: top left;
+}
+
+.checkerboard-bg-dark {
+  height: 100%;
+
+  width: 100%;
+
+  background: conic-gradient(
+    #3f3f46 90deg,
+
+    #27272a 90deg 180deg,
+
+    #3f3f46 180deg 270deg,
+
+    #27272a 270deg
+  ) !important;
+
+  background-repeat: repeat;
+
+  background-size: 60px 60px;
+
+  background-position: top left;
+}
+
+.dark {
+  .dark\:checkerboard-bg-dark {
+    height: 100%;
+
+    width: 100%;
+
+    background: conic-gradient(
+      #3f3f46 90deg,
+
+      #27272a 90deg 180deg,
+
+      #3f3f46 180deg 270deg,
+
+      #27272a 270deg
+    ) !important;
+
+    background-repeat: repeat !important;
+
+    background-size: 60px 60px !important;
+
+    background-position: top left;
   }
 }

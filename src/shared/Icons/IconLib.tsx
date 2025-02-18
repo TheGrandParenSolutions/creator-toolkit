@@ -815,3 +815,108 @@ export const GoogleLogo = IconRenderer(
     ></path>
   </svg>,
 );
+
+export const DownloadMovingIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+  >
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    >
+      <path
+        strokeDasharray="2 4"
+        strokeDashoffset={6}
+        d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          dur="0.6s"
+          repeatCount="indefinite"
+          values="6;0"
+        ></animate>
+      </path>
+      <path
+        strokeDasharray={32}
+        strokeDashoffset={32}
+        d="M12 21c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9"
+      >
+        <animate
+          fill="freeze"
+          attributeName="stroke-dashoffset"
+          begin="0.1s"
+          dur="0.4s"
+          values="32;0"
+        ></animate>
+      </path>
+      <path strokeDasharray={10} strokeDashoffset={10} d="M12 8v7.5">
+        <animate
+          fill="freeze"
+          attributeName="stroke-dashoffset"
+          begin="0.5s"
+          dur="0.2s"
+          values="10;0"
+        ></animate>
+      </path>
+      <path
+        strokeDasharray={6}
+        strokeDashoffset={6}
+        d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"
+      >
+        <animate
+          fill="freeze"
+          attributeName="stroke-dashoffset"
+          begin="0.7s"
+          dur="0.2s"
+          values="6;0"
+        ></animate>
+      </path>
+    </g>
+  </svg>,
+);
+
+export const CopyIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      d="M6.6 11.397c0-2.726 0-4.089.843-4.936c.844-.847 2.201-.847 4.917-.847h2.88c2.715 0 4.073 0 4.916.847c.844.847.844 2.21.844 4.936v4.82c0 2.726 0 4.089-.844 4.936c-.843.847-2.201.847-4.916.847h-2.88c-2.716 0-4.073 0-4.917-.847s-.843-2.21-.843-4.936z"
+    ></path>
+    <path
+      fill="currentColor"
+      d="M4.172 3.172C3 4.343 3 6.229 3 10v2c0 3.771 0 5.657 1.172 6.828c.617.618 1.433.91 2.62 1.048c-.192-.84-.192-1.996-.192-3.66v-4.819c0-2.726 0-4.089.843-4.936c.844-.847 2.201-.847 4.917-.847h2.88c1.652 0 2.8 0 3.638.19c-.138-1.193-.43-2.012-1.05-2.632C16.657 2 14.771 2 11 2S5.343 2 4.172 3.172"
+      opacity={0.5}
+    ></path>
+  </svg>,
+);
+
+export const UploadIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2"
+      className="duoicon-secondary-layer"
+      opacity={0.3}
+    ></path>
+    <path
+      fill="currentColor"
+      d="M13 13v3c0 .55-.45 1-1 1s-1-.45-1-1v-3H9.21c-.45 0-.67-.54-.35-.85l2.8-2.79c.2-.2.51-.19.71 0l2.79 2.79c.3.31.08.85-.36.85z"
+      className="duoicon-primary-layer"
+    ></path>
+  </svg>,
+);
