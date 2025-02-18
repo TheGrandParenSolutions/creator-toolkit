@@ -56,7 +56,10 @@ export const PricingService = () => {
     return `${amount}${currency}`;
   };
 
-  const verifyPayment = async (paymentResponse: PaymentVerificationRequest) => {
+  const verifyPayment = async (
+    paymentResponse: PaymentVerificationRequest,
+    order: CreateOrderResponse,
+  ) => {
     try {
       const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
         paymentResponse;
@@ -65,9 +68,14 @@ export const PricingService = () => {
         paymentId: razorpay_payment_id,
         signature: razorpay_signature,
       });
-
       showToast("success", "Verification Successful", response.message);
-      window.location.reload();
+      const paymentTime = new Date(
+        new Date().toLocaleString("en-US", {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        }),
+      ).toLocaleString();
+      const currencyCode = order.currency === "INR" ? "₹" : "$";
+      window.location.href = `/payment-success?orderId=${razorpay_order_id}&amount=${order.amount}&currency=${currencyCode}&paymentTime=${paymentTime}`;
     } catch (error) {
       showToast(
         "error",
@@ -91,8 +99,7 @@ export const PricingService = () => {
       description: "Plan purchased: " + { plan },
       order_id: orderDetails.orderId,
       handler: async function (response: any) {
-        console.log("Payment Successful!", response);
-        await verifyPayment(response);
+        await verifyPayment(response, orderDetails);
       },
       prefill: {
         name: user.userName,

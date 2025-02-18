@@ -13,6 +13,7 @@ import ResetPassword from "@src/pages/LoginSignup/ResetPassword";
 import VideoDownloader from "@src/pages/VideoDownloader/VideoDownloader";
 import RemoveBackground from "@src/pages/RemoveBackground/RemoveBackground";
 import HomePage from "@src/pages/Home/Home";
+import PaymentSuccess from "@src/pages/Pricing/PaymentSuccess";
 
 const AppRouter = () => {
   return (
@@ -293,6 +294,21 @@ const AppRouter = () => {
                 </Helmet>
 
                 <RemoveBackground />
+              </>
+            </main>
+          </MainSection>
+        }
+      />
+      <Route
+        path="/payment-success"
+        element={
+          <MainSection>
+            <main className="flex-grow p-4 transition-all duration-300">
+              <>
+                <Helmet>
+                  <title>Payment Successful - Creator Toolkit</title>
+                </Helmet>
+                <PaymentSuccess />
               </>
             </main>
           </MainSection>
