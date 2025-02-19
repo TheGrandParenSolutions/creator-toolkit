@@ -19,7 +19,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="font-grifter text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-black dark:text-white max-w-[90%] md:max-w-5xl"
+        className="font-grifter text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-black dark:text-white max-w-[90%] md:max-w-5xl"
       >
         Tools That Supercharge Your{" "}
         <span className="bg-main-gradient bg-clip-text text-transparent">
