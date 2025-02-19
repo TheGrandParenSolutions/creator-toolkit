@@ -30,7 +30,7 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
       <Menu.Target>
         <Tooltip
           label={
-            <Text className="font-grifter flex items-center justify-center gap-1 text-xs dark:text-gray-300">
+            <Text className="font-grifter flex items-center justify-center gap-1 text-xs dark:text-zinc-300">
               {user.userName}
               {isPremium && (
                 <CrownIconSolid className="inline h-4 w-4 text-yellow-500" />
@@ -67,10 +67,16 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
         </Tooltip>
       </Menu.Target>
 
-      <Menu.Dropdown className="bg-white dark:bg-zinc-900">
+      <Menu.Dropdown
+        className=""
+        classNames={{
+          dropdown:
+            "bg-zinc-50 dark:bg-zinc-800 rounded-[2.5rem] border-none shadow-md dark:shadow-zinc-700 px-3 py-4",
+        }}
+      >
         {/* Header with Premium Status */}
         <div className="p-3 text-center">
-          <Text className="font-grifter flex items-center justify-center gap-2 text-lg dark:text-gray-200">
+          <Text className="font-grifter flex items-center justify-center gap-2 text-lg dark:text-zinc-200">
             {user.userName}
             {isPremium && <CrownIconSolid className="inline text-yellow-500" />}
           </Text>
@@ -81,7 +87,7 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
           >
             <Text
               size="sm"
-              className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-gray-500 text-transparent dark:text-gray-400"
+              className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent text-zinc-500 dark:text-zinc-400"
             >
               {isPremium ? (
                 <span className="flex items-center justify-center ">
@@ -94,16 +100,16 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
           </motion.div>
         </div>
 
-        <Divider className="border-gray-300 dark:border-gray-700" />
+        <Divider className="border-zinc-300 py-1 dark:border-zinc-700" />
 
         {/* Menu Items */}
         <Menu.Item
-          className="dark:hover:bg-zinc-800"
+          className="rounded-[2.5rem] hover:bg-zinc-100 dark:hover:bg-zinc-800"
           onClick={() => navigate("/profile")}
         >
           <Group gap="xs">
-            <User className="dark:text-gray-300" />
-            <Text className="dark:text-gray-300">My Profile</Text>
+            <User className="dark:text-zinc-300" />
+            <Text className="dark:text-zinc-300">My Profile</Text>
           </Group>
         </Menu.Item>
 
@@ -122,13 +128,13 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
         )}
 
         <Menu.Item
-          className="dark:hover:bg-zinc-800"
+          className="rounded-[2.5rem]  "
           onClick={handleLogout}
           color="red"
         >
           <Group gap="xs">
-            <Logout className="dark:text-gray-300" size={16} />
-            <Text className="dark:text-gray-300">Logout</Text>
+            <Logout className="dark:text-zinc-300" size={16} />
+            <Text className="dark:text-zinc-300">Logout</Text>
           </Group>
         </Menu.Item>
       </Menu.Dropdown>
