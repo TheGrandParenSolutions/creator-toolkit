@@ -6,7 +6,7 @@ const Logo = () => {
   const navigate = useNavigate();
   return (
     <Tooltip label="Toolkit home">
-      <Box className="flex cursor-pointer items-center justify-center gap-2" onClick={() => navigate("/")}>
+      <Box className="flex cursor-pointer items-center justify-center gap-2 text-zinc-800 dark:text-zinc-100" onClick={() => navigate("/")}>
         <CTIcon />
         <Text className="font-grifter text-base lg:text-xl">Creator Toolkit</Text>
       </Box>
