@@ -343,3 +343,18 @@
     background-position: top left;
   }
 }
+
+@keyframes subtlePremiumGlow {
+  0% {
+    box-shadow: 0px 0px 4px rgba(255, 215, 0, 0.4),
+      0px 0px 1px rgba(255, 215, 0, 0.3),
+      inset 0px 0px 2px rgba(255, 215, 0, 0.2);
+    filter: drop-shadow(0px 0px 20px rgba(255, 215, 0, 0.3));
+  }
+  100% {
+    box-shadow: 0px 0px 30px rgba(255, 215, 0, 0.6),
+      0px 0px 15px rgba(255, 215, 0, 0.5),
+      inset 0px 0px 20px rgba(255, 215, 0, 0.4);
+    filter: drop-shadow(0px 0px 40px rgba(255, 215, 0, 0.5));
+  }
+}

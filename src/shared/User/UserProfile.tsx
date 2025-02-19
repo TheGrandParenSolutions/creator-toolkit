@@ -45,19 +45,22 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
                 isPremium
                   ? {
                       boxShadow:
-                        "0px 0px 12px rgba(255, 215, 0, 0.5), 0px 0px 6px rgba(255, 215, 0, 0.3)",
+                        "0px 0px 5px rgba(255, 215, 0, 0.6), 0px 0px 2px rgba(255, 215, 0, 0.4), inset 0px 0px 3px rgba(255, 215, 0, 0.3)",
+                      background:
+                        "linear-gradient(135deg, rgba(255, 223, 0, 0.08), rgba(255, 140, 0, 0.08))",
+                      filter: "drop-shadow(0px 0px 4px rgba(255, 215, 0, 0.5))",
+                      animation: "subtlePremiumGlow 6s infinite alternate",
                     }
                   : {}
               }
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              // transition={{ duration: 6,  ease: "easeInOut" }}
               className="rounded-full"
             >
               <Avatar
                 src={user?.avatar}
                 alt={user.userName}
                 radius="xl"
-                size="lg"
-                className="shadow-lg transition-all dark:shadow-zinc-600"
+                className="h-10 w-10 shadow-lg transition-all dark:shadow-zinc-600 md:h-14 md:w-14"
               />
             </motion.div>
           </div>
