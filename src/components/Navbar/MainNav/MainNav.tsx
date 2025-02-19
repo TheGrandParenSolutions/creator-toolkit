@@ -88,7 +88,7 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed left-8 right-0 top-0 z-40 bg-white transition-all duration-300 dark:!bg-dark-app md:left-14 ${
+      className={`fixed left-0 right-0 top-0 z-40 bg-white transition-all duration-300 dark:!bg-dark-app md:left-14 ${
         isScrolled
           ? "border border-solid border-zinc-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-black dark:!bg-opacity-85"
           : ""
@@ -96,7 +96,7 @@ export function MainNav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between pl-4 pr-2 py-2">
         {/* Desktop Layout */}
-        <div className="mx-0 flex w-auto justify-center lg:justify-start">
+        <div className="ml-8 md:mx-0 flex w-auto justify-center lg:justify-start">
           {/* Logo */}
           <Logo />
         </div>
