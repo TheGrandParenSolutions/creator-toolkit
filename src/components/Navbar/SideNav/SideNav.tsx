@@ -159,7 +159,7 @@ export function SideNav() {
           onClick={() => {
             setIsPanelOpen(!panelOpen);
           }}
-          className="fixed left-3 top-[14px] z-[51]"
+          className="fixed left-2 top-[12px] z-[51]"
         >
           <Hamburger menuOpen={panelOpen} />
         </button>
