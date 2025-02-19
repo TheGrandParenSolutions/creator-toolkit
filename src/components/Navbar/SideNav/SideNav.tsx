@@ -20,6 +20,7 @@ import {
   YoutubeToTextIcon,
   YoutubeToTextIconSolid,
 } from "@src/shared/Icons/IconLib";
+import Hamburger from "@src/components/Navbar/Hamburger/Hamburger";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -122,16 +123,29 @@ export function SideNav() {
   const { pathname } = location;
   const [active, setActive] = useState<number | null>(null);
   const [panelOpen, setIsPanelOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
 
   const links = linkContent.map((link, index) => (
     <NavbarLink
       {...link}
       key={link.label}
       active={index === active}
-      onClick={() => setActive(index)}
+      onClick={() => {
+        setActive(index);
+        setIsPanelOpen(false);
+      }}
       isExpanded={panelOpen}
     />
   ));
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) setIsPanelOpen(false); // Close side panel when switching to larger screens
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const activeIndex = linkContent.findIndex(link => link.to === pathname);
@@ -140,6 +154,16 @@ export function SideNav() {
 
   return (
     <>
+      {isMobile && (
+        <button
+          onClick={() => {
+            setIsPanelOpen(!panelOpen);
+          }}
+          className="fixed left-3 top-[14px] z-[51]"
+        >
+          <Hamburger menuOpen={panelOpen} />
+        </button>
+      )}
       {/* Overlay */}
       {panelOpen && (
         <div
@@ -151,32 +175,34 @@ export function SideNav() {
       {/* SideNav */}
       <nav
         className={`fixed left-0 top-0 z-50 h-screen border border-none bg-white shadow-none transition-all duration-300 dark:border-black dark:bg-dark-app ${
-          panelOpen ? "w-96" : "w-16"
-        }`}
+          panelOpen ? "w-80" : isMobile ? "w-0" : "w-16"
+        } overflow-hidden`}
       >
         <div>
           <Box
-            className={`flex items-start justify-start px-4 py-2 ${
+            className={`flex min-h-[48px] items-start justify-start px-4 py-2 ${
               panelOpen ? "justify-start font-semibold" : ""
             }`}
           >
-            <Box className="cursor-pointer">
-              <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
-                <UnstyledButton
-                  onClick={() => setIsPanelOpen(!panelOpen)}
-                  className={`flex items-center rounded-lg p-1 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-700`}
-                  data-active={panelOpen || undefined}
-                >
-                  <div className="flex items-center justify-center">
-                    {panelOpen ? (
-                      <PanelRightIcon className="text-xl dark:text-zinc-200" />
-                    ) : (
-                      <PanelLeftIcon className="text-xl dark:text-zinc-400" />
-                    )}
-                  </div>
-                </UnstyledButton>
-              </Tooltip>
-            </Box>
+            {!isMobile && (
+              <Box className="cursor-pointer">
+                <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
+                  <UnstyledButton
+                    onClick={() => setIsPanelOpen(!panelOpen)}
+                    className={`flex items-center rounded-lg p-1 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-700`}
+                    data-active={panelOpen || undefined}
+                  >
+                    <div className="flex items-center justify-center">
+                      {panelOpen ? (
+                        <PanelRightIcon className="text-xl dark:text-zinc-200" />
+                      ) : (
+                        <PanelLeftIcon className="text-xl dark:text-zinc-400" />
+                      )}
+                    </div>
+                  </UnstyledButton>
+                </Tooltip>
+              </Box>
+            )}
           </Box>
 
           <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">

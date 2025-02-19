@@ -1,7 +1,10 @@
 import ToolsLogo from "@src/assets/logo/icon-tool-logo.svg";
+import { IconRenderer } from "@src/shared/Icons/IconRenderer";
 
 const CTIcon = () => {
-  return <ToolsLogo />;
+  const Logo = IconRenderer(<ToolsLogo />);
+
+  return <Logo className="!h-6 !w-6 md:!h-8 md:!w-8 lg:!h-9 lg:!w-9" />;
 };
 
 export default CTIcon;
