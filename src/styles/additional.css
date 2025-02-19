@@ -262,7 +262,7 @@
 }
 @media screen and (max-width: 479px) {
   .giant-circle-hold {
-    transform: translate(-96%);
+    transform: translate(-92%);
   }
 
   .steps.step2 {
@@ -271,7 +271,7 @@
   }
 
   .steps.step3 {
-    inset: auto 30% 0% auto;
+    inset: auto 29% 0% auto;
     transform: rotate(60deg);
   }
 }

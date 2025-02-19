@@ -94,7 +94,7 @@ export function MainNav() {
           : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between pl-4 pr-2 py-2">
         {/* Desktop Layout */}
         <div className="mx-0 flex w-auto justify-center lg:justify-start">
           {/* Logo */}
