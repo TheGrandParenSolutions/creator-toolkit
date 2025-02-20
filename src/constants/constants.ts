@@ -67,4 +67,4 @@ export const defaultPlans: PricingPlanProps[] = [
   },
 ]
 
-export const MANDATORY_CT_PROMO_TEXT = "Created using Creator Toolkit";
+export const MANDATORY_CT_PROMO_TEXT = "Powered by Creator Toolkit";
