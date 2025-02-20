@@ -2,12 +2,13 @@ import { Box } from "@mantine/core";
 import Footer from "@src/components/Footer/Footer";
 import { MainNav } from "@src/components/Navbar/MainNav/MainNav";
 import { SideNav } from "@src/components/Navbar/SideNav/SideNav";
+import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { FC, PropsWithChildren } from "react";
 
 const MainSection: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Box className="flex flex-col h-screen justify-between">
-      <Box className="flex bg-light-app dark:bg-dark-app-content text-zinc-800 dark:text-zinc-100 gap-0 md:gap-16 scroll-smooth transition-all duration-300">
+    <Box className="flex h-screen flex-col justify-between">
+      <Box className="flex gap-0 scroll-smooth bg-light-app text-zinc-800 transition-all duration-300 dark:bg-dark-app-content dark:text-zinc-100 md:gap-16">
         <Box>
           <MainNav />
           <SideNav />
@@ -19,6 +20,11 @@ const MainSection: FC<PropsWithChildren> = ({ children }) => {
             {children}
           </Box>
         </Box>
+      </Box>
+      <Box
+        className={`fixed bottom-6 right-6 rounded-full bg-zinc-100 p-[2px] shadow-lg dark:bg-zinc-800 lg:hidden`}
+      >
+        <DarkModeToggle />
       </Box>
       <Footer />
     </Box>

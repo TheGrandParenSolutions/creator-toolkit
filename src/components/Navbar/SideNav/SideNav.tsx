@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
-import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import {
   HomeIcon,
   HomeIconSolid,
@@ -208,11 +207,6 @@ export function SideNav() {
           <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">
             {links}
           </div>
-        </div>
-        <div>
-          <Box className={`flex items-center px-3 py-1 lg:hidden`}>
-            <DarkModeToggle />
-          </Box>
         </div>
       </nav>
     </>
