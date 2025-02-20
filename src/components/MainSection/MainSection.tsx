@@ -22,10 +22,14 @@ const MainSection: FC<PropsWithChildren> = ({ children }) => {
         </Box>
       </Box>
       <Box
-        className={`fixed bottom-6 right-6 rounded-full bg-zinc-100 p-[2px] shadow-lg dark:bg-zinc-800 lg:hidden`}
+        className={`fixed bottom-6 right-6 rounded-full bg-zinc-100 p-[2px] 
+              shadow-[inset_4px_4px_6px_rgba(0,0,0,0.2),inset_-4px_-4px_6px_rgba(255,255,255,0.1)] dark:bg-zinc-800 
+              dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.4),inset_-4px_-4px_6px_rgba(255,255,255,0.05)] 
+              lg:hidden`}
       >
         <DarkModeToggle />
       </Box>
+
       <Footer />
     </Box>
   );

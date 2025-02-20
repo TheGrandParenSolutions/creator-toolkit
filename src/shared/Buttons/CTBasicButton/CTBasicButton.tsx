@@ -17,12 +17,28 @@ const CTBasicButton: FC<CustomButtonProps> = ({
     <button
       {...rest}
       onClick={onClick}
-      className={`flex items-center justify-center rounded-full border-2 border-black px-6 py-2 text-sm font-semibold transition duration-75 hover:bg-zinc-800 hover:text-[--brand-dark-orange] hover:shadow-inner hover:shadow-zinc-400 dark:border-zinc-200 dark:text-white dark:hover:bg-zinc-50
-                            dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-zinc-600 ${
-                              className ? className : ""
-                            }`}
+      className={`mx-auto flex min-h-[44px] w-full 
+                  max-w-[90%] items-center justify-center rounded-full border-2 border-zinc-300 bg-zinc-100 px-6
+                  
+                  py-2 text-sm
+                  font-semibold 
+                  text-black
+                  
+                  shadow-[inset_4px_4px_6px_rgba(0,0,0,0.2),inset_-4px_-4px_6px_rgba(255,255,255,0.1)] transition duration-100
+                  hover:bg-zinc-800 hover:text-[--brand-dark-orange]
+                  
+                  hover:shadow-[2px_2px_6px_rgba(0,0,0,0.2),-2px_-2px_6px_rgba(255,255,255,0.1)]
+                  dark:border-zinc-600
+                  
+                  dark:bg-zinc-800 dark:text-white  
+                  dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.4),inset_-4px_-4px_6px_rgba(255,255,255,0.05)] dark:hover:bg-zinc-50
+
+                  dark:hover:text-[--brand-dark-orange] dark:hover:shadow-[2px_2px_6px_rgba(0,0,0,0.5),-2px_-2px_6px_rgba(255,255,255,0.1)] sm:min-h-[50px] sm:w-auto sm:max-w-none
+                  md:text-base lg:text-lg ${" "}
+                  
+                  ${className ? className : ""}`}
     >
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base">
         {icon}
         {label}
       </span>

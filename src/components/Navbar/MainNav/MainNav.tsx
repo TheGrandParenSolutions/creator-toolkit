@@ -1,7 +1,7 @@
 import { ChevronDown, CircleSolid } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
@@ -14,6 +14,7 @@ import {
   YoutubeToTextIcon,
 } from "@src/shared/Icons/IconLib";
 import { YTLogo } from "@src/shared/Icons/Logos";
+import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
 
 const youtubeFeatures = [
   {
@@ -47,6 +48,7 @@ export function MainNav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const isPremium = user?.type === "premium";
+  const navigate = useNavigate();
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -94,9 +96,9 @@ export function MainNav() {
           : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between pl-4 pr-2 py-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between py-2 pl-4 pr-2">
         {/* Desktop Layout */}
-        <div className="ml-8 md:mx-0 flex w-auto justify-center lg:justify-start">
+        <div className="ml-8 flex w-auto justify-center md:mx-0 lg:justify-start">
           {/* Logo */}
           <Logo />
         </div>
@@ -183,12 +185,12 @@ export function MainNav() {
               <UserProfile user={user} />
             </>
           ) : (
-            <Link
-              to="/login"
-              className="flex h-9 w-28 items-center justify-center rounded-full border-2 border-zinc-800 text-sm font-semibold hover:bg-zinc-800 hover:text-[--brand-dark-orange] hover:underline hover:shadow-inner hover:shadow-zinc-400 dark:border-zinc-200 dark:text-white dark:hover:bg-zinc-50 dark:hover:text-[--brand-dark-orange] dark:hover:shadow-inner dark:hover:shadow-zinc-600"
-            >
-              Log in
-            </Link>
+            <CTBasicButton
+              label="Log in"
+              onClick={() => {
+                navigate("/login");
+              }}
+            />
           )}
         </div>
 
