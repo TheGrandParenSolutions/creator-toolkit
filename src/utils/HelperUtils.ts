@@ -1,4 +1,5 @@
 import { getUserLocationData } from "@src/Api/Modules/GeoLocation/GeoLocationService";
+import { MANDATORY_CT_PROMO_TEXT } from "@src/constants/constants";
 import { VideoFormat } from "@src/types/YoutubeDownloaderTypes";
 import jsPDF from "jspdf";
 
@@ -192,13 +193,15 @@ export const generateAndDownloadFile = (
 };
 
 export const sanitizeFileName = (name: string): string => {
-  return name
+  const sanitizedName = name
     .normalize("NFKD") // Normalize to decompose diacritics
     .replace(/\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu, "") // Remove emojis
     .replace(/[^a-zA-Z0-9 \\-]/g, "") // Allow letters, numbers, spaces, and dashes
     .replace(/\s+/g, " ") // Replace multiple spaces with a single space
     .replace(/-+/g, "-") // Replace multiple dashes with a single dash
     .trim(); // Remove leading and trailing spaces
+
+  return `${sanitizedName}__${MANDATORY_CT_PROMO_TEXT}`
 };
 
 export const addResolutionInPixels = (thumbnails: any[]) => {

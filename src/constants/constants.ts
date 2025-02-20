@@ -66,3 +66,5 @@ export const defaultPlans: PricingPlanProps[] = [
     currency: "$",
   },
 ]
+
+export const MANDATORY_CT_PROMO_TEXT = "Created using Creator Toolkit";
