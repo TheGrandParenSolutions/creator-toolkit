@@ -15,10 +15,10 @@ const DarkModeToggle = () => {
         className={`absolute flex h-7 w-7 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${
           darkMode
             ? "animate-disappear"
-            : "animate-appear bg-sky-200 shadow-sky-300"
+            : "animate-appear bg-amber-50 shadow-amber-300"
         }`}
       >
-        <SunIcon className="h-6 w-6 text-yellow-600" />
+        <SunIcon className="h-6 w-6" />
       </div>
 
       {/* Moon Icon */}
@@ -29,7 +29,7 @@ const DarkModeToggle = () => {
             : "animate-disappear"
         }`}
       >
-        <MoonIcon className="h-6 w-6 text-white" />
+        <MoonIcon className="h-6 w-6" />
       </div>
     </div>
   );
