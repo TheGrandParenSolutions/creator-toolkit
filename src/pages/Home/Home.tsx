@@ -13,7 +13,7 @@ const sectionAnimation = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transition: { duration: 0.3, ease: "easeInOut" },
   },
 };
 
@@ -21,11 +21,9 @@ const Homepage: FC = () => {
   return (
     <div className="flex w-full justify-center">
       <div className="flex w-full flex-col items-center justify-center overflow-hidden">
-        {/* Hero Section (No animation) */}
         <HeroSection />
 
-        {/* Other Sections with Stronger Scroll Animation */}
-        <div className="w-full px-6 md:px-12 max-w-7xl">
+        <div className="w-full max-w-7xl px-6 md:px-12">
           {[
             { Component: Timeline, key: "timeline" },
             { Component: Tools, key: "tools" },
