@@ -67,15 +67,17 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
         border: !loading
           ? !isHovered
             ? ""
-            : "1px solid var(--brand-dark-orange)"
+            : ""
           : undefined,
         background: !loading
           ? !isHovered
             ? "var(--brand-bg-theme)"
-            : "#fff"
+            : "#e4e4e7"
           : undefined,
       }}
-      className={`relative flex !rounded-[2.5rem] min-h-7 md:min-h-12 items-center justify-center overflow-hidden border border-none bg-white text-black transition-all duration-300 ${buttonStyles} ${
+      className={`relative flex !rounded-[2.5rem]
+         shadow-[inset_3px_3px_5px_rgba(0,0,0,0.25),inset_-3px_-3px_5px_rgba(255,255,255,0.1)]
+        min-w-28 md:min-w-44 min-h-7 md:min-h-12 items-center justify-center overflow-hidden border-none !bg-zinc-800 text-black transition-all duration-[350ms] ${buttonStyles} ${
         loading &&
         "disabled:border-zinc-200 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none"
       }`}
@@ -87,13 +89,13 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
       ) : (
         <>
           <span
-            className={`absolute inline-block text-center text-black transition-all duration-300 ${
+            className={`absolute inline-block text-center text-black transition-all duration-[350ms] ${
               isHovered
                 ? "-translate-y-full opacity-0"
                 : "translate-y-0 opacity-100"
             }`}
           >
-            <span className="flex items-center justify-center gap-1 text-xs text-inherit md:text-base">
+            <span className="flex items-center justify-center gap-1 text-sm font-semibold text-zinc-900 md:text-base lg:text-lg">
               {icon && !isHovered && icon}
               {label}
             </span>
@@ -101,7 +103,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
 
           {/* Hover Label */}
           <span
-            className={`absolute text-center text-orange-500 transition-all duration-300 ${
+            className={`absolute text-center text-sm md:text-base lg:text-lg bg-main-gradient bg-clip-text text-transparent font-semibold transition-all duration-[350ms] ${
               isHovered
                 ? "translate-y-0 opacity-100"
                 : "translate-y-full opacity-0"
