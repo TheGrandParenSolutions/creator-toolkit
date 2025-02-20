@@ -75,7 +75,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
             : "#fff"
           : undefined,
       }}
-      className={`relative flex !rounded-[2.5rem] min-h-6 md:min-h-12 items-center justify-center overflow-hidden border border-none bg-white text-black transition-all duration-300 ${buttonStyles} ${
+      className={`relative flex !rounded-[2.5rem] min-h-7 md:min-h-12 items-center justify-center overflow-hidden border border-none bg-white text-black transition-all duration-300 ${buttonStyles} ${
         loading &&
         "disabled:border-zinc-200 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none"
       }`}
