@@ -17,8 +17,8 @@ const CTBasicButton: FC<CustomButtonProps> = ({
     <button
       {...rest}
       onClick={onClick}
-      className={`mx-auto flex min-h-[44px] w-full 
-                  max-w-[90%] items-center justify-center rounded-full border-2 border-zinc-300 bg-zinc-100 px-6
+      className={`mx-auto flex min-h-14 w-full 
+                   items-center justify-center rounded-[2.5rem] border-2 border-zinc-300 bg-zinc-100 px-6
                   
                   py-2 text-sm
                   font-semibold 
