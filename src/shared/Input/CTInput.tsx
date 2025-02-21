@@ -50,17 +50,19 @@ const CTInput: FC<CTInputProps> = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full rounded-[2.5rem] shadow-md shadow-zinc-300 transition-all duration-100 hover:shadow-2xl dark:shadow-zinc-700">
       <input
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label="Common Input"
-        className={`w-full rounded-full border-[2px] border-zinc-200 bg-transparent py-2 pl-5 pr-32 text-sm shadow-sm transition placeholder:font-semibold placeholder:text-zinc-300 hover:shadow-lg focus:border-2 focus:border-[--main-yellow] focus:shadow-xl focus:outline-none dark:shadow-zinc-800 dark:placeholder:text-zinc-500  lg:text-lg ${
-          loading
-            ? "text-zinc-400"
-            : "border-[--main-yellow] text-zinc-800 dark:border-black dark:text-zinc-200"
-        } dark:bg-zinc-800`}
+        className={`w-full rounded-full border-0 border-transparent  bg-zinc-50
+          py-3 pl-5 pr-32 text-lg 
+          shadow-[inset_3px_3px_5px_rgba(0,0,0,0.15),inset_-3px_-3px_5px_rgba(255,255,255,0.8)]
+           placeholder:font-semibold placeholder:text-zinc-400
+          hover:bg-zinc-100 focus:border-2 focus:border-[--main-yellow] focus:outline-none  dark:border-zinc-700
+          dark:bg-zinc-800 dark:text-zinc-100 dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.4),inset_-4px_-4px_6px_rgba(255,255,255,0.05)] dark:hover:bg-zinc-800
+          dark:focus:border-[--brand-dark-orange]`}
         style={{
           paddingRight: "7rem",
           whiteSpace: "nowrap",
@@ -71,7 +73,7 @@ const CTInput: FC<CTInputProps> = ({
         disabled={disabled || loading}
       />
       {!loading ? (
-        <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center gap-2 border-2 border-b-0 border-r-0  border-t-0 border-l-zinc-200 dark:border-l-black">
+        <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center gap-2">
           {/* Paste Button */}
           <button
             className="flex items-center rounded-full"
@@ -81,7 +83,7 @@ const CTInput: FC<CTInputProps> = ({
           >
             <ActionIcon
               size="md"
-              radius={"xl"}
+              radius="xl"
               color="gray"
               variant="transparent"
             >
@@ -93,14 +95,14 @@ const CTInput: FC<CTInputProps> = ({
           {/* Clear Button */}
           {value && (
             <button
-              className="flex  items-center rounded-full"
+              className="flex items-center rounded-full"
               onClick={handleClear}
               aria-label="Clear Input"
               disabled={disabled}
             >
               <ActionIcon
                 size="md"
-                radius={"xl"}
+                radius="xl"
                 color="gray"
                 variant="transparent"
               >
@@ -110,14 +112,14 @@ const CTInput: FC<CTInputProps> = ({
               </ActionIcon>
             </button>
           )}
-
+          {/* Submit Button */}
           <button
-            className=" flex items-center rounded-full"
+            className="flex items-center rounded-full"
             onClick={handleButtonClick}
             aria-label="Submit Input"
             disabled={disabled}
           >
-            <ActionIcon size="md" radius={"xl"} color="yellow">
+            <ActionIcon size="md" radius="xl" color="yellow">
               <Tooltip label="Go">
                 <ArrowRightCircleSolid />
               </Tooltip>
