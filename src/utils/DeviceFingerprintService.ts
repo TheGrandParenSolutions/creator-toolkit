@@ -55,8 +55,6 @@ const collectFingerprintData = async (): Promise<string> => {
     const timezoneOffset = new Date().getTimezoneOffset();
     components.push(`TZ:UTC${timezoneOffset / -60}`);
 
-    console.log("components =>>>", components)
-
     // Hash all the collected information to generate a unique visitor ID
     return generateHash(components.join("|"));
 };
