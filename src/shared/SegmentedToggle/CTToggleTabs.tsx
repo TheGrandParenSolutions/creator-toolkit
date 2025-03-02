@@ -35,7 +35,7 @@ const CTToggleTabs: React.FC<CTToggleTabsProps> = ({
               px-2 py-2 text-[10px] font-semibold  transition-all duration-300 md:px-2 md:text-sm ${
                 activeTab === label
                   ? "bg-main-gradient text-zinc-900 shadow-[inset_3px_3px_5px_rgba(0,0,0,0.25),inset_-3px_-3px_5px_rgba(255,255,255,0.1)]"
-                  : "bg-zinc-50 text-zinc-400 shadow-[inset_3px_3px_5px_rgba(0,0,0,0.15),inset_-3px_-3px_5px_rgba(255,255,255,0.8)] hover:text-zinc-900 dark:bg-zinc-700 dark:hover:text-white"
+                  : "border-zinc-50 bg-zinc-50 text-zinc-400 shadow-[inset_3px_3px_5px_rgba(0,0,0,0.15),inset_-3px_-3px_5px_rgba(255,255,255,0.8)]  hover:text-zinc-900  dark:border-zinc-800 dark:bg-zinc-800 dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.4),inset_-4px_-4px_6px_rgba(255,255,255,0.05)] dark:hover:text-zinc-100"
               }`}
             style={{
               minWidth: `calc(100% / ${tabs.length})`,

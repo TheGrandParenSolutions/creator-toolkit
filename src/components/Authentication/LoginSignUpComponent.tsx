@@ -42,6 +42,16 @@ export const LoginSignUpComponent = (props: {
       let user;
       if (isLogin) {
         user = await login(formValues);
+        if (!user) {
+          setSigningInUser(false);
+
+          showToast(
+            "error",
+            "Account doesn't exist!",
+            "Please create a new account, if you don't have one.",
+          );
+          return;
+        }
       } else {
         user = await createUser(formValues);
       }

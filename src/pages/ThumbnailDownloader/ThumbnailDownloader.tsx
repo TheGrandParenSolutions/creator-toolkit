@@ -12,29 +12,7 @@ import {
 } from "@src/Api/Modules/YoutubeThumbnailDownloader/YoutubeThumbnailDownloaderService";
 import { BrandYoutubeSolid } from "@mynaui/icons-react";
 import { showToast } from "@src/utils/Theme";
-
-const downloadThumbnail = async (url: string, resoltuion: string) => {
-  try {
-    //fetch download url to download thumbnail
-    const downloadUrl = await fetchDownloadUrl(url);
-
-    //download thumbnail
-    const link = document.createElement("a");
-    link.href = downloadUrl;
-    link.download = `thumbnail-${resoltuion}.jpg`; // Default file name
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(downloadUrl); // Clean up the URL
-  } catch (error) {
-    console.error("Error fetching thumbnail:", error);
-    showToast(
-      "error",
-      "Thumbnail download failed",
-      "Failed to download the thumbnail. Please try again.",
-    );
-  }
-};
+import { useCreditContext } from "@src/Context/Credits/CreditContext";
 
 const scrollToSection = () => {
   const target = document.getElementById("#thumbnail"); // Use the ID of the initial section
@@ -44,6 +22,7 @@ const scrollToSection = () => {
 };
 
 const YouTubeThumbnailDownloader = () => {
+  const { deductCredit } = useCreditContext();
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
@@ -74,6 +53,30 @@ const YouTubeThumbnailDownloader = () => {
       setError("Failed to fetch thumbnails. Please check the link." + err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const downloadThumbnail = async (url: string, resoltuion: string) => {
+    try {
+      //fetch download url to download thumbnail
+      const downloadUrl = await fetchDownloadUrl(url);
+
+      //download thumbnail
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `thumbnail-${resoltuion}.jpg`; // Default file name
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(downloadUrl); // Clean up the URL
+      await deductCredit();
+    } catch (error) {
+      console.error("Error fetching thumbnail:", error);
+      showToast(
+        "error",
+        "Thumbnail download failed",
+        "Failed to download the thumbnail. Please try again.",
+      );
     }
   };
 

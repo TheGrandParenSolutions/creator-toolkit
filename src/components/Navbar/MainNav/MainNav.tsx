@@ -2,7 +2,7 @@ import { ChevronDown, CircleSolid } from "@mynaui/icons-react";
 import Logo from "@src/components/AppLogo/Logo";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
@@ -15,6 +15,9 @@ import {
 } from "@src/shared/Icons/IconLib";
 import { YTLogo } from "@src/shared/Icons/Logos";
 import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
+import { useCreditContext } from "@src/Context/Credits/CreditContext";
+import Credits from "@src/components/Credits/Credits";
+import { isNil } from "@src/utils/CommonUtils";
 
 const youtubeFeatures = [
   {
@@ -45,6 +48,7 @@ const youtubeFeatures = [
 
 export function MainNav() {
   const { isAuthenticated, user } = useContext(AuthContext);
+  const { credits } = useCreditContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const isPremium = user?.type === "premium";
@@ -87,6 +91,20 @@ export function MainNav() {
       </Link>
     </Menu.Item>
   ));
+
+  const getTotalCredits = (): number => {
+    if (user?.id && isPremium) {
+      return 500;
+    } else if (user?.id && !isPremium) {
+      return 50;
+    } else {
+      return 25;
+    }
+  };
+
+  const TOTAL_CREDITS = useMemo(() => {
+    return getTotalCredits();
+  }, [user]);
 
   return (
     <header
@@ -145,6 +163,9 @@ export function MainNav() {
         {/* Login and CTA Button */}
         <div className="hidden items-center space-x-4 lg:flex">
           <DarkModeToggle />
+          {!isNil(credits) && (
+            <Credits credits={credits} totalCredits={TOTAL_CREDITS} />
+          )}
 
           {isAuthenticated && user ? (
             <>
