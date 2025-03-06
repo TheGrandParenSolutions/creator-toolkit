@@ -40,29 +40,24 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
         >
           <div className="relative cursor-pointer">
             {/* Avatar with Soft Glow */}
-            <motion.div
-              animate={
-                isPremium
-                  ? {
-                      boxShadow:
-                        "0px 0px 5px rgba(255, 215, 0, 0.6), 0px 0px 2px rgba(255, 215, 0, 0.4), inset 0px 0px 3px rgba(255, 215, 0, 0.3)",
-                      background:
-                        "linear-gradient(135deg, rgba(255, 223, 0, 0.08), rgba(255, 140, 0, 0.08))",
-                      filter: "drop-shadow(0px 0px 4px rgba(255, 215, 0, 0.5))",
-                      animation: "subtlePremiumGlow 6s infinite alternate",
-                    }
-                  : {}
-              }
-              // transition={{ duration: 6,  ease: "easeInOut" }}
-              className="rounded-full"
-            >
+            <div className="relative rounded-full">
               <Avatar
                 src={user?.avatar}
                 alt={user.userName}
                 radius="xl"
                 className="h-10 w-10 shadow-lg transition-all dark:shadow-zinc-600 md:h-14 md:w-14"
               />
-            </motion.div>
+              <span
+                className="absolute right-[6.5px] top-[85%] -mr-2 flex h-3 items-center justify-center rounded-full bg-white text-[8px] font-medium text-black"
+                style={{
+                  width: "2.6rem",
+                  boxShadow: "rgba(128, 128, 128, 0.1) 0px 0px 0px 1.1px",
+                  letterSpacing: "-0.2px",
+                }}
+              >
+                {isPremium ? "PREMIUM" : "FREE"}
+              </span>
+            </div>
           </div>
         </Tooltip>
       </Menu.Target>

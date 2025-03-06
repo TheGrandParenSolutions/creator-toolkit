@@ -6,7 +6,7 @@ import { useState, useEffect, useContext, useMemo } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
-import { Group, Text, ActionIcon, Menu, Tooltip } from "@mantine/core";
+import { Group, Text, ActionIcon, Menu } from "@mantine/core";
 import {
   CrownIconSolid,
   ThumbnailDownloaderIcon,
@@ -169,29 +169,7 @@ export function MainNav() {
 
           {isAuthenticated && user ? (
             <>
-              {isPremium ? (
-                <div className="flex flex-col items-center text-sm">
-                  <Tooltip
-                    label={
-                      <Text className="pointer-events-none text-xs text-zinc-100">
-                        Expires in {2} days
-                      </Text>
-                    }
-                  >
-                    <div className="flex flex-col items-center text-sm">
-                      <CTAnimatedButton
-                        w={120}
-                        radius={"xl"}
-                        label="Premium"
-                        hoverLabel="Manage Plan"
-                        to="/subscription"
-                        buttonStyles="w-60 bg-yellow-500 text-black dark:bg-yellow-400 pointer-events-none"
-                        icon={<CrownIconSolid />}
-                      />
-                    </div>
-                  </Tooltip>
-                </div>
-              ) : (
+              {!isPremium && (
                 <CTAnimatedButton
                   w={120}
                   radius={"xl"}

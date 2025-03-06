@@ -15,7 +15,7 @@
       rgba(223, 113, 255, 0.8) 0%,
       rgba(223, 113, 255, 0) 100%
     ),
-    linear-gradient(0deg, #7a5af8, #7a5af8);
+    linear-gradient(to top, #00154c, #12376e, #23487f);
   border-radius: var(--round);
   border: none;
   outline: none;
@@ -45,7 +45,7 @@
       rgba(223, 113, 255, 0.8) 0%,
       rgba(223, 113, 255, 0) 100%
     ),
-    linear-gradient(0deg, #7a5af8, #7a5af8);
+    linear-gradient(to top, #00154c, #12376e, #23487f);
 }
 .futuristic:active {
   transform: scale(0.95);

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { WalletIcon } from "@src/shared/Icons/IconLib";
 
 const bubble_count = 12; // Reduced bubbles for less visual clutter
-
+// https://uiverse.io/elements?search=gradient&page=8
 interface CreditsProps {
   credits: number;
   totalCredits: number;
