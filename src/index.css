@@ -27,7 +27,7 @@
     62deg,
     #fbab7e 0%,
     #ffd580 50%,
-    #FFC676 100%
+    #ffc676 100%
   );
   --brand-main-bg: #f9f8f5;
   --brand-light-orange: #fbab7e;
@@ -91,4 +91,8 @@ h5 {
 
 .font-wix {
   font-family: "Wix Madefor Display", sans-serif;
+}
+
+* {
+  scrollbar-color: #ececec transparent;
 }
