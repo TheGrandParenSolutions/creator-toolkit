@@ -7,14 +7,14 @@ export interface PricingPlanProps {
   title: string;
   description: string;
   features: (string | number | boolean | React.ReactNode)[];
-  activePlan: "Annual" | "Monthly" | "Daily" | "Weekly" | string;
-  price: { annual: number; monthly: number; daily: number; weekly: number };
+  activePlan: "Annual" | "Monthly" | string;
+  price: { annual: number; monthly: number; };
   originalPrice: {
     annual: number;
     monthly: number;
-    daily: number;
-    weekly: number;
   };
+  discount: number;
+  numberOfCredits: number;
   buttonText: string;
   currency: string;
   clickHandler?: (activePlan: string) => void;
@@ -74,20 +74,14 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
         <span className="font-grifter text-xl tracking-wider text-zinc-800 line-through dark:text-zinc-300">
           {activePlan === "Annual"
             ? `${currency}${originalPrice.annual}`
-            : activePlan === "Monthly"
-            ? `${currency}${originalPrice.monthly}`
-            : activePlan === "Weekly"
-            ? `${currency}${originalPrice.weekly}`
-            : `${currency}${originalPrice.daily}`}
+            : `${currency}${originalPrice.monthly}`
+            }
         </span>
         <span className="font-grifter text-2xl tracking-wider md:text-5xl">
           {activePlan === "Annual"
             ? `${currency}${price.annual}`
-            : activePlan === "Monthly"
-            ? `${currency}${price.monthly}`
-            : activePlan === "Weekly"
-            ? `${currency}${price.weekly}`
-            : `${currency}${price.daily}`}
+            : `${currency}${price.monthly}`
+            }
         </span>
       </h2>
 

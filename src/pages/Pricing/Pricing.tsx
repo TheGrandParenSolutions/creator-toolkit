@@ -17,15 +17,7 @@ const tabs = [
   {
     label: "Monthly",
     component: <>Monthly Pass</>,
-  },
-  {
-    label: "Day",
-    component: <>Day Pass</>,
-  },
-  {
-    label: "Week",
-    component: <>Week Pass</>,
-  },
+  }
 ];
 
 const Pricing = () => {

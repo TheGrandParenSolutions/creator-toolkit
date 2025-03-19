@@ -28,10 +28,6 @@ export const PricingService = () => {
       return originalPrice?.monthly;
     } else if (planType == "annual") {
       return originalPrice.annual;
-    } else if (planType == "daily") {
-      return originalPrice.daily;
-    } else {
-      return originalPrice.weekly;
     }
   };
 
@@ -125,15 +121,11 @@ export const PricingService = () => {
       currency,
       price: {
         annual: convertPrice(plan.price.annual),
-        monthly: convertPrice(plan.price.monthly),
-        daily: convertPrice(plan.price.daily),
-        weekly: convertPrice(plan.price.weekly),
+        monthly: convertPrice(plan.price.monthly)
       },
       originalPrice: {
         annual: convertPrice(plan.originalPrice.annual),
-        monthly: convertPrice(plan.originalPrice.monthly),
-        daily: convertPrice(plan.originalPrice.daily),
-        weekly: convertPrice(plan.originalPrice.weekly),
+        monthly: convertPrice(plan.originalPrice.monthly)
       },
     }));
 
