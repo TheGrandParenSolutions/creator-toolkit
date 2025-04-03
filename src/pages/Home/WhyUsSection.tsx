@@ -26,29 +26,29 @@ const WhyUsSection: FC = () => {
   return (
     <div className="px-6 py-16 text-center md:px-12">
       {/* Section Heading */}
-      <h2 className="mb-8 text-3xl sm:text-4xl font-grifter text-black dark:text-white">
+      <h2 className="poppins-bold mb-8 text-3xl text-black dark:text-white sm:text-4xl">
         Why Choose Creator Toolkit?
       </h2>
 
       {/* Responsive Features Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex flex-col items-center rounded-[2.5rem] border border-[--main-yellow] bg-[#fbf0c9] p-6 shadow-md dark:border-2 dark:border-black dark:bg-zinc-800 transition-all duration-300 hover:shadow-lg"
+            className="flex flex-col items-center rounded-[2.5rem] border border-[--main-yellow] bg-[#fbf0c9] p-6 shadow-md transition-all duration-300 hover:shadow-lg dark:border-2 dark:border-black dark:bg-zinc-800"
           >
             {/* Icon Container */}
-            <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-black shadow-md">
-              <feature.icon className="text-2xl sm:text-3xl text-[var(--brand-mid-yellow)]" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black shadow-md sm:h-16 sm:w-16">
+              <feature.icon className="text-2xl text-[var(--brand-mid-yellow)] sm:text-3xl" />
             </div>
 
             {/* Title */}
-            <h3 className="mt-4 text-lg sm:text-xl font-bold text-black dark:text-white">
+            <h3 className="mt-4 text-lg font-bold text-black dark:text-white sm:text-xl">
               {feature.title}
             </h3>
 
             {/* Description */}
-            <p className="mt-2 text-sm sm:text-base text-zinc-700 dark:text-zinc-400">
+            <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-400 sm:text-base">
               {feature.description}
             </p>
           </div>

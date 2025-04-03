@@ -20,6 +20,8 @@ import {
   YoutubeToTextIconSolid,
 } from "@src/shared/Icons/IconLib";
 import Hamburger from "@src/components/Navbar/Hamburger/Hamburger";
+import UserProfile from "@src/shared/User/UserProfile";
+import DarkModeToggle from "@src/Utility/DarkModeToggle";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -51,24 +53,31 @@ function NavbarLink({
     <Tooltip label={label} position="right" transitionProps={{ duration: 20 }}>
       <UnstyledButton
         onClick={handleNavigation}
-        className={`flex items-center rounded-lg p-3 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-700 ${
-          active ? "bg-zinc-200 font-semibold dark:!bg-zinc-700" : ""
-        }`}
+        className={`flex transform items-center rounded-[2.5rem] p-3 transition-all duration-200 ease-in-out
+          hover:scale-[1.01] hover:bg-zinc-100 dark:hover:bg-zinc-800
+          ${
+            active
+              ? "bg-zinc-100  shadow-ct-light ring-2 ring-zinc-100   dark:bg-zinc-800 dark:shadow-ct-dark dark:ring-zinc-800"
+              : ""
+          }
+
+        `}
         data-active={active || undefined}
       >
         <div className="flex items-center justify-center">
           {active ? (
-            <ActiveIcon className="text-xl text-zinc-900 dark:text-zinc-300" />
+            <ActiveIcon className="text-xl text-zinc-900 dark:text-zinc-100" />
           ) : (
             <Icon className="text-xl text-zinc-700 dark:text-zinc-400" />
           )}
         </div>
         <span
-          className={`ml-3 overflow-hidden truncate whitespace-nowrap transition-all duration-300 ${
-            isExpanded
-              ? "max-w-xs opacity-100 dark:text-zinc-200"
-              : "hidden max-w-0 opacity-0"
-          }`}
+          className={`ml-3 overflow-hidden truncate whitespace-nowrap transition-all duration-300 
+            ${
+              isExpanded
+                ? "max-w-xs opacity-100 dark:text-zinc-200"
+                : "hidden max-w-0 opacity-0"
+            }`}
         >
           {label}
         </span>
@@ -77,43 +86,53 @@ function NavbarLink({
   );
 }
 
-const linkContent = [
-  { icon: HomeIcon, activeIcon: HomeIconSolid, label: "Home", to: "/" },
+const linkGroups = [
   {
-    icon: VideoDownloadIcon,
-    activeIcon: VideoDownloadIconSolid,
-    label: "Video Download Gear",
-    to: "/video-download-gear",
+    label: "Main",
+    links: [
+      { icon: HomeIcon, activeIcon: HomeIconSolid, label: "Home", to: "/" },
+      {
+        icon: MoneyIcon,
+        activeIcon: MoneyIconSolid,
+        label: "Pricing",
+        to: "/pricing",
+      },
+    ],
   },
   {
-    icon: ThumbnailPreviewIcon,
-    activeIcon: ThumbnailPreviewIconSolid,
-    label: "Thumbnail test & preview",
-    to: "/thumbnail-test",
-  },
-  {
-    icon: YoutubeToTextIcon,
-    activeIcon: YoutubeToTextIconSolid,
-    label: "Youtube to text",
-    to: "/YoutubeToText",
-  },
-  {
-    icon: MoneyIcon,
-    activeIcon: MoneyIconSolid,
-    label: "Pricing",
-    to: "/pricing",
-  },
-  {
-    icon: ThumbnailDownloaderIcon,
-    activeIcon: ThumbnailDownloaderIconSolid,
-    label: "Thumbnail downloader",
-    to: "/thumbnail-downloader",
-  },
-  {
-    icon: RemoveBGIcon,
-    activeIcon: RemoveBGIconSolid,
-    label: "Remove background",
-    to: "/remove-background",
+    label: "Tools",
+    links: [
+      {
+        icon: VideoDownloadIcon,
+        activeIcon: VideoDownloadIconSolid,
+        label: "Video Download Gear",
+        to: "/video-download-gear",
+      },
+      {
+        icon: ThumbnailPreviewIcon,
+        activeIcon: ThumbnailPreviewIconSolid,
+        label: "Thumbnail test & preview",
+        to: "/thumbnail-test",
+      },
+      {
+        icon: YoutubeToTextIcon,
+        activeIcon: YoutubeToTextIconSolid,
+        label: "Youtube to text",
+        to: "/YoutubeToText",
+      },
+      {
+        icon: ThumbnailDownloaderIcon,
+        activeIcon: ThumbnailDownloaderIconSolid,
+        label: "Thumbnail downloader",
+        to: "/thumbnail-downloader",
+      },
+      {
+        icon: RemoveBGIcon,
+        activeIcon: RemoveBGIconSolid,
+        label: "Remove background",
+        to: "/remove-background",
+      },
+    ],
   },
 ];
 
@@ -121,91 +140,110 @@ export function SideNav() {
   const location = useLocation();
   const { pathname } = location;
   const [active, setActive] = useState<number | null>(null);
-  const [panelOpen, setIsPanelOpen] = useState<boolean>(false);
+  const [panelOpen, setIsPanelOpen] = useState<boolean>(
+    () => localStorage.getItem("panelOpen") === "true",
+  );
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
-
-  const links = linkContent.map((link, index) => (
-    <NavbarLink
-      {...link}
-      key={link.label}
-      active={index === active}
-      onClick={() => {
-        setActive(index);
-        setIsPanelOpen(false);
-      }}
-      isExpanded={panelOpen}
-    />
-  ));
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) setIsPanelOpen(false); // Close side panel when switching to larger screens
+      if (window.innerWidth >= 768) setIsPanelOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    const activeIndex = linkContent.findIndex(link => link.to === pathname);
-    setActive(activeIndex ? activeIndex : 0);
+    const activeIndex = linkGroups
+      .flatMap(g => g.links)
+      .findIndex(link => link.to === pathname);
+    setActive(activeIndex !== -1 ? activeIndex : 0);
   }, [pathname]);
+
+  useEffect(() => {
+    localStorage.setItem("panelOpen", String(panelOpen));
+  }, [panelOpen]);
+
+  let flatIndex = 0;
 
   return (
     <>
       {isMobile && (
         <button
-          onClick={() => {
-            setIsPanelOpen(!panelOpen);
-          }}
+          onClick={() => setIsPanelOpen(!panelOpen)}
           className="fixed left-1 top-[10px] z-[51]"
         >
           <Hamburger menuOpen={panelOpen} />
         </button>
       )}
-      {/* Overlay */}
+
       {panelOpen && (
         <div
           className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity dark:bg-opacity-75"
-          onClick={() => setIsPanelOpen(false)} // Close SideNav when clicking outside
+          onClick={() => setIsPanelOpen(false)}
         />
       )}
 
-      {/* SideNav */}
       <nav
-        className={`fixed left-0 top-0 z-50 h-screen border border-none bg-white shadow-none transition-all duration-300 dark:border-black dark:bg-dark-app ${
-          panelOpen ? "w-80" : isMobile ? "w-0" : "w-16"
-        } overflow-hidden`}
+        className={`fixed left-0 top-0 z-50 h-full overflow-hidden rounded-none border-none bg-light-app shadow-sm  transition-[width] duration-500 ease-in-out dark:border-black dark:bg-dark-app
+        ${panelOpen ? "w-80" : isMobile ? "w-0" : "w-16"}`}
       >
-        <div>
-          <Box
-            className={`flex min-h-[48px] items-start justify-start px-4 py-2 ${
-              panelOpen ? "justify-start font-semibold" : ""
-            }`}
-          >
-            {!isMobile && (
-              <Box className="cursor-pointer">
-                <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
-                  <UnstyledButton
-                    onClick={() => setIsPanelOpen(!panelOpen)}
-                    className={`flex items-center rounded-lg p-1 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-700`}
-                    data-active={panelOpen || undefined}
-                  >
-                    <div className="flex items-center justify-center">
-                      {panelOpen ? (
-                        <PanelRightIcon className="text-xl dark:text-zinc-200" />
-                      ) : (
-                        <PanelLeftIcon className="text-xl dark:text-zinc-400" />
-                      )}
-                    </div>
-                  </UnstyledButton>
-                </Tooltip>
-              </Box>
-            )}
+        {!isMobile && (
+          <Box className="cursor-pointer px-4 pb-2 pt-2">
+            <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
+              <UnstyledButton
+                onClick={() => setIsPanelOpen(!panelOpen)}
+                className="flex items-center rounded-lg p-1 hover:bg-zinc-100 dark:hover:bg-zinc-700"
+              >
+                {panelOpen ? (
+                  <PanelRightIcon className="text-xl dark:text-zinc-200" />
+                ) : (
+                  <PanelLeftIcon className="text-xl dark:text-zinc-400" />
+                )}
+              </UnstyledButton>
+            </Tooltip>
           </Box>
+        )}
+        <div className="mt-12 flex h-[calc(100%-90px)] flex-col justify-between">
+          {/* Links */}
+          <div className="flex-grow space-y-4 overflow-y-auto">
+            {linkGroups.map(group => (
+              <div key={group.label}>
+                {panelOpen && (
+                  <div className="px-6 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                    <h1>{group.label}</h1>
+                  </div>
+                )}
+                <div className="flex flex-col space-y-1 px-2">
+                  {group.links.map(link => {
+                    const isActive = flatIndex === active;
+                    const linkComponent = (
+                      <NavbarLink
+                        {...link}
+                        key={link.label}
+                        active={isActive}
+                        isExpanded={panelOpen}
+                        onClick={() => {
+                          setActive(flatIndex);
+                          setIsPanelOpen(false);
+                        }}
+                      />
+                    );
+                    flatIndex++;
+                    return linkComponent;
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
 
-          <div className="flex flex-grow flex-col space-y-1 px-2 pt-4">
-            {links}
+          {/* Footer */}
+          <div className="mt-auto flex items-center justify-between px-4 py-4 shadow-2xl">
+            <div className="flex items-center space-x-3">
+              <UserProfile />
+            </div>
+            {panelOpen && <DarkModeToggle />}
           </div>
         </div>
       </nav>

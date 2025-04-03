@@ -162,7 +162,7 @@ const RemoveBackground = () => {
                 transition={{ duration: 0.0 }}
                 className="checkerboard-bg dark:checkerboard-bg-dark flex w-64 flex-col  items-center rounded-[2.5rem] border-zinc-100 p-4 shadow-md"
               >
-                <h3 className="font-grifter mb-2 text-lg text-zinc-800 dark:text-zinc-200">
+                <h3 className="poppins-bold mb-2 text-lg text-zinc-800 dark:text-zinc-200">
                   Background removed
                 </h3>
 

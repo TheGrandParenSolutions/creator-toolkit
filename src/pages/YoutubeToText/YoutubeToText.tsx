@@ -200,7 +200,7 @@ const YoutubeToText: FC = () => {
               <div className="mb-4 flex flex-col items-center justify-between gap-4 md:flex-row">
                 {/* Language Selector */}
                 <div className="flex items-center space-x-2">
-                  <Text className="font-grifter text-base font-bold text-zinc-800 dark:text-zinc-100 md:text-2xl">
+                  <Text className="poppins-bold text-base font-bold text-zinc-800 dark:text-zinc-100 md:text-2xl">
                     {language === "english"
                       ? "English (auto-generated)"
                       : language.charAt(0).toUpperCase() + language.slice(1)}
@@ -294,7 +294,7 @@ const YoutubeToText: FC = () => {
               <div className="mt-4 rounded-lg border border-none bg-zinc-100 p-4 text-sm font-medium text-black dark:border-black dark:bg-zinc-800 dark:text-white">
                 <ScrollArea h={300} type="always">
                   <pre className="whitespace-pre-wrap">
-                    <p className="font-wix">{transcript}</p>
+                    <p className="font-DM">{transcript}</p>
                   </pre>
                 </ScrollArea>
               </div>

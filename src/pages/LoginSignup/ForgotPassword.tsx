@@ -51,9 +51,7 @@ const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
       )}
 
       {isEmailSent && (
-        <Paper
-          className="flex w-full  !rounded-[2.5rem] max-w-md flex-col items-center gap-y-3  border border-[--main-yellow] bg-[#f9f8f5] p-6 text-center shadow-md dark:border-2 dark:border-black dark:bg-dark-app-content"
-        >
+        <Paper className="flex w-full  max-w-md flex-col items-center gap-y-3 !rounded-[2.5rem]  border border-[--main-yellow] bg-[#f9f8f5] p-6 text-center shadow-md dark:border-2 dark:border-black dark:bg-dark-app-content">
           {/* Success Icon */}
 
           {/* Heading */}
@@ -93,7 +91,7 @@ const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
       {/* Forgot Password Card */}
       {!isEmailSent && (
         <Paper
-          className="w-full !rounded-[2.5rem] max-w-md border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
+          className="w-full max-w-md !rounded-[2.5rem] border border-[--brand-dark-orange] bg-[#f9f8f5] p-6 dark:border-2 dark:border-black dark:bg-zinc-800"
           style={{
             borderRadius: "16px",
           }}
@@ -103,7 +101,7 @@ const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
             <Text
               size="lg"
               component="h1"
-              className="font-grifter font-bold text-zinc-800 dark:text-white md:text-xl"
+              className="poppins-bold font-bold text-zinc-800 dark:text-white md:text-xl"
             >
               Forgot Your Password?
             </Text>

@@ -64,7 +64,7 @@ const ResetPassword = () => {
           <Text
             size="lg"
             component="h1"
-            className="font-grifter font-bold text-zinc-800 dark:text-white md:text-xl"
+            className="poppins-bold font-bold text-zinc-800 dark:text-white md:text-xl"
           >
             Reset Your Password
           </Text>

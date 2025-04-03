@@ -30,27 +30,27 @@ const EngagementSection: FC = () => {
   return (
     <div className="flex w-full items-center justify-center px-4 py-12">
       <motion.div
-        className="relative w-full max-w-4xl rounded-[2.5rem] bg-zinc-800 p-8 sm:p-12 text-white shadow-xl"
+        className="relative w-full max-w-4xl rounded-[2.5rem] bg-zinc-800 p-8 text-white shadow-xl sm:p-12"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <div className="flex flex-col items-center gap-6 sm:gap-8">
           {/* Icon */}
-          <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full border-2 border-[--main-yellow]">
-            <SparkleIcon className="h-7 w-7 sm:h-8 sm:w-8 text-[--main-yellow]" />
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[--main-yellow] sm:h-16 sm:w-16">
+            <SparkleIcon className="h-7 w-7 text-[--main-yellow] sm:h-8 sm:w-8" />
           </div>
 
           {/* Title */}
-          <h1 className="font-grifter text-center text-3xl sm:text-4xl md:text-5xl text-[--main-yellow] leading-tight">
+          <h1 className="poppins-bold text-center text-3xl leading-tight text-[--main-yellow] sm:text-4xl md:text-5xl">
             Generate Your Next <br className="hidden sm:block" /> Content Idea
           </h1>
 
           {/* Input Field */}
-          <div className="flex w-full max-w-md sm:max-w-lg flex-col gap-4">
+          <div className="flex w-full max-w-md flex-col gap-4 sm:max-w-lg">
             <input
               type="text"
-              className="w-full rounded-full px-4 sm:px-6 py-3 text-sm sm:text-lg text-black focus:outline-none focus:ring-2 focus:ring-[--main-yellow]"
+              className="w-full rounded-full px-4 py-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[--main-yellow] sm:px-6 sm:text-lg"
               placeholder="Enter a topic (e.g., AI, Design, Marketing)"
               value={inputValue}
               onChange={e => setInputValue(e.target.value)}
@@ -71,12 +71,14 @@ const EngagementSection: FC = () => {
 
           {generatedIdea && !loading && (
             <motion.div
-              className="w-full max-w-md sm:max-w-lg rounded-lg bg-white px-5 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-semibold text-black shadow-md"
+              className="w-full max-w-md rounded-lg bg-white px-5 py-3 text-base font-semibold text-black shadow-md sm:max-w-lg sm:px-6 sm:py-4 sm:text-lg"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <p>💡 <strong>New Idea:</strong> {generatedIdea}</p>
+              <p>
+                💡 <strong>New Idea:</strong> {generatedIdea}
+              </p>
             </motion.div>
           )}
         </div>

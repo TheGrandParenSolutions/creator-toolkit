@@ -9,19 +9,18 @@ import {
 } from "@mantine/core";
 import { motion } from "framer-motion";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
-import { IUser } from "@src/types/AuthenticationTypes";
 import { FC, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CrownIconSolid } from "@src/shared/Icons/IconLib";
 import { Logout, User } from "@mynaui/icons-react";
 
-export interface IUserProfile {
-  user: IUser;
-}
+const UserProfile: FC = () => {
+  const { isAuthenticated, user } = useContext(AuthContext);
 
-const UserProfile: FC<IUserProfile> = ({ user }) => {
   const navigate = useNavigate();
   const { handleLogout } = useContext(AuthContext);
+
+  if (!isAuthenticated || !user) return null;
 
   const isPremium = user.type === "premium";
 
@@ -30,7 +29,7 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
       <Menu.Target>
         <Tooltip
           label={
-            <Text className="font-grifter flex items-center justify-center gap-1 text-xs dark:text-zinc-300">
+            <Text className="poppins-bold flex items-center justify-center gap-1 text-xs dark:text-zinc-300">
               {user.userName}
               {isPremium && (
                 <CrownIconSolid className="inline h-4 w-4 text-yellow-500" />
@@ -45,7 +44,7 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
                 src={user?.avatar}
                 alt={user.userName}
                 radius="xl"
-                className="h-10 w-10 shadow-lg transition-all dark:shadow-zinc-600 md:h-14 md:w-14"
+                className="h-10 w-10 shadow-lg transition-all dark:shadow-zinc-600 "
               />
               <span
                 className="absolute right-[6.5px] top-[85%] -mr-2 flex h-3 items-center justify-center rounded-full bg-white text-[8px] font-medium text-black"
@@ -71,7 +70,7 @@ const UserProfile: FC<IUserProfile> = ({ user }) => {
       >
         {/* Header with Premium Status */}
         <div className="p-3 text-center">
-          <Text className="font-grifter flex items-center justify-center gap-2 text-lg dark:text-zinc-200">
+          <Text className="poppins-bold flex items-center justify-center gap-2 text-lg dark:text-zinc-200">
             {user.userName}
             {isPremium && <CrownIconSolid className="inline text-yellow-500" />}
           </Text>

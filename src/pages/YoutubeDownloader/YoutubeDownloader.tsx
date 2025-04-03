@@ -240,7 +240,7 @@ const YouTubeDownloader = () => {
               </Box>
               <CTDivider />
               <div className="rounded-md dark:bg-dark-app-content">
-                <Text className="font-grifter mb-4 text-center text-lg font-bold lg:text-2xl">
+                <Text className="poppins-bold mb-4 text-center text-lg font-bold lg:text-2xl">
                   Download options
                 </Text>
                 <div className="grid grid-cols-1 gap-4">

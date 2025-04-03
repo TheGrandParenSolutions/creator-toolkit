@@ -95,7 +95,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
                 : "translate-y-0 opacity-100"
             }`}
           >
-            <span className="flex items-center justify-center gap-1 text-sm font-semibold text-zinc-900 md:text-base lg:text-lg">
+            <span className="flex items-center justify-center gap-1 text-base font-semibold poppins text-zinc-900 md:text-lg">
               {icon && !isHovered && icon}
               {label}
             </span>
@@ -103,7 +103,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
 
           {/* Hover Label */}
           <span
-            className={`absolute text-center text-sm md:text-base lg:text-lg bg-main-gradient bg-clip-text text-transparent font-semibold transition-all duration-[350ms] ${
+            className={`absolute text-center text-sm md:text-base lg:text-lg poppins bg-main-gradient bg-clip-text text-transparent font-semibold transition-all duration-[350ms] ${
               isHovered
                 ? "translate-y-0 opacity-100"
                 : "translate-y-full opacity-0"

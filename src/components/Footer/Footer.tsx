@@ -33,7 +33,7 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="md:ml-4 mt-10 border-t  border-zinc-100 px-6 py-6 text-center  text-black shadow-xl shadow-zinc-500 dark:border-zinc-700 dark:bg-dark-app-content dark:text-white dark:shadow-zinc-100">
+    <footer className="mt-10 border-t border-zinc-100  px-6 py-6 text-center text-black  shadow-xl shadow-zinc-500 dark:border-zinc-700 dark:bg-dark-app-content dark:text-white dark:shadow-zinc-100 md:ml-4">
       {/* Navigation Links */}
       <nav className="mx-10 my-6 flex flex-wrap justify-center gap-4 text-sm font-semibold text-zinc-600 dark:text-zinc-300 sm:gap-6">
         {footerLinks.map((link, index) => (
@@ -58,13 +58,13 @@ const Footer = () => {
         {/* Copyright Text (Dynamic) */}
         <Text
           size="sm"
-          className="font-grifter text-zinc-600 dark:text-zinc-300"
+          className="poppins-bold text-zinc-600 dark:text-zinc-300"
         >
           © {new Date().getFullYear()} Creator Toolkit. All rights reserved.
         </Text>
         <Text
           size="sm"
-          className="font-grifter flex flex-wrap items-center justify-center gap-2 text-zinc-600 dark:text-zinc-300"
+          className="poppins-bold flex flex-wrap items-center justify-center gap-2 text-zinc-600 dark:text-zinc-300"
         >
           Designed with <HeartIcon /> by Team JJ
         </Text>

@@ -72,7 +72,7 @@ export function MainNav() {
     >
       <Link
         to={feature.link}
-        className="block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
+        className="block rounded-xl text-black  transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
       >
         <Group className="flex-nowrap gap-2" align="center">
           <ActionIcon size={32} variant="filled" radius={"xl"} color="#f1f5f9">
@@ -108,9 +108,9 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-40 bg-white transition-all duration-300 dark:!bg-dark-app md:left-14 ${
+      className={`fixed left-0 right-0 top-0 z-40 bg-light-app  transition-all duration-300 dark:!bg-dark-app md:left-14 ${
         isScrolled
-          ? "border border-solid border-zinc-50 bg-opacity-85 shadow-sm backdrop-blur-sm dark:border-black dark:!bg-opacity-85"
+          ? "border border-solid border-zinc-50  shadow-sm  dark:border-black "
           : ""
       }`}
     >
@@ -136,7 +136,7 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="flex items-center text-sm font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
+                className="flex items-center text-base poppins font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
               >
                 <span>Youtube</span>
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -150,7 +150,7 @@ export function MainNav() {
           {/* Navigation Links */}
           <Link
             to="/pricing"
-            className={`text-sm font-medium transition hover:text-yellow-500 hover:underline ${
+            className={` text-base font-medium transition poppins hover:text-yellow-500 hover:underline ${
               location.pathname === "/pricing"
                 ? "text-yellow-500 underline"
                 : "text-zinc-900 dark:text-zinc-50"
@@ -181,7 +181,7 @@ export function MainNav() {
                 />
               )}
 
-              <UserProfile user={user} />
+              <UserProfile />
             </>
           ) : (
             <CTBasicButton
@@ -197,7 +197,7 @@ export function MainNav() {
         <div className="flex items-center justify-end lg:hidden">
           <div>
             {isAuthenticated && user ? (
-              <UserProfile user={user} />
+              <UserProfile />
             ) : (
               <CTAnimatedButton
                 radius={"xl"}

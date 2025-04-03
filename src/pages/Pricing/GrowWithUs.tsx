@@ -17,7 +17,7 @@ const GrowWithUs = () => {
         <Text
           size="lg"
           component="h1"
-          className="mb-4 text-center font-grifter text-zinc-600 dark:text-white"
+          className="poppins-bold mb-4 text-center text-zinc-600 dark:text-white"
         >
           Used by 10,000+ creators, Including
         </Text>

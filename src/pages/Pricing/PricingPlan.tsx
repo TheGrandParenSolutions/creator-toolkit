@@ -1,4 +1,5 @@
-import { Button } from "@mantine/core";
+import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
+import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
 import { CheckIcon } from "@src/shared/Icons/IconLib";
 import React from "react";
 
@@ -8,7 +9,7 @@ export interface PricingPlanProps {
   description: string;
   features: (string | number | boolean | React.ReactNode)[];
   activePlan: "Annual" | "Monthly" | string;
-  price: { annual: number; monthly: number; };
+  price: { annual: number; monthly: number };
   originalPrice: {
     annual: number;
     monthly: number;
@@ -31,6 +32,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
   buttonText,
   clickHandler,
   currency,
+  discount,
 }) => {
   const isPro = planType === "pro";
 
@@ -42,9 +44,13 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
           : "border-zinc-200 dark:border-2 dark:border-black dark:bg-zinc-800"
       }`}
     >
-      {isPro && (
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[--darkest-orange] px-4 py-2 text-xs text-white md:text-base">
-          MOST POPULAR
+      {discount > 0 && (
+        <div className="absolute right-0 top-0">
+          <div className="relative">
+            <div className="absolute right-0 top-0 z-10 text-nowrap rounded-bl-[2.5rem] rounded-tr-[2.35rem] bg-main-gradient px-5 py-3 text-base font-bold text-zinc-900 shadow-xl">
+              {discount}% OFF
+            </div>
+          </div>
         </div>
       )}
 
@@ -62,28 +68,52 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
       </div>
 
       {/* Plan Name */}
-      <h1 className="font-grifter text-left text-3xl font-bold tracking-wider text-zinc-900 dark:text-zinc-200">
-        {title}
-      </h1>
+      <div className="flex items-center gap-2 text-2xl font-semibold">
+        <h1 className="poppins-bold text-left text-3xl font-bold tracking-wider text-zinc-900 dark:text-zinc-200">
+          {title}
+        </h1>
+        {planType === "pro" && (
+          <span className="ml-1 rounded border border-green-600 px-1 py-0 text-xs font-semibold text-green-600">
+            POPULAR
+          </span>
+        )}
+      </div>
 
       {/* Plan Description */}
       <p className="text-lg text-zinc-900 dark:text-gray-300">{description}</p>
 
       {/* Pricing */}
       <h2 className="mb-3 flex flex-row items-end gap-3 text-left font-bold text-black dark:text-white">
-        <span className="font-grifter text-xl tracking-wider text-zinc-800 line-through dark:text-zinc-300">
+        <span className="poppins-bold text-xl tracking-wider text-zinc-800 line-through dark:text-zinc-300">
           {activePlan === "Annual"
             ? `${currency}${originalPrice.annual}`
-            : `${currency}${originalPrice.monthly}`
-            }
+            : `${currency}${originalPrice.monthly}`}
         </span>
-        <span className="font-grifter text-2xl tracking-wider md:text-5xl">
+        <span className="poppins-bold text-2xl tracking-wider md:text-5xl">
           {activePlan === "Annual"
             ? `${currency}${price.annual}`
-            : `${currency}${price.monthly}`
-            }
+            : `${currency}${price.monthly}`}
         </span>
       </h2>
+
+      <div className="flex w-full">
+        {planType === "pro" ? (
+          <CTAnimatedButton
+            w={"100%"}
+            radius={"xl"}
+            label={buttonText}
+            hoverLabel="You will love it"
+            buttonStyles="w-60"
+            onClick={() => clickHandler?.(activePlan)}
+          />
+        ) : (
+          <CTBasicButton
+            label={buttonText}
+            className="mx-0 !w-full"
+            onClick={() => clickHandler?.(activePlan)}
+          />
+        )}
+      </div>
 
       {/* Features List */}
       <div className="mb-6 w-full">
@@ -103,20 +133,6 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
       </div>
 
       {/* Get Started Button */}
-      <div className="w-full">
-        <Button
-          size="lg"
-          radius="xl"
-          className={`w-full   text-lg font-semibold ${
-            isPro
-              ? "bg-zinc-800 text-white hover:bg-zinc-900 dark:bg-main-gradient dark:text-zinc-900"
-              : "bg-[--main-yellow] text-zinc-900 hover:bg-[--main-yellow] dark:bg-zinc-900 dark:text-zinc-200"
-          }`}
-          onClick={() => clickHandler?.(activePlan)}
-        >
-          {buttonText}
-        </Button>
-      </div>
     </div>
   );
 };

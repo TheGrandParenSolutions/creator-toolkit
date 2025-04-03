@@ -29,7 +29,7 @@
     #ffd580 50%,
     #ffc676 100%
   );
-  --brand-main-bg: #f9f8f5;
+  --brand-main-bg: #fff;
   --brand-light-orange: #fbab7e;
   --brand-sec-gradient: linear-gradient(
     0deg,
@@ -51,18 +51,21 @@ html {
 }
 
 body {
-  font-family: "Wix Madefor Display", sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: var(--black);
-  background-color: #f9f8f5;
+  background-color: var(--brand-main-bg);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.75;
   margin: 0;
-  letter-spacing: 0.025em;
 }
 
 .bg-light-app {
-  background-color: lighten(var(--brand-main-bg), 20%);
+  background-color: #fff;
+}
+
+.bg-dark-app {
+  background-color: #18181b;
 }
 
 body:has(.scroll-off) {
@@ -73,8 +76,10 @@ h1,
 h2,
 h3,
 h4,
-h5 {
-  font-family: "Wix Madefor Display", sans-serif;
+h5,
+a {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.025em;
 }
 @keyframes bounce {
   50% {
@@ -85,14 +90,25 @@ h5 {
   animation: bounce 0.4s ease-in-out;
 }
 
-.font-manrope {
-  font-family: "Manrope", sans-serif;
-}
-
-.font-wix {
-  font-family: "Wix Madefor Display", sans-serif;
+.font-DM {
+  font-family: "DM Sans", sans-serif;
 }
 
 * {
   scrollbar-color: #ececec transparent;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.font-grifter {
+  font-family: "GRIFTER Bold", sans-serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.025em;
 }

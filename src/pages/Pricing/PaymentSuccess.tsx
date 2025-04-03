@@ -12,7 +12,6 @@ const PaymentSuccess = () => {
   const currency = searchParams.get("currency");
   const paymentTime = searchParams.get("paymentTime");
 
-
   const paymentMethod = "Bank transfer";
 
   const [showConfetti, setShowConfetti] = useState(true);
@@ -24,7 +23,7 @@ const PaymentSuccess = () => {
   }, []);
 
   return (
-    <div className="my-16 flex flex-col items-center h-screen px-4">
+    <div className="my-16 flex h-screen flex-col items-center px-4">
       {showConfetti && <Confetti numberOfPieces={300} />}
 
       {/* Success Receipt Card */}
@@ -35,7 +34,7 @@ const PaymentSuccess = () => {
         </div>
 
         {/* Success Message */}
-        <h1 className="font-grifter mt-4 text-center text-2xl text-gray-900 dark:text-gray-100">
+        <h1 className="poppins-bold mt-4 text-center text-2xl text-gray-900 dark:text-gray-100">
           Payment success!
         </h1>
 
