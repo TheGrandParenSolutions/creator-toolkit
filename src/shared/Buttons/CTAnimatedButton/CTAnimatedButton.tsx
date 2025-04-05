@@ -21,7 +21,6 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
     url,
     to,
     onClick,
-    buttonStyles = "",
     hoverStyles = "",
     icon,
     loading,
@@ -29,19 +28,16 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isPressed, setIsPressed] = useState(false); // State for handling press animation
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
   const navigate = useNavigate();
+
+  const handlePressStart = () => setIsPressed(true);
+  const handlePressEnd = () => setIsPressed(false);
 
   // Check for touch devices
   useEffect(() => {
-    const checkTouchDevice = () => {
-      setIsTouchDevice(
-        "ontouchstart" in window || navigator.maxTouchPoints > 0,
-      );
-    };
-    checkTouchDevice();
-    window.addEventListener("resize", checkTouchDevice);
-    return () => window.removeEventListener("resize", checkTouchDevice);
+    if (!isTouchDevice) setIsTouchDevice(true);
   }, []);
 
   return (
@@ -50,7 +46,15 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
       loading={false}
       disabled={loading || disabled}
       onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
-      onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
+      onMouseDown={() => setIsPressed(true)} // Start press animation on mouse down
+      onMouseUp={() => setIsPressed(false)} // End press animation on mouse up
+      onMouseLeave={() => {
+        if (!isTouchDevice) setIsHovered(false);
+        setIsPressed(false);
+      }} // Ensure the animation ends if the mouse leaves
+      onTouchStart={handlePressStart} // For mobile
+      onTouchEnd={handlePressEnd} // For mobile
+      onTouchCancel={handlePressEnd} // For mobile
       onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         onClick?.(e); // Call custom click handler if provided
         if (to) {
@@ -60,42 +64,38 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
         }
       }}
       classNames={{
-        inner: "w-full text-center",
-        label: "w-full items-center justify-center font-semibold",
+        inner: "w-full text-center transition-all duration-500",
+        label:
+          "w-full items-center justify-center font-semibold transition-all duration-500",
       }}
-      style={{
-        border: !loading
-          ? !isHovered
-            ? ""
-            : ""
-          : undefined,
-        background: !loading
-          ? !isHovered
-            ? "var(--brand-bg-theme)"
-            : "#e4e4e7"
-          : undefined,
-      }}
-      className={`relative flex !rounded-[2.5rem]
-         shadow-[inset_3px_3px_5px_rgba(0,0,0,0.25),inset_-3px_-3px_5px_rgba(255,255,255,0.1)]
-        min-w-28 md:min-w-44 min-h-7 md:min-h-12 items-center justify-center overflow-hidden border-none !bg-zinc-800 text-black transition-all duration-[350ms] ${buttonStyles} ${
+      size="xl"
+      className={`relative flex transform  items-center justify-center overflow-hidden !rounded-[2.5rem]
+        
+         ${
+           isPressed ? "!scale-90" : "scale-100"
+         } border-none !bg-zinc-800 bg-main-gradient
+                  bg-size-200
+         bg-pos-0 px-6 py-4 text-black shadow-ct-dark transition-all duration-500 ease-in-out  
+                          
+         hover:bg-pos-100  ${""} ${
         loading &&
         "disabled:border-zinc-200 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none"
-      }`}
+      } `} // Apply scale and shadow on press
     >
       {loading ? (
-        <div className="absolute flex items-center justify-center">
+        <div className="absolute flex items-center justify-center transition-all duration-500">
           <CTLoader />
         </div>
       ) : (
         <>
           <span
-            className={`absolute inline-block text-center text-black transition-all duration-[350ms] ${
+            className={`absolute inline-block text-center text-black transition-all duration-500 ${
               isHovered
                 ? "-translate-y-full opacity-0"
                 : "translate-y-0 opacity-100"
             }`}
           >
-            <span className="flex items-center justify-center gap-1 text-base font-semibold poppins text-zinc-900 md:text-lg">
+            <span className="poppins flex items-center justify-center gap-2 text-base font-semibold text-zinc-900 md:text-lg">
               {icon && !isHovered && icon}
               {label}
             </span>
@@ -103,7 +103,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
 
           {/* Hover Label */}
           <span
-            className={`absolute text-center text-sm md:text-base lg:text-lg poppins bg-main-gradient bg-clip-text text-transparent font-semibold transition-all duration-[350ms] ${
+            className={`poppins absolute bg-main-gradient bg-clip-text text-center text-sm font-semibold text-transparent transition-all duration-[350ms] md:text-base lg:text-lg ${
               isHovered
                 ? "translate-y-0 opacity-100"
                 : "translate-y-full opacity-0"

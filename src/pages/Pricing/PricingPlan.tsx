@@ -38,7 +38,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
   return (
     <div
-      className={`relative flex max-w-[500px] flex-col items-start justify-around gap-4 rounded-[2.5rem] border p-6 shadow-md ${
+      className={`relative flex max-w-[500px] flex-col items-start justify-around gap-6 rounded-[2.5rem] border p-6 shadow-md ${
         isPro
           ? "border-[--brand-dark-orange] bg-[--brand-bg-light] dark:bg-zinc-800"
           : "border-zinc-200 dark:border-2 dark:border-black dark:bg-zinc-800"
@@ -121,7 +121,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
           {features.map((feature, index) => (
             <li
               key={index}
-              className="flex items-center gap-3 text-sm font-medium text-zinc-800 dark:text-zinc-200"
+              className="flex items-center gap-3 text-sm font-medium tracking-wide text-zinc-800 dark:text-zinc-200"
             >
               <span className="text-[--brand-dark-orange]">
                 <CheckIcon />
