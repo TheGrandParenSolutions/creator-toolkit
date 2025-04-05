@@ -53,11 +53,11 @@ function NavbarLink({
     <Tooltip label={label} position="right" transitionProps={{ duration: 20 }}>
       <UnstyledButton
         onClick={handleNavigation}
-        className={`flex transform items-center rounded-[2.5rem] p-3 transition-all duration-200 ease-in-out
-          hover:scale-[1.01] hover:bg-zinc-100 dark:hover:bg-zinc-800
+        className={`my-1 flex transform items-center rounded-2xl p-3 transition-all duration-200 ease-in-out
+          hover:scale-[1.01] hover:bg-zinc-100 dark:hover:bg-zinc-800            
           ${
             active
-              ? "bg-zinc-100  shadow-ct-light ring-2 ring-zinc-100   dark:bg-zinc-800 dark:shadow-ct-dark dark:ring-zinc-800"
+              ? "bg-zinc-100  shadow-ct-light ring-1 ring-zinc-200   dark:bg-zinc-800 dark:shadow-ct-dark dark:ring-zinc-700"
               : ""
           }
 
@@ -189,8 +189,8 @@ export function SideNav() {
         className={`fixed left-0 top-0 z-50 h-full overflow-hidden rounded-none border-none bg-light-app shadow-sm  transition-[width] duration-500 ease-in-out dark:border-black dark:bg-dark-app
         ${panelOpen ? "w-80" : isMobile ? "w-0" : "w-16"}`}
       >
-        {!isMobile && (
-          <Box className="cursor-pointer px-4 pb-2 pt-2">
+        <Box className="cursor-pointer px-4 pb-2 pt-2 min-h-12">
+          {!isMobile && (
             <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
               <UnstyledButton
                 onClick={() => setIsPanelOpen(!panelOpen)}
@@ -203,8 +203,8 @@ export function SideNav() {
                 )}
               </UnstyledButton>
             </Tooltip>
-          </Box>
-        )}
+          )}
+        </Box>
         <div className="mt-12 flex h-[calc(100%-90px)] flex-col justify-between">
           {/* Links */}
           <div className="flex-grow space-y-4 overflow-y-auto">

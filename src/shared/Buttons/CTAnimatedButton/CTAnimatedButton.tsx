@@ -15,17 +15,7 @@ interface AnimatedButtonProps extends ButtonProps {
 }
 
 export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
-  const {
-    label,
-    hoverLabel,
-    url,
-    to,
-    onClick,
-    hoverStyles = "",
-    icon,
-    loading,
-    disabled,
-  } = props;
+  const { label, url, to, onClick, icon, loading, disabled } = props;
 
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false); // State for handling press animation
@@ -68,48 +58,30 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
         label:
           "w-full items-center justify-center font-semibold transition-all duration-500",
       }}
-      size="xl"
-      className={`relative flex transform  items-center justify-center overflow-hidden !rounded-[2.5rem]
-        
-         ${
-           isPressed ? "!scale-90" : "scale-100"
-         } border-none !bg-zinc-800 bg-main-gradient
+      className={`flex max-h-[60px]  min-h-[56px] w-auto transform items-center justify-center rounded-3xl border-none
+         ${isPressed ? "!scale-90" : "scale-100"}  !bg-zinc-800 bg-main-gradient
                   bg-size-200
-         bg-pos-0 px-6 py-4 text-black shadow-ct-dark transition-all duration-500 ease-in-out  
+         bg-pos-0 px-4 py-2 text-black shadow-ct-dark transition-all duration-500 ease-in-out hover:bg-pos-100 md:px-6  
                           
-         hover:bg-pos-100  ${""} ${
+         md:py-3  ${""} ${
         loading &&
         "disabled:border-zinc-200 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none"
       } `} // Apply scale and shadow on press
+      size="auto"
     >
       {loading ? (
-        <div className="absolute flex items-center justify-center transition-all duration-500">
+        <div className="flex items-center justify-center transition-all duration-500">
           <CTLoader />
         </div>
       ) : (
         <>
           <span
-            className={`absolute inline-block text-center text-black transition-all duration-500 ${
-              isHovered
-                ? "-translate-y-full opacity-0"
-                : "translate-y-0 opacity-100"
-            }`}
+            className={` text-center text-black transition-all duration-500`}
           >
-            <span className="poppins flex items-center justify-center gap-2 text-base font-semibold text-zinc-900 md:text-lg">
+            <span className="poppins flex items-center justify-center gap-2 text-sm font-semibold text-zinc-900 md:text-base ">
               {icon && !isHovered && icon}
               {label}
             </span>
-          </span>
-
-          {/* Hover Label */}
-          <span
-            className={`poppins absolute bg-main-gradient bg-clip-text text-center text-sm font-semibold text-transparent transition-all duration-[350ms] md:text-base lg:text-lg ${
-              isHovered
-                ? "translate-y-0 opacity-100"
-                : "translate-y-full opacity-0"
-            } ${hoverStyles}`}
-          >
-            {hoverLabel}
           </span>
         </>
       )}
