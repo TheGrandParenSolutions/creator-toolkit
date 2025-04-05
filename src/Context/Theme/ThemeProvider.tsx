@@ -5,6 +5,11 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
+    if (!storedTheme) {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+      return;
+    }
     if (storedTheme === "dark") {
       setDarkMode(true);
       document.documentElement.classList.add("dark");
