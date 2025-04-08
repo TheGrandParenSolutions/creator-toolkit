@@ -43,7 +43,7 @@ const CTBasicButton: FC<CustomButtonProps> = ({
                   transform transition-all duration-200 ease-in-out 
                   ${isPressed ? "scale-90" : "scale-100"}`}
     >
-      <span className="poppins flex items-center gap-2 whitespace-nowrap text-sm font-semibold md:text-base ">
+      <span className="font-primary flex items-center gap-2 whitespace-nowrap text-sm font-semibold md:text-base ">
         {icon}
         {label}
       </span>

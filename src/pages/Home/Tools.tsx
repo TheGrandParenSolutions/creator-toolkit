@@ -27,7 +27,7 @@ const ComponentCard: FC<ComponentCardProps> = ({
         </div>
 
         {/* Title & Description */}
-        <h5 className="poppins-bold mt-4 text-center text-base font-bold text-black dark:text-white">
+        <h5 className="font-primary mt-4 text-center text-base font-bold font-semibold text-black dark:text-white">
           {name}
         </h5>
         <p className="text-sm text-zinc-700 dark:text-zinc-300">
@@ -87,7 +87,7 @@ const Tools: FC = () => {
   return (
     <div className="bg-transparent px-4 py-16">
       {/* Section Title */}
-      <h2 className="poppins-bold mb-8 text-center text-3xl text-black dark:text-white sm:text-4xl">
+      <h2 className="font-primary mb-8 text-center text-3xl font-semibold text-black dark:text-white sm:text-4xl">
         Tools We Offer
       </h2>
 

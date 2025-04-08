@@ -101,7 +101,7 @@ const ForgotPassword = ({ onBack }: { onBack?: () => void }) => {
             <Text
               size="lg"
               component="h1"
-              className="poppins-bold font-bold text-zinc-800 dark:text-white md:text-xl"
+              className="font-primary font-bold font-semibold text-zinc-800 dark:text-white md:text-xl"
             >
               Forgot Your Password?
             </Text>

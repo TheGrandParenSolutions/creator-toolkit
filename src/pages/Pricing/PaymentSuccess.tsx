@@ -34,7 +34,7 @@ const PaymentSuccess = () => {
         </div>
 
         {/* Success Message */}
-        <h1 className="poppins-bold mt-4 text-center text-2xl text-gray-900 dark:text-gray-100">
+        <h1 className="font-primary mt-4 text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
           Payment success!
         </h1>
 

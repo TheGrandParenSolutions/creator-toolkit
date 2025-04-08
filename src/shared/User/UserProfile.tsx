@@ -29,7 +29,7 @@ const UserProfile: FC = () => {
       <Menu.Target>
         <Tooltip
           label={
-            <Text className="poppins-bold flex items-center justify-center gap-1 text-xs dark:text-zinc-300">
+            <Text className="font-primary flex items-center justify-center gap-1 text-xs font-semibold dark:text-zinc-300">
               {user.userName}
               {isPremium && (
                 <CrownIconSolid className="inline h-4 w-4 text-yellow-500" />
@@ -70,7 +70,7 @@ const UserProfile: FC = () => {
       >
         {/* Header with Premium Status */}
         <div className="p-3 text-center">
-          <Text className="poppins-bold flex items-center justify-center gap-2 text-lg dark:text-zinc-200">
+          <Text className="font-primary flex items-center justify-center gap-2 text-lg font-semibold dark:text-zinc-200">
             {user.userName}
             {isPremium && <CrownIconSolid className="inline text-yellow-500" />}
           </Text>

@@ -108,7 +108,7 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-40 bg-light-app  transition-all duration-300 dark:!bg-dark-app md:left-14 ${
+      className={`fixed left-0 right-0 top-0 z-40 bg-light-app  transition-all duration-300 dark:!bg-dark-app md:left-16 ${
         isScrolled
           ? "border border-solid border-zinc-50  shadow-sm  dark:border-black "
           : ""
@@ -136,7 +136,7 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="flex items-center text-base poppins font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
+                className="font-primary flex items-center text-base font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
               >
                 <span>Youtube</span>
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -150,7 +150,7 @@ export function MainNav() {
           {/* Navigation Links */}
           <Link
             to="/pricing"
-            className={` text-base font-medium transition poppins hover:text-yellow-500 hover:underline ${
+            className={` font-primary text-base font-medium transition hover:text-yellow-500 hover:underline ${
               location.pathname === "/pricing"
                 ? "text-yellow-500 underline"
                 : "text-zinc-900 dark:text-zinc-50"

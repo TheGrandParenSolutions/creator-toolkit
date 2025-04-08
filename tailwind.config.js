@@ -23,6 +23,7 @@ export default {
         rgba(255, 125, 0, 1) 0%,
         rgba(255, 95, 109, 1) 100%
         )`,
+        'text-gradient': `linear-gradient(#f0f0f0, #9e9e9e);`
       },
       boxShadow: {
         'ct-light': 'inset 3px 3px 5px rgba(0, 0, 0, 0.15), inset -3px -3px 5px rgba(255, 255, 255, 0.8)',

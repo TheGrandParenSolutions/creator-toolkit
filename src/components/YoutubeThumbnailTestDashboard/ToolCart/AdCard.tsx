@@ -9,7 +9,7 @@ const AdCard = () => {
       }}
     >
       {/* Heading */}
-      <h1 className="poppins-bold text-xl  font-bold">
+      <h1 className="font-primary text-xl font-bold  font-semibold">
         Free YouTube AI Thumbnail Maker
       </h1>
 

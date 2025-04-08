@@ -58,13 +58,13 @@ const Footer = () => {
         {/* Copyright Text (Dynamic) */}
         <Text
           size="sm"
-          className="poppins-bold text-zinc-600 dark:text-zinc-300"
+          className="font-primary font-semibold text-zinc-600 dark:text-zinc-300"
         >
           © {new Date().getFullYear()} Creator Toolkit. All rights reserved.
         </Text>
         <Text
           size="sm"
-          className="poppins-bold flex flex-wrap items-center justify-center gap-2 text-zinc-600 dark:text-zinc-300"
+          className="font-primary flex flex-wrap items-center justify-center gap-2 font-semibold text-zinc-600 dark:text-zinc-300"
         >
           Designed with <HeartIcon /> by Team JJ
         </Text>

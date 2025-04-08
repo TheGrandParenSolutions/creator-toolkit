@@ -51,7 +51,7 @@ html {
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--black);
   background-color: var(--brand-main-bg);
   font-size: 1rem;
@@ -77,8 +77,9 @@ h2,
 h3,
 h4,
 h5,
-a {
-  font-family: "Poppins", sans-serif;
+a,
+button {
+  font-family: "Work Sans", sans-serif;
   letter-spacing: -0.025em;
 }
 @keyframes bounce {
@@ -90,25 +91,18 @@ a {
   animation: bounce 0.4s ease-in-out;
 }
 
-.font-DM {
-  font-family: "DM Sans", sans-serif;
-}
-
 * {
   scrollbar-color: #ececec transparent;
-}
-
-.poppins-bold {
-  font-family: "Poppins", sans-serif;
-  letter-spacing: -0.025em;
-  font-weight: 600;
 }
 
 .font-grifter {
   font-family: "GRIFTER Bold", sans-serif;
 }
 
-.poppins {
-  font-family: "Poppins", sans-serif;
-  letter-spacing: -0.025em;
+.font-primary {
+  font-family: "Work Sans", sans-serif;
+}
+
+.font-secondary {
+  font-family: "Inter", sans-serif;
 }

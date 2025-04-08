@@ -69,7 +69,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
       {/* Plan Name */}
       <div className="flex items-center gap-2 text-2xl font-semibold">
-        <h1 className="poppins-bold text-left text-3xl font-bold tracking-wider text-zinc-900 dark:text-zinc-200">
+        <h1 className="font-primary text-left text-3xl font-bold font-semibold tracking-wider text-zinc-900 dark:text-zinc-200">
           {title}
         </h1>
         {planType === "pro" && (
@@ -84,12 +84,12 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 
       {/* Pricing */}
       <h2 className="mb-3 flex flex-row items-end gap-3 text-left font-bold text-black dark:text-white">
-        <span className="poppins-bold text-xl tracking-wider text-zinc-800 line-through dark:text-zinc-300">
+        <span className="font-primary text-xl font-semibold tracking-wider text-zinc-800 line-through dark:text-zinc-300">
           {activePlan === "Annual"
             ? `${currency}${originalPrice.annual}`
             : `${currency}${originalPrice.monthly}`}
         </span>
-        <span className="poppins-bold text-2xl tracking-wider md:text-5xl">
+        <span className="font-primary text-2xl font-semibold tracking-wider md:text-5xl">
           {activePlan === "Annual"
             ? `${currency}${price.annual}`
             : `${currency}${price.monthly}`}

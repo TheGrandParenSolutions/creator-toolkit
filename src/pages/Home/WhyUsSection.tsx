@@ -26,7 +26,7 @@ const WhyUsSection: FC = () => {
   return (
     <div className="px-6 py-16 text-center md:px-12">
       {/* Section Heading */}
-      <h2 className="poppins-bold mb-8 text-3xl text-black dark:text-white sm:text-4xl">
+      <h2 className="font-primary mb-8 text-3xl font-semibold text-black dark:text-white sm:text-4xl">
         Why Choose Creator Toolkit?
       </h2>
 

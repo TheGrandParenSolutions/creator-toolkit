@@ -20,7 +20,7 @@ const Sell = () => {
               <Rocket className="h-7 w-7 text-[--main-yellow] sm:h-8 sm:w-8" />
             </div>
 
-            <h1 className="poppins-bold text-center text-xl leading-tight text-[--main-yellow] sm:text-left sm:text-5xl">
+            <h1 className="font-primary text-center text-xl font-semibold leading-tight text-[--main-yellow] sm:text-left sm:text-5xl">
               Grow your channel with <br className="hidden sm:block" /> Creator
               Toolkit
             </h1>

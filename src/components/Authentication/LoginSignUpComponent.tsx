@@ -160,7 +160,7 @@ export const LoginSignUpComponent = (props: {
         <Text
           size="lg"
           component="h1"
-          className="poppins-bold font-bold text-gray-800 dark:text-white md:text-xl"
+          className="font-primary font-bold font-semibold text-gray-800 dark:text-white md:text-xl"
         >
           {isLogin ? "Welcome Back!" : "Create Your Account"}
         </Text>

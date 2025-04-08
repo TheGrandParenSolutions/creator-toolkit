@@ -84,7 +84,7 @@ const Pricing = () => {
           <Text
             size="lg"
             component="h1"
-            className="poppins-bold mb-4 text-lg text-black dark:text-white md:text-xl lg:text-4xl"
+            className="font-primary mb-4 text-lg font-semibold text-black dark:text-white md:text-xl lg:text-4xl"
           >
             Grow your channel with a single tool.
           </Text>

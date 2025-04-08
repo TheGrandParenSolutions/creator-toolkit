@@ -42,7 +42,7 @@ const EngagementSection: FC = () => {
           </div>
 
           {/* Title */}
-          <h1 className="poppins-bold text-center text-3xl leading-tight text-[--main-yellow] sm:text-4xl md:text-5xl">
+          <h1 className="font-primary text-center text-3xl font-semibold leading-tight text-[--main-yellow] sm:text-4xl md:text-5xl">
             Generate Your Next <br className="hidden sm:block" /> Content Idea
           </h1>
 

@@ -200,7 +200,7 @@ const YoutubeToText: FC = () => {
               <div className="mb-4 flex flex-col items-center justify-between gap-4 md:flex-row">
                 {/* Language Selector */}
                 <div className="flex items-center space-x-2">
-                  <Text className="poppins-bold text-base font-bold text-zinc-800 dark:text-zinc-100 md:text-2xl">
+                  <Text className="font-primary text-base font-bold font-semibold text-zinc-800 dark:text-zinc-100 md:text-2xl">
                     {language === "english"
                       ? "English (auto-generated)"
                       : language.charAt(0).toUpperCase() + language.slice(1)}
