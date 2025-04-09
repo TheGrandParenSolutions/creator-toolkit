@@ -23,7 +23,7 @@ const MainSection: FC<PropsWithChildren> = ({ children }) => {
   }, [user]);
   return (
     <Box className="flex h-screen flex-col justify-between">
-      <Box className="flex gap-0 scroll-smooth bg-light-app text-zinc-800 transition-all duration-300 dark:bg-dark-app-content dark:text-zinc-100 md:gap-16">
+      <Box className="flex gap-0 scroll-smooth bg-light-app  text-zinc-800 transition-all duration-300 dark:!bg-dark-app-content dark:text-zinc-100 md:gap-16">
         <Box>
           <MainNav />
           <SideNav />

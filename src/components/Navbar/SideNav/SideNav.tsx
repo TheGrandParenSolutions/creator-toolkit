@@ -6,8 +6,6 @@ import {
   HomeIconSolid,
   MoneyIcon,
   MoneyIconSolid,
-  PanelLeftIcon,
-  PanelRightIcon,
   RemoveBGIcon,
   RemoveBGIconSolid,
   ThumbnailDownloaderIcon,
@@ -22,6 +20,7 @@ import {
 import Hamburger from "@src/components/Navbar/Hamburger/Hamburger";
 import UserProfile from "@src/shared/User/UserProfile";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
+import { useSidebar } from "@src/Context/Sidebar/SidebarContext";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -140,15 +139,14 @@ export function SideNav() {
   const location = useLocation();
   const { pathname } = location;
   const [active, setActive] = useState<number | null>(null);
-  const [panelOpen, setIsPanelOpen] = useState<boolean>(
-    () => localStorage.getItem("panelOpen") === "true",
-  );
+
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
+  const { panelOpen, setPanelOpen } = useSidebar();
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) setIsPanelOpen(false);
+      if (window.innerWidth >= 768) setPanelOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -169,39 +167,35 @@ export function SideNav() {
 
   return (
     <>
-      {isMobile && (
+      {/* {isMobile && (
         <button
-          onClick={() => setIsPanelOpen(!panelOpen)}
+          onClick={() => setPanelOpen(!panelOpen)}
           className="fixed left-1 top-[10px] z-[51]"
         >
           <Hamburger menuOpen={panelOpen} />
         </button>
-      )}
+      )} */}
 
       {panelOpen && (
         <div
           className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity dark:bg-opacity-75"
-          onClick={() => setIsPanelOpen(false)}
+          onClick={() => setPanelOpen(false)}
         />
       )}
 
       <nav
-        className={`fixed left-0 top-0 z-50 h-full overflow-hidden rounded-none border-none bg-light-app shadow-sm  transition-[width] duration-500 ease-in-out dark:border-black dark:bg-dark-app
-        ${panelOpen ? "w-80" : isMobile ? "w-0" : "w-16"}`}
+        className={`fixed left-0 top-0 z-50 h-full overflow-hidden rounded-none border-none bg-light-app shadow-sm  transition-[width] duration-500 ease-in-out dark:border-black dark:bg-dark-app-content
+        ${panelOpen ? "w-80" : isMobile ? "w-0" : "w-0"}`}
       >
-        <Box className="cursor-pointer px-4 pb-2 pt-2 min-h-12">
-          {!isMobile && (
+        <Box className="min-h-12 cursor-pointer px-4 pb-2 pt-2">
+          {!isMobile && panelOpen && (
             <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
-              <UnstyledButton
-                onClick={() => setIsPanelOpen(!panelOpen)}
-                className="flex items-center rounded-lg p-1 hover:bg-zinc-100 dark:hover:bg-zinc-700"
+              <button
+                onClick={() => setPanelOpen(!panelOpen)}
+                className="fixed left-1 top-[10px] z-[51]"
               >
-                {panelOpen ? (
-                  <PanelRightIcon className="text-xl dark:text-zinc-200" />
-                ) : (
-                  <PanelLeftIcon className="text-xl dark:text-zinc-400" />
-                )}
-              </UnstyledButton>
+                <Hamburger menuOpen={panelOpen} />
+              </button>
             </Tooltip>
           )}
         </Box>
@@ -226,7 +220,7 @@ export function SideNav() {
                         isExpanded={panelOpen}
                         onClick={() => {
                           setActive(flatIndex);
-                          setIsPanelOpen(false);
+                          setPanelOpen(false);
                         }}
                       />
                     );

@@ -6,7 +6,7 @@ const HamburgerMenu = ({ menuOpen }: { menuOpen: boolean }) => {
       <input type="checkbox" checked={menuOpen} />
       <svg
         viewBox="0 0 32 32"
-        className="h-8 w-8 stroke-zinc-800 dark:stroke-zinc-100"
+        className="h-4 md:h-8 w-4 md:w-8 stroke-zinc-800 dark:stroke-zinc-100"
       >
         <path
           className="line line-top-bottom"

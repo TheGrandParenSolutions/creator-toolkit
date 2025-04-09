@@ -1,5 +1,6 @@
 import { Text } from "@mantine/core";
 import { ImageSolid } from "@mynaui/icons-react";
+import { HeroBackground } from "@src/pages/Home/HeroBG";
 import TrustedBy from "@src/pages/Home/TrustedBy";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
 import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
@@ -11,7 +12,7 @@ const HeroSection = () => {
     <div className="relative flex w-full flex-col items-center justify-center px-4 py-2 text-center sm:px-8 md:px-12 md:py-8 lg:px-16 xl:px-24">
       {/* Background SVG Animation */}
       <div className="absolute inset-0 -z-0 w-full overflow-hidden">
-        {/* <HeroSectionBG className="animate-wave w-full text-black opacity-100 mix-blend-soft-light dark:text-white dark:opacity-100" /> */}
+        <HeroBackground />
       </div>
       {/* Textured Ambient Background */}
 
@@ -20,7 +21,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="font-primary mt-14 max-w-[90%] text-3xl font-semibold leading-tight text-black dark:text-white sm:text-4xl md:max-w-5xl md:text-5xl lg:text-[70px]"
+        className="font-primary relative mt-14 max-w-[90%] text-3xl font-semibold leading-tight text-black dark:text-white sm:text-4xl md:max-w-5xl md:text-5xl lg:text-[70px]"
       >
         <span className="bg-main-gradient bg-clip-text text-transparent">
           Content
@@ -70,6 +71,7 @@ const HeroSection = () => {
           label="Try our tools"
           icon={<ImageSolid />}
           className="w-full sm:w-auto"
+          enableBorderAnimation
         />
       </div>
 

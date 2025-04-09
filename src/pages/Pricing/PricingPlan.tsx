@@ -41,7 +41,7 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
       className={`relative flex max-w-[500px] flex-col items-start justify-around gap-6 rounded-[2.5rem] border p-6 shadow-md ${
         isPro
           ? "border-[--brand-dark-orange] bg-[--brand-bg-light] dark:bg-zinc-800"
-          : "border-zinc-200 dark:border-2 dark:border-black dark:bg-zinc-800"
+          : "border-zinc-200 dark:border-2 dark:border-black "
       }`}
     >
       {discount > 0 && (

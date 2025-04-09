@@ -78,7 +78,7 @@ const Pricing = () => {
         </script>
       </Helmet>
 
-      <div className="flex flex-col items-center justify-start bg-light-app px-4 pb-12 pt-2 text-zinc-800 transition-all duration-300 dark:bg-dark-app-content dark:text-zinc-100">
+      <div className="flex flex-col items-center justify-start bg-inherit px-4 pb-12 pt-2 text-zinc-800 transition-all duration-300  dark:text-zinc-100">
         {/* Heading */}
         <Box id="initial-section" className="mb-10 max-w-3xl text-center">
           <Text

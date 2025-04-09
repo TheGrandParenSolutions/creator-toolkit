@@ -28,7 +28,7 @@ const features = [
 
 const HowItWorks = () => {
   return (
-    <div className="flex flex-col items-center justify-start px-4 pb-12 pt-10 text-black dark:bg-dark-app dark:!text-white">
+    <div className="flex flex-col items-center justify-start px-4 pb-12 pt-10 text-black  dark:!text-white">
       {/* Section Heading */}
       <Box className="mb-8 text-center">
         <Text size="lg" component="h2" className="font-bold md:text-3xl lg:text-4xl">

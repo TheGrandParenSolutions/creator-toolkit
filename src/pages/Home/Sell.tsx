@@ -40,6 +40,7 @@ const Sell = () => {
               label="Try our tools"
               className="w-full whitespace-nowrap !p-4 sm:w-auto sm:!p-4"
               icon={<ImageSolid />}
+              enableBorderAnimation
             />
           </div>
         </div>

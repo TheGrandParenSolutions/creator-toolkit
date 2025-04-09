@@ -33,7 +33,7 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="mt-10 border-t border-zinc-100  px-6 py-6 text-center text-black  shadow-xl shadow-zinc-500 dark:border-zinc-700 dark:bg-dark-app-content dark:text-white dark:shadow-zinc-100 md:ml-4">
+    <footer className="px-6 py-6 text-center text-black  dark:text-white bg-transparent rounded-3xl border border-zinc-100/70 dark:border-zinc-800">
       {/* Navigation Links */}
       <nav className="mx-10 my-6 flex flex-wrap justify-center gap-4 text-sm font-semibold text-zinc-600 dark:text-zinc-300 sm:gap-6">
         {footerLinks.map((link, index) => (

@@ -7,7 +7,7 @@ const LoginSignup = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-16 flex flex-col items-center justify-center gap-6  px-4 dark:bg-dark-app-content dark:text-white">
+    <div className="mt-16 flex flex-col items-center justify-center gap-6 bg-light-app px-4 dark:bg-dark-app-content dark:text-white">
       {/* Logo */}
       <Box
         className="flex cursor-pointer items-center"

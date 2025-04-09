@@ -6,7 +6,7 @@ import { useState, useEffect, useContext, useMemo } from "react";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { AuthContext } from "@src/Context/Auth/AuthContext";
 import UserProfile from "@src/shared/User/UserProfile";
-import { Group, Text, ActionIcon, Menu } from "@mantine/core";
+import { Group, Text, ActionIcon, Menu, Box, Tooltip } from "@mantine/core";
 import {
   CrownIconSolid,
   ThumbnailDownloaderIcon,
@@ -18,6 +18,8 @@ import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
 import { useCreditContext } from "@src/Context/Credits/CreditContext";
 import Credits from "@src/components/Credits/Credits";
 import { isNil } from "@src/utils/CommonUtils";
+import { useSidebar } from "@src/Context/Sidebar/SidebarContext";
+import Hamburger from "@src/components/Navbar/Hamburger/Hamburger";
 
 const youtubeFeatures = [
   {
@@ -53,10 +55,11 @@ export function MainNav() {
   const location = useLocation();
   const isPremium = user?.type === "premium";
   const navigate = useNavigate();
+  const { panelOpen, togglePanel } = useSidebar();
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0); // Add shadow when scrolled
+      setIsScrolled(window.scrollY > 200); // Add shadow when scrolled
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -68,17 +71,14 @@ export function MainNav() {
   const featureLinks = youtubeFeatures.map(feature => (
     <Menu.Item
       key={feature.title}
-      className={`block rounded-xl text-black transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black`}
+      className={`block rounded-xl text-black transition hover:bg-main-gradient dark:text-white dark:hover:text-black`}
     >
       <Link
         to={feature.link}
-        className="block rounded-xl text-black  transition hover:bg-[--brand--light-yellow] dark:text-white dark:hover:text-black"
+        className="block rounded-xl text-black  transition  dark:text-white dark:hover:text-black"
       >
         <Group className="flex-nowrap gap-2" align="center">
-          <ActionIcon size={32} variant="filled" radius={"xl"} color="#f1f5f9">
-            <feature.icon className="text-zinc-800" />
-          </ActionIcon>
-          <Text size="sm" fw={600}>
+          <Text size="md" fw={600}>
             {feature.title}
           </Text>
           {/* Active Icon */}
@@ -108,15 +108,25 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-40 bg-light-app  transition-all duration-300 dark:!bg-dark-app md:left-16 ${
+      className={`fixed left-2 right-2 top-4 z-40 transition-all duration-700 md:left-0 md:right-0 ${
         isScrolled
-          ? "border border-solid border-zinc-50  shadow-sm  dark:border-black "
-          : ""
+          ? "mx-auto max-w-[85%] rounded-full border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
+          : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between py-2 pl-4 pr-2">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between py-2 pl-4 pr-2">
         {/* Desktop Layout */}
-        <div className="ml-8 flex w-auto justify-center md:mx-0 lg:justify-start">
+        <div className="flex w-auto justify-center gap-6 md:mx-0 md:gap-20 lg:justify-start">
+          <Box className="flex items-center justify-center">
+            <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
+              <button
+                onClick={() => togglePanel()}
+                className="absolute z-[51] rounded-3xl p-2 shadow-ct-light dark:shadow-ct-dark "
+              >
+                <Hamburger menuOpen={panelOpen} />
+              </button>
+            </Tooltip>
+          </Box>
           {/* Logo */}
           <Logo />
         </div>
@@ -136,13 +146,18 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="font-primary flex items-center text-base font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
+                className="font-primary group flex items-center text-base font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
               >
-                <span>Youtube</span>
-                <ChevronDown className="ml-1 h-4 w-4" />
+                <span>Features</span>
+                <ChevronDown className="ml-1 h-4 w-4 rotate-0 transform transition-transform duration-500 group-hover:rotate-180" />
               </a>
             </Menu.Target>
-            <Menu.Dropdown className="border border-[--main-yellow] bg-zinc-50 p-1 dark:border-black dark:bg-zinc-700">
+            <Menu.Dropdown
+              classNames={{
+                dropdown:
+                  "bg-zinc-50 dark:bg-zinc-800 shadow-ct-light dark:shadow-ct-dark rounded-[2.5rem] border-none  dark:shadow-zinc-700 px-3 py-4",
+              }}
+            >
               {featureLinks}
             </Menu.Dropdown>
           </Menu>
