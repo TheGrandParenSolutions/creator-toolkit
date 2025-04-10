@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Box, Tooltip, UnstyledButton } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -21,6 +21,8 @@ import Hamburger from "@src/components/Navbar/Hamburger/Hamburger";
 import UserProfile from "@src/shared/User/UserProfile";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
 import { useSidebar } from "@src/Context/Sidebar/SidebarContext";
+import CTBasicButton from "@src/shared/Buttons/CTBasicButton/CTBasicButton";
+import { AuthContext } from "@src/Context/Auth/AuthContext";
 
 interface NavbarLinkProps {
   icon: React.ComponentType<any>;
@@ -139,7 +141,8 @@ export function SideNav() {
   const location = useLocation();
   const { pathname } = location;
   const [active, setActive] = useState<number | null>(null);
-
+  const { isAuthenticated, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
   const { panelOpen, setPanelOpen } = useSidebar();
 
@@ -167,14 +170,14 @@ export function SideNav() {
 
   return (
     <>
-      {/* {isMobile && (
+      {isMobile && panelOpen && (
         <button
           onClick={() => setPanelOpen(!panelOpen)}
           className="fixed left-1 top-[10px] z-[51]"
         >
           <Hamburger menuOpen={panelOpen} />
         </button>
-      )} */}
+      )}
 
       {panelOpen && (
         <div
@@ -235,7 +238,17 @@ export function SideNav() {
           {/* Footer */}
           <div className="mt-auto flex items-center justify-between px-4 py-4 shadow-2xl">
             <div className="flex items-center space-x-3">
-              <UserProfile />
+              {isAuthenticated && user ? (
+                <UserProfile />
+              ) : (
+                <CTBasicButton
+                  label="Log in"
+                  onClick={() => {
+                    setPanelOpen(false);
+                    navigate("/login");
+                  }}
+                />
+              )}
             </div>
             {panelOpen && <DarkModeToggle />}
           </div>
