@@ -59,7 +59,7 @@ export function MainNav() {
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 200); // Add shadow when scrolled
+      setIsScrolled(window.scrollY > 100); // Add shadow when scrolled
     };
     window.addEventListener("scroll", handleScroll);
     return () => {

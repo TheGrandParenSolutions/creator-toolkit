@@ -1,5 +1,6 @@
 import { Text } from "@mantine/core";
 import { ImageSolid } from "@mynaui/icons-react";
+import AIDashboardEntry from "@src/components/Ai/AiDashboardEntry";
 import { HeroBackground } from "@src/pages/Home/HeroBG";
 import TrustedBy from "@src/pages/Home/TrustedBy";
 import { CTAnimatedButton } from "@src/shared/Buttons/CTAnimatedButton/CTAnimatedButton";
@@ -37,6 +38,9 @@ const HeroSection = () => {
       >
         Generate videos, thumbnails, and more in one click using AI.
       </motion.p>
+      <div className="my-5 mt-10">
+        <AIDashboardEntry />
+      </div>
 
       {/* Catchphrase */}
       {/* <motion.p
