@@ -111,25 +111,30 @@ export function MainNav() {
       className={`fixed left-2 right-2 top-4 z-40 transition-all duration-700 md:left-0 md:right-0 ${
         isScrolled
           ? "mx-auto max-w-[85%] rounded-3xl border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
-          : "bg-transparent mx-auto max-w-[95%] px-4 py-2"
+          : "mx-auto max-w-[95%] bg-transparent px-4 py-2"
       }`}
     >
       <div className="relative mx-auto flex max-w-7xl items-center justify-between py-2 pl-4 pr-2">
         {/* Desktop Layout */}
-        <div className="flex w-auto justify-center gap-6 md:mx-0 md:gap-20 lg:justify-start">
+        <div className="flex w-auto justify-center gap-10 md:mx-0 md:gap-20 lg:justify-start">
           <Box className="flex items-center justify-center">
             <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
               <button
                 onClick={() => togglePanel()}
-                className="absolute z-[51] rounded-3xl p-2 shadow-ct-light dark:shadow-ct-dark "
+                className=" z-[51] rounded-3xl p-2 shadow-ct-light dark:shadow-ct-dark "
               >
                 <Hamburger menuOpen={panelOpen} />
               </button>
             </Tooltip>
           </Box>
-          {/* Logo */}
+          <div className="hidden lg:flex">
+            <Logo />
+          </div>
+        </div>
+        <div className="lg:hidden">
           <Logo />
         </div>
+        <div className="lg:hidden"></div>
 
         <nav className="hidden items-center space-x-6 lg:flex">
           {/* Menu for YouTube Features */}
@@ -146,7 +151,7 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="font-primary group flex items-center text-xs md:text-base  lg:text-xl font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
+                className="font-primary group flex items-center text-xs font-medium  text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400 md:text-base lg:text-xl"
               >
                 <span>Features</span>
                 <ChevronDown className="ml-1 h-4 w-4 rotate-0 transform transition-transform duration-500 group-hover:rotate-180" />
@@ -165,7 +170,7 @@ export function MainNav() {
           {/* Navigation Links */}
           <Link
             to="/pricing"
-            className={` font-primary text-xs md:text-base  lg:text-xl font-medium transition hover:text-yellow-500 hover:underline ${
+            className={` font-primary text-xs font-medium  transition hover:text-yellow-500 hover:underline md:text-base lg:text-xl ${
               location.pathname === "/pricing"
                 ? "text-yellow-500 underline"
                 : "text-zinc-900 dark:text-zinc-50"
@@ -209,7 +214,7 @@ export function MainNav() {
         </div>
 
         {/* Mobile Layout */}
-        <div className="flex items-center justify-end lg:hidden">
+        <div className=" hidden items-center justify-end">
           <div>
             {isAuthenticated && user ? (
               <UserProfile />

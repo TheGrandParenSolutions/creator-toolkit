@@ -7,12 +7,12 @@ const Logo = () => {
   return (
     <Tooltip label="Toolkit home" position="bottom">
       <Box
-        className="flex cursor-pointer items-center justify-center gap-3 text-zinc-900 dark:text-zinc-50"
+        className="flex cursor-pointer items-center justify-center gap-2 md:gap-4  text-zinc-900 dark:text-zinc-50"
         onClick={() => navigate("/")}
       >
         <CTIcon /> {/* Adjust size of the icon */}
         <Text
-          className="font-grifter text-xs md:text-base  lg:text-xl font-bold uppercase"
+          className="font-grifter text-base  lg:text-xl font-bold uppercase"
           style={{ letterSpacing: "0.01em" }}
         >
           Creator Toolkit
