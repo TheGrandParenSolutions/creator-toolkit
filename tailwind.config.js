@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'zero': '140px', // custom screen size
+      },
       colors: {
         'light-app': '#ffff',
         'dark-app': '#18181b',

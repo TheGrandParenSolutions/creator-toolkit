@@ -131,7 +131,7 @@ export function MainNav() {
             <Logo />
           </div>
         </div>
-        <div className="lg:hidden">
+        <div className="flex lg:!hidden">
           <Logo />
         </div>
         <div className="lg:hidden"></div>
