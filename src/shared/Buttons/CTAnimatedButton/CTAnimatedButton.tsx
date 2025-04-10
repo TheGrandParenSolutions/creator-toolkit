@@ -78,7 +78,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
           <span
             className={` text-center text-black transition-all duration-500`}
           >
-            <span className="font-primary flex items-center justify-center gap-2 text-xs font-semibold text-zinc-900 md:text-base ">
+            <span className="font-primary flex items-center justify-center gap-2 text-sm font-semibold text-zinc-900 md:text-base ">
               {icon && !isHovered && icon}
               {label}
             </span>
