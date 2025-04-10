@@ -243,6 +243,7 @@ export function SideNav() {
               ) : (
                 <CTBasicButton
                   label="Log in"
+                  enableBorderAnimation
                   onClick={() => {
                     setPanelOpen(false);
                     navigate("/login");
