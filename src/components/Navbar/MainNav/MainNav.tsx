@@ -108,13 +108,13 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed left-2 right-2 top-4 z-40 transition-all duration-700 md:left-0 md:right-0 ${
+      className={`fixed left-0 right-0 top-4 z-40 transition-all duration-700 md:left-0 md:right-0 ${
         isScrolled
           ? "mx-auto max-w-[85%] rounded-3xl border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
           : "mx-auto max-w-[95%] bg-transparent px-4 py-2"
       }`}
     >
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between py-2 pl-4 pr-2">
+      <div className="relative mx-auto flex max-w-[100rem] items-center justify-between py-2">
         {/* Desktop Layout */}
         <div className="flex w-auto justify-center gap-10 md:mx-0 md:gap-20 lg:justify-start">
           <Box className="flex items-center justify-center">

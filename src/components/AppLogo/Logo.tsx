@@ -12,7 +12,7 @@ const Logo = () => {
       >
         <CTIcon /> {/* Adjust size of the icon */}
         <Text
-          className="font-grifter text-base  lg:text-xl font-bold uppercase"
+          className="font-grifter text-base  lg:text-2xl font-bold uppercase"
           style={{ letterSpacing: "0.01em" }}
         >
           Creator Toolkit
