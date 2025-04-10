@@ -58,7 +58,7 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
         label:
           "w-full items-center justify-center font-semibold transition-all duration-500",
       }}
-      className={`flex max-h-[50px]  min-h-[46px]  md:max-h-[60px]  md:min-h-[56px] w-auto transform items-center justify-center rounded-3xl border-none
+      className={`flex   max-h-[60px]  min-h-[56px] w-auto transform items-center justify-center rounded-3xl border-none
          ${isPressed ? "!scale-90" : "scale-100"}  !bg-zinc-800 bg-main-gradient
                   bg-size-200
          bg-pos-0 px-4 py-2 text-black shadow-ct-dark transition-all duration-500 ease-in-out hover:bg-pos-100 md:px-6  
