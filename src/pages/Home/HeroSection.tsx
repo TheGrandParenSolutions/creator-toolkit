@@ -14,9 +14,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 -z-0 w-full overflow-hidden">
         <HeroBackground />
       </div>
-      {/* Textured Ambient Background */}
 
-      {/* Hero Heading */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

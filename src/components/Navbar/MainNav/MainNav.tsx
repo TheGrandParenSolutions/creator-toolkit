@@ -110,8 +110,8 @@ export function MainNav() {
     <header
       className={`fixed left-2 right-2 top-4 z-40 transition-all duration-700 md:left-0 md:right-0 ${
         isScrolled
-          ? "mx-auto max-w-[85%] rounded-full border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
-          : "bg-transparent"
+          ? "mx-auto max-w-[85%] rounded-3xl border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
+          : "bg-transparent mx-auto max-w-[95%] px-4 py-2"
       }`}
     >
       <div className="relative mx-auto flex max-w-7xl items-center justify-between py-2 pl-4 pr-2">
@@ -146,7 +146,7 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="font-primary group flex items-center text-base font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
+                className="font-primary group flex items-center text-xs md:text-base  lg:text-xl font-medium text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400"
               >
                 <span>Features</span>
                 <ChevronDown className="ml-1 h-4 w-4 rotate-0 transform transition-transform duration-500 group-hover:rotate-180" />
@@ -165,7 +165,7 @@ export function MainNav() {
           {/* Navigation Links */}
           <Link
             to="/pricing"
-            className={` font-primary text-base font-medium transition hover:text-yellow-500 hover:underline ${
+            className={` font-primary text-xs md:text-base  lg:text-xl font-medium transition hover:text-yellow-500 hover:underline ${
               location.pathname === "/pricing"
                 ? "text-yellow-500 underline"
                 : "text-zinc-900 dark:text-zinc-50"
