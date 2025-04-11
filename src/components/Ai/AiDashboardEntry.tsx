@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import CTPromptInput from "@src/components/Ai/PromptInput/CTPromptInput"; // Import the CTPromptInput component
 import { useNavigate } from "react-router-dom";
-
-const demoPrompts = [
-  { label: "Thumbnail Generator", value: "Generate a stunning thumbnail" },
-  { label: "Video Script Generator", value: "Create a script for your videos" },
-  { label: "Content Analyzer", value: "Analyze your content's performance" },
-  { label: "Video Editor", value: "Edit your videos with ease" },
-];
+import { ListType } from "@src/PropTypes.ts/CommonTypes";
+import { DEMO_PROMPTS } from "@src/components/constants/Constants";
 
 const AIDashboardEntry = () => {
+  const [demoPrompts] = useState<ListType[]>(DEMO_PROMPTS);
   const [prompt, setPrompt] = useState("");
   const navigate = useNavigate();
 
@@ -25,8 +21,12 @@ const AIDashboardEntry = () => {
     console.log("File uploaded", e.target.files);
   };
 
-  const handleStartCreating = () => {
-    navigate("/ai-dashboard");
+  const handleStartCreating = (e: string) => {
+    navigate("/creation/" + crypto.randomUUID(), {
+      state: {
+        promptDetails: e,
+      },
+    });
   };
 
   return (

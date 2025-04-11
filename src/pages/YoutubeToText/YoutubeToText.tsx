@@ -90,7 +90,7 @@ const YoutubeToText: FC = () => {
         />
       </Helmet>
 
-      <div className="mx-auto mb-4 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app dark:bg-dark-app-content">
+      <div className="mx-auto mb-4 mt-14 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg ">
         {/* Header */}
         <div className="w-full text-center">
           <h1 className="text-xl font-bold text-zinc-800 dark:text-zinc-100 lg:text-2xl ">

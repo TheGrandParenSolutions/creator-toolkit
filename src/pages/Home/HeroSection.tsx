@@ -38,7 +38,7 @@ const HeroSection = () => {
       >
         Generate videos, thumbnails, and more in one click using AI.
       </motion.p>
-      <div className="my-5 mt-10">
+      <div className="mt-10">
         <AIDashboardEntry />
       </div>
 

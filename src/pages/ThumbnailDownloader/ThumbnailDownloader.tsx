@@ -102,7 +102,7 @@ const YouTubeThumbnailDownloader = () => {
         />
       </Helmet>
 
-      <div className="mx-auto my-16 flex w-full flex-col items-center space-y-6 bg-light-app p-6 dark:bg-dark-app-content">
+      <div className="mx-auto my-16 flex w-full flex-col items-center space-y-6 p-6 ">
         {/* Header */}
         <div className="text-center">
           <h1 className="flex flex-col items-center justify-center text-xl font-bold text-zinc-800 dark:text-zinc-200 lg:flex-row lg:space-x-2 lg:text-2xl">

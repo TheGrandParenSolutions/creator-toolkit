@@ -71,9 +71,9 @@ const YoutubeThumbnailTestDashboard = () => {
           content="https://www.creator-toolkit.com/thumbnail-test/youtube-thumbnail-preview"
         />
       </Helmet>
-      <div className="flex flex-col scroll-smooth transition-all duration-500 sm:overflow-y-hidden md:flex-row lg:h-[calc(100vh-58px)]">
-        <aside className="no-scrollbar border-background-secondary px-global mx-auto mb-6 h-[300px] w-full max-w-[350px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-zinc-100 bg-light-app py-4 dark:border-black dark:bg-dark-app-content sm:h-[350px] md:my-0 md:h-full md:w-[290px]">
-          <div className="h-full space-y-6 scroll-smooth px-2">
+      <div className="flex flex-col scroll-smooth transition-all mt-14 duration-500 sm:overflow-y-hidden md:flex-row lg:h-[calc(100vh-58px)]">
+        <aside className="no-scrollbar border-background-secondary px-global mx-auto mb-6 h-[300px] w-full max-w-[450px] flex-none overflow-y-scroll scroll-smooth rounded-3xl border-2 border-solid border-zinc-200  bg-zinc-100 py-4 dark:border-black dark:bg-zinc-800  sm:h-[350px] md:my-0 md:h-full md:w-[350px]">
+          <div className="h-full space-y-6 scroll-smooth px-4">
             <SizeViewModes
               activeSizeViewMode={activeSizeViewMode}
               setActiveSizeViewMode={setActiveSizeViewMode}
@@ -98,7 +98,7 @@ const YoutubeThumbnailTestDashboard = () => {
           </div>
         </aside>
 
-        <div className="no-scrollbar flex w-full flex-col items-center scroll-smooth bg-light-app p-0 transition-colors duration-300 dark:bg-dark-app-content sm:overflow-y-scroll md:p-4 md:px-6">
+        <div className="no-scrollbar flex w-full flex-col items-center scroll-smooth  p-0 transition-colors duration-300 sm:overflow-y-scroll md:p-4 md:px-6">
           {activeSizeViewMode === "Size view" ? (
             <SizeView thumbnails={thumbnails} title={activeTitle} />
           ) : (
@@ -107,8 +107,8 @@ const YoutubeThumbnailTestDashboard = () => {
                 activeView === "search" && "max-w-[960px]"
               }`}
             >
-              <div className="dark:bg-dark-navigation top-0 z-[200] mb-6 w-full bg-light-app pb-1">
-                <div className="dark:bg-dark-navigation relative z-20 flex h-[56px] w-full items-center justify-between bg-light-app">
+              <div className=" top-0 z-[200] mb-6 w-full pb-1">
+                <div className=" relative z-20 flex h-[56px] w-full items-center justify-between ">
                   <div
                     id="logos"
                     className="hidden items-center sm:ml-4 sm:flex"

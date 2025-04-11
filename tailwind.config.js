@@ -21,25 +21,25 @@ export default {
       },
       backgroundImage: {
         "dark-app-content": `radial-gradient(
-          at 20% 30%, rgba(255, 183, 0, 0.1), /* warm yellow nebula top-left */
+          at 20% 30%, rgba(255, 183, 0, 0.08), /* warm yellow nebula top-left */
           transparent 35%
         ),
         radial-gradient(
-          at 80% 40%, rgba(98, 0, 255, 0.12), /* deep violet light */
+          at 80% 40%, rgba(98, 0, 255, 0.06), /* deep violet light */
           transparent 60%
         ),
         radial-gradient(
-          at 50% 70%, rgba(0, 255, 255, 0.06), /* faint blue halo bottom */
+          at 50% 70%, rgba(0, 255, 255, 0.03), /* faint blue halo bottom */
           transparent 70%
         ),
         radial-gradient(
-          at center, rgba(255, 255, 255, 0.05), 
+          at center, rgba(255, 255, 255, 0.03), 
           rgba(20, 20, 20, 1) 80%,
           #000000 100%
         );
         `,
         "light-app": `radial-gradient(
-          at 20% 30%, rgba(255, 200, 60, 0.06), /* warmer & brighter yellow glow */
+          at 20% 30%, rgba(255, 200, 60, 0.08), /* warmer & brighter yellow glow */
           transparent 35%
         ),
         radial-gradient(
@@ -47,7 +47,7 @@ export default {
           transparent 60%
         ),
         radial-gradient(
-          at 50% 70%, rgba(100, 255, 255, 0.03), /* more vibrant blue-cyan */
+          at 50% 70%, rgba(100, 255, 255, 0.05), /* more vibrant blue-cyan */
           transparent 70%
         ),
         radial-gradient(

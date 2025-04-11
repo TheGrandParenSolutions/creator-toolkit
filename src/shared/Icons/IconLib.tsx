@@ -844,3 +844,71 @@ export const WalletIcon = IconRenderer(
     ></path>
   </svg>,
 );
+
+export const ArrowIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={20}
+    viewBox="0 0 24 24"
+  >
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={3}
+    >
+      <path strokeDasharray={30} strokeDashoffset={30} d="M12 21l0 -17.5">
+        <animate
+          fill="freeze"
+          attributeName="stroke-dashoffset"
+          dur="0.2s"
+          values="20;0"
+        ></animate>
+      </path>
+      <path strokeDasharray={30} strokeDashoffset={30} d="M12 3l7 7M12 3l-7 7">
+        <animate
+          fill="freeze"
+          attributeName="stroke-dashoffset"
+          begin="0.2s"
+          dur="0.2s"
+          values="12;0"
+        ></animate>
+      </path>
+    </g>
+  </svg>,
+);
+
+export const AttachFileIcon = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M12.5 20.5H12c-4.714 0-7.071 0-8.536-1.465C2 17.572 2 15.215 2 10.5V7.444c0-1.816 0-2.724.38-3.406A3 3 0 0 1 3.538 2.88c.682-.38 1.59-.38 3.406-.38c1.164 0 1.746 0 2.255.191c1.163.436 1.643 1.493 2.168 2.542L12 6.5m-5 0h9.75c2.107 0 3.16 0 3.917.506a3 3 0 0 1 .827.827C22 8.59 22 9.393 22 11.5m-1 4.462v2.461c0 1.7-1.343 3.077-3 3.077s-3-1.378-3-3.077V15.04c0-.85.672-1.539 1.5-1.539s1.5.689 1.5 1.539v3.384"
+      color="currentColor"
+    ></path>
+  </svg>,
+);
+
+export const AiBotLogo = IconRenderer(
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 28 28"
+  >
+    <path
+      fill="currentColor"
+      d="M14 1.5a.75.75 0 0 1 .75.75V3h4.5A2.75 2.75 0 0 1 22 5.75v5.5c0 .485-.125.94-.346 1.336l-.165-.497a1.7 1.7 0 0 0-.59-.8a1.64 1.64 0 0 0-1.9 0a1.66 1.66 0 0 0-.58.78L18 13.62q-.064.2-.165.381H8.75A2.75 2.75 0 0 1 6 11.25v-5.5A2.75 2.75 0 0 1 8.75 3h4.5v-.75A.75.75 0 0 1 14 1.5m.3 14.59q.03-.047.066-.09H6.75A2.75 2.75 0 0 0 4 18.75v.75c0 1.977.961 3.642 2.717 4.78C8.444 25.397 10.917 26 14 26s5.556-.602 7.283-1.72q.137-.09.268-.183a1.3 1.3 0 0 1-.302-.308A1.4 1.4 0 0 1 21 23q.003-.193.06-.38l-.13.11a1.64 1.64 0 0 1-1.86 0a1.7 1.7 0 0 1-.59-.8l-.5-1.53a2 2 0 0 0-.34-.64a2 2 0 0 0-.18-.21a2.25 2.25 0 0 0-.83-.52l-1.56-.5a1.55 1.55 0 0 1-.77-.59a1.58 1.58 0 0 1 0-1.85M11 10a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m7.5-1.5a1.5 1.5 0 1 0-3 0a1.5 1.5 0 0 0 3 0m-.329 10.328a3.16 3.16 0 0 1 .761 1.24l.498 1.529a.605.605 0 0 0 1.14 0l.498-1.53a3.15 3.15 0 0 1 1.998-1.996l1.53-.497a.604.604 0 0 0 0-1.14l-.03-.008l-1.531-.497a3.15 3.15 0 0 1-1.998-1.996l-.497-1.53a.604.604 0 0 0-1.14 0l-.498 1.53l-.013.038a3.15 3.15 0 0 1-1.955 1.958l-1.53.497a.604.604 0 0 0 0 1.14l1.53.497c.467.155.89.418 1.237.765m8.65 3.53l.918.298l.019.004a.362.362 0 0 1 0 .684l-.919.298a1.9 1.9 0 0 0-1.198 1.198l-.299.918a.363.363 0 0 1-.684 0l-.299-.918a1.89 1.89 0 0 0-1.198-1.202l-.919-.298a.362.362 0 0 1 0-.684l.919-.298a1.9 1.9 0 0 0 1.18-1.198l.299-.918a.363.363 0 0 1 .684 0l.298.918a1.89 1.89 0 0 0 1.199 1.198"
+    ></path>
+  </svg>,
+);

@@ -14,6 +14,7 @@ import VideoDownloader from "@src/pages/VideoDownloader/VideoDownloader";
 import RemoveBackground from "@src/pages/RemoveBackground/RemoveBackground";
 import HomePage from "@src/pages/Home/Home";
 import PaymentSuccess from "@src/pages/Pricing/PaymentSuccess";
+import CreatorPlacePage from "@src/pages/Ai/Workplace/CreatorPlacePage";
 
 const AppRouter = () => {
   return (
@@ -331,6 +332,21 @@ const AppRouter = () => {
               />
             </Helmet>
             <div>404 - Page Not Found</div>
+          </>
+        }
+      />
+      <Route
+        path="/creation/:id"
+        element={
+          <>
+            <Helmet>
+              <title>CreationPlace</title>
+              <meta
+                name="description"
+                content="Your creative AI workspace to generate videos, scripts, thumbnails and more."
+              />
+            </Helmet>
+            <CreatorPlacePage />
           </>
         }
       />

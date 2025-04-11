@@ -81,9 +81,9 @@ const RemoveBackground = () => {
       </Helmet>
 
       {/* Upload Section & Processed Image Container */}
-      <div className="flex flex-col items-center justify-center gap-12 sm:flex-row">
+      <div className="flex flex-col items-center justify-center gap-12 mt-14 ">
         {/* Upload Box (Kept as is, just refined) */}
-        <div className="group w-full max-w-lg rounded-[2.5rem]  border-4 border-dashed border-zinc-300 p-8 shadow-md transition-all duration-300 hover:border-[var(--brand-dark-yellow)] dark:border-black dark:bg-zinc-800">
+        <div className="group w-full max-w-7xl rounded-[2.5rem]  border-4 border-dashed border-zinc-300 p-8 shadow-md transition-all duration-300 hover:border-[var(--brand-dark-yellow)] dark:border-black dark:bg-zinc-800">
           <div className="flex flex-col items-center justify-center space-y-5">
             <UploadIcon className="h-16 w-16  text-zinc-400 group-hover:text-[var(--brand-dark-yellow)] dark:text-zinc-500 dark:group-hover:text-[var(--brand-mid-yellow)]" />
             <h2 className="text-center text-lg font-semibold text-zinc-800 dark:text-zinc-200">

@@ -107,7 +107,7 @@ const YoutubeThumbnailTestOnboarding = () => {
 
       <div
         id="right-section"
-        className="bg-light-app text-center transition-colors duration-300 dark:bg-dark-app-content sm:px-6 lg:px-12 lg:py-16"
+        className=" text-center transition-colors duration-300 sm:px-6 lg:px-12 lg:py-16"
       >
         <div className="mx-auto max-w-4xl">
           <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-5xl lg:text-6xl">

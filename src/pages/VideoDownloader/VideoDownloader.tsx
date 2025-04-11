@@ -220,7 +220,7 @@ const VideoDownloader = () => {
           content="https://www.creator-toolkit.com/video-download-gear"
         />
       </Helmet>
-      <div className="mx-auto my-16 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg bg-light-app p-0 transition-all duration-300 dark:bg-dark-app-content lg:px-10">
+      <div className="mx-auto my-16 flex w-full max-w-4xl flex-col items-center space-y-6 rounded-lg  p-0 transition-all duration-300 lg:px-10">
         {/* Header */}
         <div className="w-full text-center">
           <h1 className="flex flex-col items-center justify-center text-xl font-medium text-zinc-800 dark:text-zinc-200 lg:flex-row lg:space-x-2 lg:text-2xl">
