@@ -58,17 +58,17 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
             onSubmit={handleSubmit}
             className={`duration-125 !font-secondary focus-within:bg-card-hover border-muted-border group flex w-full flex-col gap-2 rounded-3xl border border-zinc-300 bg-white ${
               error ? "!border-2 !border-red-500" : ""
-            } p-2 shadow-ct-light transition-colors ease-in-out dark:border-zinc-700 dark:bg-[#2f2f35] dark:shadow-ct-dark`}
+            } p-2 shadow-ct-light transition-colors ease-in-out dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-ct-dark`}
           >
             <textarea
               ref={inputRef}
-              className="ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground flex max-h-[500px] w-full resize-none rounded-md bg-transparent px-2 py-2 text-[16px] leading-snug placeholder-shown:text-ellipsis placeholder-shown:whitespace-nowrap focus:bg-transparent focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 md:text-base"
+              className="ring-offset-background placeholder:text-zinc-400 focus-visible:ring-ring scrollbar-thin scrollbar-track-transparent  scrollbar-thumb-muted-foreground flex max-h-[500px] w-full resize-none rounded-md bg-transparent px-2 py-2 text-[16px] font-medium leading-snug placeholder:font-medium placeholder:italic placeholder-shown:text-ellipsis placeholder-shown:whitespace-nowrap focus:bg-transparent focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 md:text-base"
               id="chatinput"
               autoFocus
               aria-invalid={!!error}
               aria-describedby={error ? "prompt-error" : undefined}
               style={{ minHeight: 80 }}
-              placeholder="Ask creator toolkit to create"
+              placeholder="What do you want to create today?"
               value={prompt}
               onChange={e => {
                 onPromptChange(e.target.value);
