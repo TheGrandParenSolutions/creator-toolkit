@@ -105,7 +105,7 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
                 autoFocus
                 aria-invalid={!!error}
                 aria-describedby={error ? "prompt-error" : undefined}
-                placeholder="Describe your idea and watch creator toolkit bring it to life...."
+                placeholder="Describe your idea and watch creosea bring it to life...."
                 value={prompt}
                 onChange={e => {
                   onPromptChange(e.target.value);

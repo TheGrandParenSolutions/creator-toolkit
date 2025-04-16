@@ -18,7 +18,7 @@ const Logo = () => {
             className="font-primary whitespace-nowrap bg-main-gradient bg-clip-text text-base font-extrabold text-orange-300 dark:text-transparent  lg:text-4xl"
             style={{ letterSpacing: "-0.05em" }}
           >
-            elyon
+            creosea  
           </Text>
         </Box>
       </Box>
