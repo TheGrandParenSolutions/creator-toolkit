@@ -263,9 +263,6 @@ const DownloadOptions: React.FC<DownloadOptionsProps> = ({
                 <CTAnimatedButton
                   label="Download"
                   icon={<CTDownloadIcon />}
-                  hoverLabel="Start"
-                  buttonStyles={"w-[110px] sm:w-[140px]"}
-                  radius={"xl"}
                   onClick={() => downloadVideo(format)}
                   disabled={isDownloading}
                 />

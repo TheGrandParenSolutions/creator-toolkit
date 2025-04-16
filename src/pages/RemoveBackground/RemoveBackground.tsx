@@ -102,11 +102,7 @@ const RemoveBackground = () => {
             <CTAnimatedButton
               label="Upload"
               icon={<Upload className="h-5 w-5" />}
-              hoverLabel="Upload Image"
-              size="md"
-              radius="xl"
               onClick={handleUploadClick}
-              w={160}
               buttonStyles="sm:w-[180px]"
               loading={loading}
             />

@@ -136,10 +136,7 @@ const Timeline = () => {
         >
           <div className="overflow-hidden-button-wrapper">
             <CTAnimatedButton
-              w={200}
-              radius={"xl"}
               label="See pricing"
-              hoverLabel="You will love it"
               to="/pricing"
               buttonStyles="w-150 p-7"
               icon={<CrownIconSolid />}

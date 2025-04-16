@@ -220,9 +220,6 @@ export const LoginSignUpComponent = (props: {
 
         <CTAnimatedButton
           label={isLogin ? "Log In" : "Sign Up"}
-          hoverLabel="Let's go"
-          size="md"
-          w={"100%"}
           onClick={e => {
             e.preventDefault();
             handleSubmit();

@@ -88,10 +88,6 @@ const ResetPassword = () => {
 
           <CTAnimatedButton
             label="Reset Password"
-            hoverLabel="Let's go"
-            size="md"
-            radius={"lg"}
-            w={"100%"}
             onClick={e => {
               handleSubmit(e);
             }}

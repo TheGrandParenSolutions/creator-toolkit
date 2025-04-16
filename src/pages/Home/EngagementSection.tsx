@@ -60,7 +60,6 @@ const EngagementSection: FC = () => {
               <CTAnimatedButton
                 loading={loading}
                 label="Want a viral idea ?"
-                hoverLabel="Click me!"
                 onClick={() => handleGenerateIdea()}
                 buttonStyles="w-full sm:w-auto p-5 sm:p-7"
               />

@@ -167,10 +167,6 @@ const YouTubeThumbnailDownloader = () => {
                           )
                         }
                         label={"Download"}
-                        hoverLabel={"Let's do it"}
-                        buttonStyles={"w-[110px] sm:w-[140px]"}
-                        radius={"xl"}
-                        size="md"
                       />
                     </div>
                     <img

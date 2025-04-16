@@ -148,10 +148,7 @@ const YoutubeThumbnailTestOnboarding = () => {
                   <Upload className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
                 }
                 hoverLabel="Upload thumbnail"
-                size="md"
-                radius="xl"
                 onClick={handleUploadClick}
-                w={160}
                 buttonStyles="sm:w-[180px] lg:w-[200px]"
               />
               <CTBasicButton
