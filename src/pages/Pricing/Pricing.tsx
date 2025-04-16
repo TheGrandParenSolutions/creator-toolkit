@@ -78,7 +78,7 @@ const Pricing = () => {
         </script>
       </Helmet>
 
-      <div className="flex flex-col items-center justify-start bg-inherit px-4 pb-12 pt-2 text-zinc-800 transition-all duration-300  dark:text-zinc-100">
+      <div className="flex mt-14 flex-col items-center justify-start bg-inherit px-4 pb-12 pt-2 text-zinc-800 transition-all duration-300  dark:text-zinc-100">
         {/* Heading */}
         <Box id="initial-section" className="mb-10 max-w-3xl text-center">
           <Text
@@ -89,7 +89,7 @@ const Pricing = () => {
             Grow your channel with a single tool.
           </Text>
           <Text
-            size="sm"
+            size="md"
             component="h3"
             className="text-sm text-zinc-600 dark:text-zinc-400 md:text-base lg:text-lg"
           >

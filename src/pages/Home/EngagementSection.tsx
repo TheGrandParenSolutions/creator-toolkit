@@ -59,8 +59,6 @@ const EngagementSection: FC = () => {
             <div className="flex items-center justify-center">
               <CTAnimatedButton
                 loading={loading}
-                w={"100%"}
-                radius={"xl"}
                 label="Want a viral idea ?"
                 hoverLabel="Click me!"
                 onClick={() => handleGenerateIdea()}

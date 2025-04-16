@@ -96,20 +96,18 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
         </span>
       </h2>
 
-      <div className="flex w-full">
+      <div className="flex w-full min-w-full">
         {planType === "pro" ? (
           <CTAnimatedButton
-            w={"100%"}
-            radius={"xl"}
             label={buttonText}
-            hoverLabel="You will love it"
-            buttonStyles="w-60"
             onClick={() => clickHandler?.(activePlan)}
+            occupyFullWidth
           />
         ) : (
           <CTBasicButton
+          className="!m-0"
             label={buttonText}
-            className="mx-0 !w-full"
+            occupyFullWidth={true}
             onClick={() => clickHandler?.(activePlan)}
           />
         )}

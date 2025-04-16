@@ -1,19 +1,19 @@
+import { ThemeContext } from "@src/Context/Theme/ThemeContext";
 import Particles from "@src/shared/Animated/AnimatedComponents";
-import { memo } from "react";
+import { memo, useContext } from "react";
 
 export const HeroBackground = memo(() => {
+  const { darkMode } = useContext(ThemeContext);
   return (
-    <div className="absolute inset-0 -z-10 antialiased will-change-transform">
+    <div className="absolute inset-0 -z-10">
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
         <Particles
-          particleColors={["#fff", "#f79046", "#ffd580", "rgba(0, 255, 255)"]} // yellow, purple, white
+          particleColors={darkMode ? ["#fff", "#ffd580", "rgba(200, 100, 255)"] : ["#000000", "#ffd580", "#171717"]} // yellow, purple, white
           particleCount={200}
-          particleSpread={10}
-          speed={0.15}
+          particleSpread={8}
+          speed={0.2}
           particleBaseSize={50}
-          moveParticlesOnHover={false}
-          alphaParticles={false}
-          disableRotation={false}
+          disableRotation
         />
       </div>
     </div>

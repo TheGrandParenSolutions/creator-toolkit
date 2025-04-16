@@ -34,7 +34,7 @@ const CTIcon = () => {
     </svg>,
   );
 
-  return <Logo className="!h-6 !w-6 md:!h-8 md:!w-8 lg:!h-10 lg:!w-10" />;
+  return <Logo className="!h-6 !w-6 md:!h-8 md:!w-8" />;
 };
 
 export default CTIcon;

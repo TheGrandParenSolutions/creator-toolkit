@@ -1,0 +1,20 @@
+
+
+.sphere-animation {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sphere path {
+  stroke-width: 4px !important;
+  stroke: rgba(80, 80, 80, 0.15);
+  backface-visibility: hidden;
+
+}
+
+@media (min-width: 500px) {
+  .sphere path {
+    stroke-width: 0.4px;
+  }
+}

@@ -29,7 +29,6 @@ const Sell = () => {
           {/* Right Content - CTA Buttons */}
           <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
             <CTAnimatedButton
-              radius={"xl"}
               label="See pricing"
               hoverLabel="You will love it"
               to="/pricing"
@@ -39,7 +38,7 @@ const Sell = () => {
             <CTBasicButton
               label="Try our tools"
               className="w-full whitespace-nowrap !p-4 sm:w-auto sm:!p-4"
-              icon={<ImageSolid />}
+              icon={<ImageSolid size={18} />}
               enableBorderAnimation
             />
           </div>

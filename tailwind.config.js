@@ -20,42 +20,38 @@ export default {
         transform: "transform",
       },
       backgroundImage: {
-        "dark-app-content": `radial-gradient(
-          at 20% 30%, rgba(255, 183, 0, 0.08), /* warm yellow nebula top-left */
-          transparent 35%
-        ),
+        "dark-app-content": `
         radial-gradient(
-          at 80% 40%, rgba(98, 0, 255, 0.06), /* deep violet light */
-          transparent 60%
-        ),
-        radial-gradient(
-          at 50% 70%, rgba(0, 255, 255, 0.03), /* faint blue halo bottom */
-          transparent 70%
-        ),
-        radial-gradient(
-          at center, rgba(255, 255, 255, 0.03), 
-          rgba(20, 20, 20, 1) 80%,
-          #000000 100%
-        );
-        `,
+            at 30% 40%, rgba(255, 183, 0, 0.06),
+            transparent 40%
+          ),
+          radial-gradient(
+            at 70% 60%, rgba(140, 100, 255, 0.05),
+            transparent 60%
+          ),
+          linear-gradient(
+            to bottom,
+            #0d0d0d 0%,
+            #0a0a0a 60%,
+            #000000 100%
+          );`
+        ,
         "light-app": `radial-gradient(
-          at 20% 30%, rgba(255, 200, 60, 0.08), /* warmer & brighter yellow glow */
-          transparent 35%
-        ),
-        radial-gradient(
-          at 80% 40%, rgba(140, 100, 255, 0.03), /* softened and brighter violet */
-          transparent 60%
-        ),
-        radial-gradient(
-          at 50% 70%, rgba(100, 255, 255, 0.05), /* more vibrant blue-cyan */
-          transparent 70%
-        ),
-        radial-gradient(
-          at center, rgba(255, 255, 255, 0.03),
-          #f9f9f9 80%,
-          #ffffff 100%
-        )`,
-        'main-gradient': 'linear-gradient(62deg, #fbab7e 0%, #ffd580 50%, #FFC676 100%)',
+            at 25% 35%, rgba(255, 213, 128, 0.07),
+            transparent 40%
+          ),
+          radial-gradient(
+            at 75% 50%, rgba(200, 180, 255, 0.04),
+            transparent 50%
+          ),
+          linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #fafafa 60%,
+            #f5f5f5 100%
+          );`
+        ,
+        'main-gradient': 'linear-gradient(62deg, #FF9145 0%, #ffd580 40%, #FFC676 80%, #C19A6B 100%)',
         'sec-gradient': `linear-gradient(
           0deg,
         rgba(255, 125, 0, 1) 0%,
@@ -98,6 +94,10 @@ export default {
           '50%': { opacity: '0.6' },
           '100%': { transform: 'rotate(360deg)', opacity: '0.1' },
         },
+        shine: {
+          '0%': { 'background-position': '100%' },
+          '100%': { 'background-position': '-100%' },
+        },
       },
       animation: {
         appear: "appear 1s ease-in-out forwards",
@@ -105,6 +105,7 @@ export default {
         'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
         'star-movement-top': 'star-movement-top linear infinite alternate',
         'star-border': 'star-border 6s linear infinite',
+        shine: 'shine 5s linear infinite',
       },
     },
   },

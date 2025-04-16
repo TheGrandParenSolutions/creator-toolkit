@@ -59,7 +59,7 @@ export function MainNav() {
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100); // Add shadow when scrolled
+      setIsScrolled(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -67,30 +67,35 @@ export function MainNav() {
     };
   }, []);
 
+
   // Generate links dynamically for the Menu with Active State
-  const featureLinks = youtubeFeatures.map(feature => (
-    <Menu.Item
-      key={feature.title}
-      className={`block rounded-xl text-black transition hover:bg-main-gradient dark:text-white dark:hover:text-black`}
-    >
-      <Link
-        to={feature.link}
-        className="block rounded-xl text-black  transition  dark:text-white dark:hover:text-black"
-      >
-        <Group className="flex-nowrap gap-2" align="center">
-          <Text size="md" fw={600}>
-            {feature.title}
-          </Text>
-          {/* Active Icon */}
-          {location.pathname === feature.link && (
-            <ActionIcon size={18} variant="transparent" color="green">
-              <CircleSolid className="text-teal-500" size={8} />
-            </ActionIcon>
-          )}
-        </Group>
-      </Link>
-    </Menu.Item>
-  ));
+  const featureLinks = useMemo(
+    () =>
+      youtubeFeatures.map(feature => (
+        <Menu.Item
+          key={feature.title}
+          className={`block rounded-xl text-black transition hover:bg-main-gradient dark:text-white dark:hover:text-black`}
+        >
+          <Link
+            to={feature.link}
+            className="block rounded-xl text-black  transition  dark:text-white dark:hover:text-black"
+          >
+            <Group className="flex-nowrap gap-2" align="center">
+              <Text size="md" fw={600}>
+                {feature.title}
+              </Text>
+              {/* Active Icon */}
+              {location.pathname === feature.link && (
+                <ActionIcon size={18} variant="transparent" color="green">
+                  <CircleSolid className="text-teal-500" size={8} />
+                </ActionIcon>
+              )}
+            </Group>
+          </Link>
+        </Menu.Item>
+      )),
+    [],
+  );
 
   const getTotalCredits = (): number => {
     if (user?.id && isPremium) {
@@ -108,15 +113,15 @@ export function MainNav() {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-4 z-40 transition-all duration-700 md:left-0 md:right-0 ${
+      className={`fixed left-0 right-0 top-2 z-40 transition-all duration-500 md:left-0 md:right-0 ${
         isScrolled
-          ? "mx-auto max-w-[85%] rounded-3xl border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
-          : "mx-auto max-w-[95%] bg-transparent px-4 py-2"
+          ? "mx-auto max-w-[90%] rounded-3xl border border-white/10 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md dark:bg-zinc-900/30"
+          : "mx-auto max-w-[100%] bg-transparent px-4 py-2"
       }`}
     >
       <div className="relative mx-auto flex max-w-[100rem] items-center justify-between py-2">
         {/* Desktop Layout */}
-        <div className="flex w-auto justify-center gap-10 md:mx-0 md:gap-20 lg:justify-start">
+        <div className="flex w-auto justify-center gap-10 md:mx-0  lg:justify-start">
           <Box className="flex items-center justify-center">
             <Tooltip label={panelOpen ? "Close sidebar" : "Open sidebar"}>
               <button
@@ -151,7 +156,7 @@ export function MainNav() {
             <Menu.Target>
               <a
                 href="#"
-                className="font-primary group flex items-center text-xs font-medium  text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400 md:text-base lg:text-xl"
+                className="font-primary group flex items-center text-xs font-medium  text-zinc-900 transition hover:text-yellow-500 dark:text-zinc-50 dark:hover:text-yellow-400 md:text-base"
               >
                 <span>Features</span>
                 <ChevronDown className="ml-1 h-4 w-4 rotate-0 transform transition-transform duration-500 group-hover:rotate-180" />
@@ -170,7 +175,7 @@ export function MainNav() {
           {/* Navigation Links */}
           <Link
             to="/pricing"
-            className={` font-primary text-xs font-medium  transition hover:text-yellow-500 hover:underline md:text-base lg:text-xl ${
+            className={` font-primary text-xs font-medium  transition hover:text-yellow-500 hover:underline md:text-base ${
               location.pathname === "/pricing"
                 ? "text-yellow-500 underline"
                 : "text-zinc-900 dark:text-zinc-50"
@@ -191,12 +196,8 @@ export function MainNav() {
             <>
               {!isPremium && (
                 <CTAnimatedButton
-                  w={120}
-                  radius={"xl"}
                   label="Go pro"
-                  hoverLabel="You will love it"
                   to="/pricing"
-                  buttonStyles="w-60"
                   icon={<CrownIconSolid />}
                 />
               )}
@@ -220,7 +221,6 @@ export function MainNav() {
               <UserProfile />
             ) : (
               <CTAnimatedButton
-                radius={"xl"}
                 label="Go pro"
                 hoverLabel="You will love it"
                 to="/pricing"

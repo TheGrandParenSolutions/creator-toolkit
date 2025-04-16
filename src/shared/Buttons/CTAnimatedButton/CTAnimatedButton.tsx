@@ -1,21 +1,27 @@
-import { Button, ButtonProps } from "@mantine/core";
 import CTLoader from "@src/shared/Progress/CTLoader";
-import { FC, ReactNode, useEffect, useState } from "react";
+import { DetailedHTMLProps, FC, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface AnimatedButtonProps extends ButtonProps {
+interface AnimatedButtonProps
+  extends DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   label: string; // Default text
-  hoverLabel: string; // Text to display on hover
+  hoverLabel?: string; // Text to display on hover
   url?: string; // Optional URL for redirection
   to?: string; // Route path for navigation
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void; // Optional custom click handler
   buttonStyles?: string; // Additional Tailwind classes for button
   hoverStyles?: string; // Additional Tailwind classes for hover state
   icon?: ReactNode; // Optional icon component
+  loading?: boolean;
+  occupyFullWidth?: boolean;
 }
 
 export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
-  const { label, url, to, onClick, icon, loading, disabled } = props;
+  const { label, url, to, onClick, icon, loading, disabled, occupyFullWidth } =
+    props;
 
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false); // State for handling press animation
@@ -31,9 +37,8 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
   }, []);
 
   return (
-    <Button
+    <button
       {...props}
-      loading={false}
       disabled={loading || disabled}
       onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
       onMouseDown={() => setIsPressed(true)} // Start press animation on mouse down
@@ -53,21 +58,20 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
           window.open(url, "_blank"); // Open the URL in a new tab if provided
         }
       }}
-      classNames={{
-        inner: "w-full text-center transition-all duration-500",
-        label:
-          "w-full items-center justify-center font-semibold transition-all duration-500",
-      }}
-      className={`flex   max-h-[60px]  min-h-[56px] w-auto transform items-center justify-center rounded-3xl border-none
-         ${isPressed ? "!scale-90" : "scale-100"}  !bg-zinc-800 bg-main-gradient
+      className={`inline-flex w-auto transform items-center justify-center rounded-xl border-none
+         bg-size-200
+         bg-pos-0 hover:bg-pos-100
+         ${isPressed ? "!scale-90" : "scale-100"}  !bg-zinc-900 bg-main-gradient
                   bg-size-200
-         bg-pos-0 px-4 py-2 text-black shadow-ct-dark transition-all duration-500 ease-in-out hover:bg-pos-100 md:px-6  
+         bg-pos-0  px-4 py-2  text-black  transition-all duration-500 ease-in-out hover:bg-pos-100 
                           
-         md:py-3  ${""} ${
-        loading &&
-        "disabled:border-zinc-200 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none"
-      } `} // Apply scale and shadow on press
-      size="auto"
+         ${
+           loading &&
+           "disabled:border-zinc-200 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none"
+         } 
+           ${occupyFullWidth ? "!w-full" : ""}
+           
+         `} // Apply scale and shadow on press
     >
       {loading ? (
         <div className="flex items-center justify-center transition-all duration-500">
@@ -78,13 +82,13 @@ export const CTAnimatedButton: FC<AnimatedButtonProps> = props => {
           <span
             className={` text-center text-black transition-all duration-500`}
           >
-            <span className="font-primary flex items-center justify-center gap-2 text-sm font-semibold text-zinc-900 md:text-base ">
+            <span className="font-primary flex items-center justify-center gap-2 text-sm font-medium text-zinc-900 md:text-base">
               {icon && !isHovered && icon}
               {label}
             </span>
           </span>
         </>
       )}
-    </Button>
+    </button>
   );
 };

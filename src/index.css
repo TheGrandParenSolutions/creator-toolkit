@@ -25,9 +25,10 @@
   --white-smoke: #f2f2f2;
   --brand-bg-theme: linear-gradient(
     62deg,
-    #fbab7e 0%,
-    #ffd580 50%,
-    #ffc676 100%
+    #ff9145 0%,
+    #ffd580 40%,
+    #ffc676 80%,
+    #c19a6b 100%
   );
   --brand-main-bg: #fff;
   --brand-light-orange: #fbab7e;
@@ -42,22 +43,37 @@
   --brand--light-yellow: #ffd580;
   --brand-dark-yellow: #ffab00;
   --brand-mid-yellow: rgb(255, 213, 128);
-  --brand-divider-color: "#fbf0c9";
-  --brand-lightest-bg: "#F2EEE3";
+  --brand-divider-color: #fbf0c9;
+  --brand-lightest-bg: #f2eee3;
+  --workbench-width: min(calc(100% - 600px), 1800px);
+  --workbench-inner-width: calc(min(calc(100% - 600px), 1800px) - 1rem);
+  --chat-max-width: calc(600px - 48px);
+  --chat-padding: 1.5rem;
+  --header-height: 70px;
+  --workbench-left: calc(100% - min(calc(100% - 600px), 1800px));
+  --elements-messages-background: rgb(38, 38, 38);
+  --gradient-zinc: rgb(38, 38, 38);
+  --camel: #c19a6b;
 }
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Satoshi", sans-serif;
   color: var(--black);
   background-color: var(--brand-main-bg);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.75;
   margin: 0;
+  letter-spacing: 0.005em;
 }
 
 .bg-light-app {
@@ -77,10 +93,9 @@ h2,
 h3,
 h4,
 h5,
-a,
 button {
-  font-family: "Work Sans", sans-serif;
-  letter-spacing: -0.025em;
+  font-family: "Cabinet Grotesk", sans-serif;
+  letter-spacing: 0.025em;
 }
 @keyframes bounce {
   50% {
@@ -97,12 +112,116 @@ button {
 
 .font-grifter {
   font-family: "GRIFTER Bold", sans-serif;
+  letter-spacing: 0.005em;
 }
 
 .font-primary {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Cabinet Grotesk", sans-serif;
+  letter-spacing: 0.025em;
 }
 
 .font-secondary {
-  font-family: "Inter", sans-serif;
+  font-family: "Satoshi", sans-serif;
+  letter-spacing: 0.005em;
+}
+
+.z-workbench {
+  z-index: 3;
+}
+
+.max-w-chat {
+  max-width: var(--chat-max-width);
+}
+
+.z-prompt,
+.z-scroller {
+  z-index: 2;
+}
+
+.z-sidebar {
+  z-index: 997;
+}
+
+._RayContainer_1ti3k_1 {
+  --gradient-opacity: 0.8;
+  --ray-gradient: radial-gradient(
+    rgb(255, 213, 128, var(--gradient-opacity)) 0%,
+    rgba(43, 166, 255, 0) 100%
+  );
+  transition: opacity 0.25s linear;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+._RayContainer_1ti3k_1[data-chat-started="false"] {
+  animation: 0.25s linear 0s 1 _fade-in_1ti3k_1;
+}
+
+._RayContainer_1ti3k_1[data-theme="light"] {
+  --gradient-opacity: 0.5;
+}
+
+._RayContainer_1ti3k_1[data-theme="light"][data-chat-started="true"] {
+  opacity: 0.5;
+}
+
+._RayContainer_1ti3k_1 ._LightRay_1ti3k_23 {
+  position: absolute;
+  border-radius: 100%;
+  background: var(--ray-gradient);
+}
+
+._RayContainer_1ti3k_1 ._RayOne_1ti3k_28 {
+  width: 480px;
+  height: 680px;
+  transform: rotate(80deg);
+  top: -540px;
+  left: 250px;
+  filter: blur(110px);
+}
+
+._RayContainer_1ti3k_1 ._RayTwo_1ti3k_36 {
+  width: 110px;
+  height: 400px;
+  transform: rotate(-20deg);
+  top: -280px;
+  left: 350px;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  filter: blur(60px);
+}
+
+._RayContainer_1ti3k_1 ._RayThree_1ti3k_46 {
+  width: 400px;
+  height: 370px;
+  top: -350px;
+  left: 200px;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  filter: blur(21px);
+}
+
+._RayContainer_1ti3k_1 ._RayFour_1ti3k_55 {
+  position: absolute;
+  width: 330px;
+  height: 370px;
+  top: -330px;
+  left: 50px;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  filter: blur(21px);
+}
+
+._RayContainer_1ti3k_1 ._RayFive_1ti3k_65 {
+  position: absolute;
+  width: 110px;
+  height: 400px;
+  transform: rotate(-40deg);
+  top: -280px;
+  left: -10px;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  filter: blur(60px);
 }

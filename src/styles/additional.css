@@ -358,3 +358,57 @@
     filter: drop-shadow(0px 0px 40px rgba(255, 215, 0, 0.5));
   }
 }
+
+.fade-in-markdown > * {
+  animation: fadeIn 2s cubic-bezier(0.37, 0.55, 0.86, 0.88) forwards
+    var(--delay, 0s);
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.ct-loader {
+  width: 20px;
+  height: 6px;
+  display: block;
+  margin: auto;
+  position: relative;
+  border-radius: 2px;
+  color: inherit;
+  background: currentColor;
+  box-sizing: border-box;
+  animation: animloader 0.6s 0.3s ease infinite alternate;
+}
+.ct-loader::after,
+.ct-loader::before {
+  content: "";
+  box-sizing: border-box;
+  width: 20px;
+  height: 6px;
+  background: currentColor;
+  position: absolute;
+  border-radius: 2px;
+  top: 0;
+  right: 110%;
+  animation: animloader 0.75s ease infinite alternate;
+}
+.ct-loader::after {
+  left: 110%;
+  right: auto;
+  animation-delay: 0.75s;
+}
+
+@keyframes animloader {
+  0% {
+    width: 15px;
+  }
+
+  100% {
+    width: 48px;
+  }
+}

@@ -39,6 +39,7 @@ const AIDashboardEntry = () => {
         onFileUpload={handleFileUpload}
         showSuggestions
         onStartCreating={handleStartCreating}
+        enableBorderAnimation
       />
     </div>
   );
