@@ -51,7 +51,7 @@ export default {
             #f5f5f5 100%
           );`
         ,
-        'main-gradient': 'linear-gradient(62deg, #FF9145 0%, #ffd580 40%, #FFC676 80%, #C19A6B 100%)',
+        'main-gradient': 'linear-gradient(62deg, #FF9145 0%, #ffd580 40%, #FFC676 80%, #ffd580 100%)',
         'sec-gradient': `linear-gradient(
           0deg,
         rgba(255, 125, 0, 1) 0%,
