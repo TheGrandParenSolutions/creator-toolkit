@@ -232,3 +232,9 @@ button {
   opacity: 0.8;
   filter: blur(60px);
 }
+
+.ct-markdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
