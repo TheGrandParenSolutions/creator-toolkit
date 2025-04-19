@@ -1,10 +1,6 @@
 import React, { useState, useRef, FormEvent, useContext } from "react";
 import { ChevronUp, SendSolid } from "@mynaui/icons-react";
-import {
-  AiBotLogo,
-  AttachFileIcon,
-  StopIcon,
-} from "@src/shared/Icons/IconLib";
+import { AiBotLogo, AttachFileIcon, StopIcon } from "@src/shared/Icons/IconLib";
 import { ListType } from "@src/PropTypes.ts/CommonTypes";
 import { ThemeContext } from "@src/Context/Theme/ThemeContext";
 
@@ -66,11 +62,13 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
     : `dark:bg-zinc-900 bg-white`;
 
   return (
-    <div className="!font-secondary w-full max-w-3xl">
+    <div className="!font-secondary w-full max-w-3xl ">
       <div className="relative w-full">
-        <div className="flex w-full flex-col items-center px-4">
+        <div className="flex w-full flex-col items-center px-4 ">
           <div
-            className={`relative inline-block max-h-fit w-full overflow-hidden rounded-xl py-[1px]`}
+            className={`relative inline-block max-h-fit w-full overflow-hidden rounded-3xl border border-zinc-200 py-[1px] shadow-md dark:border-zinc-700 ${
+              error ? "!border-2 !border-red-500" : ""
+            }`}
           >
             {enableBorderAnimation ? (
               <>
@@ -94,9 +92,7 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
             )}
             <form
               onSubmit={handleSubmit}
-              className={`duration-125 !font-secondary focus-within:bg-card-hover border-muted-border group flex w-full flex-col gap-2 rounded-xl border border-zinc-300 ${promptBg} ${
-                error ? "!border-2 !border-red-500" : ""
-              } p-2  backdrop-blur-sm transition-colors ease-in-out dark:border-zinc-700`}
+              className={`duration-125 !font-secondary focus-within:bg-card-hover border-muted-border group flex w-full flex-col gap-2 rounded-3xl  ${promptBg}  p-2  backdrop-blur-sm transition-colors ease-in-out `}
             >
               <textarea
                 ref={inputRef}
