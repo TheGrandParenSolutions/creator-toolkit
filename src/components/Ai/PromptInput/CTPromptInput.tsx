@@ -1,4 +1,9 @@
-import React, { useState, useRef, FormEvent, useContext } from "react";
+import React, {
+  useState,
+  useRef,
+  FormEvent,
+  useContext,
+} from "react";
 import { ChevronUp, SendSolid } from "@mynaui/icons-react";
 import { AiBotLogo, AttachFileIcon, StopIcon } from "@src/shared/Icons/IconLib";
 import { ListType } from "@src/PropTypes.ts/CommonTypes";
@@ -33,6 +38,12 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
+  const handleKeyPress = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmit(e as any);
+    }
+  };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const trimmed = prompt.trim();
@@ -92,6 +103,7 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
             )}
             <form
               onSubmit={handleSubmit}
+              onKeyDown={e => handleKeyPress(e as any)}
               className={`duration-125 !font-secondary focus-within:bg-card-hover border-muted-border group flex w-full flex-col gap-2 rounded-3xl  ${promptBg}  p-2  backdrop-blur-sm transition-colors ease-in-out `}
             >
               <textarea
@@ -151,7 +163,7 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white  transition-opacity duration-150 ease-out hover:bg-zinc-600  disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black  dark:hover:bg-zinc-300 "
                   >
                     {loading ? (
-                      <StopIcon className="text-orange-300" />
+                      <StopIcon />
                     ) : (
                       <SendSolid />
                     )}
