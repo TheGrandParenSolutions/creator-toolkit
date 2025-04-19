@@ -13,7 +13,7 @@ const Workbench: FC<Props> = ({ open = false }) => {
     >
       <div
         style={{
-          left: !open ? "1800px" : "var(--workbench-left)",
+          left: !open ? "5400px" : "var(--workbench-left)",
         }}
         className="fixed bottom-4 top-[calc(var(--header-height)+1rem)] z-0 w-[var(--workbench-inner-width)] transition-[left,width] duration-500"
       >
@@ -25,8 +25,8 @@ const Workbench: FC<Props> = ({ open = false }) => {
         </button>
 
         <div className="absolute inset-0 select-none">
-          <div className="flex h-full flex-col overflow-hidden rounded-lg border border-zinc-300 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800">
-            <div className="flex min-h-[var(--panel-header-height)] items-center border-b border-zinc-300 px-3 py-2 dark:border-zinc-700">
+          <div className="flex h-full flex-col overflow-hidden rounded-lg border-2 border-zinc-100 bg-white dark:border-zinc-900 dark:bg-zinc-800">
+            <div className="flex min-h-[var(--panel-header-height)] items-center border-b border-zinc-100 px-3 py-2 dark:border-zinc-900">
               <div className="flex shrink-0 flex-wrap items-center gap-1 overflow-hidden rounded-full p-1"></div>
             </div>
             <div className="relative flex-1 overflow-hidden" />

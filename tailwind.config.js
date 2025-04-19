@@ -36,20 +36,37 @@ export default {
             #000000 100%
           );`
         ,
-        "light-app": `radial-gradient(
-            at 25% 35%, rgba(255, 213, 128, 0.07),
-            transparent 40%
-          ),
+        "light-app": `
+          /* Ultra-soft warm glow top-left */
           radial-gradient(
-            at 75% 50%, rgba(200, 180, 255, 0.04),
-            transparent 50%
+            1000px 800px at 0% 0%,
+            rgba(255, 255, 240, 0.05),  /* almost white with warmth */
+            transparent 70%
           ),
+
+          /* Soft cool-white glow bottom-right */
+          radial-gradient(
+            1000px 1000px at 100% 100%,
+            rgba(245, 245, 255, 0.05),
+            transparent 70%
+          ),
+
+          /* Very soft center glow */
+          radial-gradient(
+            1200px 800px at 50% 50%,
+            rgba(255, 255, 255, 0.7),
+            rgba(252, 252, 253, 0.8),
+            #fefefe 100%
+          ),
+
+          /* Background base tone — bright zinc-like white */
           linear-gradient(
-            to bottom,
+            180deg,
             #ffffff 0%,
-            #fafafa 60%,
-            #f5f5f5 100%
-          );`
+            #fdfdfd 50%,
+            #fbfbfb 100%
+          )
+        `
         ,
         'main-gradient': 'linear-gradient(62deg, #FF9145 0%, #ffd580 40%, #FFC676 80%, #ffd580 100%)',
         'sec-gradient': `linear-gradient(
@@ -57,7 +74,8 @@ export default {
         rgba(255, 125, 0, 1) 0%,
         rgba(255, 95, 109, 1) 100%
         )`,
-        'text-gradient': `linear-gradient(#f0f0f0, #9e9e9e);`
+        'text-gradient': `linear-gradient(#f0f0f0, #9e9e9e);`,
+
       },
       boxShadow: {
         'ct-light': 'inset 3px 3px 5px rgba(0, 0, 0, 0.15), inset -3px -3px 5px rgba(255, 255, 255, 0.8)',

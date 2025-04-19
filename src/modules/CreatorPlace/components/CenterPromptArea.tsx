@@ -16,7 +16,11 @@ type Message = {
   streaming?: boolean;
 };
 
-const CenterPromptArea: FC = () => {
+interface ICenterPromptArea {
+  workbenchOpen?: boolean;
+}
+
+const CenterPromptArea: FC<ICenterPromptArea> = ({ workbenchOpen }) => {
   const { darkMode } = useContext(ThemeContext);
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -121,14 +125,14 @@ const CenterPromptArea: FC = () => {
               ? "transparent"
               : darkMode
               ? "#27272a"
-              : "#e4e4e7",
+              : "#f9fafb",
             transition: "--gradient-end 0.5s",
             background: `linear-gradient(${
-              darkMode ? "#27272a" : "#e4e4e7"
+              darkMode ? "#27272a" : "#ffffff"
             } max(calc(100% - 100vh), 30%), var(--gradient-end) 100%)`,
           } as any
         }
-        className="fade-in-markdown relative mx-10 flex flex-col rounded-[calc(0.75rem-1px)] bg-zinc-800"
+        className="fade-in-markdown font-secondary relative mx-10 flex flex-col rounded-[calc(0.75rem-1px)] border-none border-zinc-100 bg-zinc-800 text-base dark:border-zinc-900"
       >
         <div className="overflow-hidden rounded-[calc(0.75rem-1px)]">
           <div className="flex w-full gap-4 p-6 py-5">
@@ -195,7 +199,9 @@ const CenterPromptArea: FC = () => {
       <section
         ref={containerRef}
         area-label="Chat"
-        className="max-w-chat z-1 no-scrollbar mx-auto flex w-full flex-1 flex-col gap-5 overflow-auto py-6 text-sm"
+        className={`${
+          workbenchOpen ? "max-w-chat" : "max-w-[800px]"
+        } z-1 no-scrollbar mx-auto flex w-full flex-1 flex-col gap-5 overflow-auto py-6 text-sm`}
       >
         <AnimatePresence initial={false}>
           {messages.map(renderMessage)}
@@ -235,7 +241,11 @@ const CenterPromptArea: FC = () => {
       )}
 
       {/* Input */}
-      <div className="max-w-chat z-prompt sticky bottom-0 mx-auto mb-4 w-full px-[var(--chat-padding)]">
+      <div
+        className={`${
+          workbenchOpen ? "max-w-chat" : "max-w-[800px]"
+        } z-prompt sticky bottom-0 mx-auto mb-4 w-full px-[var(--chat-padding)]`}
+      >
         <CTPromptInput
           onStartCreating={handleSend}
           prompt={prompt}

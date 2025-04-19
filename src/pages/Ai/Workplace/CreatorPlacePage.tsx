@@ -5,17 +5,17 @@ import Workbench from "@src/modules/CreatorPlace/components/Workbench";
 import { PanelLeftIcon, PanelRightIcon } from "@src/shared/Icons/IconLib";
 import UserProfile from "@src/shared/User/UserProfile";
 import DarkModeToggle from "@src/Utility/DarkModeToggle";
-import { FC, useEffect, useState } from "react";
+import { FC,  useState } from "react";
 
 const CreatorPlacePage: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [openedWorkbench, setOpenedWorkbench] = useState<boolean>(false);
+  // const [openedWorkbench, setOpenedWorkbench] = useState<boolean>(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setOpenedWorkbench(true);
-    }, 10000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setOpenedWorkbench(true);
+  //   }, 10000);
+  // }, []);
 
   return (
     <div className="flex h-full w-full flex-col transition-all duration-500 dark:bg-zinc-900">
@@ -69,9 +69,9 @@ const CreatorPlacePage: FC = () => {
         {/* Center Prompt Area */}
         <main className="flex size-full overflow-auto transition-[left,width,flex] duration-500">
           <div className="_Chat_koc9b_5 selection-accent flex flex-grow flex-col">
-            <CenterPrompt />
+            <CenterPrompt workbenchOpen={false} />
           </div>
-          <Workbench open={openedWorkbench} />
+          <Workbench open={false} />
         </main>
       </div>
     </div>

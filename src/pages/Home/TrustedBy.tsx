@@ -13,7 +13,7 @@ const brands = [
 
 const TrustedBy: FC = () => {
   return (
-    <div className="relative w-full overflow-hidden rounded-[24px] bg-transparent py-6 shadow-ct-light dark:shadow-ct-dark">
+    <div className="relative w-full overflow-hidden rounded-[24px] bg-transparent py-6 border border-zinc-200 dark:border-zinc-800">
       {/* Animation Wrapper */}
       <div className="relative flex items-center justify-center overflow-hidden">
         <motion.div

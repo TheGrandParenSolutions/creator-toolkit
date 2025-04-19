@@ -74,7 +74,7 @@ const CTBasicButton: FC<CustomButtonProps> = ({
         onTouchCancel={handlePressEnd} // For mobile
         className={`relative mx-auto flex w-full
         items-center justify-center rounded-xl
-                   border border-zinc-200 bg-zinc-100 bg-size-200 bg-pos-0 px-4 py-2 text-sm font-semibold
+                   border border-zinc-200 bg-white  bg-size-200 bg-pos-0 px-4 py-2 text-sm font-semibold
                    text-black transition
                   duration-[350ms] hover:bg-zinc-200
                   hover:bg-pos-100 

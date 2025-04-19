@@ -54,6 +54,9 @@
   --elements-messages-background: rgb(38, 38, 38);
   --gradient-zinc: rgb(38, 38, 38);
   --camel: #c19a6b;
+  --warm-gray-50: hsl(30 12% 97%);
+  --brand-peach: 255 160 90;   /* tweak if your orange is different        */
+  --brand-lilac: 160 140 255;  /* gentle cool counter‑tone                 */
 }
 
 html {
@@ -65,8 +68,12 @@ body,
   height: 100%;
 }
 
+code {
+  font-family: "Cabinet Grotesk", serif;
+}
+
 body {
-  font-family: "Satoshi", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--black);
   background-color: var(--brand-main-bg);
   font-size: 1rem;
@@ -121,7 +128,7 @@ button {
 }
 
 .font-secondary {
-  font-family: "Satoshi", sans-serif;
+  font-family: "Inter", sans-serif;
   letter-spacing: 0.005em;
 }
 
