@@ -412,3 +412,8 @@
     width: 48px;
   }
 }
+
+.focused-glow:focus-within {
+  box-shadow:
+    0 14px 30px -8px rgba(13, 148, 136, 0.4);
+}

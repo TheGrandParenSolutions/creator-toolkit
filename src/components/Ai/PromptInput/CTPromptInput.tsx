@@ -1,13 +1,9 @@
-import React, {
-  useState,
-  useRef,
-  FormEvent,
-  useContext,
-} from "react";
+import React, { useState, useRef, FormEvent, useContext } from "react";
 import { ChevronUp, SendSolid } from "@mynaui/icons-react";
 import { AiBotLogo, AttachFileIcon, StopIcon } from "@src/shared/Icons/IconLib";
 import { ListType } from "@src/PropTypes.ts/CommonTypes";
 import { ThemeContext } from "@src/Context/Theme/ThemeContext";
+import { APP_NAME } from "@src/constants/constants";
 
 type CTPromptInputProps = {
   prompt: string;
@@ -77,9 +73,10 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
       <div className="relative w-full">
         <div className="flex w-full flex-col items-center px-4 ">
           <div
-            className={`relative inline-block max-h-fit w-full overflow-hidden rounded-3xl border border-zinc-200 py-[1px] shadow-md dark:border-zinc-700 ${
-              error ? "!border-2 !border-red-500" : ""
-            }`}
+            className={`focused-glow relative inline-block max-h-fit w-full overflow-hidden rounded-3xl border border-zinc-200 py-[1px]  shadow-[0_12px_20px_-4px_rgba(13,148,136,0.2)]
+                    dark:border-zinc-700  ${
+                      error ? "!border-2 !border-red-500" : ""
+                    }`}
           >
             {enableBorderAnimation ? (
               <>
@@ -162,15 +159,17 @@ const CTPromptInput: React.FC<CTPromptInputProps> = ({
                     type="submit"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white  transition-opacity duration-150 ease-out hover:bg-zinc-600  disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black  dark:hover:bg-zinc-300 "
                   >
-                    {loading ? (
-                      <StopIcon />
-                    ) : (
-                      <SendSolid />
-                    )}
+                    {loading ? <StopIcon /> : <SendSolid />}
                   </button>
                 </div>
               </div>
             </form>
+          </div>
+          <div className="relative mt-auto flex min-h-8 w-full items-center justify-center p-2 text-center text-xs text-zinc-400 dark:text-zinc-500 md:px-[60px]">
+            <div>
+              {APP_NAME} is smart, just not flawless. Always double-check the
+              important stuff.
+            </div>
           </div>
           {Boolean(showSuggestions) && (
             <div className="relative mx-2 mt-5 flex max-w-full gap-1 md:mt-8">

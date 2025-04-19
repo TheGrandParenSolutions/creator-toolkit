@@ -18,9 +18,9 @@ const CreatorPlacePage: FC = () => {
   // }, []);
 
   return (
-    <div className="flex h-full w-full flex-col transition-all duration-500 dark:bg-zinc-900">
+    <div className="flex h-full w-full flex-col transition-all duration-500 bg-light-app dark:!bg-dark-app-content">
       <Header />
-      <div className="_BaseChat_koc9b_1 bg-bolt-elements-background-depth-1 relative flex h-full w-full overflow-hidden">
+      <div className="_BaseChat_koc9b_1 relative flex h-full w-full overflow-hidden">
         {/* Left Sidebar */}
         <div className="fixed bottom-0 top-[var(--header-height)] z-10 flex flex-col items-center justify-end py-3 pl-2.5">
           <div className="ml-px flex items-center">

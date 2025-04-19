@@ -1,5 +1,7 @@
 import { PricingPlanProps } from "@src/pages/Pricing/PricingPlan";
 
+export const APP_NAME = "Creosea"
+
 export const languages = [
   { value: "en", label: "English" },
   { value: "es", label: "Spanish" },

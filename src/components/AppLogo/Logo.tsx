@@ -1,6 +1,7 @@
 import { Box, Text, Tooltip } from "@mantine/core";
 // import CTIcon from "@src/components/AppLogo/CTIcon";
 import RoundLogo from "@src/components/AppLogo/RoundLogo";
+import { APP_NAME } from "@src/constants/constants";
 import { useNavigate } from "react-router-dom";
 
 const Logo = () => {
@@ -18,7 +19,7 @@ const Logo = () => {
             className="font-primary whitespace-nowrap bg-main-gradient bg-clip-text text-base font-extrabold text-orange-300 dark:text-transparent  lg:text-4xl"
             style={{ letterSpacing: "-0.05em" }}
           >
-            creosea  
+            {APP_NAME}
           </Text>
         </Box>
       </Box>
